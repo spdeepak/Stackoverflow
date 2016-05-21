@@ -3,17 +3,18 @@ package com.destack.overflow.urlgenerator;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import com.destack.overflow.enums.Order;
 import com.destack.overflow.enums.AnswerSortBy;
+import com.destack.overflow.enums.Order;
 import com.destack.overflow.initializers.AnswerInitializer;
+import com.destack.overflow.model.AnswerItem;
 
 /**
+ * Generate URL to get {@link AnswerItem} by using {@link AnswerInitializer}
+ * 
  * @author Deepak
  *
  */
-public class AnswerURLGenerator implements URLGenerator<AnswerInitializer>
-
-{
+public class AnswerItemURLGenerator implements URLGenerator<AnswerInitializer> {
 
     @Override
     public URL urlGenerator(AnswerInitializer ai) throws MalformedURLException {
@@ -49,6 +50,11 @@ public class AnswerURLGenerator implements URLGenerator<AnswerInitializer>
         url += "&site=stackoverflow";
         url = url.replace("https://api.stackexchange.com/2.2/answers?&", "https://api.stackexchange.com/2.2/answers?");
         return new URL(url);
+    }
+
+    public URL urlGenerator(AnswerInitializer ai, Long answerId) throws MalformedURLException {
+        return new URL(urlGenerator(ai).toString().replace("https://api.stackexchange.com/2.2/answers?&",
+                "https://api.stackexchange.com/2.2/answers".concat(String.valueOf(answerId)).concat("?&")));
     }
 
 }

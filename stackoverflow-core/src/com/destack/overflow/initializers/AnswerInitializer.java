@@ -3,8 +3,8 @@ package com.destack.overflow.initializers;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-import com.destack.overflow.enums.Order;
 import com.destack.overflow.enums.AnswerSortBy;
+import com.destack.overflow.enums.Order;
 import com.destack.overflow.model.AnswerItem;
 
 /**
@@ -47,8 +47,8 @@ public class AnswerInitializer {
      * @param max
      * @throws ParseException
      */
-    public AnswerInitializer(int page, int pageSize, long fromDate, long toDate, Order order, AnswerSortBy sort, Integer min,
-            Integer max) throws ParseException {
+    public AnswerInitializer(int page, int pageSize, long fromDate, long toDate, Order order, AnswerSortBy sort,
+            Integer min, Integer max) throws ParseException {
         this.page = page;
         this.pageSize = pageSize;
 

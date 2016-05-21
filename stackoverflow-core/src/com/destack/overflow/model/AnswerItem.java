@@ -1,7 +1,6 @@
 package com.destack.overflow.model;
 
 import java.net.URL;
-import java.util.Date;
 
 /**
  * Fields of all the available Unauthorized complete Answer details in Stackoverflow
@@ -95,13 +94,13 @@ public class AnswerItem {
 
     private AnswerOwner answerOwner;
 
-    private Date creation_date;
+    private long creation_date;
 
     private boolean is_accepted;
 
-    private Date last_activity_date;
+    private long last_activity_date;
 
-    private Date last_edit_date;
+    private long last_edit_date;
 
     private long question_id;
 
@@ -115,15 +114,15 @@ public class AnswerItem {
         return answerOwner;
     }
 
-    public Date getCreation_date() {
+    public long getCreation_date() {
         return creation_date;
     }
 
-    public Date getLast_activity_date() {
+    public long getLast_activity_date() {
         return last_activity_date;
     }
 
-    public Date getLast_edit_date() {
+    public long getLast_edit_date() {
         return last_edit_date;
     }
 
@@ -147,7 +146,7 @@ public class AnswerItem {
         this.answerOwner = answerOwner;
     }
 
-    public void setCreation_date(Date creation_date) {
+    public void setCreation_date(long creation_date) {
         this.creation_date = creation_date;
     }
 
@@ -155,11 +154,11 @@ public class AnswerItem {
         this.is_accepted = is_accepted;
     }
 
-    public void setLast_activity_date(Date last_activity_date) {
+    public void setLast_activity_date(long last_activity_date) {
         this.last_activity_date = last_activity_date;
     }
 
-    public void setLast_edit_date(Date last_edit_date) {
+    public void setLast_edit_date(long last_edit_date) {
         this.last_edit_date = last_edit_date;
     }
 
