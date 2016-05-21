@@ -38,13 +38,18 @@ public class AnswerInitializer {
      * <b>NOTE</b>:Dates in the format of 'yyyyddMM'
      * 
      * @param page
+     *            required page
      * @param pageSize
+     *            number of {@link AnswerItem} in a page
      * @param fromDate
      * @param toDate
      * @param order
+     *            Sort {@link Order} of {@link AnswerItem}'s
      * @param sort
      * @param min
+     *            is a Date if {@link AnswerSortBy} is not {@link AnswerSortBy}.VOTES
      * @param max
+     *            is a Date if {@link AnswerSortBy} is not {@link AnswerSortBy}.VOTES
      * @throws ParseException
      */
     public AnswerInitializer(int page, int pageSize, long fromDate, long toDate, Order order, AnswerSortBy sort,

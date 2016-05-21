@@ -7,6 +7,10 @@ import java.util.List;
 
 import org.json.simple.parser.ParseException;
 
+/**
+ * @author Deepak
+ *
+ */
 public interface Fetcher<T> {
 
     /**

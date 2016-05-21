@@ -24,6 +24,12 @@ import com.destack.overflow.model.AnswerItem.AnswerOwner;
 public class AnswerItemFetcher implements Fetcher<AnswerItem> {
 
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see com.destack.overflow.fetcher.Fetcher#objectFetcher(java.net.URL)
+     * 
+     */
     @Override
     public List<AnswerItem> objectFetcher(URL jsonURL) throws FileNotFoundException, IOException, ParseException {
         AnswerItem answerItem = new AnswerItem();
