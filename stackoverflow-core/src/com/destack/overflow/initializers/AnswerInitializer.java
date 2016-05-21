@@ -4,7 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 import com.destack.overflow.enums.Order;
-import com.destack.overflow.enums.SortBy;
+import com.destack.overflow.enums.AnswerSortBy;
 import com.destack.overflow.model.AnswerItem;
 
 /**
@@ -30,7 +30,7 @@ public class AnswerInitializer {
 
     private int pageSize;
 
-    private SortBy sort;
+    private AnswerSortBy sort;
 
     private long toDate;
 
@@ -47,7 +47,7 @@ public class AnswerInitializer {
      * @param max
      * @throws ParseException
      */
-    public AnswerInitializer(int page, int pageSize, long fromDate, long toDate, Order order, SortBy sort, Integer min,
+    public AnswerInitializer(int page, int pageSize, long fromDate, long toDate, Order order, AnswerSortBy sort, Integer min,
             Integer max) throws ParseException {
         this.page = page;
         this.pageSize = pageSize;
@@ -59,22 +59,22 @@ public class AnswerInitializer {
         this.fromDate = fromDate > 20081509 ? originalFormat.parse(String.valueOf(fromDate)).getTime() / 1000 : 0;
         this.toDate = toDate != 0 ? originalFormat.parse(String.valueOf(toDate)).getTime() / 1000 : 0;
         this.order = order != null ? order : Order.DESC;
-        this.sort = sort != null ? sort : SortBy.ACTIVITY;
+        this.sort = sort != null ? sort : AnswerSortBy.ACTIVITY;
 
         if (this.min > this.max) {
             throw new IllegalArgumentException("Min (" + min + ") is greater than (" + max + ")");
         }
 
-        if (this.sort.equals(SortBy.VOTES)) {
+        if (this.sort.equals(AnswerSortBy.VOTES)) {
             this.min = min.longValue();
             this.max = max.longValue();
         }
 
-        if (!this.sort.equals(SortBy.VOTES) && min > 20081509 && max > 20081509) {
+        if (!this.sort.equals(AnswerSortBy.VOTES) && min > 20081509 && max > 20081509) {
             this.min = originalFormat.parse(String.valueOf(min)).getTime() / 1000;
             this.max = originalFormat.parse(String.valueOf(max)).getTime() / 1000;
         }
-        if (!this.sort.equals(SortBy.VOTES) && min < 20081509 && max < 20081509) {
+        if (!this.sort.equals(AnswerSortBy.VOTES) && min < 20081509 && max < 20081509) {
             this.min = 0;
             this.max = 0;
         }
@@ -85,7 +85,7 @@ public class AnswerInitializer {
     }
 
     /**
-     * Used when {@link SortBy} is Activity or Creation
+     * Used when {@link AnswerSortBy} is Activity or Creation
      * 
      * @return
      */
@@ -94,7 +94,7 @@ public class AnswerInitializer {
     }
 
     /**
-     * Used when {@link SortBy} is Activity or Creation
+     * Used when {@link AnswerSortBy} is Activity or Creation
      * 
      * @return
      */
@@ -114,7 +114,7 @@ public class AnswerInitializer {
         return pageSize;
     }
 
-    public SortBy getSort() {
+    public AnswerSortBy getSort() {
         return sort;
     }
 
@@ -146,7 +146,7 @@ public class AnswerInitializer {
         this.pageSize = pageSize;
     }
 
-    public void setSort(SortBy sort) {
+    public void setSort(AnswerSortBy sort) {
         this.sort = sort;
     }
 

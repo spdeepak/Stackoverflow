@@ -4,7 +4,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import com.destack.overflow.enums.Order;
-import com.destack.overflow.enums.SortBy;
+import com.destack.overflow.enums.AnswerSortBy;
 import com.destack.overflow.initializers.AnswerInitializer;
 
 /**
@@ -38,7 +38,7 @@ public class AnswerURLGenerator implements URLGenerator<AnswerInitializer>
         if (ai.getSort() != null && !ai.getSort().toString().isEmpty()) {
             url += "&sort=".concat(ai.getSort().toString());
         } else {
-            url += "&sort=".concat(SortBy.ACTIVITY.toString());
+            url += "&sort=".concat(AnswerSortBy.ACTIVITY.toString());
         }
         if (ai.getMin() != 0) {
             url += "&min=".concat(String.valueOf(ai.getMin()));

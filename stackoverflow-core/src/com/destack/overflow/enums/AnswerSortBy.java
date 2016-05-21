@@ -6,14 +6,14 @@ package com.destack.overflow.enums;
  * @author Deepak
  *
  */
-public enum SortBy {
+public enum AnswerSortBy {
     ACTIVITY("activity"),
     CREATION("creation"),
     VOTES("votes");
 
     private String sortBy;
 
-    private SortBy(String sortBy) {
+    private AnswerSortBy(String sortBy) {
         this.sortBy = sortBy;
     }
 
