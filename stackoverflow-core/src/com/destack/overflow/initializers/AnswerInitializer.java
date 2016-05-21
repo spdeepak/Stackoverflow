@@ -1,5 +1,7 @@
 package com.destack.overflow.initializers;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import com.destack.overflow.enums.Order;
@@ -15,11 +17,17 @@ import com.destack.overflow.model.AnswerItem;
  */
 public class AnswerInitializer {
 
-    private Date fromDate;
+    private static SimpleDateFormat originalFormat = new SimpleDateFormat("yyyyddMM");
 
-    private Date max;
+    public static void main(String[] args) {
+        System.out.println(Long.valueOf(originalFormat.format(new Date())));
+    }
 
-    private Date min;
+    private long fromDate;
+
+    private long max;
+
+    private long min;
 
     private Order order;
 
@@ -29,41 +37,52 @@ public class AnswerInitializer {
 
     private SortBy sort;
 
-    private Date toDate;
+    private long toDate;
 
-    private int vmax;
+    /**
+     * <b>NOTE</b>:Dates in the format of 'yyyyddMM'
+     * 
+     * @param page
+     * @param pageSize
+     * @param fromDate
+     * @param toDate
+     * @param order
+     * @param sort
+     * @param min
+     * @param max
+     * @throws ParseException
+     */
+    public AnswerInitializer(int page, int pageSize, long fromDate, long toDate, Order order, SortBy sort, Integer min,
+            Integer max) throws ParseException {
+        this.page = page != 0 ? page : 1;
+        this.pageSize = pageSize != 0 ? pageSize : 10;
+        if (this.fromDate > this.toDate) {
+            throw new IllegalArgumentException("From Date(" + fromDate + ") is after (" + toDate + ")");
+        }
+        this.fromDate = fromDate > 20081509 ? originalFormat.parse(String.valueOf(fromDate)).getTime() / 1000 : Long.valueOf(originalFormat.format(new Date()));
+        if (this.min > this.max) {
+            throw new IllegalArgumentException("Min (" + min + ") is greater than (" + max + ")");
+        }
+        this.toDate = toDate != 0 ? originalFormat.parse(String.valueOf(toDate)).getTime() / 1000 : Long.valueOf(originalFormat.format(new Date()));
+        this.order = order != null ? order : Order.DESC;
+        this.sort = sort != null ? sort : SortBy.ACTIVITY;
 
-    private int vmin;
-
-    public AnswerInitializer(int page, int pageSize, Date fromDate, Date toDate, Order order, SortBy sort, Date min,
-            Date max) {
-        if (!sort.equals(SortBy.VOTES)) {
-            this.page = page;
-            this.pageSize = pageSize;
-            this.fromDate = fromDate;
-            this.toDate = toDate;
-            this.order = order;
-            this.sort = sort;
-            this.min = min;
-            this.max = max;
+        if (this.sort.equals(SortBy.VOTES)) {
+            this.min = min.longValue();
+            this.max = max.longValue();
+        }
+        if (!this.sort.equals(SortBy.VOTES) && min > 20081509 && max > 20081509) {
+            this.min = originalFormat.parse(String.valueOf(min)).getTime() / 1000;
+            this.max = originalFormat.parse(String.valueOf(max)).getTime() / 1000;
+        }
+        if (min < 20081509 && max < 20081509) {
+            this.sort = SortBy.VOTES;
+            this.min = min.longValue();
+            this.max = max.longValue();
         }
     }
 
-    public AnswerInitializer(int page, int pageSize, Date fromDate, Date toDate, Order order, SortBy sort, int vmin,
-            int vmax) {
-        if (sort.equals(SortBy.VOTES)) {
-            this.page = page;
-            this.pageSize = pageSize;
-            this.fromDate = fromDate;
-            this.toDate = toDate;
-            this.order = order;
-            this.sort = sort;
-            this.vmin = vmin;
-            this.vmax = vmax;
-        }
-    }
-
-    public Date getFromDate() {
+    public long getFromDate() {
         return fromDate;
     }
 
@@ -72,7 +91,7 @@ public class AnswerInitializer {
      * 
      * @return
      */
-    public Date getMax() {
+    public long getMax() {
         return max;
     }
 
@@ -81,7 +100,7 @@ public class AnswerInitializer {
      * 
      * @return
      */
-    public Date getMin() {
+    public long getMin() {
         return min;
     }
 
@@ -101,37 +120,19 @@ public class AnswerInitializer {
         return sort;
     }
 
-    public Date getToDate() {
+    public long getToDate() {
         return toDate;
     }
 
-    /**
-     * Used when {@link SortBy} is Votes
-     * 
-     * @return
-     */
-    public int getVmax() {
-        return vmax;
-    }
-
-    /**
-     * Used when {@link SortBy} is Votes
-     * 
-     * @return
-     */
-    public int getVmin() {
-        return vmin;
-    }
-
-    public void setFromDate(Date fromDate) {
+    public void setFromDate(long fromDate) {
         this.fromDate = fromDate;
     }
 
-    public void setMax(Date max) {
+    public void setMax(long max) {
         this.max = max;
     }
 
-    public void setMin(Date min) {
+    public void setMin(long min) {
         this.min = min;
     }
 
@@ -151,25 +152,7 @@ public class AnswerInitializer {
         this.sort = sort;
     }
 
-    public void setToDate(Date toDate) {
+    public void setToDate(long toDate) {
         this.toDate = toDate;
-    }
-
-    /**
-     * Used when {@link SortBy} is Votes
-     * 
-     * @param vmax
-     */
-    public void setVmax(int vmax) {
-        this.vmax = vmax;
-    }
-
-    /**
-     * Used when {@link SortBy} is Votes
-     * 
-     * @param vmin
-     */
-    public void setVmin(int vmin) {
-        this.vmin = vmin;
     }
 }
