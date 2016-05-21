@@ -1,8 +1,9 @@
-package com.destack.overflow.util;
+package com.destack.overflow.json;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.zip.GZIPInputStream;
@@ -10,12 +11,23 @@ import java.util.zip.GZIPInputStream;
 import org.json.JSONObject;
 
 /**
+ * 
+ * Fetch Json From URL
+ * 
  * @author Deepak
  *
  */
-public class JsonUtil {
+public class JsonFetcher {
 
-    public static JSONObject urlToJson(URL urlString) {
+    public JSONObject getJson(String urlString) throws MalformedURLException {
+        return urlToJson(new URL(urlString));
+    }
+
+    public JSONObject getJson(URL url) {
+        return urlToJson(url);
+    }
+
+    private JSONObject urlToJson(URL urlString) {
         StringBuilder sb = null;
         try {
             URL url = urlString;
