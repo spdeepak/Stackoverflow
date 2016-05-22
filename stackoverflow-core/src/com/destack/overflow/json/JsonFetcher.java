@@ -19,15 +19,15 @@ import org.json.JSONObject;
  */
 public class JsonFetcher {
 
-    public JSONObject getJson(String urlString) throws MalformedURLException {
+    public static JSONObject getJson(String urlString) throws MalformedURLException {
         return urlToJson(new URL(urlString));
     }
 
-    public JSONObject getJson(URL url) {
+    public static JSONObject getJson(URL url) {
         return urlToJson(url);
     }
 
-    private JSONObject urlToJson(URL urlString) {
+    private static JSONObject urlToJson(URL urlString) {
         StringBuilder sb = null;
         try {
             URL url = urlString;
