@@ -22,6 +22,7 @@ import com.destack.overflow.model.AnswerItem;
 public class AnswerItemURLGenerator implements URLGenerator<AnswerInitializer> {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AnswerItemURLGenerator.class);
+
     @Override
     public URL urlGenerator(AnswerInitializer ai) throws MalformedURLException {
         String url = "https://api.stackexchange.com/2.2/answers?";
@@ -73,10 +74,7 @@ public class AnswerItemURLGenerator implements URLGenerator<AnswerInitializer> {
                             "https://api.stackexchange.com/2.2/answers/".concat(answerId).concat("?&")));
         }
         if (fetchFromAnswer == null || fetchFromAnswer.equals(FetchFromAnswer.COMMENTS_IDANSWER)) {
-            if (answerInitializer.getSort() == null) {
-                answerInitializer.setSort(AnswerSortBy.CREATION);
-            }
-            if (answerInitializer.getSort().equals(AnswerSortBy.ACTIVITY)) {
+            if (answerInitializer.getSort() == null || answerInitializer.getSort().equals(AnswerSortBy.ACTIVITY)) {
                 answerInitializer.setSort(AnswerSortBy.CREATION);
             }
             if (Long.valueOf(answerId.trim()) == 0) {
@@ -96,6 +94,7 @@ public class AnswerItemURLGenerator implements URLGenerator<AnswerInitializer> {
                     urlGenerator(answerInitializer).toString().replace("https://api.stackexchange.com/2.2/answers?&",
                             "https://api.stackexchange.com/2.2/answers/".concat(answerId).concat("/questions?&")));
         }
+        LOGGER.debug("All parameters passed are not valid except AnswerInitializer. So, returning All answer's URL");
         return urlGenerator(answerInitializer);
     }
 }

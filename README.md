@@ -1,6 +1,7 @@
 # Stackoverflow Java API (Under Construction)
 
 Stackoverflow Rest API - https://api.stackexchange.com/docs
+See the integration tests to know hot to use the API
 
 # Usage
 1. To get a particular number of Answers with in a specified date, order, and Sort order.

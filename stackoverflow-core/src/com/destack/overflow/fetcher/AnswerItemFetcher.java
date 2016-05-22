@@ -3,6 +3,7 @@ package com.destack.overflow.fetcher;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,8 +13,11 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import com.destack.overflow.enums.FetchFromAnswer;
+import com.destack.overflow.initializers.AnswerInitializer;
 import com.destack.overflow.model.AnswerItem;
 import com.destack.overflow.model.AnswerItem.AnswerOwner;
+import com.destack.overflow.urlgenerator.AnswerItemURLGenerator;
 
 /**
  * Pass Json Url and get {@link List} of {@link AnswerItem}
@@ -24,12 +28,6 @@ import com.destack.overflow.model.AnswerItem.AnswerOwner;
 public class AnswerItemFetcher implements Fetcher<AnswerItem> {
 
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see com.destack.overflow.fetcher.Fetcher#objectFetcher(java.net.URL)
-     * 
-     */
     @Override
     public List<AnswerItem> objectFetcher(URL jsonURL) throws FileNotFoundException, IOException, ParseException {
         AnswerItem answerItem = new AnswerItem();
@@ -69,6 +67,42 @@ public class AnswerItemFetcher implements Fetcher<AnswerItem> {
         item = null;
         owner = null;
         return answerItemList;
+    }
+
+    /**
+     * Pass the {@link AnswerInitializer} and get the {@link AnswerItem} object which contains the
+     * required Answer's based on the {@link AnswerInitializer}'s parameter's
+     * 
+     * @param answerInitializer
+     * @return
+     * @throws FileNotFoundException
+     * @throws MalformedURLException
+     * @throws IOException
+     * @throws ParseException
+     */
+    public List<AnswerItem> objectFetcher(AnswerInitializer answerInitializer)
+            throws FileNotFoundException, MalformedURLException, IOException, ParseException {
+        return objectFetcher(new AnswerItemURLGenerator().urlGenerator(answerInitializer));
+    }
+
+    /**
+     * Pass the {@link AnswerInitializer}, Answer Id & {@link FetchFromAnswer} to get the
+     * {@link AnswerItem} object which contains the required Answer's based on the
+     * {@link AnswerInitializer}'s parameter's
+     * 
+     * @param answerInitializer
+     * @param answerId
+     * @param fetchFromAnswer
+     * @return
+     * @throws FileNotFoundException
+     * @throws MalformedURLException
+     * @throws IOException
+     * @throws ParseException
+     */
+    public List<AnswerItem> objectFetcher(AnswerInitializer answerInitializer, String answerId,
+            FetchFromAnswer fetchFromAnswer)
+                    throws FileNotFoundException, MalformedURLException, IOException, ParseException {
+        return objectFetcher(new AnswerItemURLGenerator().urlGenerator(answerInitializer, answerId, fetchFromAnswer));
     }
 
 }
