@@ -36,8 +36,8 @@ public class AnswerItemFetcher implements Fetcher<AnswerItem> {
         for (int i = 0; i < items.length(); i++) {
             answerItem = new AnswerItem();
             answerOwner = answerItem.new AnswerOwner();
-            item = (JSONObject) items.get(i);
-            owner = (JSONObject) item.get("owner");
+            item = items.getJSONObject(i);
+            owner = item.getJSONObject("owner");
             if (owner.has("reputation")) {
                 answerOwner.setReputation((Integer) owner.get("reputation"));
             }

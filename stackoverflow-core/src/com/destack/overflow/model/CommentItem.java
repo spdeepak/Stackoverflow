@@ -1,6 +1,9 @@
 package com.destack.overflow.model;
 
-
+/**
+ * @author Deepak
+ *
+ */
 public class CommentItem {
 
     private boolean edited;

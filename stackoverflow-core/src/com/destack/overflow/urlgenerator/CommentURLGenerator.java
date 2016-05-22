@@ -16,6 +16,15 @@ public class CommentURLGenerator implements URLGenerator<CommenInitializer> {
     @Override
     public URL urlGenerator(CommenInitializer commentInitializer) throws MalformedURLException {
         String url = "https://api.stackexchange.com/2.2/comments";
+        if (commentInitializer.getComment_id() != 0) {
+            return new URL(plainURLGenerator(commentInitializer, url));
+        }
+        return new URL(plainURLGenerator(commentInitializer, url).replace("https://api.stackexchange.com/2.2/comments",
+                "https://api.stackexchange.com/2.2/comments"
+                .concat(String.valueOf(commentInitializer.getComment_id()))));
+    }
+
+    private String plainURLGenerator(CommenInitializer commentInitializer, String url) throws MalformedURLException {
         if (commentInitializer.getPage() != 0) {
             url += "&page=".concat(String.valueOf(commentInitializer.getPage()));
         }
@@ -47,7 +56,7 @@ public class CommentURLGenerator implements URLGenerator<CommenInitializer> {
         url += "&site=stackoverflow";
         url = url.replace("https://api.stackexchange.com/2.2/comments?&",
                 "https://api.stackexchange.com/2.2/comments?");
-        return new URL(url);
+        return url;
     }
 
 }
