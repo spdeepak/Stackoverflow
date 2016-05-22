@@ -29,9 +29,11 @@ public class JsonFetcher {
 
     private static JSONObject urlToJson(URL urlString) {
         StringBuilder sb = null;
+        URL url;
+        URLConnection urlCon;
         try {
-            URL url = urlString;
-            URLConnection urlCon = url.openConnection();
+            url = urlString;
+            urlCon = url.openConnection();
             BufferedReader in = null;
             if (urlCon.getHeaderField("Content-Encoding") != null
                     && urlCon.getHeaderField("Content-Encoding").equals("gzip")) {

@@ -5,8 +5,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 
-import org.json.simple.parser.ParseException;
-
 /**
  * @author Deepak
  *
@@ -22,5 +20,5 @@ public interface Fetcher<T> {
      * @throws IOException
      * @throws ParseException
      */
-    List<T> objectFetcher(URL jsonURL) throws FileNotFoundException, IOException, ParseException;
+    List<T> objectFetcher(URL jsonURL) throws FileNotFoundException, IOException;
 }

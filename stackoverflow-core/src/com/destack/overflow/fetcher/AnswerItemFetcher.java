@@ -9,7 +9,6 @@ import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.json.simple.parser.ParseException;
 
 import com.destack.overflow.enums.FetchFromAnswer;
 import com.destack.overflow.initializers.AnswerInitializer;
@@ -26,9 +25,8 @@ import com.destack.overflow.urlgenerator.AnswerItemURLGenerator;
  */
 public class AnswerItemFetcher implements Fetcher<AnswerItem> {
 
-
     @Override
-    public List<AnswerItem> objectFetcher(URL jsonURL) throws FileNotFoundException, IOException, ParseException {
+    public List<AnswerItem> objectFetcher(URL jsonURL) throws FileNotFoundException, IOException {
         AnswerItem answerItem;
         AnswerOwner answerOwner;
         List<AnswerItem> answerItemList = new ArrayList();
@@ -102,10 +100,9 @@ public class AnswerItemFetcher implements Fetcher<AnswerItem> {
      * @throws FileNotFoundException
      * @throws MalformedURLException
      * @throws IOException
-     * @throws ParseException
      */
     public List<AnswerItem> objectFetcher(AnswerInitializer answerInitializer)
-            throws FileNotFoundException, MalformedURLException, IOException, ParseException {
+            throws FileNotFoundException, MalformedURLException, IOException {
         return objectFetcher(new AnswerItemURLGenerator().urlGenerator(answerInitializer));
     }
 
@@ -121,11 +118,9 @@ public class AnswerItemFetcher implements Fetcher<AnswerItem> {
      * @throws FileNotFoundException
      * @throws MalformedURLException
      * @throws IOException
-     * @throws ParseException
      */
     public List<AnswerItem> objectFetcher(AnswerInitializer answerInitializer, String answerId,
-            FetchFromAnswer fetchFromAnswer)
-                    throws FileNotFoundException, MalformedURLException, IOException, ParseException {
+            FetchFromAnswer fetchFromAnswer) throws FileNotFoundException, MalformedURLException, IOException {
         return objectFetcher(new AnswerItemURLGenerator().urlGenerator(answerInitializer, answerId, fetchFromAnswer));
     }
 

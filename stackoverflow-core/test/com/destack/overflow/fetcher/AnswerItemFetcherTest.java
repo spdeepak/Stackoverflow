@@ -7,18 +7,26 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 
-import org.json.simple.parser.ParseException;
+import javax.annotation.Resource;
+
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.destack.overflow.model.AnswerItem;
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = { "classpath:/spring/applicationContext.xml" })
 public class AnswerItemFetcherTest {
 
+    @Resource
+    AnswerItemFetcher aAnswerItemFetcher;
+
     @Test
-    public void test() throws FileNotFoundException, IOException, ParseException {
-        File file = new File(System.getProperty("user.dir") + "/resources/answerexample.json");
-        AnswerItemFetcher aif = new AnswerItemFetcher();
-        List<AnswerItem> answerItems = aif.objectFetcher(file.toURI().toURL());
+    public void test() throws FileNotFoundException, IOException {
+        File file = new File(System.getProperty("user.dir") + "/resources/JSONs/answerexample.json");
+        List<AnswerItem> answerItems = aAnswerItemFetcher.objectFetcher(file.toURI().toURL());
         assertEquals(10, answerItems.size());
         assertEquals(1102, answerItems.get(0).getAnswerOwner().getReputation().intValue());
         assertEquals(2041077, answerItems.get(0).getAnswerOwner().getUser_id().intValue());
