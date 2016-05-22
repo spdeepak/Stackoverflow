@@ -3,6 +3,11 @@ package com.destack.overflow.urlgenerator;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+/**
+ * @author Deepak
+ *
+ * @param <T>
+ */
 public interface URLGenerator<T> {
 
     /**

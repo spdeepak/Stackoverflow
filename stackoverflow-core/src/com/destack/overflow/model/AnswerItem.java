@@ -105,7 +105,7 @@ public class AnswerItem {
 
     private Integer last_activity_date;
 
-    private long last_edit_date;
+    private Integer last_edit_date;
 
     private Integer question_id;
 
@@ -127,7 +127,7 @@ public class AnswerItem {
         return last_activity_date;
     }
 
-    public long getLast_edit_date() {
+    public Integer getLast_edit_date() {
         return last_edit_date;
     }
 
@@ -176,7 +176,7 @@ public class AnswerItem {
         this.last_activity_date = last_activity_date;
     }
 
-    public void setLast_edit_date(long last_edit_date) {
+    public void setLast_edit_date(Integer last_edit_date) {
         this.last_edit_date = last_edit_date;
     }
 

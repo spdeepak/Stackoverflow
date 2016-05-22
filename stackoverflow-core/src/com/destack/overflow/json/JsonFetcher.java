@@ -51,7 +51,6 @@ public class JsonFetcher {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         return new JSONObject(sb.toString());
     }
 }

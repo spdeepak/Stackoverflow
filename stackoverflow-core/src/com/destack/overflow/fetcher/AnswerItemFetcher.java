@@ -72,6 +72,9 @@ public class AnswerItemFetcher implements Fetcher<AnswerItem> {
             if (item.has("last_activity_date")) {
                 answerItem.setLast_activity_date((Integer) item.get("last_activity_date"));
             }
+            if (item.has("last_edit_date")) {
+                answerItem.setLast_edit_date(item.getInt("last_edit_date"));
+            }
             if (item.has("creation_date")) {
                 answerItem.setCreation_date((Integer) item.get("creation_date"));
             }
