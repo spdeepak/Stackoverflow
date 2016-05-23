@@ -70,6 +70,8 @@ public class CommentItem {
 
         private String profile_image;
 
+        private Integer accept_rate;
+
         public Integer getReputation() {
             return reputation;
         }
@@ -92,6 +94,14 @@ public class CommentItem {
 
         public String getProfile_image() {
             return profile_image;
+        }
+
+        public Integer getAccept_rate() {
+            return accept_rate;
+        }
+
+        public void setAccept_rate(Integer accept_range) {
+            accept_rate = accept_range;
         }
 
         public void setReputation(Integer reputation) {
@@ -139,6 +149,8 @@ public class CommentItem {
 
         private String profile_image;
 
+        private Integer accept_rate;
+
         public Integer getReputation() {
             return reputation;
         }
@@ -161,6 +173,14 @@ public class CommentItem {
 
         public String getProfile_image() {
             return profile_image;
+        }
+
+        public Integer getAccept_rate() {
+            return accept_rate;
+        }
+
+        public void setAccept_rate(Integer accept_rate) {
+            this.accept_rate = accept_rate;
         }
 
         public void setReputation(Integer reputation) {
