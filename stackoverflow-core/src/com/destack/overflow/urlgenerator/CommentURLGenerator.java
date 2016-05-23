@@ -5,26 +5,26 @@ import java.net.URL;
 
 import com.destack.overflow.enums.AnswerSortBy;
 import com.destack.overflow.enums.Order;
-import com.destack.overflow.initializers.CommenInitializer;
+import com.destack.overflow.initializers.CommentInitializer;
 
 /**
  * @author Deepak
  *
  */
-public class CommentURLGenerator implements URLGenerator<CommenInitializer> {
+public class CommentURLGenerator implements URLGenerator<CommentInitializer> {
 
     @Override
-    public URL urlGenerator(CommenInitializer commentInitializer) throws MalformedURLException {
-        String url = "https://api.stackexchange.com/2.2/comments";
+    public URL urlGenerator(CommentInitializer commentInitializer) throws MalformedURLException {
+        String url = "https://api.stackexchange.com/2.2/comments?";
         if (commentInitializer.getComment_id() != 0) {
-            return new URL(plainURLGenerator(commentInitializer, url));
+            return new URL(plainURLGenerator(commentInitializer, url)
+                    .replace("https://api.stackexchange.com/2.2/comments", "https://api.stackexchange.com/2.2/comments/"
+                            .concat(String.valueOf(commentInitializer.getComment_id()))));
         }
-        return new URL(plainURLGenerator(commentInitializer, url).replace("https://api.stackexchange.com/2.2/comments",
-                "https://api.stackexchange.com/2.2/comments"
-                .concat(String.valueOf(commentInitializer.getComment_id()))));
+        return new URL(plainURLGenerator(commentInitializer, url));
     }
 
-    private String plainURLGenerator(CommenInitializer commentInitializer, String url) throws MalformedURLException {
+    private String plainURLGenerator(CommentInitializer commentInitializer, String url) throws MalformedURLException {
         if (commentInitializer.getPage() != 0) {
             url += "&page=".concat(String.valueOf(commentInitializer.getPage()));
         }

@@ -10,7 +10,7 @@ import com.destack.overflow.enums.Order;
  * @author Deepak
  *
  */
-public class CommenInitializer extends BaseInitializer {
+public class CommentInitializer extends BaseInitializer {
 
     private long fromDate;
 
@@ -30,8 +30,8 @@ public class CommenInitializer extends BaseInitializer {
 
     private long comment_id;
 
-    public CommenInitializer(int page, int pageSize, long fromDate, long toDate, Order order, CommentSortBy sort,
-            Integer min, Integer max) throws ParseException {
+    public CommentInitializer(int page, int pageSize, long fromDate, long toDate, Order order, CommentSortBy sort,
+            Integer min, Integer max, Integer comment_id) throws ParseException {
         this.page = page;
         this.pageSize = pageSize;
 
@@ -60,6 +60,11 @@ public class CommenInitializer extends BaseInitializer {
         if (!this.sort.equals(AnswerSortBy.VOTES) && min < 20081509 && max < 20081509) {
             this.min = 0;
             this.max = 0;
+        }
+        if (comment_id != null) {
+            this.comment_id = comment_id;
+        } else {
+            this.comment_id = 0;
         }
     }
 

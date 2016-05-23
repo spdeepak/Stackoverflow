@@ -9,12 +9,14 @@
       					http://www.springframework.org/schema/web-services/web-services.xsd">
 
 	<context:component-scan base-package="com.destack.overflow" />
-	
-	<bean id="answerItemURLGenerator" class="com.destack.overflow.urlgenerator.AnswerItemURLGenerator" />
-	
-	<bean id="answerItemFetcher" class="com.destack.overflow.fetcher.AnswerItemFetcher" />
-	
-	<bean id="commentItemFetcher" class="com.destack.overflow.fetcher.CommentItemFetcher" />
 
+	<bean id="answerItemURLGenerator"
+		class="com.destack.overflow.urlgenerator.AnswerItemURLGenerator" />
+
+	<bean id="commentURLGenerator" class="com.destack.overflow.urlgenerator.CommentURLGenerator" />
+
+	<bean id="answerItemFetcher" class="com.destack.overflow.fetcher.AnswerItemFetcher" />
+
+	<bean id="commentItemFetcher" class="com.destack.overflow.fetcher.CommentItemFetcher" />
 
 </beans>
