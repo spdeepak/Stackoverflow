@@ -53,6 +53,7 @@ public class CommentItemFetcher implements Fetcher<CommentItem> {
             if (owner.has("link")) {
                 commentOwner.setLink((String) owner.get("link"));
             }
+            commentItem.setCommentOwner(commentOwner);
             if (item.has("reply_to_user")) {
                 reply_to_user = item.getJSONObject("reply_to_user");
                 if (reply_to_user.has("reputation")) {
@@ -77,6 +78,7 @@ public class CommentItemFetcher implements Fetcher<CommentItem> {
                     replyToUser.setLink(reply_to_user.getString("link"));
                 }
             }
+            commentItem.setReplyToUser(replyToUser);
             if (item.has("edited")) {
                 commentItem.setEdited(item.getBoolean("edited"));
             }

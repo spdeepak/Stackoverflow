@@ -13,6 +13,8 @@
 	<bean id="answerItemURLGenerator" class="com.destack.overflow.urlgenerator.AnswerItemURLGenerator" />
 	
 	<bean id="answerItemFetcher" class="com.destack.overflow.fetcher.AnswerItemFetcher" />
+	
+	<bean id="commentItemFetcher" class="com.destack.overflow.fetcher.CommentItemFetcher" />
 
 
 </beans>

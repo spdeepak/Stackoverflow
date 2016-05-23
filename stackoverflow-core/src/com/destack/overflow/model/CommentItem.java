@@ -16,6 +16,10 @@ public class CommentItem {
 
     private Integer comment_id;
 
+    private CommentOwner commentOwner;
+
+    private ReplyToUser replyToUser;
+
     public boolean isEdited() {
         return edited;
     }
@@ -34,6 +38,22 @@ public class CommentItem {
 
     public Integer getComment_id() {
         return comment_id;
+    }
+
+    public CommentOwner getCommentOwner() {
+        return commentOwner;
+    }
+
+    public ReplyToUser getReplyToUser() {
+        return replyToUser;
+    }
+
+    public void setCommentOwner(CommentOwner commentOwner) {
+        this.commentOwner = commentOwner;
+    }
+
+    public void setReplyToUser(ReplyToUser replyToUser) {
+        this.replyToUser = replyToUser;
     }
 
     public void setEdited(boolean edited) {
@@ -207,4 +227,5 @@ public class CommentItem {
             this.profile_image = profile_image;
         }
     }
+
 }
