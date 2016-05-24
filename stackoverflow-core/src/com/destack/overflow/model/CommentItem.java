@@ -1,6 +1,8 @@
 package com.destack.overflow.model;
 
 /**
+ * Fields of all the available Unauthorized complete Answer details in Stackoverflow
+ * 
  * @author Deepak
  *
  */

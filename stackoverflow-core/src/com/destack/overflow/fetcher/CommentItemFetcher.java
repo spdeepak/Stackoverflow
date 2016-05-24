@@ -14,6 +14,12 @@ import com.destack.overflow.model.CommentItem;
 import com.destack.overflow.model.CommentItem.CommentOwner;
 import com.destack.overflow.model.CommentItem.ReplyToUser;
 
+/**
+ * Pass Json Url and get {@link List} of {@link CommentItem}
+ * 
+ * @author Deepak
+ *
+ */
 public class CommentItemFetcher implements Fetcher<CommentItem> {
 
     @Override

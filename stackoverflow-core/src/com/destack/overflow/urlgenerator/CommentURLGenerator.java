@@ -6,8 +6,12 @@ import java.net.URL;
 import com.destack.overflow.enums.AnswerSortBy;
 import com.destack.overflow.enums.Order;
 import com.destack.overflow.initializers.CommentInitializer;
+import com.destack.overflow.model.CommentItem;
 
 /**
+ * Generate URL to get {@link CommentItem} by using {@link CommentInitializer} and all
+ * functionalities which can be obtained for an answer using it's ID
+ * 
  * @author Deepak
  *
  */

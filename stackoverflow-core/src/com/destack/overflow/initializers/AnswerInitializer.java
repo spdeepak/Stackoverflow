@@ -9,7 +9,6 @@ import com.destack.overflow.model.AnswerItem;
 
 /**
  * {@link AnswerItem} initializer class.<br/>
- * This class takes input to get a {@link AnswerItem}
  * 
  * @author Deepak
  *
