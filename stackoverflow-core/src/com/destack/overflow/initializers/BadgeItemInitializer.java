@@ -58,13 +58,13 @@ public class BadgeItemInitializer {
         this.page = page;
         this.pageSize = pageSize;
         this.fromDate = fromDate > 20081509 ? originalFormat.parse(String.valueOf(fromDate)).getTime() / 1000 : 0;
-        this.toDate = toDate > 20081509 ? originalFormat.parse(String.valueOf(fromDate)).getTime() / 1000 : 0;
+        this.toDate = toDate > 20081509 ? originalFormat.parse(String.valueOf(toDate)).getTime() / 1000 : 0;
         this.order = !order.equals(EnumSet.of(Order.ASC, Order.DESC)) ? Order.DESC : order;
-        this.max = !max.equals(EnumSet.of(MaxMin.BRONZE, MaxMin.GOLD, MaxMin.SILVER)) ? null : max;
-        this.min = !min.equals(EnumSet.of(MaxMin.BRONZE, MaxMin.GOLD, MaxMin.SILVER)) ? null : min;
+        this.max = (max.equals(MaxMin.BRONZE) || max.equals(MaxMin.GOLD) || max.equals(MaxMin.SILVER)) ? max : null;
+        this.min = (max.equals(MaxMin.BRONZE) || max.equals(MaxMin.GOLD) || max.equals(MaxMin.SILVER)) ? min : null;
         this.sort = !sort.equals(EnumSet.of(BadgeSortBy.NAME, BadgeSortBy.RANK, BadgeSortBy.TYPE)) ? sort
                 : BadgeSortBy.RANK;
-        this.inName = inName.trim().isEmpty() ? null : inName;
+        this.inName = (inName != null && inName.trim().isEmpty()) ? null : inName;
         br = BadgeRetriever.NORMAL;
     }
 
@@ -87,8 +87,8 @@ public class BadgeItemInitializer {
         this.fromDate = fromDate > 20081509 ? originalFormat.parse(String.valueOf(fromDate)).getTime() / 1000 : 0;
         this.toDate = toDate > 20081509 ? originalFormat.parse(String.valueOf(fromDate)).getTime() / 1000 : 0;
         this.order = !order.equals(EnumSet.of(Order.ASC, Order.DESC)) ? Order.DESC : order;
-        this.max = !max.equals(EnumSet.of(MaxMin.BRONZE, MaxMin.GOLD, MaxMin.SILVER)) ? null : max;
-        this.min = !min.equals(EnumSet.of(MaxMin.BRONZE, MaxMin.GOLD, MaxMin.SILVER)) ? null : min;
+        this.max = (max.equals(MaxMin.BRONZE) || max.equals(MaxMin.GOLD) || max.equals(MaxMin.SILVER)) ? null : max;
+        this.min = (max.equals(MaxMin.BRONZE) || max.equals(MaxMin.GOLD) || max.equals(MaxMin.SILVER)) ? null : min;
         this.sort = !sort.equals(EnumSet.of(BadgeSortBy.NAME, BadgeSortBy.RANK, BadgeSortBy.TYPE)) ? sort
                 : BadgeSortBy.RANK;
         this.badge_id = badge_id;

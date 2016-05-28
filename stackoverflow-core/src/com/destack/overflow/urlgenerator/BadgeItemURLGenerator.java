@@ -31,8 +31,10 @@ public class BadgeItemURLGenerator implements URLGenerator<BadgeItemInitializer>
         if (badgeItemInitializer.getToDate() != 0) {
             url += "&todate=".concat(String.valueOf(badgeItemInitializer.getToDate()));
         }
-        if (badgeItemInitializer.getBr().equals(
-                EnumSet.of(BadgeRetriever.NORMAL, BadgeRetriever.NAME, BadgeRetriever.ID, BadgeRetriever.TAG))) {
+        if (badgeItemInitializer.getBr().equals(BadgeRetriever.NORMAL)
+                || badgeItemInitializer.getBr().equals(BadgeRetriever.NAME)
+                || badgeItemInitializer.getBr().equals(BadgeRetriever.ID)
+                || badgeItemInitializer.getBr().equals(BadgeRetriever.TAG)) {
             if (!badgeItemInitializer.getOrder().toString().isEmpty()) {
                 url += "&order=".concat(badgeItemInitializer.getOrder().toString());
             } else {
