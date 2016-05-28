@@ -5,6 +5,6 @@ public enum BadgeRetriever {
     ID,
     NAME,
     RECIPIENT,
-    IDRECIPIENT,
+    ID_RECIPIENT,
     TAG;
 }

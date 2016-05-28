@@ -69,6 +69,33 @@ public class BadgeItemInitializer {
     }
 
     /**
+     * @param page
+     * @param pageSize
+     * @param fromDate
+     * @param toDate
+     * @param order
+     * @param max
+     * @param min
+     * @param sort
+     * @param badge_id
+     * @throws ParseException
+     */
+    public BadgeItemInitializer(int page, int pageSize, long fromDate, long toDate, Order order, MaxMin max, MaxMin min,
+            BadgeSortBy sort, long badge_id) throws ParseException {
+        this.page = page;
+        this.pageSize = pageSize;
+        this.fromDate = fromDate > 20081509 ? originalFormat.parse(String.valueOf(fromDate)).getTime() / 1000 : 0;
+        this.toDate = toDate > 20081509 ? originalFormat.parse(String.valueOf(fromDate)).getTime() / 1000 : 0;
+        this.order = !order.equals(EnumSet.of(Order.ASC, Order.DESC)) ? Order.DESC : order;
+        this.max = !max.equals(EnumSet.of(MaxMin.BRONZE, MaxMin.GOLD, MaxMin.SILVER)) ? null : max;
+        this.min = !min.equals(EnumSet.of(MaxMin.BRONZE, MaxMin.GOLD, MaxMin.SILVER)) ? null : min;
+        this.sort = !sort.equals(EnumSet.of(BadgeSortBy.NAME, BadgeSortBy.RANK, BadgeSortBy.TYPE)) ? sort
+                : BadgeSortBy.RANK;
+        this.badge_id = badge_id;
+        br = BadgeRetriever.ID;
+    }
+
+    /**
      * To get recently awarded badges in the system.
      * 
      * @param page
@@ -83,6 +110,25 @@ public class BadgeItemInitializer {
         this.fromDate = fromDate > 20081509 ? originalFormat.parse(String.valueOf(fromDate)).getTime() / 1000 : 0;
         this.toDate = toDate > 20081509 ? originalFormat.parse(String.valueOf(fromDate)).getTime() / 1000 : 0;
         br = BadgeRetriever.RECIPIENT;
+
+    }
+
+    /**
+     * @param page
+     * @param pageSize
+     * @param fromDate
+     * @param toDate
+     * @param badge_id
+     * @throws ParseException
+     */
+    public BadgeItemInitializer(int page, int pageSize, long fromDate, long toDate, long badge_id)
+            throws ParseException {
+        this.page = page;
+        this.pageSize = pageSize;
+        this.fromDate = fromDate > 20081509 ? originalFormat.parse(String.valueOf(fromDate)).getTime() / 1000 : 0;
+        this.toDate = toDate > 20081509 ? originalFormat.parse(String.valueOf(fromDate)).getTime() / 1000 : 0;
+        this.badge_id = badge_id;
+        br = BadgeRetriever.ID_RECIPIENT;
 
     }
 
