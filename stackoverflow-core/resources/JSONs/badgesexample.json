@@ -1,0 +1,282 @@
+{
+  "items": [
+    {
+      "badge_type": "named",
+      "award_count": 6280,
+      "rank": "bronze",
+      "badge_id": 222,
+      "link": "http://stackoverflow.com/badges/222/altruist",
+      "description": "First bounty you manually award on another person&#39;s question",
+      "name": "Altruist"
+    },
+    {
+      "badge_type": "named",
+      "award_count": 43926,
+      "rank": "bronze",
+      "badge_id": 1306,
+      "link": "http://stackoverflow.com/badges/1306/analytical",
+      "description": "Visited every section of the FAQ (retired)",
+      "name": "Analytical"
+    },
+    {
+      "badge_type": "named",
+      "award_count": 51521,
+      "rank": "bronze",
+      "badge_id": 260,
+      "link": "http://stackoverflow.com/badges/260/announcer",
+      "description": "Share a link to a question later visited by 25 unique IP addresses",
+      "name": "Announcer"
+    },
+    {
+      "badge_type": "named",
+      "award_count": 552750,
+      "rank": "bronze",
+      "badge_id": 9,
+      "link": "http://stackoverflow.com/badges/9/autobiographer",
+      "description": "Complete &quot;About Me&quot; section of user profile",
+      "name": "Autobiographer"
+    },
+    {
+      "badge_type": "named",
+      "award_count": 0,
+      "rank": "bronze",
+      "badge_id": 5849,
+      "link": "http://stackoverflow.com/badges/5849/backer",
+      "description": "First example up vote",
+      "name": "Backer"
+    },
+    {
+      "badge_type": "named",
+      "award_count": 30193,
+      "rank": "bronze",
+      "badge_id": 221,
+      "link": "http://stackoverflow.com/badges/221/benefactor",
+      "description": "First bounty you manually award on your own question",
+      "name": "Benefactor"
+    },
+    {
+      "badge_type": "named",
+      "award_count": 0,
+      "rank": "bronze",
+      "badge_id": 5850,
+      "link": "http://stackoverflow.com/badges/5850/bluebook",
+      "description": "First citation of a topic or example you&#39;ve contributed to",
+      "name": "Bluebook"
+    },
+    {
+      "badge_type": "named",
+      "award_count": 306713,
+      "rank": "bronze",
+      "badge_id": 1973,
+      "link": "http://stackoverflow.com/badges/1973/caucus",
+      "description": "Visit an <a href=\"http://stackoverflow.com/election\">election</a> during any phase of an active election and have enough reputation to cast a vote",
+      "name": "Caucus"
+    },
+    {
+      "badge_type": "named",
+      "award_count": 129270,
+      "rank": "bronze",
+      "badge_id": 8,
+      "link": "http://stackoverflow.com/badges/8/citizen-patrol",
+      "description": "First flagged post",
+      "name": "Citizen Patrol"
+    },
+    {
+      "badge_type": "named",
+      "award_count": 27858,
+      "rank": "bronze",
+      "badge_id": 4,
+      "link": "http://stackoverflow.com/badges/4/cleanup",
+      "description": "First rollback",
+      "name": "Cleanup"
+    },
+    {
+      "badge_type": "named",
+      "award_count": 579200,
+      "rank": "bronze",
+      "badge_id": 31,
+      "link": "http://stackoverflow.com/badges/31/commentator",
+      "description": "Leave 10 comments",
+      "name": "Commentator"
+    },
+    {
+      "badge_type": "named",
+      "award_count": 0,
+      "rank": "bronze",
+      "badge_id": 5851,
+      "link": "http://stackoverflow.com/badges/5851/creditor",
+      "description": "First citation of a topic or example you haven&#39;t contributed to, in an answer you posted",
+      "name": "Creditor"
+    },
+    {
+      "badge_type": "named",
+      "award_count": 246521,
+      "rank": "bronze",
+      "badge_id": 7,
+      "link": "http://stackoverflow.com/badges/7/critic",
+      "description": "First down vote",
+      "name": "Critic"
+    },
+    {
+      "badge_type": "named",
+      "award_count": 213277,
+      "rank": "bronze",
+      "badge_id": 4127,
+      "link": "http://stackoverflow.com/badges/4127/curious",
+      "description": "Ask a well-received question on 5 separate days, and maintain a positive question record",
+      "name": "Curious"
+    },
+    {
+      "badge_type": "named",
+      "award_count": 371317,
+      "rank": "bronze",
+      "badge_id": 2278,
+      "link": "http://stackoverflow.com/badges/2278/custodian",
+      "description": "Complete at least one <a href=\"http://stackoverflow.com/review\">review</a> task. This badge is awarded once per review type",
+      "name": "Custodian"
+    },
+    {
+      "badge_type": "named",
+      "award_count": 8574,
+      "rank": "bronze",
+      "badge_id": 37,
+      "link": "http://stackoverflow.com/badges/37/disciplined",
+      "description": "Delete own post with score of 3 or higher",
+      "name": "Disciplined"
+    },
+    {
+      "badge_type": "named",
+      "award_count": 1339550,
+      "rank": "bronze",
+      "badge_id": 3,
+      "link": "http://stackoverflow.com/badges/3/editor",
+      "description": "First edit",
+      "name": "Editor"
+    },
+    {
+      "badge_type": "named",
+      "award_count": 0,
+      "rank": "bronze",
+      "badge_id": 5870,
+      "link": "http://stackoverflow.com/badges/5870/educated",
+      "description": "Read the <a href=\"http://stackoverflow.com/tour/documentation\">documentation tour</a>",
+      "name": "Educated"
+    },
+    {
+      "badge_type": "named",
+      "award_count": 81245,
+      "rank": "bronze",
+      "badge_id": 1287,
+      "link": "http://stackoverflow.com/badges/1287/excavator",
+      "description": "Edit first post that was inactive for 6 months",
+      "name": "Excavator"
+    },
+    {
+      "badge_type": "named",
+      "award_count": 41776,
+      "rank": "bronze",
+      "badge_id": 4368,
+      "link": "http://stackoverflow.com/badges/4368/explainer",
+      "description": "Edit and answer 1 question (both actions within 12 hours, answer score &gt; 0)",
+      "name": "Explainer"
+    },
+    {
+      "badge_type": "named",
+      "award_count": 12492,
+      "rank": "bronze",
+      "badge_id": 219,
+      "link": "http://stackoverflow.com/badges/219/investor",
+      "description": "First bounty you offer on another person&#39;s question",
+      "name": "Investor"
+    },
+    {
+      "badge_type": "named",
+      "award_count": 0,
+      "rank": "bronze",
+      "badge_id": 5852,
+      "link": "http://stackoverflow.com/badges/5852/incrementalist",
+      "description": "First proposed change to be approved by others",
+      "name": "Incrementalist"
+    },
+    {
+      "badge_type": "named",
+      "award_count": 842305,
+      "rank": "bronze",
+      "badge_id": 2600,
+      "link": "http://stackoverflow.com/badges/2600/informed",
+      "description": "Read the entire <a href=\"http://stackoverflow.com/tour\">tour</a> page",
+      "name": "Informed"
+    },
+    {
+      "badge_type": "named",
+      "award_count": 24267,
+      "rank": "bronze",
+      "badge_id": 144,
+      "link": "http://stackoverflow.com/badges/144/mortarboard",
+      "description": "Earn at least 200 reputation (the <a href=\"http://stackoverflow.com/help/whats-reputation\">daily maximum</a>) in a single day",
+      "name": "Mortarboard"
+    },
+    {
+      "badge_type": "named",
+      "award_count": 715594,
+      "rank": "bronze",
+      "badge_id": 23,
+      "link": "http://stackoverflow.com/badges/23/nice-answer",
+      "description": "Answer score of 10 or more",
+      "name": "Nice Answer"
+    },
+    {
+      "badge_type": "named",
+      "award_count": 337149,
+      "rank": "bronze",
+      "badge_id": 20,
+      "link": "http://stackoverflow.com/badges/20/nice-question",
+      "description": "Question score of 10 or more",
+      "name": "Nice Question"
+    },
+    {
+      "badge_type": "named",
+      "award_count": 85930,
+      "rank": "bronze",
+      "badge_id": 5,
+      "link": "http://stackoverflow.com/badges/5/organizer",
+      "description": "First retag",
+      "name": "Organizer"
+    },
+    {
+      "badge_type": "named",
+      "award_count": 109593,
+      "rank": "bronze",
+      "badge_id": 38,
+      "link": "http://stackoverflow.com/badges/38/peer-pressure",
+      "description": "Delete own post with score of -3 or lower",
+      "name": "Peer Pressure"
+    },
+    {
+      "badge_type": "named",
+      "award_count": 0,
+      "rank": "bronze",
+      "badge_id": 5854,
+      "link": "http://stackoverflow.com/badges/5854/peer-review",
+      "description": "First review of someone else&#39;s proposed change",
+      "name": "Peer Review"
+    },
+    {
+      "badge_type": "named",
+      "award_count": 2572722,
+      "rank": "bronze",
+      "badge_id": 26,
+      "link": "http://stackoverflow.com/badges/26/popular-question",
+      "description": "Question with 1,000 views",
+      "name": "Popular Question"
+    }
+  ],
+  "has_more": true,
+  "backoff": 10,
+  "quota_max": 10000,
+  "quota_remaining": 9918,
+  "page": 1,
+  "page_size": 30,
+  "total": 5568,
+  "type": "badge"
+}

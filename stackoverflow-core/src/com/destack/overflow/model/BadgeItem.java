@@ -102,6 +102,8 @@ public class BadgeItem extends ItemExtras {
 
         private String link;
 
+        private BadgeCount badgeCount;
+
         public Integer getReputation() {
             return reputation;
         }
@@ -148,6 +150,48 @@ public class BadgeItem extends ItemExtras {
 
         public void setLink(String link) {
             this.link = link;
+        }
+
+        public BadgeCount getBadgeCount() {
+            return badgeCount;
+        }
+
+        public void setBadgeCount(BadgeCount badgeCount) {
+            this.badgeCount = badgeCount;
+        }
+
+        public class BadgeCount {
+
+            private Integer bronze;
+
+            private Integer silver;
+
+            private Integer gold;
+
+            public Integer getBronze() {
+                return bronze;
+            }
+
+            public Integer getSilver() {
+                return silver;
+            }
+
+            public Integer getGold() {
+                return gold;
+            }
+
+            public void setBronze(Integer bronze) {
+                this.bronze = bronze;
+            }
+
+            public void setSilver(Integer silver) {
+                this.silver = silver;
+            }
+
+            public void setGold(Integer gold) {
+                this.gold = gold;
+            }
+
         }
     }
 }

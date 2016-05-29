@@ -30,7 +30,7 @@ public class AnswerItemFetcher implements Fetcher<AnswerItem> {
         AnswerItem answerItem;
         AnswerOwner answerOwner;
         List<AnswerItem> answerItemList = new ArrayList();
-        JSONArray items = (JSONArray) JsonFetcher.getJson(jsonURL).get("items");
+        JSONArray items = JsonFetcher.getJson(jsonURL).getJSONArray("items");
         JSONObject item;
         JSONObject owner;
         for (int i = 0; i < items.length(); i++) {

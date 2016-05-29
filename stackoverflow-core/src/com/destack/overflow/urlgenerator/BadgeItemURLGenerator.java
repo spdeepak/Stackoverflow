@@ -57,7 +57,7 @@ public class BadgeItemURLGenerator implements URLGenerator<BadgeItemInitializer>
                     url += "&inname=".concat(badgeItemInitializer.getInName());
                 }
             }
-            url += "&site=stackoverflow&filter=!9YdnSQHcv";
+            url += "&site=stackoverflow&filter=!-*f(6qLMLow-";
             url = url.replace("?&", "?");
             if (badgeItemInitializer.getBr().equals(BadgeRetriever.NORMAL)) {
                 return new URL(url);
@@ -77,7 +77,7 @@ public class BadgeItemURLGenerator implements URLGenerator<BadgeItemInitializer>
             }
         }
         if (badgeItemInitializer.getBr().equals(BadgeRetriever.RECIPIENT)) {
-            url += "&site=stackoverflow&filter=!9YdnSQHcv";
+            url += "&site=stackoverflow&filter=!-*f(6qLMLow-";
             if (url.contains("?&")) {
                 url = url.replace("?&", "?");
             }
@@ -91,7 +91,7 @@ public class BadgeItemURLGenerator implements URLGenerator<BadgeItemInitializer>
             } else {
                 throw new IllegalAccessException("ID should not be zero");
             }
-            url += "&site=stackoverflow&filter=!9YdnSQHcv";
+            url += "&site=stackoverflow&filter=!-*f(6qLMLow-";
             if (url.contains("?&")) {
                 url = url.replace("?&", "?");
             }
