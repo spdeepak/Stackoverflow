@@ -22,7 +22,9 @@
 	<bean id="commentItemFetcher" class="com.destack.overflow.fetcher.CommentItemFetcher" />
 
 	<bean id="infoItemFetcher" class="com.destack.overflow.fetcher.InfoItemFetcher" />
-	
+
 	<bean id="badgeItemFetcher" class="com.destack.overflow.fetcher.BadgeItemFetcher" />
+
+	<bean id="privilegeItemFetcher" class="com.destack.overflow.fetcher.PrivilegeItemFetcher" />
 
 </beans>
