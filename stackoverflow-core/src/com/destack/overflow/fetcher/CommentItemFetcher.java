@@ -27,6 +27,9 @@ public class CommentItemFetcher implements Fetcher<CommentItem> {
         CommentItem commentItem;
         CommentOwner commentOwner;
         ReplyToUser replyToUser;
+        if (!JsonFetcher.getJson(jsonURL).has("items")) {
+            errorMessages(jsonURL);
+        }
         List<CommentItem> commentItemList = new ArrayList();
         JSONArray items = (JSONArray) JsonFetcher.getJson(jsonURL).get("items");
         JSONObject item;

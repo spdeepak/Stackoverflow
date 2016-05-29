@@ -21,9 +21,6 @@
 
 	<bean id="commentItemFetcher" class="com.destack.overflow.fetcher.CommentItemFetcher" />
 
-	<bean id="infoItemFetcher" class="com.destack.overflow.fetcher.InfoItemFetcher">
-		<property name="url"
-			value="https://api.stackexchange.com/2.2/info?site=stackoverflow" />
-	</bean>
+	<bean id="infoItemFetcher" class="com.destack.overflow.fetcher.InfoItemFetcher" />
 
 </beans>

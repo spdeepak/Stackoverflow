@@ -16,11 +16,11 @@ import com.destack.overflow.model.InfoItem;
  */
 public class InfoItemFetcher {
 
-    private String url;
+    private static final String URL = "https://api.stackexchange.com/2.2/info?site=stackoverflow&filter=!-*f(6qwmgGVU";
 
     public InfoItem objectFetcher() throws MalformedURLException {
         InfoItem infoItem = new InfoItem();
-        JSONArray items = (JSONArray) JsonFetcher.getJson(url).get("items");
+        JSONArray items = (JSONArray) JsonFetcher.getJson(URL).get("items");
         JSONObject item;
         int i = 0;
         while (i == 0) {
@@ -43,7 +43,4 @@ public class InfoItemFetcher {
         return infoItem;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
-    }
 }

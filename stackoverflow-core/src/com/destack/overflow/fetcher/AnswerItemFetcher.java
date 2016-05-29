@@ -29,6 +29,9 @@ public class AnswerItemFetcher implements Fetcher<AnswerItem> {
     public List<AnswerItem> objectFetcher(URL jsonURL) throws FileNotFoundException, IOException {
         AnswerItem answerItem;
         AnswerOwner answerOwner;
+        if (!JsonFetcher.getJson(jsonURL).has("items")) {
+            errorMessages(jsonURL);
+        }
         List<AnswerItem> answerItemList = new ArrayList();
         JSONArray items = JsonFetcher.getJson(jsonURL).getJSONArray("items");
         JSONObject item;

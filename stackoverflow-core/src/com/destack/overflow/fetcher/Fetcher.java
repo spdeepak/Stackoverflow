@@ -43,4 +43,10 @@ public interface Fetcher<T> {
                 JsonFetcher.getJson(jsonURL).has("type") ? JsonFetcher.getJson(jsonURL).getString("type") : null);
         return itemExtra;
     }
+
+    public default void errorMessages(URL jsonURL) {
+        throw new IllegalArgumentException("Error_id:" + JsonFetcher.getJson(jsonURL).getDouble("error_id")
+                + ".\nError Message " + JsonFetcher.getJson(jsonURL).getString("error_message") + ".\nError Name: "
+                + JsonFetcher.getJson(jsonURL).getString("error_name"));
+    }
 }
