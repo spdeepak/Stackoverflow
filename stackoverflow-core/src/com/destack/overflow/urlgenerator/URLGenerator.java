@@ -17,6 +17,7 @@ public interface URLGenerator<T> {
      *            Type of Initializer
      * @return
      * @throws MalformedURLException
+     * @throws IllegalAccessException
      */
-    URL urlGenerator(T t) throws MalformedURLException;
+    URL urlGenerator(T t) throws MalformedURLException, IllegalAccessException;
 }

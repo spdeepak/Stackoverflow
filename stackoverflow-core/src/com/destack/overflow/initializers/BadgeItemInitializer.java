@@ -40,8 +40,6 @@ public class BadgeItemInitializer {
     private BadgeRetriever br;
 
     /**
-     * To get all the badges in the system.
-     * 
      * @param page
      * @param pageSize
      * @param fromDate
@@ -51,21 +49,46 @@ public class BadgeItemInitializer {
      * @param min
      * @param sort
      * @param inName
+     * @param tagRequried
+     * @param nameRequired
      * @throws ParseException
      */
     public BadgeItemInitializer(int page, int pageSize, long fromDate, long toDate, Order order, MaxMin max, MaxMin min,
-            BadgeSortBy sort, String inName) throws ParseException {
+            BadgeSortBy sort, String inName, boolean nameRequired) throws ParseException {
         this.page = page;
         this.pageSize = pageSize;
         this.fromDate = fromDate > 20081509 ? originalFormat.parse(String.valueOf(fromDate)).getTime() / 1000 : 0;
         this.toDate = toDate > 20081509 ? originalFormat.parse(String.valueOf(toDate)).getTime() / 1000 : 0;
-        this.order = !order.equals(EnumSet.of(Order.ASC, Order.DESC)) ? Order.DESC : order;
+        this.order = (order != null && (order.equals(Order.ASC) || order.equals(Order.DESC))) ? order : Order.DESC;
         this.max = (max.equals(MaxMin.BRONZE) || max.equals(MaxMin.GOLD) || max.equals(MaxMin.SILVER)) ? max : null;
         this.min = (max.equals(MaxMin.BRONZE) || max.equals(MaxMin.GOLD) || max.equals(MaxMin.SILVER)) ? min : null;
         this.sort = !sort.equals(EnumSet.of(BadgeSortBy.NAME, BadgeSortBy.RANK, BadgeSortBy.TYPE)) ? sort
                 : BadgeSortBy.RANK;
         this.inName = (inName != null && inName.trim().isEmpty()) ? null : inName;
-        br = BadgeRetriever.NORMAL;
+        if (nameRequired) {
+            br = BadgeRetriever.NAME;
+        } else {
+            br = BadgeRetriever.NORMAL;
+        }
+    }
+
+    public BadgeItemInitializer(int page, int pageSize, long fromDate, long toDate, Order order, MaxMin max, MaxMin min,
+            BadgeSortBy sort, boolean tagRequired, String inName) throws ParseException {
+        this.page = page;
+        this.pageSize = pageSize;
+        this.fromDate = fromDate > 20081509 ? originalFormat.parse(String.valueOf(fromDate)).getTime() / 1000 : 0;
+        this.toDate = toDate > 20081509 ? originalFormat.parse(String.valueOf(toDate)).getTime() / 1000 : 0;
+        this.order = (order != null && (order.equals(Order.ASC) || order.equals(Order.DESC))) ? order : Order.DESC;
+        this.max = (max.equals(MaxMin.BRONZE) || max.equals(MaxMin.GOLD) || max.equals(MaxMin.SILVER)) ? max : null;
+        this.min = (max.equals(MaxMin.BRONZE) || max.equals(MaxMin.GOLD) || max.equals(MaxMin.SILVER)) ? min : null;
+        this.sort = !sort.equals(EnumSet.of(BadgeSortBy.NAME, BadgeSortBy.RANK, BadgeSortBy.TYPE)) ? sort
+                : BadgeSortBy.RANK;
+        this.inName = (inName != null && inName.trim().isEmpty()) ? null : inName;
+        if (tagRequired) {
+            br = BadgeRetriever.TAG;
+        } else {
+            br = BadgeRetriever.NORMAL;
+        }
     }
 
     /**
@@ -85,10 +108,10 @@ public class BadgeItemInitializer {
         this.page = page;
         this.pageSize = pageSize;
         this.fromDate = fromDate > 20081509 ? originalFormat.parse(String.valueOf(fromDate)).getTime() / 1000 : 0;
-        this.toDate = toDate > 20081509 ? originalFormat.parse(String.valueOf(fromDate)).getTime() / 1000 : 0;
-        this.order = !order.equals(EnumSet.of(Order.ASC, Order.DESC)) ? Order.DESC : order;
-        this.max = (max.equals(MaxMin.BRONZE) || max.equals(MaxMin.GOLD) || max.equals(MaxMin.SILVER)) ? null : max;
-        this.min = (max.equals(MaxMin.BRONZE) || max.equals(MaxMin.GOLD) || max.equals(MaxMin.SILVER)) ? null : min;
+        this.toDate = toDate > 20081509 ? originalFormat.parse(String.valueOf(toDate)).getTime() / 1000 : 0;
+        this.order = (order != null && (order.equals(Order.ASC) || order.equals(Order.DESC))) ? order : Order.DESC;
+        this.max = (max.equals(MaxMin.BRONZE) || max.equals(MaxMin.GOLD) || max.equals(MaxMin.SILVER)) ? max : null;
+        this.min = (max.equals(MaxMin.BRONZE) || max.equals(MaxMin.GOLD) || max.equals(MaxMin.SILVER)) ? min : null;
         this.sort = !sort.equals(EnumSet.of(BadgeSortBy.NAME, BadgeSortBy.RANK, BadgeSortBy.TYPE)) ? sort
                 : BadgeSortBy.RANK;
         this.badge_id = badge_id;
@@ -108,9 +131,8 @@ public class BadgeItemInitializer {
         this.page = page;
         this.pageSize = pageSize;
         this.fromDate = fromDate > 20081509 ? originalFormat.parse(String.valueOf(fromDate)).getTime() / 1000 : 0;
-        this.toDate = toDate > 20081509 ? originalFormat.parse(String.valueOf(fromDate)).getTime() / 1000 : 0;
+        this.toDate = toDate > 20081509 ? originalFormat.parse(String.valueOf(toDate)).getTime() / 1000 : 0;
         br = BadgeRetriever.RECIPIENT;
-
     }
 
     /**
@@ -126,10 +148,9 @@ public class BadgeItemInitializer {
         this.page = page;
         this.pageSize = pageSize;
         this.fromDate = fromDate > 20081509 ? originalFormat.parse(String.valueOf(fromDate)).getTime() / 1000 : 0;
-        this.toDate = toDate > 20081509 ? originalFormat.parse(String.valueOf(fromDate)).getTime() / 1000 : 0;
+        this.toDate = toDate > 20081509 ? originalFormat.parse(String.valueOf(toDate)).getTime() / 1000 : 0;
         this.badge_id = badge_id;
         br = BadgeRetriever.ID_RECIPIENT;
-
     }
 
     public long getFromDate() {

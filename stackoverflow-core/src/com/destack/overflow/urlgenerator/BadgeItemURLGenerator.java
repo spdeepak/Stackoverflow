@@ -17,7 +17,8 @@ import com.destack.overflow.initializers.BadgeItemInitializer;
 public class BadgeItemURLGenerator implements URLGenerator<BadgeItemInitializer> {
 
     @Override
-    public URL urlGenerator(BadgeItemInitializer badgeItemInitializer) throws MalformedURLException {
+    public URL urlGenerator(BadgeItemInitializer badgeItemInitializer)
+            throws MalformedURLException, IllegalAccessException {
         String url = "https://api.stackexchange.com/2.2/badges?";
         if (badgeItemInitializer.getPage() != 0) {
             url += "&page=".concat(String.valueOf(badgeItemInitializer.getPage()));
@@ -35,7 +36,7 @@ public class BadgeItemURLGenerator implements URLGenerator<BadgeItemInitializer>
                 || badgeItemInitializer.getBr().equals(BadgeRetriever.NAME)
                 || badgeItemInitializer.getBr().equals(BadgeRetriever.ID)
                 || badgeItemInitializer.getBr().equals(BadgeRetriever.TAG)) {
-            if (!badgeItemInitializer.getOrder().toString().isEmpty()) {
+            if (badgeItemInitializer.getOrder() != null && !badgeItemInitializer.getOrder().toString().isEmpty()) {
                 url += "&order=".concat(badgeItemInitializer.getOrder().toString());
             } else {
                 url += "&order=".concat(Order.DESC.toString());
@@ -65,7 +66,7 @@ public class BadgeItemURLGenerator implements URLGenerator<BadgeItemInitializer>
                 return new URL(url);
             } else if (badgeItemInitializer.getBr().equals(BadgeRetriever.ID)
                     && badgeItemInitializer.getBadge_id() != 0) {
-                url = url.replace("badges", "badges".concat(String.valueOf(badgeItemInitializer.getBadge_id())));
+                url = url.replace("badges", "badges/".concat(String.valueOf(badgeItemInitializer.getBadge_id())));
                 return new URL(url);
             } else if (badgeItemInitializer.getBr().equals(BadgeRetriever.TAG)) {
                 url = url.replace("badges", "badges/tags");
@@ -78,7 +79,7 @@ public class BadgeItemURLGenerator implements URLGenerator<BadgeItemInitializer>
         if (badgeItemInitializer.getBr().equals(BadgeRetriever.RECIPIENT)) {
             url += "&site=stackoverflow&filter=!9YdnSQHcv";
             if (url.contains("?&")) {
-                url.replace("?&", "?");
+                url = url.replace("?&", "?");
             }
             url = url.replace("badges?", "badges/recipients?");
             return new URL(url);
@@ -87,10 +88,12 @@ public class BadgeItemURLGenerator implements URLGenerator<BadgeItemInitializer>
             if (badgeItemInitializer.getBadge_id() != 0) {
                 url = url.replace("badges",
                         "badges/".concat(String.valueOf(badgeItemInitializer.getBadge_id()).concat("/recipients")));
+            } else {
+                throw new IllegalAccessException("ID should not be zero");
             }
             url += "&site=stackoverflow&filter=!9YdnSQHcv";
             if (url.contains("?&")) {
-                url.replace("?&", "?");
+                url = url.replace("?&", "?");
             }
             return new URL(url);
         }

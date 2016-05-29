@@ -6,7 +6,7 @@ package com.destack.overflow.model;
  * @author Deepak
  *
  */
-public class BadgeItem {
+public class BadgeItem extends ItemExtras {
 
     private String badge_type;
 
