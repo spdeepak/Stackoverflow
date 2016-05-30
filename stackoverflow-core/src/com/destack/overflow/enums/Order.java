@@ -7,7 +7,13 @@ package com.destack.overflow.enums;
  *
  */
 public enum Order {
+    /**
+     * Ascending Order
+     */
     ASC("asc"),
+    /**
+     * Descending Order
+     */
     DESC("desc");
 
     private String orderName;
