@@ -34,27 +34,59 @@ public class BadgeItemFetcher implements Fetcher<BadgeItem> {
             badgeUser = badgeItem.new BadgeUser();
             badgeCount = badgeUser.new BadgeCount();
             item = items.getJSONObject(i);
-            badgeItem.setBadge_type(item.has("badge_type") ? item.getString("badge_type") : null);
-            badgeItem.setAward_count(item.has("award_count") ? item.getInt("award_count") : null);
-            badgeItem.setRank(item.has("rank") ? item.getString("rank") : null);
-            badgeItem.setBadge_id(item.has("badge_id") ? item.getInt("badge_id") : null);
-            badgeItem.setLink(item.has("link") ? item.getString("link") : null);
-            badgeItem.setDescription(item.has("description") ? item.getString("description") : null);
-            badgeItem.setName(item.has("name") ? item.getString("name") : null);
+            if (item.has("badge_type")) {
+                badgeItem.setBadge_type(item.getString("badge_type"));
+            }
+            if (item.has("award_count")) {
+                badgeItem.setAward_count(item.getInt("award_count"));
+            }
+            if (item.has("rank")) {
+                badgeItem.setRank(item.getString("rank"));
+            }
+            if (item.has("badge_id")) {
+                badgeItem.setBadge_id(item.getInt("badge_id"));
+            }
+            if (item.has("link")) {
+                badgeItem.setLink(item.getString("link"));
+            }
+            if (item.has("description")) {
+                badgeItem.setDescription(item.getString("description"));
+            }
+            if (item.has("name")) {
+                badgeItem.setName(item.getString("name"));
+            }
             if (item.has("user")) {
                 user = item.getJSONObject("user");
-                badgeUser.setReputation(user.has("reputation") ? user.getInt("reputation") : null);
-                badgeUser.setUser_id(user.has("user_id") ? user.getInt("user_id") : null);
-                badgeUser.setUser_type(user.has("user_type") ? user.getString("user_type") : null);
-                badgeUser.setProfile_image(user.has("profile_image") ? user.getString("profile_image") : null);
-                badgeUser.setDisplay_name(user.has("display_name") ? user.getString("display_name") : null);
-                badgeUser.setLink(user.has("link") ? user.getString("link") : null);
+                if (user.has("reputation")) {
+                    badgeUser.setReputation(user.getInt("reputation"));
+                }
+                if (user.has("user_id")) {
+                    badgeUser.setUser_id(user.getInt("user_id"));
+                }
+                if (user.has("user_type")) {
+                    badgeUser.setUser_type(user.getString("user_type"));
+                }
+                if (user.has("profile_image")) {
+                    badgeUser.setProfile_image(user.getString("profile_image"));
+                }
+                if (user.has("display_name")) {
+                    badgeUser.setDisplay_name(user.getString("display_name"));
+                }
+                if (user.has("link")) {
+                    badgeUser.setLink(user.getString("link"));
+                }
                 badgeItem.setBadgeUser(badgeUser);
                 if (user.has("badge_counts")) {
                     count = user.getJSONObject("badge_counts");
-                    badgeCount.setBronze(count.has("bronze") ? count.getInt("bronze") : null);
-                    badgeCount.setSilver(count.has("silver") ? count.getInt("silver") : null);
-                    badgeCount.setGold(count.has("gold") ? count.getInt("gold") : null);
+                    if (count.has("bronze")) {
+                        badgeCount.setBronze(count.getInt("bronze"));
+                    }
+                    if (count.has("silver")) {
+                        badgeCount.setSilver(count.getInt("silver"));
+                    }
+                    if (count.has("gold")) {
+                        badgeCount.setGold(count.getInt("gold"));
+                    }
                     badgeUser.setBadgeCount(badgeCount);
                 }
             }

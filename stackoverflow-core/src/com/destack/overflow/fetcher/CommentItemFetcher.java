@@ -31,7 +31,7 @@ public class CommentItemFetcher implements Fetcher<CommentItem> {
             errorMessages(jsonURL);
         }
         List<CommentItem> commentItemList = new ArrayList();
-        JSONArray items = (JSONArray) JsonFetcher.getJson(jsonURL).get("items");
+        JSONArray items = JsonFetcher.getJson(jsonURL).getJSONArray("items");
         JSONObject item;
         JSONObject owner;
         JSONObject reply_to_user;

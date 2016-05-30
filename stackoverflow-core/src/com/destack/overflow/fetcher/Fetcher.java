@@ -49,4 +49,5 @@ public interface Fetcher<T> {
                 + ".\nError Message " + JsonFetcher.getJson(jsonURL).getString("error_message") + ".\nError Name: "
                 + JsonFetcher.getJson(jsonURL).getString("error_name"));
     }
+
 }
