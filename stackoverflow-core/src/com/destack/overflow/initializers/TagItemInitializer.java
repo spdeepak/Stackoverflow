@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Set;
 
 import com.destack.overflow.enums.Order;
+import com.destack.overflow.enums.TagPeriod;
 import com.destack.overflow.enums.TagRetriever;
 import com.destack.overflow.enums.TagSortBy;
 import com.destack.overflow.model.TagItem;
@@ -40,6 +41,10 @@ public class TagItemInitializer {
     private TagRetriever tagRetriever;
 
     private Set<String> tags;
+
+    private String tag;
+
+    private TagPeriod tagPeriod;
 
     /**
      * Initializer for
@@ -120,6 +125,10 @@ public class TagItemInitializer {
     }
 
     /**
+     * Get tags on the site by their names <br/>
+     * OR<br/>
+     * Get the synonyms for a specific set of tags. *
+     * 
      * @param page
      *            Page Number
      * @param pageSize
@@ -138,7 +147,7 @@ public class TagItemInitializer {
      * @throws ParseException
      */
     public TagItemInitializer(int page, int pageSize, long fromDate, long toDate, Order order, int min, int max,
-            TagSortBy sort, Set<String> tags) throws ParseException {
+            TagSortBy sort, Set<String> tags, TagRetriever tagRetriever) throws ParseException {
         this.page = page;
         this.pageSize = pageSize;
         this.fromDate = fromDate > 20081509 ? originalFormat.parse(String.valueOf(fromDate)).getTime() / 1000 : 0;
@@ -154,7 +163,98 @@ public class TagItemInitializer {
         } else {
             throw new IllegalArgumentException("Wrong Set of tags given");
         }
-        tagRetriever = TagRetriever.TAGS;
+        if (tagRetriever != null
+                && (tagRetriever.equals(TagRetriever.TAGS) || tagRetriever.equals(TagRetriever.TAGS_SYNONYMS))) {
+            this.tagRetriever = tagRetriever;
+        } else {
+            throw new IllegalArgumentException("This contructor takes only ".concat(TagRetriever.TAGS.toString())
+                    .concat(" and ").concat(TagRetriever.TAGS_SYNONYMS.toString()));
+        }
+    }
+
+    /**
+     * Get frequently asked questions in a set of tags.
+     * 
+     * @param page
+     *            Page Number
+     * @param pageSize
+     *            Number of {@link TagItem}'s in a page
+     * @param tags
+     *            {@link Set} of {@link #inName}'s
+     */
+    public TagItemInitializer(int page, int pageSize, Set<String> tags, TagRetriever tagRetriever) {
+        this.page = page;
+        this.pageSize = pageSize;
+        if (tags != null || tags.size() > 0) {
+            this.tags = tags;
+        } else {
+            throw new IllegalArgumentException("Wrong Set of tags given Or No tags given. Tags are Required");
+        }
+        if (tagRetriever != null
+                && (tagRetriever.equals(TagRetriever.TAGS_FAQ) || tagRetriever.equals(TagRetriever.TAGS_RELATED))) {
+            this.tagRetriever = tagRetriever;
+        } else {
+            throw new IllegalArgumentException("This contructor takes only ".concat(TagRetriever.TAGS_FAQ.toString())
+                    .concat(" and ").concat(TagRetriever.TAGS_RELATED.toString()));
+        }
+    }
+
+    /**
+     * Get the top answer posters in a specific tag, either in the last month or for all time i.e.,
+     * {@link TagRetriever#TOP_ANSWERS} <br/>
+     * OR <br/>
+     * Get the top question askers in a specific tag, either in the last month or for all time i.e.,
+     * {@link TagRetriever#TOP_ASKERS}
+     * 
+     * @param page
+     *            Page Number
+     * @param pageSize
+     *            Number of items requried in a Page
+     * @param tag
+     *            inName==tag
+     * @param tagPeriod
+     *            {@link TagPeriod}
+     */
+    public TagItemInitializer(int page, int pageSize, String tag, TagPeriod tagPeriod, TagRetriever tagRetriever) {
+        this.page = page;
+        this.pageSize = pageSize;
+        if (tag != null || !tag.trim().isEmpty()) {
+            this.tag = tag;
+        } else {
+            throw new IllegalArgumentException("Tag is mandatory");
+        }
+        if (tagPeriod != null) {
+            this.tagPeriod = tagPeriod;
+        } else {
+            this.tagPeriod = TagPeriod.ALL_TIME;
+        }
+        if (tagRetriever != null
+                && (tagRetriever.equals(TagRetriever.TOP_ANSWERS) || tagRetriever.equals(TagRetriever.TOP_ASKERS))) {
+            this.tagRetriever = tagRetriever;
+        } else {
+            throw new IllegalArgumentException("This contructor takes only ".concat(TagRetriever.TOP_ANSWERS.toString())
+                    .concat(" and ").concat(TagRetriever.TOP_ASKERS.toString()));
+        }
+    }
+
+    /**
+     * Get the wiki entries for a set of tags.
+     * 
+     * @param page
+     *            Page Number
+     * @param pageSize
+     *            Number of Items in a Page
+     * @param tags
+     *            {@link Set} of {@link #inName}'s
+     */
+    public TagItemInitializer(int page, int pageSize, Set<String> tags) {
+        this.page = page;
+        this.pageSize = pageSize;
+        if (tags != null || tags.size() > 0) {
+            this.tags = tags;
+        } else {
+            throw new IllegalArgumentException("Wrong Set of tags given Or No tags given. Tags are Required");
+        }
     }
 
     public long getFromDate() {
@@ -203,6 +303,22 @@ public class TagItemInitializer {
 
     public Set<String> getTags() {
         return tags;
+    }
+
+    public String getTag() {
+        return tag;
+    }
+
+    public TagPeriod getTagPeriod() {
+        return tagPeriod;
+    }
+
+    public void setTagPeriod(TagPeriod tagPeriod) {
+        this.tagPeriod = tagPeriod;
+    }
+
+    public void setTag(String tag) {
+        this.tag = tag;
     }
 
     public void setTagRetriever(TagRetriever tagRetriever) {
