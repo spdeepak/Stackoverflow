@@ -10,89 +10,9 @@ import com.destack.overflow.enums.FetchFromAnswer;
  */
 public class AnswerItem {
 
-    /**
-     * Fields of all the available Unauthorized complete Answer Owner details in Stackoverflow
-     * 
-     * @author Deepak
-     *
-     */
-    public class AnswerOwner {
-
-        private Integer accept_range;
-
-        private String display_name;
-
-        private String link;
-
-        private String profile_image;
-
-        private Integer reputation;
-
-        private Integer user_id;
-
-        private String user_type;
-
-        public Integer getAccept_range() {
-            return accept_range;
-        }
-
-        public String getDisplay_name() {
-            return display_name;
-        }
-
-        public String getLink() {
-            return link;
-        }
-
-        public String getProfile_image() {
-            return profile_image;
-        }
-
-        public Integer getReputation() {
-            return reputation;
-        }
-
-        public Integer getUser_id() {
-            return user_id;
-        }
-
-        public String getUser_type() {
-            return user_type;
-        }
-
-        public void setAccept_range(Integer accept_range) {
-            this.accept_range = accept_range;
-        }
-
-        public void setDisplay_name(String display_name) {
-            this.display_name = display_name;
-        }
-
-        public void setLink(String link) {
-            this.link = link;
-        }
-
-        public void setProfile_image(String profile_image) {
-            this.profile_image = profile_image;
-        }
-
-        public void setReputation(Integer reputation) {
-            this.reputation = reputation;
-        }
-
-        public void setUser_id(Integer user_id) {
-            this.user_id = user_id;
-        }
-
-        public void setUser_type(String user_type) {
-            this.user_type = user_type;
-        }
-
-    }
-
     private Integer answer_id;
 
-    private AnswerOwner answerOwner;
+    private Owner answerOwner;
 
     private Integer creation_date;
 
@@ -115,7 +35,7 @@ public class AnswerItem {
         return answer_id;
     }
 
-    public AnswerOwner getAnswerOwner() {
+    public Owner getAnswerOwner() {
         return answerOwner;
     }
 
@@ -160,7 +80,7 @@ public class AnswerItem {
         this.answer_id = answer_id;
     }
 
-    public void setAnswerOwner(AnswerOwner answerOwner) {
+    public void setAnswerOwner(Owner answerOwner) {
         this.answerOwner = answerOwner;
     }
 

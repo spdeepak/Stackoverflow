@@ -1,11 +1,12 @@
 package com.destack.overflow.model;
 
-
 /**
  * @author Deepak
  *
  */
 public class TagItem {
+
+    private String[] synonyms;
 
     private long last_activity_date;
 
@@ -18,6 +19,8 @@ public class TagItem {
     private Integer count;
 
     private String name;
+
+    private Owner tagOwner;
 
     public long getLast_activity_date() {
         return last_activity_date;
@@ -43,6 +46,22 @@ public class TagItem {
         return name;
     }
 
+    public String[] getSynonyms() {
+        return synonyms;
+    }
+
+    public Owner getTagOwner() {
+        return tagOwner;
+    }
+
+    public void setTagOwner(Owner tagOwner) {
+        this.tagOwner = tagOwner;
+    }
+
+    public void setSynonyms(String[] synonyms) {
+        this.synonyms = synonyms;
+    }
+
     public void setLast_activity_date(long last_activity_date) {
         this.last_activity_date = last_activity_date;
     }
@@ -66,4 +85,5 @@ public class TagItem {
     public void setName(String name) {
         this.name = name;
     }
+
 }

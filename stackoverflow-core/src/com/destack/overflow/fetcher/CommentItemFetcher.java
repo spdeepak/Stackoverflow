@@ -11,8 +11,8 @@ import org.json.JSONObject;
 
 import com.destack.overflow.json.JsonFetcher;
 import com.destack.overflow.model.CommentItem;
-import com.destack.overflow.model.CommentItem.CommentOwner;
 import com.destack.overflow.model.CommentItem.ReplyToUser;
+import com.destack.overflow.model.Owner;
 
 /**
  * Pass Json Url and get {@link List} of {@link CommentItem}
@@ -25,7 +25,7 @@ public class CommentItemFetcher implements Fetcher<CommentItem> {
     @Override
     public List<CommentItem> objectFetcher(URL jsonURL) throws FileNotFoundException, IOException {
         CommentItem commentItem;
-        CommentOwner commentOwner;
+        Owner commentOwner;
         ReplyToUser replyToUser;
         if (!JsonFetcher.getJson(jsonURL).has("items")) {
             errorMessages(jsonURL);
@@ -37,7 +37,7 @@ public class CommentItemFetcher implements Fetcher<CommentItem> {
         JSONObject reply_to_user;
         for (int i = 0; i < items.length(); i++) {
             commentItem = new CommentItem();
-            commentOwner = commentItem.new CommentOwner();
+            commentOwner = new Owner();
             replyToUser = commentItem.new ReplyToUser();
             item = items.getJSONObject(i);
             owner = item.getJSONObject("owner");

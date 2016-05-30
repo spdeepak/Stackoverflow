@@ -31,7 +31,7 @@ public class AnswerItemFetcherTest {
         assertEquals(1102, answerItems.get(0).getAnswerOwner().getReputation().intValue());
         assertEquals(2041077, answerItems.get(0).getAnswerOwner().getUser_id().intValue());
         assertEquals("registered", answerItems.get(0).getAnswerOwner().getUser_type());
-        assertEquals(40, answerItems.get(0).getAnswerOwner().getAccept_range().intValue());
+        assertEquals(40, answerItems.get(0).getAnswerOwner().getAccept_rate().intValue());
         assertEquals("https://www.gravatar.com/avatar/51bd9b4617d8a0f072d2fbd38ba9189f?s=128&d=identicon&r=PG",
                 answerItems.get(0).getAnswerOwner().getProfile_image());
         assertEquals("Dave Galvin", answerItems.get(0).getAnswerOwner().getDisplay_name());

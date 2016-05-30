@@ -18,7 +18,7 @@ public class CommentItem {
 
     private Integer comment_id;
 
-    private CommentOwner commentOwner;
+    private Owner commentOwner;
 
     private ReplyToUser replyToUser;
 
@@ -42,7 +42,7 @@ public class CommentItem {
         return comment_id;
     }
 
-    public CommentOwner getCommentOwner() {
+    public Owner getCommentOwner() {
         return commentOwner;
     }
 
@@ -50,7 +50,7 @@ public class CommentItem {
         return replyToUser;
     }
 
-    public void setCommentOwner(CommentOwner commentOwner) {
+    public void setCommentOwner(Owner commentOwner) {
         this.commentOwner = commentOwner;
     }
 
@@ -76,79 +76,6 @@ public class CommentItem {
 
     public void setComment_id(Integer comment_id) {
         this.comment_id = comment_id;
-    }
-
-    public class CommentOwner {
-
-        private Integer reputation;
-
-        private Integer user_id;
-
-        private String user_type;
-
-        private String display_name;
-
-        private String link;
-
-        private String profile_image;
-
-        private Integer accept_rate;
-
-        public Integer getReputation() {
-            return reputation;
-        }
-
-        public Integer getUser_id() {
-            return user_id;
-        }
-
-        public String getUser_type() {
-            return user_type;
-        }
-
-        public String getDisplay_name() {
-            return display_name;
-        }
-
-        public String getLink() {
-            return link;
-        }
-
-        public String getProfile_image() {
-            return profile_image;
-        }
-
-        public Integer getAccept_rate() {
-            return accept_rate;
-        }
-
-        public void setAccept_rate(Integer accept_range) {
-            accept_rate = accept_range;
-        }
-
-        public void setReputation(Integer reputation) {
-            this.reputation = reputation;
-        }
-
-        public void setUser_id(Integer user_id) {
-            this.user_id = user_id;
-        }
-
-        public void setUser_type(String user_type) {
-            this.user_type = user_type;
-        }
-
-        public void setDisplay_name(String display_name) {
-            this.display_name = display_name;
-        }
-
-        public void setLink(String link) {
-            this.link = link;
-        }
-
-        public void setProfile_image(String profile_image) {
-            this.profile_image = profile_image;
-        }
     }
 
     /**

@@ -14,7 +14,7 @@ import com.destack.overflow.enums.FetchFromAnswer;
 import com.destack.overflow.initializers.AnswerInitializer;
 import com.destack.overflow.json.JsonFetcher;
 import com.destack.overflow.model.AnswerItem;
-import com.destack.overflow.model.AnswerItem.AnswerOwner;
+import com.destack.overflow.model.Owner;
 import com.destack.overflow.urlgenerator.AnswerItemURLGenerator;
 
 /**
@@ -28,7 +28,7 @@ public class AnswerItemFetcher implements Fetcher<AnswerItem> {
     @Override
     public List<AnswerItem> objectFetcher(URL jsonURL) throws FileNotFoundException, IOException {
         AnswerItem answerItem;
-        AnswerOwner answerOwner;
+        Owner answerOwner;
         if (!JsonFetcher.getJson(jsonURL).has("items")) {
             errorMessages(jsonURL);
         }
@@ -38,7 +38,7 @@ public class AnswerItemFetcher implements Fetcher<AnswerItem> {
         JSONObject owner;
         for (int i = 0; i < items.length(); i++) {
             answerItem = new AnswerItem();
-            answerOwner = answerItem.new AnswerOwner();
+            answerOwner = new Owner();
             item = items.getJSONObject(i);
             owner = item.getJSONObject("owner");
             if (owner.has("reputation")) {
@@ -51,7 +51,7 @@ public class AnswerItemFetcher implements Fetcher<AnswerItem> {
                 answerOwner.setUser_type((String) owner.get("user_type"));
             }
             if (owner.has("accept_rate")) {
-                answerOwner.setAccept_range((Integer) owner.get("accept_rate"));
+                answerOwner.setAccept_rate((Integer) owner.get("accept_rate"));
             }
             if (owner.has("profile_image")) {
                 answerOwner.setProfile_image((String) owner.get("profile_image"));

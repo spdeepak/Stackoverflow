@@ -10,9 +10,9 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.destack.overflow.json.JsonFetcher;
+import com.destack.overflow.model.BadgeCount;
 import com.destack.overflow.model.BadgeItem;
 import com.destack.overflow.model.BadgeItem.BadgeUser;
-import com.destack.overflow.model.BadgeItem.BadgeUser.BadgeCount;
 
 public class BadgeItemFetcher implements Fetcher<BadgeItem> {
 
@@ -32,7 +32,7 @@ public class BadgeItemFetcher implements Fetcher<BadgeItem> {
         for (int i = 0; i < items.length(); i++) {
             badgeItem = new BadgeItem();
             badgeUser = badgeItem.new BadgeUser();
-            badgeCount = badgeUser.new BadgeCount();
+            badgeCount = new BadgeCount();
             item = items.getJSONObject(i);
             if (item.has("badge_type")) {
                 badgeItem.setBadge_type(item.getString("badge_type"));
