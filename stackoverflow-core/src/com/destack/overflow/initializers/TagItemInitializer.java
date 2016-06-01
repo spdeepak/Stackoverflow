@@ -48,7 +48,7 @@ public class TagItemInitializer {
 
     /**
      * Initializer for
-     * {@link TagRetriever}=={@link TagRetriever#NORMAl}||{@link TagRetriever#TAGS}||
+     * {@link TagRetriever}=={@link TagRetriever#DEFAULT}||{@link TagRetriever#TAGS}||
      * {@link TagRetriever#MODERATORY_ONLY}
      * 
      * @param page
@@ -70,7 +70,7 @@ public class TagItemInitializer {
      *            {@link TagRetriever}
      * @throws ParseException
      */
-    public TagItemInitializer(int page, int pageSize, long fromDate, long toDate, Order order, int min, int max,
+    public TagItemInitializer(int page, int pageSize, long fromDate, long toDate, Order order, long min, long max,
             TagSortBy sort, String inName, TagRetriever tagRetriever) throws ParseException {
         this.page = page;
         this.pageSize = pageSize;
@@ -86,7 +86,7 @@ public class TagItemInitializer {
         if (tagRetriever != null) {
             this.tagRetriever = tagRetriever;
         } else {
-            tagRetriever = TagRetriever.NORMAl;
+            tagRetriever = TagRetriever.DEFAULT;
         }
     }
 
@@ -108,7 +108,7 @@ public class TagItemInitializer {
      *            {@link TagSortBy}
      * @throws ParseException
      */
-    public TagItemInitializer(int page, int pageSize, long fromDate, long toDate, Order order, int min, int max,
+    public TagItemInitializer(int page, int pageSize, long fromDate, long toDate, Order order, long min, long max,
             TagSortBy sort) throws ParseException {
         this.page = page;
         this.pageSize = pageSize;
@@ -146,7 +146,7 @@ public class TagItemInitializer {
      *            {@link Set} of {@link #tags} i.e, {@link Set} of {@link #inName}
      * @throws ParseException
      */
-    public TagItemInitializer(int page, int pageSize, long fromDate, long toDate, Order order, int min, int max,
+    public TagItemInitializer(int page, int pageSize, long fromDate, long toDate, Order order, long min, long max,
             TagSortBy sort, Set<String> tags, TagRetriever tagRetriever) throws ParseException {
         this.page = page;
         this.pageSize = pageSize;

@@ -21,4 +21,20 @@ public class BaseURLGenerator {
     protected String getToDate(Long l) {
         return "&todate=".concat(String.valueOf(l));
     }
+
+    protected String getOrder(String s) {
+        return "&order=".concat(s);
+    }
+
+    protected String getSort(String s) {
+        return "&sort=".concat(s);
+    }
+
+    protected String getMin(String min) {
+        return "&min=".concat(min);
+    }
+
+    protected String getMax(String max) {
+        return "&max=".concat(max);
+    }
 }

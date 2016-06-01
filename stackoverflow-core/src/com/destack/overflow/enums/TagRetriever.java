@@ -9,7 +9,7 @@ public enum TagRetriever {
     /**
      * Get the tags on the site.
      */
-    NORMAl,
+    DEFAULT,
     /**
      * Get tags on the site by their names.
      */
