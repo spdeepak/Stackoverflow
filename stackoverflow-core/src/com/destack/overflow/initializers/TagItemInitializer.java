@@ -14,27 +14,11 @@ import com.destack.overflow.model.TagItem;
  * @author Deepak
  *
  */
-public class TagItemInitializer {
+public class TagItemInitializer extends BaseInitializer {
 
     private static SimpleDateFormat originalFormat = new SimpleDateFormat("yyyyddMM");
 
-    private long fromDate;
-
-    private long max;
-
-    private long min;
-
-    private Order order;
-
-    private int page;
-
-    private int pageSize;
-
-    private long toDate;
-
     private TagSortBy sort;
-
-    private String inName;
 
     private long badge_id;
 
@@ -43,6 +27,8 @@ public class TagItemInitializer {
     private Set<String> tags;
 
     private String tag;
+
+    private String inName;
 
     private TagPeriod tagPeriod;
 
@@ -58,35 +44,37 @@ public class TagItemInitializer {
      * @param fromDate
      * @param toDate
      * @param order
+     * @param sort
+     *            {@link TagSortBy}
+     * 
+     *            <pre>
+     *            if {@link TagSortBy#POPULAR} then min & max should be count
+     *            if {@link TagSortBy#ACTIVITY} then min & max should be Date
+     *            if {@link TagSortBy#NAME} then min & max should be Strting letter of the Tag Name
+     *            required
+     *            </pre>
      * @param min
      *            Minimum {@link TagItem#getCount()}
      * @param max
      *            Maximum {@link TagItem#getCount()}
-     * @param sort
-     *            {@link TagSortBy}
      * @param inName
      *            Name of the tag
      * @param tagRetriever
      *            {@link TagRetriever}
      * @throws ParseException
      */
-    public TagItemInitializer(int page, int pageSize, long fromDate, long toDate, Order order, long min, long max,
-            TagSortBy sort, String inName, TagRetriever tagRetriever) throws ParseException {
-        this.page = page;
-        this.pageSize = pageSize;
-        this.fromDate = fromDate > 20081509 ? originalFormat.parse(String.valueOf(fromDate)).getTime() / 1000 : 0;
-        this.toDate = toDate > 20081509 ? originalFormat.parse(String.valueOf(toDate)).getTime() / 1000 : 0;
-        this.order = (order != null && (order.equals(Order.ASC) || order.equals(Order.DESC))) ? order : Order.DESC;
-        if (sort.equals(TagSortBy.POPULAR)) {
-            this.min = min != 0 ? min : 0;
-            this.max = max != 0 ? max : 0;
-        } else if (sort.equals(TagSortBy.ACTIVITY)) {
-
-        }
-        this.sort = (sort != null)
+    public TagItemInitializer(int page, int pageSize, long fromDate, long toDate, Order order, TagSortBy sort,
+            Object min, Object max, String inName, TagRetriever tagRetriever) throws ParseException {
+        setPage(page);
+        setPageSize(pageSize);
+        setFromDate(fromDate > 20081509 ? originalFormat.parse(String.valueOf(fromDate)).getTime() / 1000 : 0);
+        setToDate(toDate != 0 ? originalFormat.parse(String.valueOf(toDate)).getTime() / 1000 : 0);
+        setOrder(order != null ? order : Order.DESC);
+        setSort((sort != null)
                 && (sort.equals(TagSortBy.ACTIVITY) || sort.equals(TagSortBy.POPULAR) || sort.equals(TagSortBy.NAME))
-                ? sort : TagSortBy.POPULAR;
-        this.inName = inName;
+                ? sort : TagSortBy.POPULAR);
+        setMinAndMax(getSort(), min, max);
+        this.setInName(inName);
         if (tagRetriever != null) {
             this.tagRetriever = tagRetriever;
         } else {
@@ -112,18 +100,17 @@ public class TagItemInitializer {
      *            {@link TagSortBy}
      * @throws ParseException
      */
-    public TagItemInitializer(int page, int pageSize, long fromDate, long toDate, Order order, long min, long max,
-            TagSortBy sort) throws ParseException {
-        this.page = page;
-        this.pageSize = pageSize;
-        this.fromDate = fromDate > 20081509 ? originalFormat.parse(String.valueOf(fromDate)).getTime() / 1000 : 0;
-        this.toDate = toDate > 20081509 ? originalFormat.parse(String.valueOf(toDate)).getTime() / 1000 : 0;
-        this.order = (order != null && (order.equals(Order.ASC) || order.equals(Order.DESC))) ? order : Order.DESC;
-        this.min = min != 0 ? min : 0;
-        this.max = max != 0 ? max : 0;
-        this.sort = (sort != null)
+    public TagItemInitializer(int page, int pageSize, long fromDate, long toDate, Order order, TagSortBy sort,
+            Object min, Object max) throws ParseException {
+        setPage(page);
+        setPageSize(pageSize);
+        setFromDate(fromDate > 20081509 ? originalFormat.parse(String.valueOf(fromDate)).getTime() / 1000 : 0);
+        setToDate(toDate != 0 ? originalFormat.parse(String.valueOf(toDate)).getTime() / 1000 : 0);
+        setOrder(order != null ? order : Order.DESC);
+        setSort((sort != null)
                 && (sort.equals(TagSortBy.ACTIVITY) || sort.equals(TagSortBy.POPULAR) || sort.equals(TagSortBy.NAME))
-                ? sort : TagSortBy.POPULAR;
+                ? sort : TagSortBy.POPULAR);
+        setMinAndMax(getSort(), min, max);
         tagRetriever = TagRetriever.SYNONYMS;
 
     }
@@ -150,18 +137,17 @@ public class TagItemInitializer {
      *            {@link Set} of {@link #tags} i.e, {@link Set} of {@link #inName}
      * @throws ParseException
      */
-    public TagItemInitializer(int page, int pageSize, long fromDate, long toDate, Order order, long min, long max,
-            TagSortBy sort, Set<String> tags, TagRetriever tagRetriever) throws ParseException {
-        this.page = page;
-        this.pageSize = pageSize;
-        this.fromDate = fromDate > 20081509 ? originalFormat.parse(String.valueOf(fromDate)).getTime() / 1000 : 0;
-        this.toDate = toDate > 20081509 ? originalFormat.parse(String.valueOf(toDate)).getTime() / 1000 : 0;
-        this.order = (order != null && (order.equals(Order.ASC) || order.equals(Order.DESC))) ? order : Order.DESC;
-        this.min = min != 0 ? min : 0;
-        this.max = max != 0 ? max : 0;
-        this.sort = (sort != null)
+    public TagItemInitializer(int page, int pageSize, long fromDate, long toDate, Order order, TagSortBy sort,
+            Object min, Object max, Set<String> tags, TagRetriever tagRetriever) throws ParseException {
+        setPage(page);
+        setPageSize(pageSize);
+        setFromDate(fromDate > 20081509 ? originalFormat.parse(String.valueOf(fromDate)).getTime() / 1000 : 0);
+        setToDate(toDate != 0 ? originalFormat.parse(String.valueOf(toDate)).getTime() / 1000 : 0);
+        setOrder(order != null ? order : Order.DESC);
+        setSort((sort != null)
                 && (sort.equals(TagSortBy.ACTIVITY) || sort.equals(TagSortBy.POPULAR) || sort.equals(TagSortBy.NAME))
-                ? sort : TagSortBy.POPULAR;
+                ? sort : TagSortBy.POPULAR);
+        setMinAndMax(getSort(), min, max);
         if (tags != null && tags.size() > 0) {
             this.tags = tags;
         } else {
@@ -187,8 +173,8 @@ public class TagItemInitializer {
      *            {@link Set} of {@link #inName}'s
      */
     public TagItemInitializer(int page, int pageSize, Set<String> tags, TagRetriever tagRetriever) {
-        this.page = page;
-        this.pageSize = pageSize;
+        setPage(page);
+        setPageSize(pageSize);
         if (tags != null || tags.size() > 0) {
             this.tags = tags;
         } else {
@@ -220,8 +206,8 @@ public class TagItemInitializer {
      *            {@link TagPeriod}
      */
     public TagItemInitializer(int page, int pageSize, String tag, TagPeriod tagPeriod, TagRetriever tagRetriever) {
-        this.page = page;
-        this.pageSize = pageSize;
+        setPage(page);
+        setPageSize(pageSize);
         if (tag != null || !tag.trim().isEmpty()) {
             this.tag = tag;
         } else {
@@ -252,8 +238,8 @@ public class TagItemInitializer {
      *            {@link Set} of {@link #inName}'s
      */
     public TagItemInitializer(int page, int pageSize, Set<String> tags) {
-        this.page = page;
-        this.pageSize = pageSize;
+        setPage(page);
+        setPageSize(pageSize);
         if (tags != null || tags.size() > 0) {
             this.tags = tags;
         } else {
@@ -261,40 +247,33 @@ public class TagItemInitializer {
         }
     }
 
-    public long getFromDate() {
-        return fromDate;
-    }
-
-    public long getMax() {
-        return max;
-    }
-
-    public long getMin() {
-        return min;
-    }
-
-    public Order getOrder() {
-        return order;
-    }
-
-    public int getPage() {
-        return page;
-    }
-
-    public int getPageSize() {
-        return pageSize;
-    }
-
-    public long getToDate() {
-        return toDate;
+    private void setMinAndMax(TagSortBy sort, Object min, Object max) throws ParseException {
+        if (getSort().equals(TagSortBy.POPULAR)) {
+            if (min.getClass().equals(Number.class) && max.getClass().equals(Number.class)) {
+                setMin((long) min);
+                setMax((long) max);
+            } else {
+                throw new IllegalArgumentException("When TagSortBy is POPULAR min and max should be count");
+            }
+        } else if (getSort().equals(TagSortBy.ACTIVITY)) {
+            if (min.getClass().equals(Number.class) && max.getClass().equals(Number.class)) {
+                setMinDate((long) min > 20081509 ? originalFormat.parse(String.valueOf(min)).getTime() / 1000 : 0);
+                setMaxDate((long) max > 20081509 ? originalFormat.parse(String.valueOf(max)).getTime() / 1000 : 0);
+            } else {
+                throw new IllegalArgumentException("When TagSortBy is ACTIVITY min and max should be Date(yyyyddMM)");
+            }
+        } else if (getSort().equals(TagSortBy.NAME)) {
+            if (min.getClass().equals(String.class) && max.getClass().equals(String.class)) {
+                setMinString((String) min);
+                setMaxString((String) max);
+            } else {
+                throw new IllegalArgumentException("When TagSortBy is ACTIVITY min and max should be Tag Name");
+            }
+        }
     }
 
     public TagSortBy getSort() {
         return sort;
-    }
-
-    public String getInName() {
-        return inName;
     }
 
     public long getBadge_id() {
@@ -317,6 +296,14 @@ public class TagItemInitializer {
         return tagPeriod;
     }
 
+    public String getInName() {
+        return inName;
+    }
+
+    public void setInName(String inName) {
+        this.inName = inName;
+    }
+
     public void setTagPeriod(TagPeriod tagPeriod) {
         this.tagPeriod = tagPeriod;
     }
@@ -333,40 +320,8 @@ public class TagItemInitializer {
         this.tags = tags;
     }
 
-    public void setFromDate(long fromDate) {
-        this.fromDate = fromDate;
-    }
-
-    public void setMax(long max) {
-        this.max = max;
-    }
-
-    public void setMin(long min) {
-        this.min = min;
-    }
-
-    public void setOrder(Order order) {
-        this.order = order;
-    }
-
-    public void setPage(int page) {
-        this.page = page;
-    }
-
-    public void setPageSize(int pageSize) {
-        this.pageSize = pageSize;
-    }
-
-    public void setToDate(long toDate) {
-        this.toDate = toDate;
-    }
-
     public void setSort(TagSortBy sort) {
         this.sort = sort;
-    }
-
-    public void setInName(String inName) {
-        this.inName = inName;
     }
 
     public void setBadge_id(long badge_id) {

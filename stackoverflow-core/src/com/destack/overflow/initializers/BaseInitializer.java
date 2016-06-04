@@ -22,6 +22,10 @@ public class BaseInitializer {
 
     private long minDate;
 
+    private String minString;
+
+    private String maxString;
+
     private Order order;
 
     private int page;
@@ -29,10 +33,6 @@ public class BaseInitializer {
     private int pageSize;
 
     private long toDate;
-
-    public BaseInitializer() {
-
-    }
 
     public long getFromDate() {
         return fromDate;
@@ -68,6 +68,22 @@ public class BaseInitializer {
 
     public long getMinDate() {
         return minDate;
+    }
+
+    public String getMinString() {
+        return minString;
+    }
+
+    public String getMaxString() {
+        return maxString;
+    }
+
+    public void setMinString(String minString) {
+        this.minString = minString;
+    }
+
+    public void setMaxString(String maxString) {
+        this.maxString = maxString;
     }
 
     public void setMaxDate(long maxDate) {
