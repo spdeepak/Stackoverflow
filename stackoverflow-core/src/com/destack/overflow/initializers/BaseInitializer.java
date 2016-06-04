@@ -18,6 +18,10 @@ public class BaseInitializer {
 
     private long min;
 
+    private long maxDate;
+
+    private long minDate;
+
     private Order order;
 
     private int page;
@@ -56,6 +60,22 @@ public class BaseInitializer {
 
     public long getToDate() {
         return toDate;
+    }
+
+    public long getMaxDate() {
+        return maxDate;
+    }
+
+    public long getMinDate() {
+        return minDate;
+    }
+
+    public void setMaxDate(long maxDate) {
+        this.maxDate = maxDate;
+    }
+
+    public void setMinDate(long minDate) {
+        this.minDate = minDate;
     }
 
     public void setFromDate(long fromDate) {

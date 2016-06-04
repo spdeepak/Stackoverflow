@@ -37,4 +37,16 @@ public class BaseURLGenerator {
     protected String getMax(String max) {
         return "&max=".concat(max);
     }
+
+    protected String getInName(String inName) {
+        return "&inname=".concat(inName);
+    }
+
+    protected String urlFixer(String url) {
+        if (url.contains("?&")) {
+            url = url.replace("?&", "?");
+            return url;
+        }
+        return "";
+    }
 }

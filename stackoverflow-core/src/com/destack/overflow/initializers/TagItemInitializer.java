@@ -77,8 +77,12 @@ public class TagItemInitializer {
         this.fromDate = fromDate > 20081509 ? originalFormat.parse(String.valueOf(fromDate)).getTime() / 1000 : 0;
         this.toDate = toDate > 20081509 ? originalFormat.parse(String.valueOf(toDate)).getTime() / 1000 : 0;
         this.order = (order != null && (order.equals(Order.ASC) || order.equals(Order.DESC))) ? order : Order.DESC;
-        this.min = min != 0 ? min : 0;
-        this.max = max != 0 ? max : 0;
+        if (sort.equals(TagSortBy.POPULAR)) {
+            this.min = min != 0 ? min : 0;
+            this.max = max != 0 ? max : 0;
+        } else if (sort.equals(TagSortBy.ACTIVITY)) {
+
+        }
         this.sort = (sort != null)
                 && (sort.equals(TagSortBy.ACTIVITY) || sort.equals(TagSortBy.POPULAR) || sort.equals(TagSortBy.NAME))
                 ? sort : TagSortBy.POPULAR;

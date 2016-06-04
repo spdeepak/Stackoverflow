@@ -13,23 +13,13 @@ import com.destack.overflow.enums.Order;
  * @author Deepak
  *
  */
-public class BadgeItemInitializer {
+public class BadgeItemInitializer extends BaseInitializer {
 
     private static SimpleDateFormat originalFormat = new SimpleDateFormat("yyyyddMM");
 
-    private long fromDate;
+    private MaxMin bMax;
 
-    private MaxMin max;
-
-    private MaxMin min;
-
-    private Order order;
-
-    private int page;
-
-    private int pageSize;
-
-    private long toDate;
+    private MaxMin bMin;
 
     private BadgeSortBy sort;
 
@@ -45,8 +35,8 @@ public class BadgeItemInitializer {
      * @param fromDate
      * @param toDate
      * @param order
-     * @param max
-     * @param min
+     * @param bMax
+     * @param bMin
      * @param sort
      * @param inName
      * @param tagRequried
@@ -55,15 +45,15 @@ public class BadgeItemInitializer {
      */
     public BadgeItemInitializer(int page, int pageSize, long fromDate, long toDate, Order order, MaxMin max, MaxMin min,
             BadgeSortBy sort, String inName, boolean nameRequired) throws ParseException {
-        this.page = page;
-        this.pageSize = pageSize;
-        this.fromDate = fromDate > 20081509 ? originalFormat.parse(String.valueOf(fromDate)).getTime() / 1000 : 0;
-        this.toDate = toDate > 20081509 ? originalFormat.parse(String.valueOf(toDate)).getTime() / 1000 : 0;
-        this.order = (order != null && (order.equals(Order.ASC) || order.equals(Order.DESC))) ? order : Order.DESC;
-        this.max = (max.equals(MaxMin.BRONZE) || max.equals(MaxMin.GOLD) || max.equals(MaxMin.SILVER)) ? max : null;
-        this.min = (max.equals(MaxMin.BRONZE) || max.equals(MaxMin.GOLD) || max.equals(MaxMin.SILVER)) ? min : null;
-        this.sort = !sort.equals(EnumSet.of(BadgeSortBy.NAME, BadgeSortBy.RANK, BadgeSortBy.TYPE)) ? sort
-                : BadgeSortBy.RANK;
+        setPage(page);
+        setPageSize(pageSize);
+        setFromDate(fromDate > 20081509 ? originalFormat.parse(String.valueOf(fromDate)).getTime() / 1000 : 0);
+        setToDate(toDate != 0 ? originalFormat.parse(String.valueOf(toDate)).getTime() / 1000 : 0);
+        setOrder(order != null ? order : Order.DESC);
+        setbMax((max.equals(MaxMin.BRONZE) || max.equals(MaxMin.GOLD) || max.equals(MaxMin.SILVER)) ? max : null);
+        setbMin((max.equals(MaxMin.BRONZE) || max.equals(MaxMin.GOLD) || max.equals(MaxMin.SILVER)) ? min : null);
+        setSort(!sort.equals(EnumSet.of(BadgeSortBy.NAME, BadgeSortBy.RANK, BadgeSortBy.TYPE)) ? sort
+                : BadgeSortBy.RANK);
         this.inName = (inName != null && inName.trim().isEmpty()) ? null : inName;
         if (nameRequired) {
             br = BadgeRetriever.NAME;
@@ -74,15 +64,15 @@ public class BadgeItemInitializer {
 
     public BadgeItemInitializer(int page, int pageSize, long fromDate, long toDate, Order order, MaxMin max, MaxMin min,
             BadgeSortBy sort, boolean tagRequired, String inName) throws ParseException {
-        this.page = page;
-        this.pageSize = pageSize;
-        this.fromDate = fromDate > 20081509 ? originalFormat.parse(String.valueOf(fromDate)).getTime() / 1000 : 0;
-        this.toDate = toDate > 20081509 ? originalFormat.parse(String.valueOf(toDate)).getTime() / 1000 : 0;
-        this.order = (order != null && (order.equals(Order.ASC) || order.equals(Order.DESC))) ? order : Order.DESC;
-        this.max = (max.equals(MaxMin.BRONZE) || max.equals(MaxMin.GOLD) || max.equals(MaxMin.SILVER)) ? max : null;
-        this.min = (max.equals(MaxMin.BRONZE) || max.equals(MaxMin.GOLD) || max.equals(MaxMin.SILVER)) ? min : null;
-        this.sort = !sort.equals(EnumSet.of(BadgeSortBy.NAME, BadgeSortBy.RANK, BadgeSortBy.TYPE)) ? sort
-                : BadgeSortBy.RANK;
+        setPage(page);
+        setPageSize(pageSize);
+        setFromDate(fromDate > 20081509 ? originalFormat.parse(String.valueOf(fromDate)).getTime() / 1000 : 0);
+        setToDate(toDate != 0 ? originalFormat.parse(String.valueOf(toDate)).getTime() / 1000 : 0);
+        setOrder(order != null ? order : Order.DESC);
+        setbMax((max.equals(MaxMin.BRONZE) || max.equals(MaxMin.GOLD) || max.equals(MaxMin.SILVER)) ? max : null);
+        setbMin((max.equals(MaxMin.BRONZE) || max.equals(MaxMin.GOLD) || max.equals(MaxMin.SILVER)) ? min : null);
+        setSort(!sort.equals(EnumSet.of(BadgeSortBy.NAME, BadgeSortBy.RANK, BadgeSortBy.TYPE)) ? sort
+                : BadgeSortBy.RANK);
         this.inName = (inName != null && inName.trim().isEmpty()) ? null : inName;
         if (tagRequired) {
             br = BadgeRetriever.TAG;
@@ -97,23 +87,23 @@ public class BadgeItemInitializer {
      * @param fromDate
      * @param toDate
      * @param order
-     * @param max
-     * @param min
+     * @param bMax
+     * @param bMin
      * @param sort
      * @param badge_id
      * @throws ParseException
      */
     public BadgeItemInitializer(int page, int pageSize, long fromDate, long toDate, Order order, MaxMin max, MaxMin min,
             BadgeSortBy sort, long badge_id) throws ParseException {
-        this.page = page;
-        this.pageSize = pageSize;
-        this.fromDate = fromDate > 20081509 ? originalFormat.parse(String.valueOf(fromDate)).getTime() / 1000 : 0;
-        this.toDate = toDate > 20081509 ? originalFormat.parse(String.valueOf(toDate)).getTime() / 1000 : 0;
-        this.order = (order != null && (order.equals(Order.ASC) || order.equals(Order.DESC))) ? order : Order.DESC;
-        this.max = (max.equals(MaxMin.BRONZE) || max.equals(MaxMin.GOLD) || max.equals(MaxMin.SILVER)) ? max : null;
-        this.min = (max.equals(MaxMin.BRONZE) || max.equals(MaxMin.GOLD) || max.equals(MaxMin.SILVER)) ? min : null;
-        this.sort = !sort.equals(EnumSet.of(BadgeSortBy.NAME, BadgeSortBy.RANK, BadgeSortBy.TYPE)) ? sort
-                : BadgeSortBy.RANK;
+        setPage(page);
+        setPageSize(pageSize);
+        setFromDate(fromDate > 20081509 ? originalFormat.parse(String.valueOf(fromDate)).getTime() / 1000 : 0);
+        setToDate(toDate != 0 ? originalFormat.parse(String.valueOf(toDate)).getTime() / 1000 : 0);
+        setOrder(order != null ? order : Order.DESC);
+        setbMax((max.equals(MaxMin.BRONZE) || max.equals(MaxMin.GOLD) || max.equals(MaxMin.SILVER)) ? max : null);
+        setbMin((max.equals(MaxMin.BRONZE) || max.equals(MaxMin.GOLD) || max.equals(MaxMin.SILVER)) ? min : null);
+        setSort(!sort.equals(EnumSet.of(BadgeSortBy.NAME, BadgeSortBy.RANK, BadgeSortBy.TYPE)) ? sort
+                : BadgeSortBy.RANK);
         this.badge_id = badge_id;
         br = BadgeRetriever.ID;
     }
@@ -128,10 +118,10 @@ public class BadgeItemInitializer {
      * @throws ParseException
      */
     public BadgeItemInitializer(int page, int pageSize, long fromDate, long toDate) throws ParseException {
-        this.page = page;
-        this.pageSize = pageSize;
-        this.fromDate = fromDate > 20081509 ? originalFormat.parse(String.valueOf(fromDate)).getTime() / 1000 : 0;
-        this.toDate = toDate > 20081509 ? originalFormat.parse(String.valueOf(toDate)).getTime() / 1000 : 0;
+        setPage(page);
+        setPageSize(pageSize);
+        setFromDate(fromDate > 20081509 ? originalFormat.parse(String.valueOf(fromDate)).getTime() / 1000 : 0);
+        setToDate(toDate != 0 ? originalFormat.parse(String.valueOf(toDate)).getTime() / 1000 : 0);
         br = BadgeRetriever.RECIPIENT;
     }
 
@@ -145,40 +135,20 @@ public class BadgeItemInitializer {
      */
     public BadgeItemInitializer(int page, int pageSize, long fromDate, long toDate, long badge_id)
             throws ParseException {
-        this.page = page;
-        this.pageSize = pageSize;
-        this.fromDate = fromDate > 20081509 ? originalFormat.parse(String.valueOf(fromDate)).getTime() / 1000 : 0;
-        this.toDate = toDate > 20081509 ? originalFormat.parse(String.valueOf(toDate)).getTime() / 1000 : 0;
+        setPage(page);
+        setPageSize(pageSize);
+        setFromDate(fromDate > 20081509 ? originalFormat.parse(String.valueOf(fromDate)).getTime() / 1000 : 0);
+        setToDate(toDate != 0 ? originalFormat.parse(String.valueOf(toDate)).getTime() / 1000 : 0);
         this.badge_id = badge_id;
         br = BadgeRetriever.ID_RECIPIENT;
     }
 
-    public long getFromDate() {
-        return fromDate;
+    public MaxMin getbMax() {
+        return bMax;
     }
 
-    public MaxMin getMax() {
-        return max;
-    }
-
-    public MaxMin getMin() {
-        return min;
-    }
-
-    public Order getOrder() {
-        return order;
-    }
-
-    public int getPage() {
-        return page;
-    }
-
-    public int getPageSize() {
-        return pageSize;
-    }
-
-    public long getToDate() {
-        return toDate;
+    public MaxMin getbMin() {
+        return bMin;
     }
 
     public BadgeSortBy getSort() {
@@ -189,12 +159,28 @@ public class BadgeItemInitializer {
         return inName;
     }
 
+    public long getBadge_id() {
+        return badge_id;
+    }
+
     public BadgeRetriever getBr() {
         return br;
     }
 
-    public long getBadge_id() {
-        return badge_id;
+    public void setbMax(MaxMin bMax) {
+        this.bMax = bMax;
+    }
+
+    public void setbMin(MaxMin bMin) {
+        this.bMin = bMin;
+    }
+
+    public void setSort(BadgeSortBy sort) {
+        this.sort = sort;
+    }
+
+    public void setInName(String inName) {
+        this.inName = inName;
     }
 
     public void setBadge_id(long badge_id) {
@@ -205,39 +191,4 @@ public class BadgeItemInitializer {
         this.br = br;
     }
 
-    public void setInName(String inName) {
-        this.inName = inName;
-    }
-
-    public void setSort(BadgeSortBy sort) {
-        this.sort = sort;
-    }
-
-    public void setFromDate(long fromDate) {
-        this.fromDate = fromDate;
-    }
-
-    public void setMax(MaxMin max) {
-        this.max = max;
-    }
-
-    public void setMin(MaxMin min) {
-        this.min = min;
-    }
-
-    public void setOrder(Order order) {
-        this.order = order;
-    }
-
-    public void setPage(int page) {
-        this.page = page;
-    }
-
-    public void setPageSize(int pageSize) {
-        this.pageSize = pageSize;
-    }
-
-    public void setToDate(long toDate) {
-        this.toDate = toDate;
-    }
 }

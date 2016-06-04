@@ -61,8 +61,11 @@ public class TagItemURLGenerator extends BaseURLGenerator implements URLGenerato
                 if (tagItemInitializer.getInName() != null && !tagItemInitializer.getInName().trim().isEmpty()) {
                     url += "&inname=".concat(tagItemInitializer.getInName());
                 }
-                url += postFix;
-                return new URL(url);
+                if (tr.equals(TagRetriever.DEFAULT)) {
+                    url = url.replace("?&", "&");
+                    url += postFix;
+                    return new URL(url);
+                }
             }
             if (tr.equals(TagRetriever.TAGS_FAQ) || tr.equals(TagRetriever.TAGS_RELATED)) {
                 String tags = null;
@@ -77,9 +80,13 @@ public class TagItemURLGenerator extends BaseURLGenerator implements URLGenerato
                 } else {
                     throw new IllegalArgumentException("Tags are mandatory");
                 }
-                if (tags != null) {
+                if (tr.equals(TagRetriever.TAGS_FAQ)) {
                     url = url.replace("https://api.stackexchange.com/2.2/tags",
-                            "https://api.stackexchange.com/2.2/tags/".concat(tags));
+                            "https://api.stackexchange.com/2.2/tags/".concat(tags).concat("/faq"));
+                }
+                if (tr.equals(TagRetriever.TAGS_RELATED)) {
+                    url = url.replace("https://api.stackexchange.com/2.2/tags",
+                            "https://api.stackexchange.com/2.2/tags/".concat(tags).concat("/related"));
                 }
                 if (url.contains("?&")) {
                     url = url.replace("?&", "&");

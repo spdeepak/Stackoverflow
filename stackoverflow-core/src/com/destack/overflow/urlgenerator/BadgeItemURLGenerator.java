@@ -14,47 +14,47 @@ import com.destack.overflow.initializers.BadgeItemInitializer;
  * @author Deepak
  *
  */
-public class BadgeItemURLGenerator implements URLGenerator<BadgeItemInitializer> {
+public class BadgeItemURLGenerator extends BaseURLGenerator implements URLGenerator<BadgeItemInitializer> {
 
     @Override
     public URL urlGenerator(BadgeItemInitializer badgeItemInitializer)
             throws MalformedURLException, IllegalAccessException {
         String url = "https://api.stackexchange.com/2.2/badges?";
         if (badgeItemInitializer.getPage() != 0) {
-            url += "&page=".concat(String.valueOf(badgeItemInitializer.getPage()));
+            url += getPage(badgeItemInitializer.getPage());
         }
         if (badgeItemInitializer.getPageSize() != 0) {
-            url += "&pagesize=".concat(String.valueOf(badgeItemInitializer.getPageSize()));
+            url += getPageSize((badgeItemInitializer.getPageSize()));
         }
         if (badgeItemInitializer.getFromDate() != 0) {
-            url += "&fromdate=".concat(String.valueOf(badgeItemInitializer.getFromDate()));
+            url += getFromDate((badgeItemInitializer.getFromDate()));
         }
         if (badgeItemInitializer.getToDate() != 0) {
-            url += "&todate=".concat(String.valueOf(badgeItemInitializer.getToDate()));
+            url += getToDate((badgeItemInitializer.getToDate()));
         }
         if (badgeItemInitializer.getBr().equals(BadgeRetriever.NORMAL)
                 || badgeItemInitializer.getBr().equals(BadgeRetriever.NAME)
                 || badgeItemInitializer.getBr().equals(BadgeRetriever.ID)
                 || badgeItemInitializer.getBr().equals(BadgeRetriever.TAG)) {
             if (badgeItemInitializer.getOrder() != null && !badgeItemInitializer.getOrder().toString().isEmpty()) {
-                url += "&order=".concat(badgeItemInitializer.getOrder().toString());
+                url += getOrder(badgeItemInitializer.getOrder().toString());
             } else {
-                url += "&order=".concat(Order.DESC.toString());
+                url += getOrder(Order.DESC.toString());
             }
             if (badgeItemInitializer.getSort() != null && !badgeItemInitializer.getSort().toString().isEmpty()) {
-                url += "&sort=".concat(badgeItemInitializer.getSort().toString());
+                url += getSort(badgeItemInitializer.getSort().toString());
             } else {
-                url += "&sort=".concat(BadgeSortBy.RANK.toString());
+                url += getSort(BadgeSortBy.RANK.toString());
             }
-            if (badgeItemInitializer.getMin() != null) {
-                url += "&min=".concat(badgeItemInitializer.getMin().toString());
+            if (badgeItemInitializer.getbMin() != null) {
+                url += getMin(badgeItemInitializer.getbMin().toString());
             }
-            if (badgeItemInitializer.getMax() != null) {
-                url += "&max=".concat(badgeItemInitializer.getMax().toString());
+            if (badgeItemInitializer.getbMax() != null) {
+                url += getMax(badgeItemInitializer.getbMax().toString());
             }
             if (badgeItemInitializer.getBr().equals(EnumSet.of(BadgeRetriever.NORMAL, BadgeRetriever.NAME))) {
                 if (badgeItemInitializer.getInName() != null && !badgeItemInitializer.getInName().trim().isEmpty()) {
-                    url += "&inname=".concat(badgeItemInitializer.getInName());
+                    url += getInName(badgeItemInitializer.getInName());
                 }
             }
             url += "&site=stackoverflow&filter=!-*f(6qLMLow-";
@@ -92,9 +92,7 @@ public class BadgeItemURLGenerator implements URLGenerator<BadgeItemInitializer>
                 throw new IllegalAccessException("ID should not be zero");
             }
             url += "&site=stackoverflow&filter=!-*f(6qLMLow-";
-            if (url.contains("?&")) {
-                url = url.replace("?&", "?");
-            }
+            url = urlFixer(url);
             return new URL(url);
         }
         throw new InvalidParameterException("Invalid arguments passed");
