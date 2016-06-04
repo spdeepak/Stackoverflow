@@ -58,7 +58,7 @@ public class BadgeItemURLGenerator extends BaseURLGenerator implements URLGenera
                 }
             }
             url += "&site=stackoverflow&filter=!-*f(6qLMLow-";
-            url = url.replace("?&", "?");
+            url = urlFixer(url);
             if (badgeItemInitializer.getBr().equals(BadgeRetriever.NORMAL)) {
                 return new URL(url);
             } else if (badgeItemInitializer.getBr().equals(BadgeRetriever.NAME)) {
@@ -78,9 +78,7 @@ public class BadgeItemURLGenerator extends BaseURLGenerator implements URLGenera
         }
         if (badgeItemInitializer.getBr().equals(BadgeRetriever.RECIPIENT)) {
             url += "&site=stackoverflow&filter=!-*f(6qLMLow-";
-            if (url.contains("?&")) {
-                url = url.replace("?&", "?");
-            }
+            url = urlFixer(url);
             url = url.replace("badges?", "badges/recipients?");
             return new URL(url);
         }

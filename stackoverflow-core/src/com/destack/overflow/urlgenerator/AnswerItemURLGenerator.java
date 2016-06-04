@@ -19,7 +19,7 @@ import com.destack.overflow.model.AnswerItem;
  * @author Deepak
  *
  */
-public class AnswerItemURLGenerator implements URLGenerator<AnswerInitializer> {
+public class AnswerItemURLGenerator extends BaseURLGenerator implements URLGenerator<AnswerInitializer> {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AnswerItemURLGenerator.class);
 
@@ -27,35 +27,35 @@ public class AnswerItemURLGenerator implements URLGenerator<AnswerInitializer> {
     public URL urlGenerator(AnswerInitializer ai) throws MalformedURLException {
         String url = "https://api.stackexchange.com/2.2/answers?";
         if (ai.getPage() != 0) {
-            url += "&page=".concat(String.valueOf(ai.getPage()));
+            url += getPage(ai.getPage());
         }
         if (ai.getPageSize() != 0) {
-            url += "&pagesize=".concat(String.valueOf(ai.getPageSize()));
+            url += getPageSize(ai.getPageSize());
         }
         if (ai.getFromDate() != 0) {
-            url += "&fromdate=".concat(String.valueOf(ai.getFromDate()));
+            url += getFromDate(ai.getFromDate());
         }
         if (ai.getToDate() != 0) {
-            url += "&todate=".concat(String.valueOf(ai.getToDate()));
+            url += getToDate(ai.getToDate());
         }
         if (!ai.getOrder().toString().isEmpty()) {
-            url += "&order=".concat(ai.getOrder().toString());
+            url += getOrder(ai.getOrder().toString());
         } else {
-            url += "&order=".concat(Order.DESC.toString());
+            url += getOrder(Order.DESC.toString());
         }
         if (ai.getSort() != null && !ai.getSort().toString().isEmpty()) {
-            url += "&sort=".concat(ai.getSort().toString());
+            url += getSort(ai.getSort().toString());
         } else {
-            url += "&sort=".concat(AnswerSortBy.ACTIVITY.toString());
+            url += getSort(AnswerSortBy.ACTIVITY.toString());
         }
         if (ai.getMin() != 0) {
-            url += "&min=".concat(String.valueOf(ai.getMin()));
+            url += getMin(String.valueOf(ai.getMin()));
         }
         if (ai.getMax() != 0) {
-            url += "&max=".concat(String.valueOf(ai.getMax()));
+            url += getMax(String.valueOf(ai.getMax()));
         }
         url += "&site=stackoverflow";
-        url = url.replace("https://api.stackexchange.com/2.2/answers?&", "https://api.stackexchange.com/2.2/answers?");
+        url = urlFixer(url);
         return new URL(url);
     }
 
@@ -71,7 +71,7 @@ public class AnswerItemURLGenerator implements URLGenerator<AnswerInitializer> {
             }
             return new URL(
                     urlGenerator(answerInitializer).toString().replace("https://api.stackexchange.com/2.2/answers?&",
-                            "https://api.stackexchange.com/2.2/answers/".concat(answerId).concat("?&")));
+                            "https://api.stackexchange.com/2.2/answers/".concat(answerId).concat("?")));
         }
         if (fetchFromAnswer == null || fetchFromAnswer.equals(FetchFromAnswer.COMMENTS_IDANSWER)) {
             if (answerInitializer.getSort() == null || answerInitializer.getSort().equals(AnswerSortBy.ACTIVITY)) {
@@ -83,7 +83,7 @@ public class AnswerItemURLGenerator implements URLGenerator<AnswerInitializer> {
             }
             return new URL(
                     urlGenerator(answerInitializer).toString().replace("https://api.stackexchange.com/2.2/answers?&",
-                            "https://api.stackexchange.com/2.2/answers/".concat(answerId).concat("/comments?&")));
+                            "https://api.stackexchange.com/2.2/answers/".concat(answerId).concat("/comments?")));
         }
         if (fetchFromAnswer == null || fetchFromAnswer.equals(FetchFromAnswer.QUESTIONS_IDANSWER)) {
             if (Long.valueOf(answerId.trim()) == 0) {
@@ -92,7 +92,7 @@ public class AnswerItemURLGenerator implements URLGenerator<AnswerInitializer> {
             }
             return new URL(
                     urlGenerator(answerInitializer).toString().replace("https://api.stackexchange.com/2.2/answers?&",
-                            "https://api.stackexchange.com/2.2/answers/".concat(answerId).concat("/questions?&")));
+                            "https://api.stackexchange.com/2.2/answers/".concat(answerId).concat("/questions?")));
         }
         LOGGER.debug("All parameters passed are not valid except AnswerInitializer. So, returning All answer's URL");
         return urlGenerator(answerInitializer);
