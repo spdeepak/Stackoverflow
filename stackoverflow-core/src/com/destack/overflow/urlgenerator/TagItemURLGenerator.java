@@ -8,18 +8,18 @@ import com.destack.overflow.enums.TagRetriever;
 import com.destack.overflow.enums.TagSortBy;
 import com.destack.overflow.initializers.TagItemInitializer;
 
-public class TagItemURLGenerator extends BaseURLGenerator implements URLGenerator<TagItemInitializer> {
+public class TagItemURLGenerator extends BaseURLComponentGenerator implements URLGenerator<TagItemInitializer> {
 
     @Override
     public URL urlGenerator(TagItemInitializer tagItemInitializer)
             throws MalformedURLException, IllegalAccessException {
-        String url = "https://api.stackexchange.com/2.2/tags?order=desc&sort=popular";
+        String url = "https://api.stackexchange.com/2.2/tags?";
         String postFix = "&site=stackoverflow&filter=!-*f(6qOIRgw-";
         if (tagItemInitializer.getPage() != 0) {
-            url += getPage(tagItemInitializer.getPage());
+            url += getPageURL(tagItemInitializer.getPage());
         }
         if (tagItemInitializer.getPageSize() != 0) {
-            url += getPageSize(tagItemInitializer.getPageSize());
+            url += getPageSizeURL(tagItemInitializer.getPageSize());
         }
         if (tagItemInitializer.getTagRetriever() != null) {
             TagRetriever tr = tagItemInitializer.getTagRetriever();
@@ -48,9 +48,23 @@ public class TagItemURLGenerator extends BaseURLGenerator implements URLGenerato
                 if (tagItemInitializer.getMax() != 0) {
                     url += getMax(String.valueOf(tagItemInitializer.getMax()));
                 }
+                if (tagItemInitializer.getTags() != null && tagItemInitializer.getTags().size() != 0) {
+                    if (tr.equals(TagRetriever.TAGS)) {
+                        url = urlFixer(url);
+                        String str=null;
+                        for(String st:tagItemInitializer.getTags()){
+                            str+=st.concat(";");
+                        }
+                        if (str!= null && str.endsWith(";")) {
+                            //removes the last ;
+                            str= str.substring(0, str.lastIndexOf(";"));
+                        }
+                        url = url.replace("tags?", "tags?".concat(str));
+
+                    }
+                }
                 if (tr.equals(TagRetriever.SYNONYMS)) {
-                    url += postFix;
-                    return new URL(url);
+                    //TODO
                 }
                 if (tr.equals(TagRetriever.TAGS) || tr.equals(TagRetriever.TAGS_SYNONYMS)) {
                     //TODO

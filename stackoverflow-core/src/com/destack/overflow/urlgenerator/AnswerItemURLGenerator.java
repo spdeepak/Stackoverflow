@@ -19,7 +19,7 @@ import com.destack.overflow.model.AnswerItem;
  * @author Deepak
  *
  */
-public class AnswerItemURLGenerator extends BaseURLGenerator implements URLGenerator<AnswerInitializer> {
+public class AnswerItemURLGenerator extends BaseURLComponentGenerator implements URLGenerator<AnswerInitializer> {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AnswerItemURLGenerator.class);
 
@@ -27,10 +27,10 @@ public class AnswerItemURLGenerator extends BaseURLGenerator implements URLGener
     public URL urlGenerator(AnswerInitializer ai) throws MalformedURLException {
         String url = "https://api.stackexchange.com/2.2/answers?";
         if (ai.getPage() != 0) {
-            url += getPage(ai.getPage());
+            url += getPageURL(ai.getPage());
         }
         if (ai.getPageSize() != 0) {
-            url += getPageSize(ai.getPageSize());
+            url += getPageSizeURL(ai.getPageSize());
         }
         if (ai.getFromDate() != 0) {
             url += getFromDate(ai.getFromDate());

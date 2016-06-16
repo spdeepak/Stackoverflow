@@ -14,17 +14,17 @@ import com.destack.overflow.initializers.BadgeItemInitializer;
  * @author Deepak
  *
  */
-public class BadgeItemURLGenerator extends BaseURLGenerator implements URLGenerator<BadgeItemInitializer> {
+public class BadgeItemURLGenerator extends BaseURLComponentGenerator implements URLGenerator<BadgeItemInitializer> {
 
     @Override
     public URL urlGenerator(BadgeItemInitializer badgeItemInitializer)
             throws MalformedURLException, IllegalAccessException {
         String url = "https://api.stackexchange.com/2.2/badges?";
         if (badgeItemInitializer.getPage() != 0) {
-            url += getPage(badgeItemInitializer.getPage());
+            url += getPageURL(badgeItemInitializer.getPage());
         }
         if (badgeItemInitializer.getPageSize() != 0) {
-            url += getPageSize((badgeItemInitializer.getPageSize()));
+            url += getPageSizeURL((badgeItemInitializer.getPageSize()));
         }
         if (badgeItemInitializer.getFromDate() != 0) {
             url += getFromDate((badgeItemInitializer.getFromDate()));

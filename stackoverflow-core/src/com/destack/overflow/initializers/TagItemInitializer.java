@@ -112,7 +112,6 @@ public class TagItemInitializer extends BaseInitializer {
                 ? sort : TagSortBy.POPULAR);
         setMinAndMax(getSort(), min, max);
         tagRetriever = TagRetriever.SYNONYMS;
-
     }
 
     /**
@@ -252,6 +251,7 @@ public class TagItemInitializer extends BaseInitializer {
             if (min.getClass().equals(Number.class) && max.getClass().equals(Number.class)) {
                 setMin((long) min);
                 setMax((long) max);
+                return;
             } else {
                 throw new IllegalArgumentException("When TagSortBy is POPULAR min and max should be count");
             }
@@ -259,6 +259,7 @@ public class TagItemInitializer extends BaseInitializer {
             if (min.getClass().equals(Number.class) && max.getClass().equals(Number.class)) {
                 setMinDate((long) min > 20081509 ? originalFormat.parse(String.valueOf(min)).getTime() / 1000 : 0);
                 setMaxDate((long) max > 20081509 ? originalFormat.parse(String.valueOf(max)).getTime() / 1000 : 0);
+                return;
             } else {
                 throw new IllegalArgumentException("When TagSortBy is ACTIVITY min and max should be Date(yyyyddMM)");
             }
@@ -266,6 +267,7 @@ public class TagItemInitializer extends BaseInitializer {
             if (min.getClass().equals(String.class) && max.getClass().equals(String.class)) {
                 setMinString((String) min);
                 setMaxString((String) max);
+                return;
             } else {
                 throw new IllegalArgumentException("When TagSortBy is ACTIVITY min and max should be Tag Name");
             }

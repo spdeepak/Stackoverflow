@@ -15,7 +15,7 @@ import com.destack.overflow.model.CommentItem;
  * @author Deepak
  *
  */
-public class CommentURLGenerator extends BaseURLGenerator implements URLGenerator<CommentInitializer> {
+public class CommentURLGenerator extends BaseURLComponentGenerator implements URLGenerator<CommentInitializer> {
 
     @Override
     public URL urlGenerator(CommentInitializer commentInitializer) throws MalformedURLException {
@@ -30,10 +30,10 @@ public class CommentURLGenerator extends BaseURLGenerator implements URLGenerato
 
     private String plainURLGenerator(CommentInitializer commentInitializer, String url) throws MalformedURLException {
         if (commentInitializer.getPage() != 0) {
-            url += getPage(commentInitializer.getPage());
+            url += getPageURL(commentInitializer.getPage());
         }
         if (commentInitializer.getPageSize() != 0) {
-            url += getPageSize(commentInitializer.getPageSize());
+            url += getPageSizeURL(commentInitializer.getPageSize());
         }
         if (commentInitializer.getFromDate() != 0) {
             url += getFromDate(commentInitializer.getFromDate());
