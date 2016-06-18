@@ -16,18 +16,23 @@ public class BaseURLComponentGenerator {
      * @return
      */
     protected String getBaseURL(BaseInitializer object) {
-        String url = null;
+        String url = "";
+        if (object.getPage() != 0) {
+            url += "&page=".concat(String.valueOf(object.getPage()));
+        }
+        if (object.getPageSize() != 0) {
+            url += "&pagesize=".concat(String.valueOf(object.getPageSize()));
+        }
         if (object.getFromDate() != 0) {
             url += "&fromdate=".concat(String.valueOf(object.getFromDate()));
         }
-        if (object.getMax() != 0) {
-            url += "&max=".concat(String.valueOf(object.getMax()));
+        if (object.getToDate() != 0) {
+            url += "&todate=".concat(String.valueOf(object.getToDate()));
         }
-        if (object.getMaxDate() != 0) {
-            url += "&max=".concat(String.valueOf(object.getMaxDate()));
-        }
-        if (object.getMaxString() != null && !object.getMaxString().trim().isEmpty()) {
-            url += "&max=".concat(String.valueOf(object.getMaxString()));
+        if (object.getOrder() != null && !object.getOrder().toString().isEmpty()) {
+            url += "&order=".concat(object.getOrder().toString());
+        } else {
+            url += "&order=".concat(Order.DESC.toString());
         }
         if (object.getMin() != 0) {
             url += "&min=".concat(String.valueOf(object.getMin()));
@@ -38,21 +43,15 @@ public class BaseURLComponentGenerator {
         if (object.getMinString() != null && !object.getMinString().trim().isEmpty()) {
             url += "&min=".concat(String.valueOf(object.getMinString()));
         }
-        if (object.getOrder() != null && !object.getOrder().toString().isEmpty()) {
-            url += "&order=".concat(object.getOrder().toString());
-        } else {
-            url += "&order=".concat(Order.DESC.toString());
+        if (object.getMax() != 0) {
+            url += "&max=".concat(String.valueOf(object.getMax()));
         }
-        if (object.getPage() != 0) {
-            url += "&page=".concat(String.valueOf(object.getPage()));
+        if (object.getMaxDate() != 0) {
+            url += "&max=".concat(String.valueOf(object.getMaxDate()));
         }
-        if (object.getPageSize() != 0) {
-            url += "&pagesize=".concat(String.valueOf(object.getPageSize()));
+        if (object.getMaxString() != null && !object.getMaxString().trim().isEmpty()) {
+            url += "&max=".concat(String.valueOf(object.getMaxString()));
         }
-        if (object.getToDate() != 0) {
-            url += "&todate=".concat(String.valueOf(object.getToDate()));
-        }
-        url += "&site=stackoverflow";
         return url;
     }
 
@@ -95,8 +94,8 @@ public class BaseURLComponentGenerator {
     protected String urlFixer(String url) {
         if (url.contains("?&")) {
             url = url.replace("?&", "?");
-            return url;
+            return url.concat("&site=stackoverflow");
         }
-        return "";
+        return url.concat("&site=stackoverflow");
     }
 }
