@@ -17,16 +17,16 @@ public class BaseURLComponentGenerator {
      */
     protected String getBaseURL(BaseInitializer object) {
         String url = "";
-        if (object.getPage() != 0) {
+        if (object.getPage() != 0 && object.getPage() != null) {
             url += "&page=".concat(String.valueOf(object.getPage()));
         }
-        if (object.getPageSize() != 0) {
+        if (object.getPageSize() != 0 && object.getPageSize() != null) {
             url += "&pagesize=".concat(String.valueOf(object.getPageSize()));
         }
-        if (object.getFromDate() != 0) {
+        if (object.getFromDate() != 0 && object.getFromDate() != null) {
             url += "&fromdate=".concat(String.valueOf(object.getFromDate()));
         }
-        if (object.getToDate() != 0) {
+        if (object.getToDate() != 0 && object.getToDate() != null) {
             url += "&todate=".concat(String.valueOf(object.getToDate()));
         }
         if (object.getOrder() != null && !object.getOrder().toString().isEmpty()) {
@@ -34,19 +34,19 @@ public class BaseURLComponentGenerator {
         } else {
             url += "&order=".concat(Order.DESC.toString());
         }
-        if (object.getMin() != 0) {
+        if (object.getMin() != 0 && object.getMin() != null) {
             url += "&min=".concat(String.valueOf(object.getMin()));
         }
-        if (object.getMinDate() != 0) {
+        if (object.getMinDate() != 0 && object.getMinDate() != null) {
             url += "&min=".concat(String.valueOf(object.getMinDate()));
         }
         if (object.getMinString() != null && !object.getMinString().trim().isEmpty()) {
             url += "&min=".concat(String.valueOf(object.getMinString()));
         }
-        if (object.getMax() != 0) {
+        if (object.getMax() != 0 && object.getMax() != null) {
             url += "&max=".concat(String.valueOf(object.getMax()));
         }
-        if (object.getMaxDate() != 0) {
+        if (object.getMaxDate() != 0 && object.getMaxDate() != null) {
             url += "&max=".concat(String.valueOf(object.getMaxDate()));
         }
         if (object.getMaxString() != null && !object.getMaxString().trim().isEmpty()) {
@@ -55,40 +55,76 @@ public class BaseURLComponentGenerator {
         return url;
     }
 
-    protected String getPageURL(Integer i) {
-        return "&page=".concat(String.valueOf(i));
+    protected String getPageURL(Integer page) {
+        if (page != 0 && page != null) {
+            return "&page=".concat(String.valueOf(page));
+        } else {
+            return "";
+        }
     }
 
-    protected String getPageSizeURL(Integer i) {
-        return "&pagesize=".concat(String.valueOf(i));
+    protected String getPageSizeURL(Integer pageSize) {
+        if (pageSize != 0 && pageSize != null) {
+            return "&pagesize=".concat(String.valueOf(pageSize));
+        } else {
+            return "";
+        }
     }
 
-    protected String getFromDate(Long l) {
-        return "&fromdate=".concat(String.valueOf(l));
+    protected String getFromDate(Long fromDate) {
+        if (fromDate != 0 && fromDate != null) {
+            return "&fromdate=".concat(String.valueOf(fromDate));
+        } else {
+            return "";
+        }
     }
 
-    protected String getToDate(Long l) {
-        return "&todate=".concat(String.valueOf(l));
+    protected String getToDate(Long toDate) {
+        if (toDate != 0 && toDate != null) {
+            return "&todate=".concat(String.valueOf(toDate));
+        } else {
+            return "";
+        }
     }
 
-    protected String getOrder(String s) {
-        return "&order=".concat(s);
+    protected String getOrder(String order) {
+        if (order != null && !order.trim().isEmpty()) {
+            return "&order=".concat(order);
+        } else {
+            return "";
+        }
     }
 
-    protected String getSort(String s) {
-        return "&sort=".concat(s);
+    protected String getSort(String sort) {
+        if (sort != null && !sort.trim().isEmpty()) {
+            return "&sort=".concat(sort);
+        } else {
+            return "";
+        }
     }
 
     protected String getMin(String min) {
-        return "&min=".concat(min);
+        if (min != null && !min.trim().isEmpty()) {
+            return "&min=".concat(min);
+        } else {
+            return "";
+        }
     }
 
     protected String getMax(String max) {
-        return "&max=".concat(max);
+        if (max != null && !max.trim().isEmpty()) {
+            return "&max=".concat(max);
+        } else {
+            return "";
+        }
     }
 
     protected String getInName(String inName) {
-        return "&inname=".concat(inName);
+        if (inName != null && !inName.trim().isEmpty()) {
+            return "&inname=".concat(inName);
+        } else {
+            return "";
+        }
     }
 
     protected String urlFixer(String url) {

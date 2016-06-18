@@ -12,15 +12,15 @@ public class BaseInitializer {
 
     protected static SimpleDateFormat originalFormat = new SimpleDateFormat("yyyyddMM");
 
-    private long fromDate;
+    private Long fromDate;
 
-    private long max;
+    private Long max;
 
-    private long min;
+    private Long min;
 
-    private long maxDate;
+    private Long maxDate;
 
-    private long minDate;
+    private Long minDate;
 
     private String minString;
 
@@ -28,21 +28,21 @@ public class BaseInitializer {
 
     private Order order;
 
-    private int page;
+    private Integer page;
 
-    private int pageSize;
+    private Integer pageSize;
 
-    private long toDate;
+    private Long toDate;
 
-    public long getFromDate() {
+    public Long getFromDate() {
         return fromDate;
     }
 
-    public long getMax() {
+    public Long getMax() {
         return max;
     }
 
-    public long getMin() {
+    public Long getMin() {
         return min;
     }
 
@@ -50,23 +50,23 @@ public class BaseInitializer {
         return order;
     }
 
-    public int getPage() {
+    public Integer getPage() {
         return page;
     }
 
-    public int getPageSize() {
+    public Integer getPageSize() {
         return pageSize;
     }
 
-    public long getToDate() {
+    public Long getToDate() {
         return toDate;
     }
 
-    public long getMaxDate() {
+    public Long getMaxDate() {
         return maxDate;
     }
 
-    public long getMinDate() {
+    public Long getMinDate() {
         return minDate;
     }
 
@@ -86,23 +86,23 @@ public class BaseInitializer {
         this.maxString = maxString;
     }
 
-    public void setMaxDate(long maxDate) {
+    public void setMaxDate(Long maxDate) {
         this.maxDate = maxDate;
     }
 
-    public void setMinDate(long minDate) {
+    public void setMinDate(Long minDate) {
         this.minDate = minDate;
     }
 
-    public void setFromDate(long fromDate) {
+    public void setFromDate(Long fromDate) {
         this.fromDate = fromDate;
     }
 
-    public void setMax(long max) {
+    public void setMax(Long max) {
         this.max = max;
     }
 
-    public void setMin(long min) {
+    public void setMin(Long min) {
         this.min = min;
     }
 
@@ -110,15 +110,15 @@ public class BaseInitializer {
         this.order = order;
     }
 
-    public void setPage(int page) {
+    public void setPage(Integer page) {
         this.page = page;
     }
 
-    public void setPageSize(int pageSize) {
+    public void setPageSize(Integer pageSize) {
         this.pageSize = pageSize;
     }
 
-    public void setToDate(long toDate) {
+    public void setToDate(Long toDate) {
         this.toDate = toDate;
     }
 

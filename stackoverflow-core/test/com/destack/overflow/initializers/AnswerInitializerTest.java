@@ -15,14 +15,14 @@ public class AnswerInitializerTest {
     public void test() throws ParseException {
         AnswerInitializer ai = new AnswerInitializer(1, 100, 20140101, 20143101, Order.ASC, AnswerSortBy.ACTIVITY,
                 20140101, 20143101);
-        assertEquals(1, ai.getPage());
-        assertEquals(100, ai.getPageSize());
-        assertEquals(1388534400, ai.getFromDate());
-        assertEquals(1391126400, ai.getToDate());
+        assertEquals(Integer.valueOf(1), ai.getPage());
+        assertEquals(Integer.valueOf(100), ai.getPageSize());
+        assertEquals(1388534400, ai.getFromDate().longValue());
+        assertEquals(1391126400, ai.getToDate().longValue());
         assertEquals(Order.ASC, ai.getOrder());
         assertEquals(AnswerSortBy.ACTIVITY, ai.getSort());
-        assertEquals(1388534400, ai.getMin());
-        assertEquals(1391126400, ai.getMax());
+        assertEquals(1388534400, ai.getMin().intValue());
+        assertEquals(1391126400, ai.getMax().intValue());
         //System.out.println(new SimpleDateFormat("yyyyddMM").format(new Date()));
     }
 

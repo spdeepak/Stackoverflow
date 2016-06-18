@@ -55,8 +55,8 @@ public class AnswerInitializer extends BaseInitializer {
             setMax(originalFormat.parse(String.valueOf(max)).getTime() / 1000);
         }
         if (!getSort().equals(AnswerSortBy.VOTES) && min < 20081509 && max < 20081509) {
-            setMin(0);
-            setMax(0);
+            setMin(0L);
+            setMax(0L);
         }
     }
 

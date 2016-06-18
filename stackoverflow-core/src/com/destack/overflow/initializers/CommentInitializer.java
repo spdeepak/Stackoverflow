@@ -16,23 +16,23 @@ import com.destack.overflow.model.CommentItem;
  */
 public class CommentInitializer extends BaseInitializer {
 
-    private long fromDate;
+    private Long fromDate;
 
-    private long max;
+    private Long max;
 
-    private long min;
+    private Long min;
 
     private Order order;
 
-    private int page;
+    private Integer page;
 
-    private int pageSize;
+    private Integer pageSize;
 
     private CommentSortBy sort;
 
-    private long toDate;
+    private Long toDate;
 
-    private long comment_id;
+    private Long comment_id;
 
     /**
      * <b>NOTE</b>:Dates in the format of 'yyyyddMM'
@@ -53,8 +53,8 @@ public class CommentInitializer extends BaseInitializer {
      * @param comment_id
      * @throws ParseException
      */
-    public CommentInitializer(int page, int pageSize, long fromDate, long toDate, Order order, CommentSortBy sort,
-            Integer min, Integer max, Integer comment_id) throws ParseException {
+    public CommentInitializer(Integer page, Integer pageSize, Long fromDate, Long toDate, Order order,
+            CommentSortBy sort, Long min, Long max, Long comment_id) throws ParseException {
         this.page = page;
         this.pageSize = pageSize;
 
@@ -81,28 +81,28 @@ public class CommentInitializer extends BaseInitializer {
             this.max = originalFormat.parse(String.valueOf(max)).getTime() / 1000;
         }
         if (!this.sort.equals(AnswerSortBy.VOTES) && min < 20081509 && max < 20081509) {
-            this.min = 0;
-            this.max = 0;
+            this.min = 0L;
+            this.max = 0L;
         }
         if (comment_id != null) {
             this.comment_id = comment_id;
         } else {
-            this.comment_id = 0;
+            this.comment_id = 0L;
         }
     }
 
     @Override
-    public long getFromDate() {
+    public Long getFromDate() {
         return fromDate;
     }
 
     @Override
-    public long getMax() {
+    public Long getMax() {
         return max;
     }
 
     @Override
-    public long getMin() {
+    public Long getMin() {
         return min;
     }
 
@@ -112,12 +112,12 @@ public class CommentInitializer extends BaseInitializer {
     }
 
     @Override
-    public int getPage() {
+    public Integer getPage() {
         return page;
     }
 
     @Override
-    public int getPageSize() {
+    public Integer getPageSize() {
         return pageSize;
     }
 
@@ -126,26 +126,26 @@ public class CommentInitializer extends BaseInitializer {
     }
 
     @Override
-    public long getToDate() {
+    public Long getToDate() {
         return toDate;
     }
 
-    public long getComment_id() {
+    public Long getComment_id() {
         return comment_id;
     }
 
     @Override
-    public void setFromDate(long fromDate) {
+    public void setFromDate(Long fromDate) {
         this.fromDate = fromDate;
     }
 
     @Override
-    public void setMax(long max) {
+    public void setMax(Long max) {
         this.max = max;
     }
 
     @Override
-    public void setMin(long min) {
+    public void setMin(Long min) {
         this.min = min;
     }
 
@@ -155,12 +155,12 @@ public class CommentInitializer extends BaseInitializer {
     }
 
     @Override
-    public void setPage(int page) {
+    public void setPage(Integer page) {
         this.page = page;
     }
 
     @Override
-    public void setPageSize(int pageSize) {
+    public void setPageSize(Integer pageSize) {
         this.pageSize = pageSize;
     }
 
@@ -169,11 +169,11 @@ public class CommentInitializer extends BaseInitializer {
     }
 
     @Override
-    public void setToDate(long toDate) {
+    public void setToDate(Long toDate) {
         this.toDate = toDate;
     }
 
-    public void setComment_id(long comment_id) {
+    public void setComment_id(Long comment_id) {
         this.comment_id = comment_id;
     }
 }
