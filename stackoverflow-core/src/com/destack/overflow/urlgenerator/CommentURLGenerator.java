@@ -28,7 +28,7 @@ public class CommentURLGenerator extends BaseURLComponentGenerator implements UR
     }
 
     private String plainURLGenerator(CommentInitializer commentInitializer, String url) throws MalformedURLException {
-        url = url.concat(getBaseURL(commentInitializer));
+        url = url.concat(getBaseURLComponents(commentInitializer));
         if (commentInitializer.getSort() != null) {
             url += "&sort=".concat(commentInitializer.getSort().toString());
         } else {

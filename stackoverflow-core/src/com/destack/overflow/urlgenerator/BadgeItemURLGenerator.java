@@ -42,9 +42,9 @@ public class BadgeItemURLGenerator extends BaseURLComponentGenerator implements 
                 url += getOrder(Order.DESC.toString());
             }
             if (badgeItemInitializer.getSort() != null && !badgeItemInitializer.getSort().toString().isEmpty()) {
-                url += getSort(badgeItemInitializer.getSort().toString());
+                url += getSortURLComponent(badgeItemInitializer.getSort().toString());
             } else {
-                url += getSort(BadgeSortBy.RANK.toString());
+                url += getSortURLComponent(BadgeSortBy.RANK.toString());
             }
             if (badgeItemInitializer.getbMin() != null) {
                 url += getMin(badgeItemInitializer.getbMin().toString());
@@ -54,7 +54,7 @@ public class BadgeItemURLGenerator extends BaseURLComponentGenerator implements 
             }
             if (badgeItemInitializer.getBr().equals(EnumSet.of(BadgeRetriever.NORMAL, BadgeRetriever.NAME))) {
                 if (badgeItemInitializer.getInName() != null && !badgeItemInitializer.getInName().trim().isEmpty()) {
-                    url += getInName(badgeItemInitializer.getInName());
+                    url += getInNameURLComponent(badgeItemInitializer.getInName());
                 }
             }
             url += "&site=stackoverflow&filter=!-*f(6qLMLow-";
@@ -77,8 +77,8 @@ public class BadgeItemURLGenerator extends BaseURLComponentGenerator implements 
             }
         }
         if (badgeItemInitializer.getBr().equals(BadgeRetriever.RECIPIENT)) {
-            url += "&site=stackoverflow&filter=!-*f(6qLMLow-";
             url = urlFixer(url);
+            url += "&filter=!-*f(6qLMLow-";
             url = url.replace("badges?", "badges/recipients?");
             return new URL(url);
         }

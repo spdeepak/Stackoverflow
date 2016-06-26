@@ -42,8 +42,8 @@ public class AnswerInitializer extends BaseInitializer {
         if (fromDate > toDate) {
             throw new IllegalArgumentException("From Date(" + fromDate + ") is after (" + toDate + ")");
         }
-        setFromDate(fromDate > 20081509 ? originalFormat.parse(String.valueOf(fromDate)).getTime() / 1000 : 0);
-        setToDate(toDate != 0 ? originalFormat.parse(String.valueOf(toDate)).getTime() / 1000 : 0);
+        setFromDate(fromDate > 20081509 ? DATE_FORMAT.parse(String.valueOf(fromDate)).getTime() / 1000 : 0);
+        setToDate(toDate != 0 ? DATE_FORMAT.parse(String.valueOf(toDate)).getTime() / 1000 : 0);
         setSort(sort != null ? sort : AnswerSortBy.ACTIVITY);
         setOrder(order != null ? order : Order.DESC);
         if (getSort().equals(AnswerSortBy.VOTES)) {
@@ -51,8 +51,8 @@ public class AnswerInitializer extends BaseInitializer {
             setMax(max);
         }
         if (!getSort().equals(AnswerSortBy.VOTES) && min > 20081509 && max > 20081509) {
-            setMin(originalFormat.parse(String.valueOf(min)).getTime() / 1000);
-            setMax(originalFormat.parse(String.valueOf(max)).getTime() / 1000);
+            setMin(DATE_FORMAT.parse(String.valueOf(min)).getTime() / 1000);
+            setMax(DATE_FORMAT.parse(String.valueOf(max)).getTime() / 1000);
         }
         if (!getSort().equals(AnswerSortBy.VOTES) && min < 20081509 && max < 20081509) {
             setMin(0L);

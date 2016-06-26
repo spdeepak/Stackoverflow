@@ -25,11 +25,11 @@ public class AnswerItemURLGenerator extends BaseURLComponentGenerator implements
     @Override
     public URL urlGenerator(AnswerInitializer ai) throws MalformedURLException {
         String url = "https://api.stackexchange.com/2.2/answers?";
-        url += getBaseURL(ai);
+        url += getBaseURLComponents(ai);
         if (ai.getSort() != null && !ai.getSort().toString().isEmpty()) {
-            url += getSort(ai.getSort().toString());
+            url += getSortURLComponent(ai.getSort().toString());
         } else {
-            url += getSort(AnswerSortBy.ACTIVITY.toString());
+            url += getSortURLComponent(AnswerSortBy.ACTIVITY.toString());
         }
         url = urlFixer(url);
         return new URL(url);

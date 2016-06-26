@@ -10,7 +10,7 @@ import com.destack.overflow.enums.Order;
  */
 public class BaseInitializer {
 
-    protected static SimpleDateFormat originalFormat = new SimpleDateFormat("yyyyddMM");
+    protected static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyyddMM");
 
     private Long fromDate;
 

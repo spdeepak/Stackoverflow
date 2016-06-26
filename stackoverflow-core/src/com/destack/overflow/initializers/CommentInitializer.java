@@ -62,8 +62,8 @@ public class CommentInitializer extends BaseInitializer {
             throw new IllegalArgumentException("From Date(" + fromDate + ") is after (" + toDate + ")");
         }
 
-        this.fromDate = fromDate > 20081509 ? originalFormat.parse(String.valueOf(fromDate)).getTime() / 1000 : 0;
-        this.toDate = toDate != 0 ? originalFormat.parse(String.valueOf(toDate)).getTime() / 1000 : 0;
+        this.fromDate = fromDate > 20081509 ? DATE_FORMAT.parse(String.valueOf(fromDate)).getTime() / 1000 : 0;
+        this.toDate = toDate != 0 ? DATE_FORMAT.parse(String.valueOf(toDate)).getTime() / 1000 : 0;
         this.order = order != null ? order : Order.DESC;
         this.sort = sort != null ? sort : CommentSortBy.CREATION;
 
@@ -77,8 +77,8 @@ public class CommentInitializer extends BaseInitializer {
         }
 
         if (!this.sort.equals(AnswerSortBy.VOTES) && min > 20081509 && max > 20081509) {
-            this.min = originalFormat.parse(String.valueOf(min)).getTime() / 1000;
-            this.max = originalFormat.parse(String.valueOf(max)).getTime() / 1000;
+            this.min = DATE_FORMAT.parse(String.valueOf(min)).getTime() / 1000;
+            this.max = DATE_FORMAT.parse(String.valueOf(max)).getTime() / 1000;
         }
         if (!this.sort.equals(AnswerSortBy.VOTES) && min < 20081509 && max < 20081509) {
             this.min = 0L;

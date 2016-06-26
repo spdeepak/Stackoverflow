@@ -1,5 +1,8 @@
 package com.destack.overflow.urlgenerator;
 
+import java.net.MalformedURLException;
+import java.util.Set;
+
 import com.destack.overflow.enums.Order;
 import com.destack.overflow.initializers.BaseInitializer;
 
@@ -10,12 +13,12 @@ import com.destack.overflow.initializers.BaseInitializer;
 public class BaseURLComponentGenerator {
 
     /**
-     * Get base URL
+     * Get base URL Components
      * 
      * @param object
      * @return
      */
-    protected String getBaseURL(BaseInitializer object) {
+    protected String getBaseURLComponents(BaseInitializer object) {
         String url = "";
         if (object.getPage() != 0 && object.getPage() != null) {
             url += "&page=".concat(String.valueOf(object.getPage()));
@@ -48,6 +51,9 @@ public class BaseURLComponentGenerator {
         }
         if (object.getMaxDate() != 0 && object.getMaxDate() != null) {
             url += "&max=".concat(String.valueOf(object.getMaxDate()));
+        }
+        if (object.getMaxString() != null && !object.getMaxString().trim().isEmpty()) {
+            url += "&max=".concat(String.valueOf(object.getMaxString()));
         }
         if (object.getMaxString() != null && !object.getMaxString().trim().isEmpty()) {
             url += "&max=".concat(String.valueOf(object.getMaxString()));
@@ -95,7 +101,7 @@ public class BaseURLComponentGenerator {
         }
     }
 
-    protected String getSort(String sort) {
+    protected String getSortURLComponent(String sort) {
         if (sort != null && !sort.trim().isEmpty()) {
             return "&sort=".concat(sort);
         } else {
@@ -119,7 +125,7 @@ public class BaseURLComponentGenerator {
         }
     }
 
-    protected String getInName(String inName) {
+    protected String getInNameURLComponent(String inName) {
         if (inName != null && !inName.trim().isEmpty()) {
             return "&inname=".concat(inName);
         } else {
@@ -127,6 +133,29 @@ public class BaseURLComponentGenerator {
         }
     }
 
+    protected String getSetURLComponent(Set<String> stringSet) {
+        String str = null;
+        if (!stringSet.isEmpty()) {
+            for (String st : stringSet) {
+                str += st.trim().concat(";");
+            }
+            if (str != null && str.endsWith(";")) {
+                //removes the last ;
+                str = str.substring(0, str.lastIndexOf(";"));
+            }
+            return str;
+        } else {
+            return "";
+        }
+    }
+
+    /**
+     * Fixes {@link URL} if it contains "?&" which can be a {@link MalformedURLException}
+     * 
+     * @param url
+     *            {@link URL} in {@link String} format
+     * @return Properly Formed URL
+     */
     protected String urlFixer(String url) {
         if (url.contains("?&")) {
             url = url.replace("?&", "?");
