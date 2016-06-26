@@ -14,13 +14,24 @@ public enum TagSortBy {
     /**
      * Min & Max would be the count
      */
-    POPULAR,
+    POPULAR("popular"),
     /**
      * Min & Max would be Date
      */
-    ACTIVITY,
+    ACTIVITY("activity"),
     /**
      * Min & Max would be starting letter of the name
      */
-    NAME;
+    NAME("name");
+
+    private String name;
+
+    private TagSortBy(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }

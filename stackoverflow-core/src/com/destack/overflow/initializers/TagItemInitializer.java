@@ -7,6 +7,7 @@ import com.destack.overflow.enums.Order;
 import com.destack.overflow.enums.TagPeriod;
 import com.destack.overflow.enums.TagRetriever;
 import com.destack.overflow.enums.TagSortBy;
+import com.destack.overflow.enums.TagSortBySynonyms;
 import com.destack.overflow.model.TagItem;
 
 /**
@@ -16,6 +17,8 @@ import com.destack.overflow.model.TagItem;
 public class TagItemInitializer extends BaseInitializer {
 
     private TagSortBy sort;
+
+    private TagSortBySynonyms sortSynonyms;
 
     private Long badge_id;
 
@@ -97,16 +100,16 @@ public class TagItemInitializer extends BaseInitializer {
      *            {@link TagSortBy}
      * @throws ParseException
      */
-    public TagItemInitializer(Integer page, Integer pageSize, Long fromDate, Long toDate, Order order, TagSortBy sort,
-            Object min, Object max) throws ParseException {
+    public TagItemInitializer(Integer page, Integer pageSize, Long fromDate, Long toDate, Order order,
+            TagSortBySynonyms sort, Object min, Object max) throws ParseException {
         setPage(page);
         setPageSize(pageSize);
         setFromDate(fromDate > 20081509 ? DATE_FORMAT.parse(String.valueOf(fromDate)).getTime() / 1000 : 0);
         setToDate(toDate != 0 ? DATE_FORMAT.parse(String.valueOf(toDate)).getTime() / 1000 : 0);
         setOrder(order != null ? order : Order.DESC);
-        setSort(sort == TagSortBy.ACTIVITY || sort == TagSortBy.POPULAR || sort == TagSortBy.NAME ? sort
-                : TagSortBy.POPULAR);
-        setMinAndMax(getSort(), min, max);
+        setSortSynonyms(sort == TagSortBySynonyms.CREATION || sort == TagSortBySynonyms.APPLIED
+                || sort == TagSortBySynonyms.ACTIVITY ? sort : TagSortBySynonyms.APPLIED);
+        setMinAndMax(getSortSynonyms(), min, max);
         tagRetriever = TagRetriever.SYNONYMS;
     }
 
@@ -152,8 +155,7 @@ public class TagItemInitializer extends BaseInitializer {
             this.tagRetriever = tagRetriever;
         } else {
             throw new IllegalArgumentException("This contructor takes either of ("
-                    + TagRetriever.TAGS.toString().concat(",")
-                    + TagRetriever.TAGS_SYNONYMS.toString().concat(")"));
+                    + TagRetriever.TAGS.toString().concat(",") + TagRetriever.TAGS_SYNONYMS.toString().concat(")"));
         }
     }
 
@@ -271,6 +273,28 @@ public class TagItemInitializer extends BaseInitializer {
         }
     }
 
+    private void setMinAndMax(TagSortBySynonyms sort, Object min, Object max) throws ParseException {
+        if (getSortSynonyms().equals(TagSortBySynonyms.APPLIED)) {
+            if (min.getClass().equals(Number.class) && max.getClass().equals(Number.class)) {
+                setMin((Long) min);
+                setMax((Long) max);
+                return;
+            } else {
+                throw new IllegalArgumentException("When TagSortBySynonyms is APPLIED min and max should be count");
+            }
+        } else if (getSortSynonyms().equals(TagSortBySynonyms.ACTIVITY)
+                || getSortSynonyms().equals(TagSortBySynonyms.CREATION)) {
+            if (min.getClass().equals(Number.class) && max.getClass().equals(Number.class)) {
+                setMinDate((Long) min > 20081509 ? DATE_FORMAT.parse(String.valueOf(min)).getTime() / 1000 : 0);
+                setMaxDate((Long) max > 20081509 ? DATE_FORMAT.parse(String.valueOf(max)).getTime() / 1000 : 0);
+                return;
+            } else {
+                throw new IllegalArgumentException(
+                        "When TagSortBySynonyms is ACTIVITY/CREATION min and max should be Date(yyyyddMM)");
+            }
+        }
+    }
+
     public TagSortBy getSort() {
         return sort;
     }
@@ -297,6 +321,14 @@ public class TagItemInitializer extends BaseInitializer {
 
     public String getInName() {
         return inName;
+    }
+
+    public TagSortBySynonyms getSortSynonyms() {
+        return sortSynonyms;
+    }
+
+    public void setSortSynonyms(TagSortBySynonyms sortSynonyms) {
+        this.sortSynonyms = sortSynonyms;
     }
 
     public void setInName(String inName) {

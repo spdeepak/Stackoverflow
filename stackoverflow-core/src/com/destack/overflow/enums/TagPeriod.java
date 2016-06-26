@@ -11,9 +11,20 @@ public enum TagPeriod {
     /**
      * Answerers active in a single tag of all-time or the last 30 days
      */
-    ALL_TIME,
+    ALL_TIME("all_time"),
     /**
      * Answerers active in a single tag of the last 30 days
      */
-    MONTH;
+    MONTH("month");
+
+    private String name;
+
+    private TagPeriod(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }
