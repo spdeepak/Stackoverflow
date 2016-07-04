@@ -18,6 +18,7 @@ public class TagItemURLGenerator extends BaseURLComponentGenerator implements UR
     private static final String URL = "https://api.stackexchange.com/2.2/tags?";
 
     private static final String POSTFIX = "&filter=!-*f(6qOIRgw-";
+
     @Override
     public URL urlGenerator(TagItemInitializer tagItemInitializer)
             throws MalformedURLException, IllegalAccessException {
