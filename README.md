@@ -1,4 +1,4 @@
-https://travis-ci.org/spdeepak/Stackoverflow.svg?branch=master
+[![Build Status](https://travis-ci.org/spdeepak/Stackoverflow.svg?branch=master)](https://travis-ci.org/spdeepak/Stackoverflow)
 
 # Stackoverflow Java API (Under Construction)
 
