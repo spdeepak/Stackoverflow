@@ -1,3 +1,5 @@
+https://travis-ci.org/spdeepak/Stackoverflow.svg?branch=master
+
 # Stackoverflow Java API (Under Construction)
 
 Stackoverflow Rest API - https://api.stackexchange.com/docs
