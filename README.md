@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/spdeepak/Stackoverflow.svg?branch=master)](https://travis-ci.org/spdeepak/Stackoverflow) [![Coverage Status](https://coveralls.io/repos/github/spdeepak/textmining/badge.svg?branch=master)](https://coveralls.io/github/spdeepak/textmining?branch=master)
+[![Build Status](https://travis-ci.org/spdeepak/Stackoverflow.svg?branch=master)](https://travis-ci.org/spdeepak/Stackoverflow) [![Coverage Status](https://coveralls.io/repos/github/spdeepak/Stackoverflow/badge.svg?branch=master)](https://coveralls.io/github/spdeepak/Stackoverflow?branch=master)
 
 # Stackoverflow Java API (Under Construction)
 
