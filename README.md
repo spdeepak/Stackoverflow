@@ -1,4 +1,5 @@
-[![Build Status](https://travis-ci.org/spdeepak/Stackoverflow.svg?branch=master)](https://travis-ci.org/spdeepak/Stackoverflow)
+[![Build Status](https://travis-ci.org/spdeepak/Stackoverflow.svg?branch=master)](https://travis-ci.org/spdeepak/Stackoverflow) assertEquals(ItemStatus.PENDING_APPROVAL, creditApprovalItem.getStatus());
+        assertEquals(ItemStatus.PENDING_APPROVAL, creditApprovalItem.getInvoiceItem().getStatus());
 
 # Stackoverflow Java API (Under Construction)
 
