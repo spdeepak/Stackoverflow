@@ -1,5 +1,4 @@
-[![Build Status](https://travis-ci.org/spdeepak/Stackoverflow.svg?branch=master)](https://travis-ci.org/spdeepak/Stackoverflow) assertEquals(ItemStatus.PENDING_APPROVAL, creditApprovalItem.getStatus());
-        assertEquals(ItemStatus.PENDING_APPROVAL, creditApprovalItem.getInvoiceItem().getStatus());
+[![Build Status](https://travis-ci.org/spdeepak/Stackoverflow.svg?branch=master)](https://travis-ci.org/spdeepak/Stackoverflow) [![Coverage Status](https://coveralls.io/repos/github/spdeepak/textmining/badge.svg?branch=master)](https://coveralls.io/github/spdeepak/textmining?branch=master)
 
 # Stackoverflow Java API (Under Construction)
 
