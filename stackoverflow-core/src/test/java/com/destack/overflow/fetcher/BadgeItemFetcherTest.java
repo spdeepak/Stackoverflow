@@ -28,7 +28,7 @@ public class BadgeItemFetcherTest {
 
     @Test
     public void badgesExampleTest() throws FileNotFoundException, MalformedURLException, IOException {
-        File file = new File(System.getProperty("user.dir").concat("/resources/JSONs/badgesexample.json"));
+        File file = new File(System.getProperty("user.dir") + "/src/main/resources/JSONs/badgesexample.json");
         List<BadgeItem> badgeItems = badgeItemFetcher.objectFetcher(file.toURI().toURL());
         for (BadgeItem badgeItem : badgeItems) {
             assertNotNull(badgeItem);
@@ -46,7 +46,7 @@ public class BadgeItemFetcherTest {
 
     @Test
     public void badgesRecipientsExampleTest() throws FileNotFoundException, MalformedURLException, IOException {
-        File file = new File(System.getProperty("user.dir").concat("/resources/JSONs/badgerecipientsexample.json"));
+        File file = new File(System.getProperty("user.dir") + "/src/main/resources/JSONs/badgerecipientsexample.json");
         List<BadgeItem> badgeItems = badgeItemFetcher.objectFetcher(file.toURI().toURL());
         for (BadgeItem badgeItem : badgeItems) {
             assertNotNull(badgeItem);

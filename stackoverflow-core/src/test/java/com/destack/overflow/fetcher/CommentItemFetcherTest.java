@@ -25,7 +25,7 @@ public class CommentItemFetcherTest {
 
     @Test
     public void test() throws FileNotFoundException, IOException {
-        File file = new File(System.getProperty("user.dir") + "/resources/JSONs/commentexample.json");
+        File file = new File(System.getProperty("user.dir") + "/src/main/resources/JSONs/commentexample.json");
         List<CommentItem> commentItems = commentItemFetcher.objectFetcher(file.toURI().toURL());
         assertEquals(10, commentItems.size());
         assertEquals(1096, commentItems.get(1).getCommentOwner().getReputation().intValue());

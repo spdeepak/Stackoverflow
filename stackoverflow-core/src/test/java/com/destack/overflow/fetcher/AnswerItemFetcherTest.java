@@ -25,7 +25,7 @@ public class AnswerItemFetcherTest {
 
     @Test
     public void test() throws FileNotFoundException, IOException {
-        File file = new File(System.getProperty("user.dir") + "/resources/JSONs/answerexample.json");
+        File file = new File(System.getProperty("user.dir") + "/src/main/resources/JSONs/answerexample.json");
         List<AnswerItem> answerItems = aAnswerItemFetcher.objectFetcher(file.toURI().toURL());
         assertEquals(10, answerItems.size());
         assertEquals(1102, answerItems.get(0).getAnswerOwner().getReputation().intValue());
