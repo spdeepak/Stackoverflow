@@ -2,7 +2,7 @@
     <wb-module deploy-name="stackoverflow-core">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/resources"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
         <property name="context-root" value="stackoverflow-core"/>
         <property name="java-output-path" value="/stackoverflow-core/target/classes"/>
     </wb-module>
