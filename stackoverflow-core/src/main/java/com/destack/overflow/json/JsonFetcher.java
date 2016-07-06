@@ -9,6 +9,8 @@ import java.net.URLConnection;
 import java.util.zip.GZIPInputStream;
 
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * 
@@ -18,6 +20,8 @@ import org.json.JSONObject;
  *
  */
 public class JsonFetcher {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(JsonFetcher.class);
 
     public static JSONObject urlToJson(String urlString) throws MalformedURLException {
         return urlToJson(new URL(urlString));
@@ -33,8 +37,10 @@ public class JsonFetcher {
             BufferedReader in = null;
             if (urlCon.getHeaderField("Content-Encoding") != null
                     && urlCon.getHeaderField("Content-Encoding").equals("gzip")) {
+                LOGGER.info("reading data from URL as GZIP Stream");
                 in = new BufferedReader(new InputStreamReader(new GZIPInputStream(urlCon.getInputStream())));
             } else {
+                LOGGER.info("reading data from URL as InputStream");
                 in = new BufferedReader(new InputStreamReader(urlCon.getInputStream()));
             }
             String inputLine;
@@ -45,8 +51,12 @@ public class JsonFetcher {
             }
             in.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            LOGGER.info("Exception while reading JSON from URL - {}", e);
         }
-        return new JSONObject(sb.toString());
+        if (sb != null) {
+            return new JSONObject(sb.toString());
+        } else {
+            return new JSONObject("");
+        }
     }
 }
