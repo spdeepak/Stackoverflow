@@ -13,11 +13,11 @@ public class JsonFetcherTest {
     public void test() throws MalformedURLException {
         assertNotNull(
                 JsonFetcher
-                .getJson("https://api.stackexchange.com/2.2/answers?order=desc&sort=activity&site=stackoverflow")
+                .urlToJson("https://api.stackexchange.com/2.2/answers?order=desc&sort=activity&site=stackoverflow")
                 .get("items")
                 .toString());
         assertNotNull(JsonFetcher
-                .getJson(
+                .urlToJson(
                         new URL("https://api.stackexchange.com/2.2/answers?order=desc&sort=activity&site=stackoverflow"))
                 .get("items").toString());
     }

@@ -58,32 +58,34 @@ public class CommentInitializer extends BaseInitializer {
         this.page = page;
         this.pageSize = pageSize;
 
-        if (this.fromDate > this.toDate) {
-            throw new IllegalArgumentException("From Date(" + fromDate + ") is after (" + toDate + ")");
+        if (fromDate != null && toDate != null) {
+            if (fromDate > toDate) {
+                throw new IllegalArgumentException("From Date(" + fromDate + ") is after (" + toDate + ")");
+            } else {
+                this.fromDate = fromDate > 20081509 ? DATE_FORMAT.parse(String.valueOf(fromDate)).getTime() / 1000 : 0;
+                this.toDate = toDate != 0 ? DATE_FORMAT.parse(String.valueOf(toDate)).getTime() / 1000 : 0;
+            }
         }
-
-        this.fromDate = fromDate > 20081509 ? DATE_FORMAT.parse(String.valueOf(fromDate)).getTime() / 1000 : 0;
-        this.toDate = toDate != 0 ? DATE_FORMAT.parse(String.valueOf(toDate)).getTime() / 1000 : 0;
         this.order = order != null ? order : Order.DESC;
         this.sort = sort != null ? sort : CommentSortBy.CREATION;
 
-        if (this.min > this.max) {
-            throw new IllegalArgumentException("Min (" + min + ") is greater than (" + max + ")");
+        if (max != null && min != null) {
+            if (min.equals(min) || max > max) {
+                if (this.sort.equals(AnswerSortBy.VOTES)) {
+                    this.min = min.longValue();
+                    this.max = max.longValue();
+                }
+                if (!this.sort.equals(AnswerSortBy.VOTES) && min > 20081509 && max > 20081509) {
+                    this.min = DATE_FORMAT.parse(String.valueOf(min)).getTime() / 1000;
+                    this.max = DATE_FORMAT.parse(String.valueOf(max)).getTime() / 1000;
+                }
+                if (!this.sort.equals(AnswerSortBy.VOTES) && min < 20081509 && max < 20081509) {
+                    this.min = 0L;
+                    this.max = 0L;
+                }
+            }
         }
 
-        if (this.sort.equals(AnswerSortBy.VOTES)) {
-            this.min = min.longValue();
-            this.max = max.longValue();
-        }
-
-        if (!this.sort.equals(AnswerSortBy.VOTES) && min > 20081509 && max > 20081509) {
-            this.min = DATE_FORMAT.parse(String.valueOf(min)).getTime() / 1000;
-            this.max = DATE_FORMAT.parse(String.valueOf(max)).getTime() / 1000;
-        }
-        if (!this.sort.equals(AnswerSortBy.VOTES) && min < 20081509 && max < 20081509) {
-            this.min = 0L;
-            this.max = 0L;
-        }
         if (comment_id != null) {
             this.comment_id = comment_id;
         } else {

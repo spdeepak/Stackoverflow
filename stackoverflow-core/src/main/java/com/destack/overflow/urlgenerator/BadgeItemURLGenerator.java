@@ -57,8 +57,8 @@ public class BadgeItemURLGenerator extends BaseURLComponentGenerator implements 
                     url += getInNameURLComponent(badgeItemInitializer.getInName());
                 }
             }
-            url += "&site=stackoverflow&filter=!-*f(6qLMLow-";
             url = urlFixer(url);
+            url += "&filter=!-*f(6qLMLow-";
             if (badgeItemInitializer.getBr().equals(BadgeRetriever.NORMAL)) {
                 return new URL(url);
             } else if (badgeItemInitializer.getBr().equals(BadgeRetriever.NAME)) {
@@ -89,8 +89,8 @@ public class BadgeItemURLGenerator extends BaseURLComponentGenerator implements 
             } else {
                 throw new IllegalAccessException("ID should not be zero");
             }
-            url += "&site=stackoverflow&filter=!-*f(6qLMLow-";
             url = urlFixer(url);
+            url += "&filter=!-*f(6qLMLow-";
             return new URL(url);
         }
         throw new InvalidParameterException("Invalid arguments passed");

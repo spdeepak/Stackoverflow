@@ -18,7 +18,7 @@ public class PrivilegeItemFetcher {
     public List<PrivilegeItem> objectFetcher() throws FileNotFoundException, IOException {
         PrivilegeItem pItem;
         List<PrivilegeItem> pItems = new ArrayList();
-        JSONArray items = JsonFetcher.getJson(URL).getJSONArray("items");
+        JSONArray items = JsonFetcher.urlToJson(URL).getJSONArray("items");
         JSONObject item;
         for (int i = 0; i < items.length(); i++) {
             item = items.getJSONObject(i);

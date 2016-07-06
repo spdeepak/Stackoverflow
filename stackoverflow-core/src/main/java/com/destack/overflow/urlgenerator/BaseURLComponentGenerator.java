@@ -20,16 +20,16 @@ public class BaseURLComponentGenerator {
      */
     protected String getBaseURLComponents(BaseInitializer object) {
         String url = "";
-        if (object.getPage() != 0 && object.getPage() != null) {
+        if (object.getPage() != null && object.getPage() != 0) {
             url += "&page=".concat(String.valueOf(object.getPage()));
         }
-        if (object.getPageSize() != 0 && object.getPageSize() != null) {
+        if (object.getPageSize() != null && object.getPageSize() != 0) {
             url += "&pagesize=".concat(String.valueOf(object.getPageSize()));
         }
-        if (object.getFromDate() != 0 && object.getFromDate() != null) {
+        if (object.getFromDate() != null && object.getFromDate() != 0) {
             url += "&fromdate=".concat(String.valueOf(object.getFromDate()));
         }
-        if (object.getToDate() != 0 && object.getToDate() != null) {
+        if (object.getToDate() != null && object.getToDate() != 0) {
             url += "&todate=".concat(String.valueOf(object.getToDate()));
         }
         if (object.getOrder() != null && !object.getOrder().toString().isEmpty()) {
@@ -37,19 +37,19 @@ public class BaseURLComponentGenerator {
         } else {
             url += "&order=".concat(Order.DESC.toString());
         }
-        if (object.getMin() != 0 && object.getMin() != null) {
+        if (object.getMin() != null && object.getMin() != 0) {
             url += "&min=".concat(String.valueOf(object.getMin()));
         }
-        if (object.getMinDate() != 0 && object.getMinDate() != null) {
+        if (object.getMinDate() != null && object.getMinDate() != 0) {
             url += "&min=".concat(String.valueOf(object.getMinDate()));
         }
         if (object.getMinString() != null && !object.getMinString().trim().isEmpty()) {
             url += "&min=".concat(String.valueOf(object.getMinString()));
         }
-        if (object.getMax() != 0 && object.getMax() != null) {
+        if (object.getMax() != null && object.getMax() != 0) {
             url += "&max=".concat(String.valueOf(object.getMax()));
         }
-        if (object.getMaxDate() != 0 && object.getMaxDate() != null) {
+        if (object.getMaxDate() != null && object.getMaxDate() != 0) {
             url += "&max=".concat(String.valueOf(object.getMaxDate()));
         }
         if (object.getMaxString() != null && !object.getMaxString().trim().isEmpty()) {

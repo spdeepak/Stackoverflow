@@ -20,7 +20,7 @@ public class InfoItemFetcher {
 
     public InfoItem objectFetcher() throws MalformedURLException {
         InfoItem infoItem = new InfoItem();
-        JSONArray items = JsonFetcher.getJson(URL).getJSONArray("items");
+        JSONArray items = JsonFetcher.urlToJson(URL).getJSONArray("items");
         JSONObject item;
         int i = 0;
         while (i == 0) {

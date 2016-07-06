@@ -22,10 +22,10 @@ public class BadgeItemFetcher implements Fetcher<BadgeItem> {
         BadgeUser badgeUser;
         BadgeCount badgeCount;
         List<BadgeItem> badgeItems = new ArrayList();
-        if (!JsonFetcher.getJson(jsonURL).has("items")) {
+        if (!JsonFetcher.urlToJson(jsonURL).has("items")) {
             errorMessages(jsonURL);
         }
-        JSONArray items = JsonFetcher.getJson(jsonURL).getJSONArray("items");
+        JSONArray items = JsonFetcher.urlToJson(jsonURL).getJSONArray("items");
         JSONObject item;
         JSONObject user;
         JSONObject count;

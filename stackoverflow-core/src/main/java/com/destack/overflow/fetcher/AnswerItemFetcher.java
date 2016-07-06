@@ -29,11 +29,11 @@ public class AnswerItemFetcher implements Fetcher<AnswerItem> {
     public List<AnswerItem> objectFetcher(URL jsonURL) throws FileNotFoundException, IOException {
         AnswerItem answerItem;
         Owner answerOwner;
-        if (!JsonFetcher.getJson(jsonURL).has("items")) {
+        if (!JsonFetcher.urlToJson(jsonURL).has("items")) {
             errorMessages(jsonURL);
         }
         List<AnswerItem> answerItemList = new ArrayList();
-        JSONArray items = JsonFetcher.getJson(jsonURL).getJSONArray("items");
+        JSONArray items = JsonFetcher.urlToJson(jsonURL).getJSONArray("items");
         JSONObject item;
         JSONObject owner;
         for (int i = 0; i < items.length(); i++) {
