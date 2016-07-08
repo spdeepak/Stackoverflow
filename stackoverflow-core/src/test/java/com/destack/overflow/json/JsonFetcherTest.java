@@ -5,8 +5,10 @@ import static org.junit.Assert.assertNotNull;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
+@Ignore
 public class JsonFetcherTest {
 
     @Test
