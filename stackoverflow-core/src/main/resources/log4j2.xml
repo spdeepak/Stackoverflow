@@ -20,9 +20,10 @@
 		</Logger>
 
 		<Root level="trace" />
+		<Root level="info" />
 		<Root level="error" />
 		<Root level="debug">
-			<AppenderRef ref="MyFile" />
+			<AppenderRef ref="Console" />
 		</Root>
 	</Loggers>
 

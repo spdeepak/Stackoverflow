@@ -1,7 +1,6 @@
 package com.destack.overflow.initializers;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.EnumSet;
 
 import com.destack.overflow.enums.BadgeRetriever;
@@ -14,8 +13,6 @@ import com.destack.overflow.enums.Order;
  *
  */
 public class BadgeItemInitializer extends BaseInitializer {
-
-    private static SimpleDateFormat originalFormat = new SimpleDateFormat("yyyyddMM");
 
     private MaxMin bMax;
 
@@ -47,8 +44,8 @@ public class BadgeItemInitializer extends BaseInitializer {
             BadgeSortBy sort, String inName, boolean nameRequired) throws ParseException {
         setPage(page);
         setPageSize(pageSize);
-        setFromDate(fromDate > 20081509 ? originalFormat.parse(String.valueOf(fromDate)).getTime() / 1000 : 0);
-        setToDate(toDate != 0 ? originalFormat.parse(String.valueOf(toDate)).getTime() / 1000 : 0);
+        setFromDate(fromDate > 20081509 ? DATE_FORMAT.parse(String.valueOf(fromDate)).getTime() / 1000 : 0);
+        setToDate(toDate != 0 ? DATE_FORMAT.parse(String.valueOf(toDate)).getTime() / 1000 : 0);
         setOrder(order != null ? order : Order.DESC);
         setbMax((max.equals(MaxMin.BRONZE) || max.equals(MaxMin.GOLD) || max.equals(MaxMin.SILVER)) ? max : null);
         setbMin((max.equals(MaxMin.BRONZE) || max.equals(MaxMin.GOLD) || max.equals(MaxMin.SILVER)) ? min : null);
@@ -66,8 +63,8 @@ public class BadgeItemInitializer extends BaseInitializer {
             BadgeSortBy sort, boolean tagRequired, String inName) throws ParseException {
         setPage(page);
         setPageSize(pageSize);
-        setFromDate(fromDate > 20081509 ? originalFormat.parse(String.valueOf(fromDate)).getTime() / 1000 : 0);
-        setToDate(toDate != 0 ? originalFormat.parse(String.valueOf(toDate)).getTime() / 1000 : 0);
+        setFromDate(fromDate > 20081509 ? DATE_FORMAT.parse(String.valueOf(fromDate)).getTime() / 1000 : 0);
+        setToDate(toDate != 0 ? DATE_FORMAT.parse(String.valueOf(toDate)).getTime() / 1000 : 0);
         setOrder(order != null ? order : Order.DESC);
         setbMax((max.equals(MaxMin.BRONZE) || max.equals(MaxMin.GOLD) || max.equals(MaxMin.SILVER)) ? max : null);
         setbMin((max.equals(MaxMin.BRONZE) || max.equals(MaxMin.GOLD) || max.equals(MaxMin.SILVER)) ? min : null);
@@ -97,8 +94,8 @@ public class BadgeItemInitializer extends BaseInitializer {
             BadgeSortBy sort, long badge_id) throws ParseException {
         setPage(page);
         setPageSize(pageSize);
-        setFromDate(fromDate > 20081509 ? originalFormat.parse(String.valueOf(fromDate)).getTime() / 1000 : 0);
-        setToDate(toDate != 0 ? originalFormat.parse(String.valueOf(toDate)).getTime() / 1000 : 0);
+        setFromDate(fromDate > 20081509 ? DATE_FORMAT.parse(String.valueOf(fromDate)).getTime() / 1000 : 0);
+        setToDate(toDate != 0 ? DATE_FORMAT.parse(String.valueOf(toDate)).getTime() / 1000 : 0);
         setOrder(order != null ? order : Order.DESC);
         setbMax((max.equals(MaxMin.BRONZE) || max.equals(MaxMin.GOLD) || max.equals(MaxMin.SILVER)) ? max : null);
         setbMin((max.equals(MaxMin.BRONZE) || max.equals(MaxMin.GOLD) || max.equals(MaxMin.SILVER)) ? min : null);
@@ -120,8 +117,8 @@ public class BadgeItemInitializer extends BaseInitializer {
     public BadgeItemInitializer(int page, int pageSize, long fromDate, long toDate) throws ParseException {
         setPage(page);
         setPageSize(pageSize);
-        setFromDate(fromDate > 20081509 ? originalFormat.parse(String.valueOf(fromDate)).getTime() / 1000 : 0);
-        setToDate(toDate != 0 ? originalFormat.parse(String.valueOf(toDate)).getTime() / 1000 : 0);
+        setFromDate(fromDate > 20081509 ? DATE_FORMAT.parse(String.valueOf(fromDate)).getTime() / 1000 : 0);
+        setToDate(toDate != 0 ? DATE_FORMAT.parse(String.valueOf(toDate)).getTime() / 1000 : 0);
         br = BadgeRetriever.RECIPIENT;
     }
 
@@ -137,8 +134,8 @@ public class BadgeItemInitializer extends BaseInitializer {
             throws ParseException {
         setPage(page);
         setPageSize(pageSize);
-        setFromDate(fromDate > 20081509 ? originalFormat.parse(String.valueOf(fromDate)).getTime() / 1000 : 0);
-        setToDate(toDate != 0 ? originalFormat.parse(String.valueOf(toDate)).getTime() / 1000 : 0);
+        setFromDate(fromDate > 20081509 ? DATE_FORMAT.parse(String.valueOf(fromDate)).getTime() / 1000 : 0);
+        setToDate(toDate != 0 ? DATE_FORMAT.parse(String.valueOf(toDate)).getTime() / 1000 : 0);
         this.badge_id = badge_id;
         br = BadgeRetriever.ID_RECIPIENT;
     }

@@ -74,8 +74,4 @@ public class BadgeItemFetcherTest {
         assertNotNull(badgeItems.get(0).getBadgeUser().getBadgeCount().getGold().equals(0));
     }
 
-    public void setBadgeItemFetcher(BadgeItemFetcher badgeItemFetcher) {
-        this.badgeItemFetcher = badgeItemFetcher;
-    }
-
 }
