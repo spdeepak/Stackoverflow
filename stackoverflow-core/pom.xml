@@ -19,7 +19,7 @@
 	</properties>
 
 	<build>
-		<finalName>textmining</finalName>
+		<finalName>Stackoverflow</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
