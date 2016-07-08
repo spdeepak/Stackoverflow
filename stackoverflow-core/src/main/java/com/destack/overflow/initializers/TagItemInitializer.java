@@ -206,7 +206,7 @@ public class TagItemInitializer extends BaseInitializer {
             TagRetriever tagRetriever) {
         setPage(page);
         setPageSize(pageSize);
-        if (tag != null || !tag.trim().isEmpty()) {
+        if (tag != null && !tag.trim().isEmpty()) {
             this.tag = tag;
         } else {
             throw new IllegalArgumentException("Tag is mandatory");
@@ -238,7 +238,7 @@ public class TagItemInitializer extends BaseInitializer {
     public TagItemInitializer(Integer page, Integer pageSize, Set<String> tags) {
         setPage(page);
         setPageSize(pageSize);
-        if (tags != null || tags.size() > 0) {
+        if (tags != null && tags.size() > 0) {
             this.tags = tags;
         } else {
             throw new IllegalArgumentException("Wrong Set of tags given Or No tags given. Tags are Required");
