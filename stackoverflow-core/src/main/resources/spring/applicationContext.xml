@@ -16,6 +16,8 @@
 	<bean id="commentURLGenerator" class="com.destack.overflow.urlgenerator.CommentURLGenerator" />
 
 	<bean id="badgeItemURLGenerator" class="com.destack.overflow.urlgenerator.BadgeItemURLGenerator" />
+	
+	<bean id="tagItemURLGenerator" class="com.destack.overflow.urlgenerator.TagItemURLGenerator" />
 
 	<bean id="answerItemFetcher" class="com.destack.overflow.fetcher.AnswerItemFetcher" />
 

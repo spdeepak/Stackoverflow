@@ -247,27 +247,38 @@ public class TagItemInitializer extends BaseInitializer {
 
     private void setMinAndMax(TagSortBy sort, Object min, Object max) throws ParseException {
         if (getSort().equals(TagSortBy.POPULAR)) {
-            if (min.getClass().equals(Number.class) && max.getClass().equals(Number.class)) {
-                setMin((Long) min);
-                setMax((Long) max);
-                return;
-            } else {
+            if (min != null && min instanceof Number) {
+                setMin(((Number) min).longValue());
+            } else if (min != null && !(min instanceof Number)) {
+                throw new IllegalArgumentException("When TagSortBy is POPULAR min and max should be count");
+            }
+            if (max != null && max instanceof Number) {
+                setMax(((Number) max).longValue());
+            } else if (max != null && !(max instanceof Number)) {
                 throw new IllegalArgumentException("When TagSortBy is POPULAR min and max should be count");
             }
         } else if (getSort().equals(TagSortBy.ACTIVITY)) {
-            if (min.getClass().equals(Number.class) && max.getClass().equals(Number.class)) {
-                setMinDate((Long) min > 20081509 ? DATE_FORMAT.parse(String.valueOf(min)).getTime() / 1000 : 0);
-                setMaxDate((Long) max > 20081509 ? DATE_FORMAT.parse(String.valueOf(max)).getTime() / 1000 : 0);
-                return;
-            } else {
+            if (min != null && min instanceof Number) {
+                setMinDate(((Number) min).longValue() > 20081509
+                        ? DATE_FORMAT.parse(String.valueOf(min)).getTime() / 1000 : 0);
+            } else if (min != null && !(min instanceof Number)) {
+                throw new IllegalArgumentException("When TagSortBy is ACTIVITY min and max should be Date(yyyyddMM)");
+            }
+            if (max != null && max instanceof Number) {
+                setMaxDate(((Number) max).longValue() > 20081509
+                        ? DATE_FORMAT.parse(String.valueOf(max)).getTime() / 1000 : 0);
+            } else if (max != null && !(max instanceof Number)) {
                 throw new IllegalArgumentException("When TagSortBy is ACTIVITY min and max should be Date(yyyyddMM)");
             }
         } else if (getSort().equals(TagSortBy.NAME)) {
-            if (min.getClass().equals(String.class) && max.getClass().equals(String.class)) {
+            if (min != null && min instanceof String) {
                 setMinString((String) min);
+            } else if (min != null && !(min instanceof String)) {
+                throw new IllegalArgumentException("When TagSortBy is ACTIVITY min and max should be Tag Name");
+            }
+            if (max != null && max instanceof String) {
                 setMaxString((String) max);
-                return;
-            } else {
+            } else if (max != null && !(max instanceof String)) {
                 throw new IllegalArgumentException("When TagSortBy is ACTIVITY min and max should be Tag Name");
             }
         }
@@ -275,20 +286,31 @@ public class TagItemInitializer extends BaseInitializer {
 
     private void setMinAndMax(TagSortBySynonyms sort, Object min, Object max) throws ParseException {
         if (getSortSynonyms().equals(TagSortBySynonyms.APPLIED)) {
-            if (min.getClass().equals(Number.class) && max.getClass().equals(Number.class)) {
-                setMin((Long) min);
-                setMax((Long) max);
-                return;
-            } else {
+            if (min != null && min instanceof Number) {
+                setMin(((Number) min).longValue());
+            } else if (min != null && !(min instanceof Number)) {
                 throw new IllegalArgumentException("When TagSortBySynonyms is APPLIED min and max should be count");
             }
+            if (max != null && max instanceof Number) {
+                setMaxDate(((Number) max).longValue() > 20081509
+                        ? DATE_FORMAT.parse(String.valueOf(max)).getTime() / 1000 : 0);
+            } else if (max != null && !(max instanceof Number)) {
+                throw new IllegalArgumentException("When TagSortBySynonyms is APPLIED min and max should be count");
+            }
+
         } else if (getSortSynonyms().equals(TagSortBySynonyms.ACTIVITY)
                 || getSortSynonyms().equals(TagSortBySynonyms.CREATION)) {
-            if (min.getClass().equals(Number.class) && max.getClass().equals(Number.class)) {
-                setMinDate((Long) min > 20081509 ? DATE_FORMAT.parse(String.valueOf(min)).getTime() / 1000 : 0);
-                setMaxDate((Long) max > 20081509 ? DATE_FORMAT.parse(String.valueOf(max)).getTime() / 1000 : 0);
-                return;
-            } else {
+            if (min != null && min instanceof Number) {
+                setMinDate(((Number) min).longValue() > 20081509
+                        ? DATE_FORMAT.parse(String.valueOf(min)).getTime() / 1000 : 0);
+            } else if (min != null && !(min instanceof Number)) {
+                throw new IllegalArgumentException(
+                        "When TagSortBySynonyms is ACTIVITY/CREATION min and max should be Date(yyyyddMM)");
+            }
+            if (max != null && max instanceof Number) {
+                setMaxDate(((Number) max).longValue() > 20081509
+                        ? DATE_FORMAT.parse(String.valueOf(max)).getTime() / 1000 : 0);
+            } else if (max != null && !(max instanceof Number)) {
                 throw new IllegalArgumentException(
                         "When TagSortBySynonyms is ACTIVITY/CREATION min and max should be Date(yyyyddMM)");
             }
