@@ -2,6 +2,7 @@ package com.destack.overflow.fetcher;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,12 +14,12 @@ import com.destack.overflow.model.PrivilegeItem;
 
 public class PrivilegeItemFetcher {
 
-    private static final String URL = "https://api.stackexchange.com/2.2/privileges?site=stackoverflow";
+    private static final String URL_STRING = "https://api.stackexchange.com/2.2/privileges?site=stackoverflow";
 
     public List<PrivilegeItem> objectFetcher() throws FileNotFoundException, IOException {
         PrivilegeItem pItem;
         List<PrivilegeItem> pItems = new ArrayList();
-        JSONArray items = JsonFetcher.urlToJson(URL).getJSONArray("items");
+        JSONArray items = JsonFetcher.urlToJson(new URL(URL_STRING)).getJSONArray("items");
         JSONObject item;
         for (int i = 0; i < items.length(); i++) {
             item = items.getJSONObject(i);

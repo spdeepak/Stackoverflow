@@ -1,6 +1,7 @@
 package com.destack.overflow.fetcher;
 
 import java.net.MalformedURLException;
+import java.net.URL;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -16,11 +17,11 @@ import com.destack.overflow.model.InfoItem;
  */
 public class InfoItemFetcher {
 
-    private static final String URL = "https://api.stackexchange.com/2.2/info?site=stackoverflow&filter=!-*f(6qwmgGVU";
+    private static final String URL_STRING = "https://api.stackexchange.com/2.2/info?site=stackoverflow&filter=!-*f(6qwmgGVU";
 
     public InfoItem objectFetcher() throws MalformedURLException {
         InfoItem infoItem = new InfoItem();
-        JSONArray items = JsonFetcher.urlToJson(URL).getJSONArray("items");
+        JSONArray items = JsonFetcher.urlToJson(new URL(URL_STRING)).getJSONArray("items");
         JSONObject item;
         int i = 0;
         while (i == 0) {

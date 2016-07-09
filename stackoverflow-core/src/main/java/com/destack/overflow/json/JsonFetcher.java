@@ -3,7 +3,6 @@ package com.destack.overflow.json;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.zip.GZIPInputStream;
@@ -23,10 +22,10 @@ public class JsonFetcher {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(JsonFetcher.class);
 
-    public static JSONObject urlToJson(String urlString) throws MalformedURLException {
-        return urlToJson(new URL(urlString));
-    }
-
+    /**
+     * @param urlString
+     * @return
+     */
     public static JSONObject urlToJson(URL urlString) {
         StringBuilder sb = null;
         URL url;
@@ -34,7 +33,7 @@ public class JsonFetcher {
         try {
             url = urlString;
             urlCon = url.openConnection();
-            BufferedReader in = null;
+            BufferedReader in;
             if (urlCon.getHeaderField("Content-Encoding") != null
                     && urlCon.getHeaderField("Content-Encoding").equals("gzip")) {
                 LOGGER.info("reading data from URL as GZIP Stream");
