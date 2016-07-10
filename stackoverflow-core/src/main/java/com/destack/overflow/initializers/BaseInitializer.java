@@ -1,6 +1,7 @@
 package com.destack.overflow.initializers;
 
 import java.text.SimpleDateFormat;
+import java.util.TimeZone;
 
 import com.destack.overflow.enums.Order;
 
@@ -11,6 +12,10 @@ import com.destack.overflow.enums.Order;
 public class BaseInitializer {
 
     protected static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyyddMM");
+
+    static {
+        DATE_FORMAT.setTimeZone(TimeZone.getTimeZone("Etc/UTC"));
+    }
 
     private Long fromDate;
 
@@ -120,10 +125,6 @@ public class BaseInitializer {
 
     public void setToDate(Long toDate) {
         this.toDate = toDate;
-    }
-
-    public static SimpleDateFormat getDateFormat() {
-        return DATE_FORMAT;
     }
 
 }
