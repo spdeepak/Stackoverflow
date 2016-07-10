@@ -9,6 +9,8 @@ import javax.annotation.Resource;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -25,6 +27,8 @@ import com.destack.overflow.initializers.TagItemInitializer;
 @ContextConfiguration(locations = { "classpath*:/spring/applicationContext.xml" })
 public class TagItemURLGeneratorTest {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(TagItemURLGeneratorTest.class);
+
     @Resource
     private TagItemURLGenerator tagItemURLGenerator;
 
@@ -32,6 +36,7 @@ public class TagItemURLGeneratorTest {
     public void testDefaultTagRetriever() throws ParseException, MalformedURLException, IllegalAccessException {
         TagItemInitializer tagItemInitializer = new TagItemInitializer(1, 100, 20100405L, 20160707L, Order.ASC,
                 TagSortBy.POPULAR, null, null, "java", TagRetriever.DEFAULT);
+        LOGGER.info("Time Zone is:".concat(TagItemInitializer.getDateFormat().getTimeZone().toString()));
         assertEquals(
                 "https://api.stackexchange.com/2.2/tags?page=1&pagesize=100&fromdate=1272931200&todate=1467849600&order=asc&sort=popular&inname=java&site=stackoverflow&filter=!-*f(6qOIRgw-",
                 tagItemURLGenerator.urlGenerator(tagItemInitializer).toString());
