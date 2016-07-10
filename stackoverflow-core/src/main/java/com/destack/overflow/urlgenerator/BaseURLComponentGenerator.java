@@ -55,9 +55,6 @@ public class BaseURLComponentGenerator {
         if (object.getMaxString() != null && !object.getMaxString().trim().isEmpty()) {
             url += "&max=".concat(String.valueOf(object.getMaxString()));
         }
-        if (object.getMaxString() != null && !object.getMaxString().trim().isEmpty()) {
-            url += "&max=".concat(String.valueOf(object.getMaxString()));
-        }
         return url;
     }
 

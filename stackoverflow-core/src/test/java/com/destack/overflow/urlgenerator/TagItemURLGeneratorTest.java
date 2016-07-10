@@ -35,19 +35,40 @@ public class TagItemURLGeneratorTest {
         assertEquals(
                 "https://api.stackexchange.com/2.2/tags?page=1&pagesize=100&fromdate=1272931200&todate=1467849600&order=asc&sort=popular&inname=java&site=stackoverflow&filter=!-*f(6qOIRgw-",
                 tagItemURLGenerator.urlGenerator(tagItemInitializer).toString());
+        tagItemInitializer = null;
         tagItemInitializer = new TagItemInitializer(1, 100, 20100405L, 20160707L, Order.DESC, TagSortBy.POPULAR, 1, 10,
                 "java", TagRetriever.DEFAULT);
         assertEquals(
                 "https://api.stackexchange.com/2.2/tags?page=1&pagesize=100&fromdate=1272931200&todate=1467849600&order=desc&min=1&max=10&sort=popular&inname=java&site=stackoverflow&filter=!-*f(6qOIRgw-",
                 tagItemURLGenerator.urlGenerator(tagItemInitializer).toString());
+        tagItemInitializer = null;
         tagItemInitializer = new TagItemInitializer(1, 100, 20100405L, 20160707L, Order.DESC, TagSortBy.POPULAR, 1, 10,
                 "java", null);
         assertEquals(
                 "https://api.stackexchange.com/2.2/tags?page=1&pagesize=100&fromdate=1272931200&todate=1467849600&order=desc&min=1&max=10&sort=popular&inname=java&site=stackoverflow&filter=!-*f(6qOIRgw-",
                 tagItemURLGenerator.urlGenerator(tagItemInitializer).toString());
+        tagItemInitializer = null;
         tagItemInitializer = new TagItemInitializer(null, null, null, null, null, null, null, null, "java", null);
         assertEquals(
                 "https://api.stackexchange.com/2.2/tags?order=desc&sort=popular&inname=java&site=stackoverflow&filter=!-*f(6qOIRgw-",
+                tagItemURLGenerator.urlGenerator(tagItemInitializer).toString());
+        tagItemInitializer = null;
+        tagItemInitializer = new TagItemInitializer(null, null, null, null, null, TagSortBy.POPULAR, null, null, "java",
+                null);
+        assertEquals(
+                "https://api.stackexchange.com/2.2/tags?order=desc&sort=popular&inname=java&site=stackoverflow&filter=!-*f(6qOIRgw-",
+                tagItemURLGenerator.urlGenerator(tagItemInitializer).toString());
+        tagItemInitializer = null;
+        tagItemInitializer = new TagItemInitializer(null, null, null, null, null, TagSortBy.ACTIVITY, 20100405L,
+                20160707L, "java", null);
+        assertEquals(
+                "https://api.stackexchange.com/2.2/tags?order=desc&min=1272931200&max=1467849600&sort=activity&inname=java&site=stackoverflow&filter=!-*f(6qOIRgw-",
+                tagItemURLGenerator.urlGenerator(tagItemInitializer).toString());
+        tagItemInitializer = null;
+        tagItemInitializer = new TagItemInitializer(null, null, null, null, null, TagSortBy.NAME, "a", "z", "java",
+                null);
+        assertEquals(
+                "https://api.stackexchange.com/2.2/tags?order=desc&min=a&max=z&sort=name&inname=java&site=stackoverflow&filter=!-*f(6qOIRgw-",
                 tagItemURLGenerator.urlGenerator(tagItemInitializer).toString());
     }
 

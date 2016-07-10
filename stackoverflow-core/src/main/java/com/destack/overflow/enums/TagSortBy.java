@@ -40,8 +40,6 @@ public enum TagSortBy {
             for (TagSortBy sort : TagSortBy.class.getEnumConstants()) {
                 if (sort.equals(tagSortBy)) {
                     return true;
-                } else {
-                    return false;
                 }
             }
         }
