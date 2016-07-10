@@ -33,9 +33,8 @@ public class TagItemInitializer extends BaseInitializer {
     private TagPeriod tagPeriod;
 
     /**
-     * Initializer for
-     * {@link TagRetriever}=={@link TagRetriever#DEFAULT}||{@link TagRetriever#TAGS}||
-     * {@link TagRetriever#MODERATORY_ONLY}
+     * Initializer for {@link TagRetriever}=={@link TagRetriever#DEFAULT}||
+     * {@link TagRetriever#MODERATOR_ONLY}
      * 
      * @param page
      *            Page Number

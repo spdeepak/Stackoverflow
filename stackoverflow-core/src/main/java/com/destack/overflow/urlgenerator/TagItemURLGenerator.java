@@ -27,7 +27,7 @@ public class TagItemURLGenerator extends BaseURLComponentGenerator implements UR
             return tagRetrieversDefaultModOnlyURL(tagItemInitializer, URL, POSTFIX);
         } else if (TagRetriever.TAGS.equals(tagRetriever)) {
             return tagRetrieversTagsURL(tagItemInitializer, URL, POSTFIX);
-        } else if (TagRetriever.MODERATORY_ONLY.equals(tagRetriever)) {
+        } else if (TagRetriever.MODERATOR_ONLY.equals(tagRetriever)) {
             return tagRetrieverModOnlyURL(tagItemInitializer, URL, POSTFIX);
         } else if (TagRetriever.REQUIRED.equals(tagRetriever)) {
             return tagRetrieverRequiredURL(tagItemInitializer, URL, POSTFIX);

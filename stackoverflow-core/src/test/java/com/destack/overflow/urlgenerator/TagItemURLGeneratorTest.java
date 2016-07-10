@@ -4,6 +4,8 @@ import static org.junit.Assert.assertEquals;
 
 import java.net.MalformedURLException;
 import java.text.ParseException;
+import java.time.ZoneId;
+import java.util.TimeZone;
 
 import javax.annotation.Resource;
 
@@ -32,6 +34,7 @@ public class TagItemURLGeneratorTest {
     public void testDefaultTagRetriever() throws ParseException, MalformedURLException, IllegalAccessException {
         TagItemInitializer tagItemInitializer = new TagItemInitializer(1, 100, 20100405L, 20160707L, Order.ASC,
                 TagSortBy.POPULAR, null, null, "java", TagRetriever.DEFAULT);
+        TagItemInitializer.getDateFormat().setTimeZone(TimeZone.getTimeZone(ZoneId.of("Europe/London")));
         assertEquals(
                 "https://api.stackexchange.com/2.2/tags?page=1&pagesize=100&fromdate=1272927600&todate=1467846000&order=asc&sort=popular&inname=java&site=stackoverflow&filter=!-*f(6qOIRgw-",
                 tagItemURLGenerator.urlGenerator(tagItemInitializer).toString());
@@ -39,6 +42,11 @@ public class TagItemURLGeneratorTest {
                 "java", TagRetriever.DEFAULT);
         assertEquals(
                 "https://api.stackexchange.com/2.2/tags?page=1&pagesize=100&fromdate=1272927600&todate=1467846000&order=desc&min=1&max=10&sort=popular&inname=java&site=stackoverflow&filter=!-*f(6qOIRgw-",
+                tagItemURLGenerator.urlGenerator(tagItemInitializer).toString());
+        tagItemInitializer = new TagItemInitializer(1, 100, 20100405L, 20160707L, Order.ASC, TagSortBy.POPULAR, null,
+                null, "java", TagRetriever.MODERATOR_ONLY);
+        assertEquals(
+                "https://api.stackexchange.com/2.2/tags/moderator-only?page=1&pagesize=100&fromdate=1272927600&todate=1467846000&order=asc&sort=popular&inname=java&site=stackoverflow&filter=!-*f(6qOIRgw-",
                 tagItemURLGenerator.urlGenerator(tagItemInitializer).toString());
     }
 

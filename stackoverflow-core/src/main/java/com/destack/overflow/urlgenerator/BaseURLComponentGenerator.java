@@ -135,7 +135,7 @@ public class BaseURLComponentGenerator {
 
     protected String getSetURLComponent(Set<String> stringSet) {
         String str = null;
-        if (!stringSet.isEmpty()) {
+        if (stringSet != null && !stringSet.isEmpty()) {
             for (String st : stringSet) {
                 str += st.trim().concat(";");
             }

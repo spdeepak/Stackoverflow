@@ -122,4 +122,8 @@ public class BaseInitializer {
         this.toDate = toDate;
     }
 
+    public static SimpleDateFormat getDateFormat() {
+        return DATE_FORMAT;
+    }
+
 }

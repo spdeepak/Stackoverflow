@@ -17,7 +17,7 @@ public enum TagRetriever {
     /**
      * Get the tags on the site that only moderators can use.
      */
-    MODERATORY_ONLY,
+    MODERATOR_ONLY,
     /**
      * Get the tags on the site that fulfill required tag constraints.
      */
