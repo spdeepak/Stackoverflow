@@ -34,4 +34,17 @@ public enum TagSortBySynonyms {
     public String toString() {
         return name;
     }
+
+    public static boolean contains(TagSortBySynonyms tagSortBySynonyms) {
+        if (tagSortBySynonyms != null) {
+            for (TagSortBySynonyms sort : TagSortBySynonyms.class.getEnumConstants()) {
+                if (sort.equals(tagSortBySynonyms)) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        }
+        return false;
+    }
 }

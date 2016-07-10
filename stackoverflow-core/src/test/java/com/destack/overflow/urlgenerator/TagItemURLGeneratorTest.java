@@ -40,10 +40,28 @@ public class TagItemURLGeneratorTest {
         assertEquals(
                 "https://api.stackexchange.com/2.2/tags?page=1&pagesize=100&fromdate=1272931200&todate=1467849600&order=desc&min=1&max=10&sort=popular&inname=java&site=stackoverflow&filter=!-*f(6qOIRgw-",
                 tagItemURLGenerator.urlGenerator(tagItemInitializer).toString());
-        tagItemInitializer = new TagItemInitializer(1, 100, 20100405L, 20160707L, Order.ASC, TagSortBy.POPULAR, null,
-                null, "java", TagRetriever.MODERATOR_ONLY);
+        tagItemInitializer = new TagItemInitializer(1, 100, 20100405L, 20160707L, Order.DESC, TagSortBy.POPULAR, 1, 10,
+                "java", null);
+        assertEquals(
+                "https://api.stackexchange.com/2.2/tags?page=1&pagesize=100&fromdate=1272931200&todate=1467849600&order=desc&min=1&max=10&sort=popular&inname=java&site=stackoverflow&filter=!-*f(6qOIRgw-",
+                tagItemURLGenerator.urlGenerator(tagItemInitializer).toString());
+        tagItemInitializer = new TagItemInitializer(null, null, null, null, null, null, null, null, "java", null);
+        assertEquals(
+                "https://api.stackexchange.com/2.2/tags?order=desc&sort=popular&inname=java&site=stackoverflow&filter=!-*f(6qOIRgw-",
+                tagItemURLGenerator.urlGenerator(tagItemInitializer).toString());
+    }
+
+    @Test
+    public void testModeratorOnlyRetreiver() throws ParseException, MalformedURLException, IllegalAccessException {
+        TagItemInitializer tagItemInitializer = new TagItemInitializer(1, 100, 20100405L, 20160707L, Order.ASC,
+                TagSortBy.POPULAR, null, null, "java", TagRetriever.MODERATOR_ONLY);
         assertEquals(
                 "https://api.stackexchange.com/2.2/tags/moderator-only?page=1&pagesize=100&fromdate=1272931200&todate=1467849600&order=asc&sort=popular&inname=java&site=stackoverflow&filter=!-*f(6qOIRgw-",
+                tagItemURLGenerator.urlGenerator(tagItemInitializer).toString());
+        tagItemInitializer = new TagItemInitializer(null, null, null, null, Order.ASC, null, null, null, "java",
+                TagRetriever.MODERATOR_ONLY);
+        assertEquals(
+                "https://api.stackexchange.com/2.2/tags/moderator-only?order=asc&sort=popular&inname=java&site=stackoverflow&filter=!-*f(6qOIRgw-",
                 tagItemURLGenerator.urlGenerator(tagItemInitializer).toString());
     }
 

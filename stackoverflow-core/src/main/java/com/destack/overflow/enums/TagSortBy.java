@@ -12,15 +12,15 @@ package com.destack.overflow.enums;
  */
 public enum TagSortBy {
     /**
-     * Min & Max would be the count
+     * Min & Max should be the count
      */
     POPULAR("popular"),
     /**
-     * Min & Max would be Date
+     * Min & Max should be Date
      */
     ACTIVITY("activity"),
     /**
-     * Min & Max would be starting letter of the name
+     * Min & Max should be starting letter of the name
      */
     NAME("name");
 
@@ -33,5 +33,18 @@ public enum TagSortBy {
     @Override
     public String toString() {
         return name;
+    }
+
+    public static boolean contains(TagSortBy tagSortBy) {
+        if (tagSortBy != null) {
+            for (TagSortBy sort : TagSortBy.class.getEnumConstants()) {
+                if (sort.equals(tagSortBy)) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        }
+        return false;
     }
 }

@@ -67,11 +67,10 @@ public class TagItemInitializer extends BaseInitializer {
             Object min, Object max, String inName, TagRetriever tagRetriever) throws ParseException {
         setPage(page);
         setPageSize(pageSize);
-        setFromDate(fromDate > 20081509 ? DATE_FORMAT.parse(String.valueOf(fromDate)).getTime() / 1000 : 0);
-        setToDate(toDate != 0 ? DATE_FORMAT.parse(String.valueOf(toDate)).getTime() / 1000 : 0);
+        setFromDate(fromDate != null ? DATE_FORMAT.parse(String.valueOf(fromDate)).getTime() / 1000 : 0);
+        setToDate(toDate != null ? DATE_FORMAT.parse(String.valueOf(toDate)).getTime() / 1000 : 0);
         setOrder(order != null ? order : Order.DESC);
-        setSort((sort.equals(TagSortBy.ACTIVITY) || sort.equals(TagSortBy.POPULAR) || sort.equals(TagSortBy.NAME))
-                ? sort : TagSortBy.POPULAR);
+        setSort(TagSortBy.contains(sort) ? sort : TagSortBy.POPULAR);
         setMinAndMax(getSort(), min, max);
         this.setInName(inName);
         if (tagRetriever != null) {
@@ -103,11 +102,10 @@ public class TagItemInitializer extends BaseInitializer {
             TagSortBySynonyms sort, Object min, Object max) throws ParseException {
         setPage(page);
         setPageSize(pageSize);
-        setFromDate(fromDate > 20081509 ? DATE_FORMAT.parse(String.valueOf(fromDate)).getTime() / 1000 : 0);
-        setToDate(toDate != 0 ? DATE_FORMAT.parse(String.valueOf(toDate)).getTime() / 1000 : 0);
+        setFromDate(fromDate != null ? DATE_FORMAT.parse(String.valueOf(fromDate)).getTime() / 1000 : 0);
+        setToDate(toDate != null ? DATE_FORMAT.parse(String.valueOf(toDate)).getTime() / 1000 : 0);
         setOrder(order != null ? order : Order.DESC);
-        setSortSynonyms(sort == TagSortBySynonyms.CREATION || sort == TagSortBySynonyms.APPLIED
-                || sort == TagSortBySynonyms.ACTIVITY ? sort : TagSortBySynonyms.APPLIED);
+        setSortSynonyms(TagSortBySynonyms.contains(sort) ? sort : TagSortBySynonyms.APPLIED);
         setMinAndMax(getSortSynonyms(), min, max);
         tagRetriever = TagRetriever.SYNONYMS;
     }
@@ -141,8 +139,7 @@ public class TagItemInitializer extends BaseInitializer {
         setFromDate(fromDate > 20081509 ? DATE_FORMAT.parse(String.valueOf(fromDate)).getTime() / 1000 : 0);
         setToDate(toDate != 0 ? DATE_FORMAT.parse(String.valueOf(toDate)).getTime() / 1000 : 0);
         setOrder(order != null ? order : Order.DESC);
-        setSort(sort == TagSortBy.ACTIVITY || sort == TagSortBy.POPULAR || sort == TagSortBy.NAME ? sort
-                : TagSortBy.POPULAR);
+        setSort(TagSortBy.contains(sort) ? sort : TagSortBy.POPULAR);
         setMinAndMax(getSort(), min, max);
         if (tags != null && !tags.isEmpty()) {
             this.tags = tags;
@@ -171,7 +168,7 @@ public class TagItemInitializer extends BaseInitializer {
     public TagItemInitializer(Integer page, Integer pageSize, Set<String> tags, TagRetriever tagRetriever) {
         setPage(page);
         setPageSize(pageSize);
-        if (tags != null || tags.size() > 0) {
+        if (tags.isEmpty()) {
             this.tags = tags;
         } else {
             throw new IllegalArgumentException("Wrong Set of tags given Or No tags given. Tags are Required");

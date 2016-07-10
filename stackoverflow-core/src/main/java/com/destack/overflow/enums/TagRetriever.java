@@ -50,4 +50,5 @@ public enum TagRetriever {
      * Get the wiki entries for a set of tags.
      */
     WIKIS;
+
 }
