@@ -26,4 +26,23 @@ public enum Order {
     public String toString() {
         return orderName;
     }
+
+    public static boolean contains(Order order) {
+        if (order != null) {
+            for (Order sort : Order.class.getEnumConstants()) {
+                if (sort.equals(order)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public static boolean validate(Order order) {
+        if (order != null) {
+            return contains(order);
+        } else {
+            return false;
+        }
+    }
 }

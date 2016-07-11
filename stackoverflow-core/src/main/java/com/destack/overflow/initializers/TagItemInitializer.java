@@ -88,8 +88,11 @@ public class TagItemInitializer extends BaseInitializer {
      * @param pageSize
      *            Number of items in one page
      * @param fromDate
+     *            in format of "yyyyddMM"
      * @param toDate
+     *            in format of "yyyyddMM"
      * @param order
+     *            {@link Order} for {@link Order#ASC} or {@link Order#DESC}
      * @param min
      *            Minimum {@link TagItem#getCount()}
      * @param max

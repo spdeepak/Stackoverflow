@@ -15,6 +15,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.destack.overflow.enums.Order;
 import com.destack.overflow.enums.TagRetriever;
 import com.destack.overflow.enums.TagSortBy;
+import com.destack.overflow.enums.TagSortBySynonyms;
 import com.destack.overflow.initializers.TagItemInitializer;
 
 /**
@@ -83,6 +84,15 @@ public class TagItemURLGeneratorTest {
                 TagRetriever.MODERATOR_ONLY);
         assertEquals(
                 "https://api.stackexchange.com/2.2/tags/moderator-only?order=asc&sort=popular&inname=java&site=stackoverflow&filter=!-*f(6qOIRgw-",
+                tagItemURLGenerator.urlGenerator(tagItemInitializer).toString());
+    }
+
+    @Test
+    public void testTagSortBySynonymsRetriever() throws ParseException, MalformedURLException, IllegalAccessException {
+        TagItemInitializer tagItemInitializer = new TagItemInitializer(1, 10, 20100405L, 20161107L, Order.ASC,
+                TagSortBySynonyms.ACTIVITY, 20100405L, 20161107L);
+        assertEquals(
+                "https://api.stackexchange.com/2.2/tags/synonyms?page=1&pagesize=10&fromdate=1272931200&todate=1468195200&order=asc&min=20100405&max=1468195200&sort=applied&site=stackoverflow&filter=!-*f(6qOIRgw-",
                 tagItemURLGenerator.urlGenerator(tagItemInitializer).toString());
     }
 

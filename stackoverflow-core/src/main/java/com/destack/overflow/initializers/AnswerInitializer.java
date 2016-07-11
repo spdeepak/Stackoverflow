@@ -2,6 +2,9 @@ package com.destack.overflow.initializers;
 
 import java.text.ParseException;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.destack.overflow.enums.AnswerSortBy;
 import com.destack.overflow.enums.Order;
 import com.destack.overflow.model.AnswerItem;
@@ -14,8 +17,9 @@ import com.destack.overflow.model.AnswerItem;
  */
 public class AnswerInitializer extends BaseInitializer {
 
-    private AnswerSortBy sort;
+    private static final Logger LOGGER = LoggerFactory.getLogger(AnswerInitializer.class);
 
+    private AnswerSortBy sort;
 
     /**
      * <b>NOTE</b>:Dates in the format of 'yyyyddMM'
@@ -25,14 +29,17 @@ public class AnswerInitializer extends BaseInitializer {
      * @param pageSize
      *            number of {@link AnswerItem} in a page
      * @param fromDate
+     *            Dates in the format of 'yyyyddMM'
      * @param toDate
+     *            Dates in the format of 'yyyyddMM'
      * @param order
      *            Sort {@link Order} of {@link AnswerItem}'s
      * @param sort
+     *            {@link AnswerSortBy}
      * @param min
-     *            is a Date if {@link AnswerSortBy} is not {@link AnswerSortBy}.VOTES
+     *            see {@link AnswerSortBy} for type of value to give
      * @param max
-     *            is a Date if {@link AnswerSortBy} is not {@link AnswerSortBy}.VOTES
+     *            see {@link AnswerSortBy} for type of value to give
      * @throws ParseException
      */
     public AnswerInitializer(int page, int pageSize, long fromDate, long toDate, Order order, AnswerSortBy sort,
@@ -40,13 +47,15 @@ public class AnswerInitializer extends BaseInitializer {
         setPage(page);
         setPageSize(pageSize);
         if (fromDate > toDate) {
+            LOGGER.error("from date {} comes after to date {}", new Object[] { fromDate, toDate });
             throw new IllegalArgumentException("From Date(" + fromDate + ") is after (" + toDate + ")");
         }
-        setFromDate(fromDate > 20081509 ? DATE_FORMAT.parse(String.valueOf(fromDate)).getTime() / 1000 : 0);
+        setFromDate(fromDate != 0 ? DATE_FORMAT.parse(String.valueOf(fromDate)).getTime() / 1000 : 0);
         setToDate(toDate != 0 ? DATE_FORMAT.parse(String.valueOf(toDate)).getTime() / 1000 : 0);
-        setSort(sort != null ? sort : AnswerSortBy.ACTIVITY);
-        setOrder(order != null ? order : Order.DESC);
+        setSort(AnswerSortBy.validate(sort) ? sort : AnswerSortBy.ACTIVITY);
+        setOrder(Order.validate(order) ? order : Order.DESC);
         if (getSort().equals(AnswerSortBy.VOTES)) {
+            LOGGER.info("Answer Sort By VOTES");
             setMin(min);
             setMax(max);
         }

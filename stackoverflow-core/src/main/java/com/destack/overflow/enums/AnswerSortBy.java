@@ -7,8 +7,17 @@ package com.destack.overflow.enums;
  *
  */
 public enum AnswerSortBy {
+    /**
+     * min & max should be Date
+     */
     ACTIVITY("activity"),
+    /**
+     * min & max should be Date
+     */
     CREATION("creation"),
+    /**
+     * min & max should be the number of votes for answer
+     */
     VOTES("votes");
 
     private String sortBy;
@@ -20,6 +29,25 @@ public enum AnswerSortBy {
     @Override
     public String toString() {
         return sortBy;
+    }
+
+    public static boolean contains(AnswerSortBy answerSortBy) {
+        if (answerSortBy != null) {
+            for (AnswerSortBy sort : AnswerSortBy.class.getEnumConstants()) {
+                if (sort.equals(answerSortBy)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public static boolean validate(AnswerSortBy answerSortBy) {
+        if (answerSortBy != null) {
+            return contains(answerSortBy);
+        } else {
+            return false;
+        }
     }
 
 }
