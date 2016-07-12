@@ -137,8 +137,7 @@ public class BaseURLComponentGenerator {
                 str += st.trim().concat(";");
             }
             if (str != null && str.endsWith(";")) {
-                //removes the last ;
-                str = str.substring(0, str.lastIndexOf(";"));
+                str = str.substring(0, str.lastIndexOf(';'));
             }
             return str;
         } else {

@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 
 import com.destack.overflow.enums.AnswerSortBy;
 import com.destack.overflow.enums.FetchFromAnswer;
-import com.destack.overflow.initializers.AnswerInitializer;
+import com.destack.overflow.initializers.AnswerItemInitializer;
 import com.destack.overflow.model.AnswerItem;
 
 /**
@@ -18,12 +18,12 @@ import com.destack.overflow.model.AnswerItem;
  * @author Deepak
  *
  */
-public class AnswerItemURLGenerator extends BaseURLComponentGenerator implements URLGenerator<AnswerInitializer> {
+public class AnswerItemURLGenerator extends BaseURLComponentGenerator implements URLGenerator<AnswerItemInitializer> {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AnswerItemURLGenerator.class);
 
     @Override
-    public URL urlGenerator(AnswerInitializer ai) throws MalformedURLException {
+    public URL urlGenerator(AnswerItemInitializer ai) throws MalformedURLException {
         String url = "https://api.stackexchange.com/2.2/answers?";
         url += getBaseURLComponents(ai);
         if (ai.getSort() != null && !ai.getSort().toString().isEmpty()) {
@@ -35,11 +35,8 @@ public class AnswerItemURLGenerator extends BaseURLComponentGenerator implements
         return new URL(url);
     }
 
-    public URL urlGenerator(AnswerInitializer answerInitializer, String answerId, FetchFromAnswer fetchFromAnswer)
+    public URL urlGenerator(AnswerItemInitializer answerInitializer, String answerId, FetchFromAnswer fetchFromAnswer)
             throws MalformedURLException {
-        if (fetchFromAnswer == null || fetchFromAnswer.equals(FetchFromAnswer.ALL_ANSWERS)) {
-            return urlGenerator(answerInitializer);
-        }
         if (fetchFromAnswer == null || fetchFromAnswer.equals(FetchFromAnswer.ID_ANSWER)) {
             if (Long.valueOf(answerId.trim()) == 0) {
                 LOGGER.debug("answerId is zero so returning a ALL_ANSWERS URL");

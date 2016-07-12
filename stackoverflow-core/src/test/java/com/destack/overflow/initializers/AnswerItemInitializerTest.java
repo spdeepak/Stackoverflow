@@ -9,11 +9,12 @@ import org.junit.Test;
 import com.destack.overflow.enums.AnswerSortBy;
 import com.destack.overflow.enums.Order;
 
-public class AnswerInitializerTest {
+public class AnswerItemInitializerTest {
 
     @Test
     public void test() throws ParseException {
-        AnswerInitializer ai = new AnswerInitializer(1, 100, 20140101, 20143101, Order.ASC, AnswerSortBy.ACTIVITY,
+        AnswerItemInitializer ai = AnswerItemInitializer.createAllAnswersInitializerInstance(1, 100, 20140101, 20143101,
+                Order.ASC, AnswerSortBy.ACTIVITY,
                 20140101, 20143101);
         assertEquals(Integer.valueOf(1), ai.getPage());
         assertEquals(Integer.valueOf(100), ai.getPageSize());
