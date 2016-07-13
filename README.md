@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/spdeepak/Stackoverflow.svg?branch=master)](https://travis-ci.org/spdeepak/Stackoverflow) [![Coverage Status](https://coveralls.io/repos/github/spdeepak/Stackoverflow/badge.svg?branch=master)](https://coveralls.io/github/spdeepak/Stackoverflow?branch=master)
-
+[![Dependencies](https://www.versioneye.com/user/projects/5786a0576edb08004191dfcc/badge.svg?style=flat)](https://www.versioneye.com/user/projects/5786a0576edb08004191dfcc)
 # Stackoverflow Java API (Under Construction)
 
 Stackoverflow Rest API - https://api.stackexchange.com/docs
