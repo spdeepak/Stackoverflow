@@ -52,9 +52,10 @@ public class AnswerItemInitializer extends BaseInitializer {
         setup();
         answerItemInitializer.setPage(page);
         answerItemInitializer.setPageSize(pageSize);
-        answerItemInitializer
-        .setFromDate(fromDate != 0 ? DATE_FORMAT.parse(String.valueOf(fromDate)).getTime() / 1000 : 0);
-        answerItemInitializer.setToDate(toDate != 0 ? DATE_FORMAT.parse(String.valueOf(toDate)).getTime() / 1000 : 0);
+        answerItemInitializer.setFromDate(answerItemInitializer.dateVerifier(fromDate)
+                ? DATE_FORMAT.parse(String.valueOf(fromDate)).getTime() / 1000 : 0);
+        answerItemInitializer.setToDate(answerItemInitializer.dateVerifier(toDate)
+                ? DATE_FORMAT.parse(String.valueOf(toDate)).getTime() / 1000 : 0);
         answerItemInitializer.setSort(AnswerSortBy.validate(sort) ? sort : AnswerSortBy.ACTIVITY);
         answerItemInitializer.setOrder(Order.validate(order) ? order : Order.DESC);
         if (answerItemInitializer.getSort().equals(AnswerSortBy.VOTES)) {
@@ -94,11 +95,14 @@ public class AnswerItemInitializer extends BaseInitializer {
             if (FetchFromAnswer.validate(fetchFromAnswer)) {
                 answerItemInitializer.setFetchFromAnswer(fetchFromAnswer);
             } else if (!FetchFromAnswer.validate(fetchFromAnswer)) {
+                LOGGER.error("FetchFromAnswer is not valid");
                 throw new IllegalArgumentException("FetchFromAnswer is not valid");
             } else {
+                LOGGER.error("Use createAllAnswersInitializerInstance to get Fetch");
                 throw new IllegalArgumentException("Use createAllAnswersInitializerInstance to get Fetch");
             }
         } else {
+            LOGGER.error("IDs cannot be null or empty");
             throw new IllegalArgumentException("IDs cannot be null or empty");
         }
         return answerItemInitializer;

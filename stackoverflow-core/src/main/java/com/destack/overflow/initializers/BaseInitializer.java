@@ -4,6 +4,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.TimeZone;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.destack.overflow.enums.Order;
 
 /**
@@ -13,6 +16,8 @@ import com.destack.overflow.enums.Order;
 public class BaseInitializer {
 
     protected static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyyddMM");
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(BaseInitializer.class);
 
     static {
         DATE_FORMAT.setLenient(false);
@@ -129,16 +134,33 @@ public class BaseInitializer {
         this.toDate = toDate;
     }
 
+    /**
+     * Verify Date with the required format
+     * 
+     * @param date
+     * @return
+     */
     public boolean dateVerifier(Long date) {
         try {
-            DATE_FORMAT.parse(String.valueOf(date));
+            if (date != 0) {
+                DATE_FORMAT.parse(String.valueOf(date));
+            } else {
+                return false;
+            }
         } catch (ParseException e) {
-            e.printStackTrace();
+            LOGGER.error(e.toString());
             return false;
         }
         return true;
     }
 
+    /**
+     * Verify Dates with the required format
+     * 
+     * @param date1
+     * @param date2
+     * @return
+     */
     public boolean datesVerifier(Long date1, Long date2) {
         return dateVerifier(date1) && dateVerifier(date2);
     }

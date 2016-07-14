@@ -6,7 +6,6 @@ import java.net.URL;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.destack.overflow.enums.AnswerSortBy;
 import com.destack.overflow.enums.FetchFromAnswer;
 import com.destack.overflow.initializers.AnswerItemInitializer;
 import com.destack.overflow.model.AnswerItem;
@@ -28,42 +27,24 @@ public class AnswerItemURLGenerator extends BaseURLComponentGenerator implements
         url += getBaseURLComponents(ai);
         url += getSortURLComponent(ai.getSort().toString());
         url = urlFixer(url);
+        if (FetchFromAnswer.ID_ANSWER.equals(ai.getFetchFromAnswer())) {
+            String replace = "answers/".concat(getIdSetURLComponent(ai.getIds()).concat("?"));
+            url = url.replace("answers?", replace);
+            replace = "";
+            return new URL(url);
+        } else if (FetchFromAnswer.COMMENTS_IDANSWER.equals(ai.getFetchFromAnswer())) {
+            String replace = "answers/".concat(getIdSetURLComponent(ai.getIds())).concat("/comments?");
+            url = url.replace("answers?", replace);
+            replace = "";
+            return new URL(url);
+        } else if (FetchFromAnswer.QUESTIONS_IDANSWER.equals(ai.getFetchFromAnswer())) {
+            String replace = "answers/".concat(getIdSetURLComponent(ai.getIds())).concat("/questions?");
+            url = url.replace("answers?", replace);
+            replace = "";
+            return new URL(url);
+        }
+        LOGGER.info("Default URL generated");
         return new URL(url);
     }
 
-    public URL urlGenerator(AnswerItemInitializer answerInitializer, String answerId, FetchFromAnswer fetchFromAnswer)
-            throws MalformedURLException {
-        if (fetchFromAnswer == null || fetchFromAnswer.equals(FetchFromAnswer.ID_ANSWER)) {
-            if (Long.valueOf(answerId.trim()) == 0) {
-                LOGGER.debug("answerId is zero so returning a ALL_ANSWERS URL");
-                return urlGenerator(answerInitializer);
-            }
-            return new URL(
-                    urlGenerator(answerInitializer).toString().replace("https://api.stackexchange.com/2.2/answers?&",
-                            "https://api.stackexchange.com/2.2/answers/".concat(answerId).concat("?")));
-        }
-        if (fetchFromAnswer == null || fetchFromAnswer.equals(FetchFromAnswer.COMMENTS_IDANSWER)) {
-            if (answerInitializer.getSort() == null || answerInitializer.getSort().equals(AnswerSortBy.ACTIVITY)) {
-                answerInitializer.setSort(AnswerSortBy.CREATION);
-            }
-            if (Long.valueOf(answerId.trim()) == 0) {
-                LOGGER.debug("answerId is zero so returning a ALL_ANSWERS URL");
-                return urlGenerator(answerInitializer);
-            }
-            return new URL(
-                    urlGenerator(answerInitializer).toString().replace("https://api.stackexchange.com/2.2/answers?&",
-                            "https://api.stackexchange.com/2.2/answers/".concat(answerId).concat("/comments?")));
-        }
-        if (fetchFromAnswer == null || fetchFromAnswer.equals(FetchFromAnswer.QUESTIONS_IDANSWER)) {
-            if (Long.valueOf(answerId.trim()) == 0) {
-                LOGGER.debug("answerId is zero so returning a ALL_ANSWERS URL");
-                return urlGenerator(answerInitializer);
-            }
-            return new URL(
-                    urlGenerator(answerInitializer).toString().replace("https://api.stackexchange.com/2.2/answers?&",
-                            "https://api.stackexchange.com/2.2/answers/".concat(answerId).concat("/questions?")));
-        }
-        LOGGER.debug("All parameters passed are not valid except AnswerInitializer. So, returning All answer's URL");
-        return urlGenerator(answerInitializer);
-    }
 }

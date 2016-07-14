@@ -1,5 +1,8 @@
 package com.destack.overflow.enums;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * Get {@link #ALL_ANSWERS}, {@link #ID_ANSWER} {@link #COMMENTS_IDANSWER} &
  * {@link #QUESTIONS_IDANSWER}
@@ -30,6 +33,14 @@ public enum FetchFromAnswer {
      */
     QUESTIONS_IDANSWER;
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(FetchFromAnswer.class);
+
+    /**
+     * Check whether value exists in {@link FetchFromAnswer}
+     * 
+     * @param fetchFromAnswer
+     * @return
+     */
     public static boolean contains(FetchFromAnswer fetchFromAnswer) {
         if (fetchFromAnswer != null) {
             for (FetchFromAnswer sort : FetchFromAnswer.class.getEnumConstants()) {
@@ -38,13 +49,21 @@ public enum FetchFromAnswer {
                 }
             }
         }
+        LOGGER.error("Fetch From Answer is Mandatory. Your value --> {}", fetchFromAnswer);
         return false;
     }
 
+    /**
+     * Validates {@link FetchFromAnswer} value
+     * 
+     * @param fetchFromAnswer
+     * @return
+     */
     public static boolean validate(FetchFromAnswer fetchFromAnswer) {
         if (fetchFromAnswer != null) {
             return contains(fetchFromAnswer);
         } else {
+            LOGGER.error("Fetch From Answer is Mandatory. Your value --> {}", fetchFromAnswer);
             return false;
         }
     }

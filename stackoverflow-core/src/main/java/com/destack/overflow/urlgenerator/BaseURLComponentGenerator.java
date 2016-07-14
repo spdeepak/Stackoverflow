@@ -31,30 +31,12 @@ public class BaseURLComponentGenerator {
         url += getFromDate(object.getFromDate());
         url += getToDate(object.getToDate());
         url += getOrder(object.getOrder());
-        if (object.getMin() != null && object.getMin() != 0) {
-            LOGGER.info("Min component value : {}", object.getMin());
-            url += "&min=".concat(String.valueOf(object.getMin()));
-        }
-        if (object.getMinDate() != null && object.getMinDate() != 0) {
-            LOGGER.info("Min Date component value : {}", object.getMinDate());
-            url += "&min=".concat(String.valueOf(object.getMinDate()));
-        }
-        if (object.getMinString() != null && !object.getMinString().trim().isEmpty()) {
-            LOGGER.info("Min String component value : {}", object.getMinString());
-            url += "&min=".concat(String.valueOf(object.getMinString()));
-        }
-        if (object.getMax() != null && object.getMax() != 0) {
-            LOGGER.info("Max component value : {}", object.getMaxString());
-            url += "&max=".concat(String.valueOf(object.getMax()));
-        }
-        if (object.getMaxDate() != null && object.getMaxDate() != 0) {
-            LOGGER.info("Max Date component value : {}", object.getMaxDate());
-            url += "&max=".concat(String.valueOf(object.getMaxDate()));
-        }
-        if (object.getMaxString() != null && !object.getMaxString().trim().isEmpty()) {
-            LOGGER.info("Max String component value : {}", object.getMaxString());
-            url += "&max=".concat(String.valueOf(object.getMaxString()));
-        }
+        url += getMin(object.getMin());
+        url += getMin(object.getMinDate());
+        url += getMin(object.getMinString());
+        url += getMax(object.getMax());
+        url += getMax(object.getMaxDate());
+        url += getMax(object.getMaxString());
         return url;
     }
 
@@ -120,9 +102,25 @@ public class BaseURLComponentGenerator {
         }
     }
 
+    protected String getMin(Long min) {
+        if (min != null && min != 0) {
+            return "&min=".concat(String.valueOf(min));
+        } else {
+            return "";
+        }
+    }
+
     protected String getMax(String max) {
         if (max != null && !max.trim().isEmpty()) {
             return "&max=".concat(max);
+        } else {
+            return "";
+        }
+    }
+
+    protected String getMax(Long max) {
+        if (max != null && max != 0) {
+            return "&max=".concat(String.valueOf(max));
         } else {
             return "";
         }
@@ -137,7 +135,7 @@ public class BaseURLComponentGenerator {
     }
 
     protected String getSetURLComponent(Set<String> stringSet) {
-        String str = null;
+        String str = "";
         if (stringSet != null && !stringSet.isEmpty()) {
             for (String st : stringSet) {
                 str += st.trim().concat(";");

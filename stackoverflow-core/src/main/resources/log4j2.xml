@@ -19,8 +19,8 @@
 			<AppenderRef ref="MyFile" />
 		</Logger>
 
-		<Root level="trace" />
 		<Root level="info" />
+		<Root level="trace" />
 		<Root level="error" />
 		<Root level="debug">
 			<AppenderRef ref="Console" />
