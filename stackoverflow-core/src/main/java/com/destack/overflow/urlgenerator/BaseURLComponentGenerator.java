@@ -59,7 +59,7 @@ public class BaseURLComponentGenerator {
     }
 
     protected String getPageURL(Integer page) {
-        if (page != 0 && page != null) {
+        if (page != null && page != 0) {
             LOGGER.info("page number component value : {}", page);
             return "&page=".concat(String.valueOf(page));
         } else {
@@ -68,7 +68,7 @@ public class BaseURLComponentGenerator {
     }
 
     protected String getPageSizeURL(Integer pageSize) {
-        if (pageSize != 0 && pageSize != null) {
+        if (pageSize != null && pageSize != 0) {
             LOGGER.info("page size component value : {}", pageSize);
             return "&pagesize=".concat(String.valueOf(pageSize));
         } else {
@@ -77,7 +77,7 @@ public class BaseURLComponentGenerator {
     }
 
     protected String getFromDate(Long fromDate) {
-        if (fromDate != 0 && fromDate != null) {
+        if (fromDate != null && fromDate != 0) {
             LOGGER.info("From date component value : {}", fromDate);
             return "&fromdate=".concat(String.valueOf(fromDate));
         } else {
@@ -86,7 +86,7 @@ public class BaseURLComponentGenerator {
     }
 
     protected String getToDate(Long toDate) {
-        if (toDate != 0 && toDate != null) {
+        if (toDate != null && toDate != 0) {
             LOGGER.info("To date component value : {}", toDate);
             return "&todate=".concat(String.valueOf(toDate));
         } else {
@@ -95,7 +95,7 @@ public class BaseURLComponentGenerator {
     }
 
     protected String getOrder(Order order) {
-        if (order != null && !order.toString().isEmpty()) {
+        if (Order.validate(order)) {
             LOGGER.info("Order component value : {}", order.toString());
             return "&order=".concat(order.toString());
         } else {
