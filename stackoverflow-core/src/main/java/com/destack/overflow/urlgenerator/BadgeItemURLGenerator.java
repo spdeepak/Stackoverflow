@@ -37,9 +37,9 @@ public class BadgeItemURLGenerator extends BaseURLComponentGenerator implements 
                 || badgeItemInitializer.getBr().equals(BadgeRetriever.ID)
                 || badgeItemInitializer.getBr().equals(BadgeRetriever.TAG)) {
             if (badgeItemInitializer.getOrder() != null && !badgeItemInitializer.getOrder().toString().isEmpty()) {
-                url += getOrder(badgeItemInitializer.getOrder().toString());
+                url += getOrder(badgeItemInitializer.getOrder());
             } else {
-                url += getOrder(Order.DESC.toString());
+                url += getOrder(Order.DESC);
             }
             if (badgeItemInitializer.getSort() != null && !badgeItemInitializer.getSort().toString().isEmpty()) {
                 url += getSortURLComponent(badgeItemInitializer.getSort().toString());

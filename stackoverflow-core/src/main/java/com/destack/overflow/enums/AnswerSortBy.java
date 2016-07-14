@@ -1,5 +1,8 @@
 package com.destack.overflow.enums;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * Sort Answers By Latest Activity , Creation time, Number of votes
  * 
@@ -7,6 +10,7 @@ package com.destack.overflow.enums;
  *
  */
 public enum AnswerSortBy {
+
     /**
      * min & max should be Date
      */
@@ -20,6 +24,8 @@ public enum AnswerSortBy {
      */
     VOTES("votes");
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(AnswerSortBy.class);
+
     private String sortBy;
 
     private AnswerSortBy(String sortBy) {
@@ -31,14 +37,17 @@ public enum AnswerSortBy {
         return sortBy;
     }
 
+
     public static boolean contains(AnswerSortBy answerSortBy) {
         if (answerSortBy != null) {
             for (AnswerSortBy sort : AnswerSortBy.class.getEnumConstants()) {
                 if (sort.equals(answerSortBy)) {
+                    LOGGER.info("AnswerSortBy value is {}", sort);
                     return true;
                 }
             }
         }
+        LOGGER.warn("AnswerSortBy is null. So, using default i.e, Activity");
         return false;
     }
 
@@ -46,6 +55,7 @@ public enum AnswerSortBy {
         if (answerSortBy != null) {
             return contains(answerSortBy);
         } else {
+            LOGGER.warn("AnswerSortBy is null. So, using default i.e, Activity");
             return false;
         }
     }

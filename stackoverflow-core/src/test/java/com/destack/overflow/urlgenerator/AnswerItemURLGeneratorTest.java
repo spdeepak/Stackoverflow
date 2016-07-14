@@ -27,35 +27,30 @@ public class AnswerItemURLGeneratorTest {
     @Test
     public void answerURLGeneratorTest() throws Exception {
         AnswerItemInitializer ai = AnswerItemInitializer.createAllAnswersInitializerInstance(1, 10, 20140101L,
-                20143101L, Order.DESC,
-                AnswerSortBy.ACTIVITY,
-                20140101L, 20143101L);
+                20143101L, Order.DESC, AnswerSortBy.ACTIVITY, 20140101L, 20143101L);
         assertEquals(
                 "https://api.stackexchange.com/2.2/answers?page=1&pagesize=10&fromdate=1388534400&todate=1391126400&order=desc&min=1388534400&max=1391126400&sort=activity&site=stackoverflow",
                 answerItemURLGenerator.urlGenerator(ai).toString());
-        ai = null;
-        ai = AnswerItemInitializer.createAllAnswersInitializerInstance(1, 10, 0, 0, null, null, 10, 100);
+        AnswerItemInitializer ai1 = AnswerItemInitializer.createAllAnswersInitializerInstance(1, 10, 0, 0, null, null,
+                10, 100);
         assertEquals(
                 "https://api.stackexchange.com/2.2/answers?page=1&pagesize=10&order=desc&sort=activity&site=stackoverflow",
-                answerItemURLGenerator.urlGenerator(ai).toString());
-        ai = null;
-        ai = AnswerItemInitializer.createAllAnswersInitializerInstance(1, 10, 20140101L, 20143101L, Order.ASC,
-                AnswerSortBy.VOTES, 0,
-                0);
+                answerItemURLGenerator.urlGenerator(ai1).toString());
+        AnswerItemInitializer ai2 = AnswerItemInitializer.createAllAnswersInitializerInstance(1, 10, 20140101L,
+                20143101L, Order.ASC,
+                AnswerSortBy.VOTES, 0, 0);
         assertEquals(
                 "https://api.stackexchange.com/2.2/answers?page=1&pagesize=10&fromdate=1388534400&todate=1391126400&order=asc&sort=votes&site=stackoverflow",
-                answerItemURLGenerator.urlGenerator(ai).toString());
-        ai = null;
-        ai = AnswerItemInitializer.createAllAnswersInitializerInstance(1, 10, 20140101L, 20143101L, Order.ASC,
-                AnswerSortBy.CREATION,
-                0, 0);
+                answerItemURLGenerator.urlGenerator(ai2).toString());
+        AnswerItemInitializer ai3 = AnswerItemInitializer.createAllAnswersInitializerInstance(1, 10, 20140101L,
+                20143101L, Order.ASC,
+                AnswerSortBy.CREATION, 0, 0);
         assertEquals(
                 "https://api.stackexchange.com/2.2/answers?page=1&pagesize=10&fromdate=1388534400&todate=1391126400&order=asc&sort=creation&site=stackoverflow",
-                answerItemURLGenerator.urlGenerator(ai).toString());
-        ai = null;
-        ai = AnswerItemInitializer.createAnswerIdInitializerInstance(1, 10, 20140101L, 20143101L, Order.ASC,
-                AnswerSortBy.CREATION, 0, 0, new HashSet<>(Arrays.asList(321654L, 654312L)),
-                FetchFromAnswer.ID_ANSWER);
+                answerItemURLGenerator.urlGenerator(ai3).toString());
+        AnswerItemInitializer ai4 = AnswerItemInitializer.createAnswerIdInitializerInstance(1, 10, 20140101L, 20143101L,
+                Order.ASC,
+                AnswerSortBy.CREATION, 0, 0, new HashSet<>(Arrays.asList(321654L, 654312L)), FetchFromAnswer.ID_ANSWER);
     }
 
 }

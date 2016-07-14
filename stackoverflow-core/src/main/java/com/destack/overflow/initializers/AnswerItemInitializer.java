@@ -27,9 +27,12 @@ public class AnswerItemInitializer extends BaseInitializer {
 
     private Set<Long> ids;
 
-    private static AnswerItemInitializer answerItemInitializer = new AnswerItemInitializer();
+    private static AnswerItemInitializer answerItemInitializer;
 
-    private AnswerItemInitializer() {
+    private static AnswerItemInitializer setup() {
+        answerItemInitializer = null;
+        answerItemInitializer = new AnswerItemInitializer();
+        return answerItemInitializer;
     }
 
     /**
@@ -46,6 +49,7 @@ public class AnswerItemInitializer extends BaseInitializer {
      */
     public static AnswerItemInitializer createAllAnswersInitializerInstance(int page, int pageSize, long fromDate,
             long toDate, Order order, AnswerSortBy sort, long min, long max) throws ParseException {
+        setup();
         answerItemInitializer.setPage(page);
         answerItemInitializer.setPageSize(pageSize);
         answerItemInitializer
@@ -58,13 +62,10 @@ public class AnswerItemInitializer extends BaseInitializer {
             answerItemInitializer.setMin(min);
             answerItemInitializer.setMax(max);
         }
-        if (!answerItemInitializer.getSort().equals(AnswerSortBy.VOTES) && min > 20081509 && max > 20081509) {
+        if (!answerItemInitializer.getSort().equals(AnswerSortBy.VOTES)
+                && answerItemInitializer.datesVerifier(min, max)) {
             answerItemInitializer.setMin(DATE_FORMAT.parse(String.valueOf(min)).getTime() / 1000);
             answerItemInitializer.setMax(DATE_FORMAT.parse(String.valueOf(max)).getTime() / 1000);
-        }
-        if (!answerItemInitializer.getSort().equals(AnswerSortBy.VOTES) && min < 20081509 && max < 20081509) {
-            answerItemInitializer.setMin(0L);
-            answerItemInitializer.setMax(0L);
         }
         return answerItemInitializer;
     }

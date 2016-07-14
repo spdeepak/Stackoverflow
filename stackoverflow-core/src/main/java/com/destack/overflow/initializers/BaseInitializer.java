@@ -1,5 +1,6 @@
 package com.destack.overflow.initializers;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.TimeZone;
 
@@ -14,6 +15,7 @@ public class BaseInitializer {
     protected static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyyddMM");
 
     static {
+        DATE_FORMAT.setLenient(false);
         DATE_FORMAT.setTimeZone(TimeZone.getTimeZone("Etc/UTC"));
     }
 
@@ -125,6 +127,20 @@ public class BaseInitializer {
 
     public void setToDate(Long toDate) {
         this.toDate = toDate;
+    }
+
+    public boolean dateVerifier(Long date) {
+        try {
+            DATE_FORMAT.parse(String.valueOf(date));
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
+    public boolean datesVerifier(Long date1, Long date2) {
+        return dateVerifier(date1) && dateVerifier(date2);
     }
 
 }
