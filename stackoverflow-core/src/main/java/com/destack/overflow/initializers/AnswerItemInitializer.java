@@ -29,6 +29,9 @@ public class AnswerItemInitializer extends BaseInitializer {
 
     private static AnswerItemInitializer answerItemInitializer;
 
+    private AnswerItemInitializer() {
+    }
+
     private static AnswerItemInitializer setup() {
         answerItemInitializer = null;
         answerItemInitializer = new AnswerItemInitializer();
@@ -62,8 +65,7 @@ public class AnswerItemInitializer extends BaseInitializer {
             LOGGER.info("Answer Sort By VOTES");
             answerItemInitializer.setMin(min);
             answerItemInitializer.setMax(max);
-        }
-        if (!answerItemInitializer.getSort().equals(AnswerSortBy.VOTES)
+        } else if (!answerItemInitializer.getSort().equals(AnswerSortBy.VOTES)
                 && answerItemInitializer.datesVerifier(min, max)) {
             answerItemInitializer.setMin(DATE_FORMAT.parse(String.valueOf(min)).getTime() / 1000);
             answerItemInitializer.setMax(DATE_FORMAT.parse(String.valueOf(max)).getTime() / 1000);
@@ -94,12 +96,9 @@ public class AnswerItemInitializer extends BaseInitializer {
             answerItemInitializer.setIds(ids);
             if (FetchFromAnswer.validate(fetchFromAnswer)) {
                 answerItemInitializer.setFetchFromAnswer(fetchFromAnswer);
-            } else if (!FetchFromAnswer.validate(fetchFromAnswer)) {
+            } else {
                 LOGGER.error("FetchFromAnswer is not valid");
                 throw new IllegalArgumentException("FetchFromAnswer is not valid");
-            } else {
-                LOGGER.error("Use createAllAnswersInitializerInstance to get Fetch");
-                throw new IllegalArgumentException("Use createAllAnswersInitializerInstance to get Fetch");
             }
         } else {
             LOGGER.error("IDs cannot be null or empty");

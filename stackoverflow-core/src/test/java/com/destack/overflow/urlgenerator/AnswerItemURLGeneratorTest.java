@@ -1,6 +1,7 @@
 package com.destack.overflow.urlgenerator;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.net.MalformedURLException;
 import java.text.ParseException;
@@ -69,6 +70,25 @@ public class AnswerItemURLGeneratorTest {
         assertEquals(
                 "https://api.stackexchange.com/2.2/answers/14396416;11775670/comments?fromdate=1293840000&todate=1468454400&order=asc&sort=creation&site=stackoverflow",
                 answerItemURLGenerator.urlGenerator(ai).toString());
+    }
+
+    @Test
+    public void testExceptions() throws ParseException {
+        AnswerItemInitializer ai;
+        try {
+            ai = AnswerItemInitializer.createAnswerIdInitializerInstance(0, 0, 20110101L, 20161407L, Order.ASC,
+                    AnswerSortBy.CREATION, 0, 0, null, FetchFromAnswer.ID_ANSWER);
+        } catch (IllegalArgumentException e) {
+            assertTrue(e.getMessage().equals("IDs cannot be null or empty"));
+        }
+    }
+
+    @Test
+    public void testDateVerifier() throws ParseException {
+        AnswerItemInitializer ai = AnswerItemInitializer.createAllAnswersInitializerInstance(0, 0, 32653265, 32653232,
+                Order.ASC, AnswerSortBy.ACTIVITY, 0, 0);
+        assertEquals(Long.valueOf(0L), ai.getFromDate());
+        assertEquals(Long.valueOf(0L), ai.getToDate());
     }
 
 }
