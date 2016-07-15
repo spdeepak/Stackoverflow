@@ -30,17 +30,17 @@ public class AnswerItemURLGenerator extends BaseURLComponentGenerator implements
         if (FetchFromAnswer.ID_ANSWER.equals(ai.getFetchFromAnswer())) {
             String replace = "answers/".concat(getIdSetURLComponent(ai.getIds()).concat("?"));
             url = url.replace("answers?", replace);
-            replace = "";
+            replace = null;
             return new URL(url);
         } else if (FetchFromAnswer.COMMENTS_IDANSWER.equals(ai.getFetchFromAnswer())) {
             String replace = "answers/".concat(getIdSetURLComponent(ai.getIds())).concat("/comments?");
             url = url.replace("answers?", replace);
-            replace = "";
+            replace = null;
             return new URL(url);
         } else if (FetchFromAnswer.QUESTIONS_IDANSWER.equals(ai.getFetchFromAnswer())) {
             String replace = "answers/".concat(getIdSetURLComponent(ai.getIds())).concat("/questions?");
             url = url.replace("answers?", replace);
-            replace = "";
+            replace = null;
             return new URL(url);
         }
         LOGGER.info("Default URL generated");
