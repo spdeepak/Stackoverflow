@@ -3,6 +3,7 @@ package com.destack.overflow.urlgenerator;
 import static org.junit.Assert.assertEquals;
 
 import java.net.MalformedURLException;
+import java.security.InvalidParameterException;
 import java.text.ParseException;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -142,5 +143,12 @@ public class BadgeItemURLGeneratorTest {
         assertEquals(
                 "https://api.stackexchange.com/2.2/badges/222?page=1&pagesize=100&fromdate=1451606400&todate=1454284800&order=asc&sort=type&min=gold&max=bronze&site=stackoverflow&filter=!-*f(6qLMLow-",
                 badgeItemURLGenerator.urlGenerator(bii).toString());
+        try {
+            assertEquals(
+                    "https://api.stackexchange.com/2.2/badges/222?page=1&pagesize=100&fromdate=1451606400&todate=1454284800&order=asc&sort=type&min=gold&max=bronze&site=stackoverflow&filter=!-*f(6qLMLow-",
+                    badgeItemURLGenerator.urlGenerator(null).toString());
+        } catch (InvalidParameterException e) {
+            assertEquals("Invalid arguments passed", e.getMessage());
+        }
     }
 }
