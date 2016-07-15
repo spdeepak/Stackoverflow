@@ -154,7 +154,9 @@ public class BaseURLComponentGenerator {
         Set<String> stringSet = new HashSet();
         if (idSet != null && !idSet.isEmpty()) {
             for (Long ids : idSet) {
-                stringSet.add(String.valueOf(ids));
+                if (ids != 0) {
+                    stringSet.add(String.valueOf(ids));
+                }
             }
         }
         return getSetURLComponent(stringSet);

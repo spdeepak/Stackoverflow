@@ -81,6 +81,12 @@ public class AnswerItemURLGeneratorTest {
         } catch (IllegalArgumentException e) {
             assertTrue(e.getMessage().equals("IDs cannot be null or empty"));
         }
+        try {
+            ai = AnswerItemInitializer.createAnswerIdInitializerInstance(0, 0, 20110101L, 20161407L, Order.ASC,
+                    AnswerSortBy.CREATION, 0, 0, new HashSet<>(Arrays.asList(11775670L, 14396416L)), null);
+        } catch (IllegalArgumentException e) {
+            assertTrue(e.getMessage().equals("FetchFromAnswer is not valid"));
+        }
     }
 
     @Test

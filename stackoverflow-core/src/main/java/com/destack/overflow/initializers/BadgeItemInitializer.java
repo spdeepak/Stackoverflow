@@ -1,7 +1,7 @@
 package com.destack.overflow.initializers;
 
 import java.text.ParseException;
-import java.util.EnumSet;
+import java.util.Set;
 
 import com.destack.overflow.enums.BadgeRetriever;
 import com.destack.overflow.enums.BadgeSortBy;
@@ -22,122 +22,90 @@ public class BadgeItemInitializer extends BaseInitializer {
 
     private String inName;
 
-    private long badge_id;
+    private Set<Long> badge_id;
 
     private BadgeRetriever br;
 
-    /**
-     * @param page
-     * @param pageSize
-     * @param fromDate
-     * @param toDate
-     * @param order
-     * @param bMax
-     * @param bMin
-     * @param sort
-     * @param inName
-     * @param tagRequried
-     * @param nameRequired
-     * @throws ParseException
-     */
-    public BadgeItemInitializer(int page, int pageSize, long fromDate, long toDate, Order order, MaxMin max, MaxMin min,
-            BadgeSortBy sort, String inName, boolean nameRequired) throws ParseException {
-        setPage(page);
-        setPageSize(pageSize);
-        setFromDate(fromDate > 20081509 ? DATE_FORMAT.parse(String.valueOf(fromDate)).getTime() / 1000 : 0);
-        setToDate(toDate != 0 ? DATE_FORMAT.parse(String.valueOf(toDate)).getTime() / 1000 : 0);
-        setOrder(order != null ? order : Order.DESC);
-        setbMax((max.equals(MaxMin.BRONZE) || max.equals(MaxMin.GOLD) || max.equals(MaxMin.SILVER)) ? max : null);
-        setbMin((max.equals(MaxMin.BRONZE) || max.equals(MaxMin.GOLD) || max.equals(MaxMin.SILVER)) ? min : null);
-        setSort(!sort.equals(EnumSet.of(BadgeSortBy.NAME, BadgeSortBy.RANK, BadgeSortBy.TYPE)) ? sort
-                : BadgeSortBy.RANK);
-        this.inName = (inName != null && inName.trim().isEmpty()) ? null : inName;
-        if (nameRequired) {
-            br = BadgeRetriever.NAME;
-        } else {
-            br = BadgeRetriever.NORMAL;
-        }
+    private static BadgeItemInitializer badgeItemInitializer;
+
+    private BadgeItemInitializer() {
     }
 
-    public BadgeItemInitializer(int page, int pageSize, long fromDate, long toDate, Order order, MaxMin max, MaxMin min,
-            BadgeSortBy sort, boolean tagRequired, String inName) throws ParseException {
-        setPage(page);
-        setPageSize(pageSize);
-        setFromDate(fromDate > 20081509 ? DATE_FORMAT.parse(String.valueOf(fromDate)).getTime() / 1000 : 0);
-        setToDate(toDate != 0 ? DATE_FORMAT.parse(String.valueOf(toDate)).getTime() / 1000 : 0);
-        setOrder(order != null ? order : Order.DESC);
-        setbMax((max.equals(MaxMin.BRONZE) || max.equals(MaxMin.GOLD) || max.equals(MaxMin.SILVER)) ? max : null);
-        setbMin((max.equals(MaxMin.BRONZE) || max.equals(MaxMin.GOLD) || max.equals(MaxMin.SILVER)) ? min : null);
-        setSort(!sort.equals(EnumSet.of(BadgeSortBy.NAME, BadgeSortBy.RANK, BadgeSortBy.TYPE)) ? sort
-                : BadgeSortBy.RANK);
-        this.inName = (inName != null && inName.trim().isEmpty()) ? null : inName;
-        if (tagRequired) {
-            br = BadgeRetriever.TAG;
-        } else {
-            br = BadgeRetriever.NORMAL;
-        }
+    private static void setup() {
+        badgeItemInitializer = null;
+        badgeItemInitializer = new BadgeItemInitializer();
     }
 
-    /**
-     * @param page
-     * @param pageSize
-     * @param fromDate
-     * @param toDate
-     * @param order
-     * @param bMax
-     * @param bMin
-     * @param sort
-     * @param badge_id
-     * @throws ParseException
-     */
-    public BadgeItemInitializer(int page, int pageSize, long fromDate, long toDate, Order order, MaxMin max, MaxMin min,
-            BadgeSortBy sort, long badge_id) throws ParseException {
-        setPage(page);
-        setPageSize(pageSize);
-        setFromDate(fromDate > 20081509 ? DATE_FORMAT.parse(String.valueOf(fromDate)).getTime() / 1000 : 0);
-        setToDate(toDate != 0 ? DATE_FORMAT.parse(String.valueOf(toDate)).getTime() / 1000 : 0);
-        setOrder(order != null ? order : Order.DESC);
-        setbMax((max.equals(MaxMin.BRONZE) || max.equals(MaxMin.GOLD) || max.equals(MaxMin.SILVER)) ? max : null);
-        setbMin((max.equals(MaxMin.BRONZE) || max.equals(MaxMin.GOLD) || max.equals(MaxMin.SILVER)) ? min : null);
-        setSort(!sort.equals(EnumSet.of(BadgeSortBy.NAME, BadgeSortBy.RANK, BadgeSortBy.TYPE)) ? sort
-                : BadgeSortBy.RANK);
-        this.badge_id = badge_id;
-        br = BadgeRetriever.ID;
+    public static BadgeItemInitializer createAllBadgeInitializer(int page, int pageSize, long fromDate, long toDate,
+            Order order, MaxMin max, MaxMin min, BadgeSortBy sort, String inName) throws ParseException {
+        setup();
+        badgeItemInitializer.setPage(page);
+        badgeItemInitializer.setPageSize(pageSize);
+        badgeItemInitializer.setFromDate(badgeItemInitializer.dateVerifier(fromDate)
+                ? DATE_FORMAT.parse(String.valueOf(fromDate)).getTime() / 1000 : 0);
+        badgeItemInitializer.setToDate(badgeItemInitializer.dateVerifier(toDate)
+                ? DATE_FORMAT.parse(String.valueOf(toDate)).getTime() / 1000 : 0);
+        badgeItemInitializer.setOrder(order != null ? order : Order.DESC);
+        badgeItemInitializer.setbMax(MaxMin.validate(max) ? max : null);
+        badgeItemInitializer.setbMin(MaxMin.validate(min) ? min : null);
+        badgeItemInitializer.setSort(BadgeSortBy.validate(sort) ? sort : BadgeSortBy.RANK);
+        badgeItemInitializer.setInName((inName != null && !inName.trim().isEmpty()) ? inName : "");
+        badgeItemInitializer.setBr(BadgeRetriever.NORMAL);
+        return badgeItemInitializer;
     }
 
-    /**
-     * To get recently awarded badges in the system.
-     * 
-     * @param page
-     * @param pageSize
-     * @param formDate
-     * @param toDate
-     * @throws ParseException
-     */
-    public BadgeItemInitializer(int page, int pageSize, long fromDate, long toDate) throws ParseException {
-        setPage(page);
-        setPageSize(pageSize);
-        setFromDate(fromDate > 20081509 ? DATE_FORMAT.parse(String.valueOf(fromDate)).getTime() / 1000 : 0);
-        setToDate(toDate != 0 ? DATE_FORMAT.parse(String.valueOf(toDate)).getTime() / 1000 : 0);
-        br = BadgeRetriever.RECIPIENT;
+    public static BadgeItemInitializer createNameBasedBadgeInitializer(int page, int pageSize, long fromDate,
+            long toDate, Order order, MaxMin max, MaxMin min, BadgeSortBy sort, String inName) throws ParseException {
+        setup();
+        badgeItemInitializer = createAllBadgeInitializer(page, pageSize, fromDate, toDate, order, max, min, sort,
+                inName);
+        badgeItemInitializer.setBr(BadgeRetriever.NAME);
+        return badgeItemInitializer;
     }
 
-    /**
-     * @param page
-     * @param pageSize
-     * @param fromDate
-     * @param toDate
-     * @param badge_id
-     * @throws ParseException
-     */
-    public BadgeItemInitializer(int page, int pageSize, long fromDate, long toDate, long badge_id)
-            throws ParseException {
-        setPage(page);
-        setPageSize(pageSize);
-        setFromDate(fromDate > 20081509 ? DATE_FORMAT.parse(String.valueOf(fromDate)).getTime() / 1000 : 0);
-        setToDate(toDate != 0 ? DATE_FORMAT.parse(String.valueOf(toDate)).getTime() / 1000 : 0);
-        this.badge_id = badge_id;
-        br = BadgeRetriever.ID_RECIPIENT;
+    public static BadgeItemInitializer createTagBasedBadgeInitializer(int page, int pageSize, long fromDate,
+            long toDate, Order order, MaxMin max, MaxMin min, BadgeSortBy sort, String inName) throws ParseException {
+        setup();
+        badgeItemInitializer = createAllBadgeInitializer(page, pageSize, fromDate, toDate, order, max, min, sort,
+                inName);
+        badgeItemInitializer.setBr(BadgeRetriever.TAG);
+        return badgeItemInitializer;
+    }
+
+    public static BadgeItemInitializer createIDBasedBadgeInitializer(int page, int pageSize, long fromDate, long toDate,
+            Order order, MaxMin max, MaxMin min, BadgeSortBy sort, Set<Long> badge_id) throws ParseException {
+        setup();
+        badgeItemInitializer = createAllBadgeInitializer(page, pageSize, fromDate, toDate, order, max, min, sort, null);
+        badgeItemInitializer.setBadge_id(badge_id);
+        badgeItemInitializer.setBr(BadgeRetriever.ID);
+        return badgeItemInitializer;
+    }
+
+    public static BadgeItemInitializer createRecipientBasedBadgeInitializer(int page, int pageSize, long fromDate,
+            long toDate) throws ParseException {
+        setup();
+        badgeItemInitializer.setPage(page);
+        badgeItemInitializer.setPageSize(pageSize);
+        badgeItemInitializer.setFromDate(badgeItemInitializer.dateVerifier(fromDate)
+                ? DATE_FORMAT.parse(String.valueOf(fromDate)).getTime() / 1000 : 0);
+        badgeItemInitializer.setToDate(badgeItemInitializer.dateVerifier(toDate)
+                ? DATE_FORMAT.parse(String.valueOf(toDate)).getTime() / 1000 : 0);
+        badgeItemInitializer.setBr(BadgeRetriever.RECIPIENT);
+        return badgeItemInitializer;
+    }
+
+    public static BadgeItemInitializer createIDRecipientBasedBadgeInitializer(int page, int pageSize, long fromDate,
+            long toDate, Set<Long> badge_id) throws ParseException {
+        setup();
+        badgeItemInitializer.setPage(page);
+        badgeItemInitializer.setPageSize(pageSize);
+        badgeItemInitializer.setFromDate(badgeItemInitializer.dateVerifier(fromDate)
+                ? DATE_FORMAT.parse(String.valueOf(fromDate)).getTime() / 1000 : 0);
+        badgeItemInitializer.setToDate(badgeItemInitializer.dateVerifier(toDate)
+                ? DATE_FORMAT.parse(String.valueOf(toDate)).getTime() / 1000 : 0);
+        badgeItemInitializer.setBadge_id(badge_id);
+        badgeItemInitializer.setBr(BadgeRetriever.ID_RECIPIENT);
+        return badgeItemInitializer;
     }
 
     public MaxMin getbMax() {
@@ -156,7 +124,7 @@ public class BadgeItemInitializer extends BaseInitializer {
         return inName;
     }
 
-    public long getBadge_id() {
+    public Set<Long> getBadge_id() {
         return badge_id;
     }
 
@@ -180,7 +148,7 @@ public class BadgeItemInitializer extends BaseInitializer {
         this.inName = inName;
     }
 
-    public void setBadge_id(long badge_id) {
+    public void setBadge_id(Set<Long> badge_id) {
         this.badge_id = badge_id;
     }
 
