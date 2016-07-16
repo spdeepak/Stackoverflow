@@ -55,20 +55,20 @@ public class AnswerItemInitializer extends BaseInitializer {
         setup();
         answerItemInitializer.setPage(page);
         answerItemInitializer.setPageSize(pageSize);
-        answerItemInitializer.setFromDate(answerItemInitializer.dateVerifier(fromDate)
-                ? DATE_FORMAT.parse(String.valueOf(fromDate)).getTime() / 1000 : 0);
-        answerItemInitializer.setToDate(answerItemInitializer.dateVerifier(toDate)
-                ? DATE_FORMAT.parse(String.valueOf(toDate)).getTime() / 1000 : 0);
+        answerItemInitializer.setFromDate(answerItemInitializer.dateConverter(fromDate));
+        answerItemInitializer.setToDate(answerItemInitializer.dateConverter(toDate));
         answerItemInitializer.setSort(AnswerSortBy.validate(sort) ? sort : AnswerSortBy.ACTIVITY);
         answerItemInitializer.setOrder(Order.validate(order) ? order : Order.DESC);
         if (answerItemInitializer.getSort().equals(AnswerSortBy.VOTES)) {
             LOGGER.info("Answer Sort By VOTES");
             answerItemInitializer.setMin(min);
             answerItemInitializer.setMax(max);
-        } else if (!answerItemInitializer.getSort().equals(AnswerSortBy.VOTES)
-                && answerItemInitializer.datesVerifier(min, max)) {
-            answerItemInitializer.setMin(DATE_FORMAT.parse(String.valueOf(min)).getTime() / 1000);
-            answerItemInitializer.setMax(DATE_FORMAT.parse(String.valueOf(max)).getTime() / 1000);
+        } else if (answerItemInitializer.datesVerifier(min, max)) {
+            answerItemInitializer.setMin(answerItemInitializer.dateConverter(min));
+            answerItemInitializer.setMax(answerItemInitializer.dateConverter(max));
+        } else {
+            throw new IllegalArgumentException(
+                    "As AnswerSortBy is not by Votes Min & Max should be dates and in 'yyyyddMM' format");
         }
         return answerItemInitializer;
     }

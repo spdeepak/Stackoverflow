@@ -142,8 +142,10 @@ public class BaseInitializer {
      */
     public boolean dateVerifier(Long date) {
         try {
-            if (date != 0) {
+            if (date != null && date != 0) {
                 DATE_FORMAT.parse(String.valueOf(date));
+            } else if (date != null && date == 0) {
+                return true;
             } else {
                 return false;
             }
@@ -163,6 +165,22 @@ public class BaseInitializer {
      */
     public boolean datesVerifier(Long date1, Long date2) {
         return dateVerifier(date1) && dateVerifier(date2);
+    }
+
+    /**
+     * Validates date and converts to 10 digit Integer format
+     * 
+     * @param date
+     *            Date in the format of <b>"yyyyddMM"</b>
+     * @return valid date or "0"
+     * @throws ParseException
+     */
+    public Long dateConverter(Long date) throws ParseException {
+        if (dateVerifier(date) && date != 0) {
+            return (DATE_FORMAT.parse(String.valueOf(date)).getTime() / 1000);
+        } else {
+            return 0L;
+        }
     }
 
 }

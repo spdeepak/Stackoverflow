@@ -3,7 +3,9 @@ package com.destack.overflow.urlgenerator;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import com.destack.overflow.enums.CommentSortBy;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.destack.overflow.initializers.CommentInitializer;
 import com.destack.overflow.model.CommentItem;
 
@@ -16,26 +18,23 @@ import com.destack.overflow.model.CommentItem;
  */
 public class CommentURLGenerator extends BaseURLComponentGenerator implements URLGenerator<CommentInitializer> {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(CommentURLGenerator.class);
+
     @Override
     public URL urlGenerator(CommentInitializer commentInitializer) throws MalformedURLException {
         String url = "https://api.stackexchange.com/2.2/comments?";
-        if (commentInitializer.getComment_id() != 0) {
-            return new URL(plainURLGenerator(commentInitializer, url)
-                    .replace("https://api.stackexchange.com/2.2/comments", "https://api.stackexchange.com/2.2/comments/"
-                            .concat(String.valueOf(commentInitializer.getComment_id()))));
-        }
-        return new URL(plainURLGenerator(commentInitializer, url));
-    }
-
-    private String plainURLGenerator(CommentInitializer commentInitializer, String url) throws MalformedURLException {
         url = url.concat(getBaseURLComponents(commentInitializer));
-        if (commentInitializer.getSort() != null) {
-            url += "&sort=".concat(commentInitializer.getSort().toString());
-        } else {
-            url += "&sort=".concat(CommentSortBy.CREATION.toString());
-        }
+        url += "&sort=".concat(commentInitializer.getSort().toString());
         url = urlFixer(url);
-        return url;
+
+        if (commentInitializer.getComment_id() != null && !commentInitializer.getComment_id().isEmpty()) {
+            LOGGER.info("Comment Fetcher URL with comment ID is generated");
+            return new URL(url.replace("2.2/comments",
+                    "2.2/comments/".concat(String.valueOf(getIdSetURLComponent(commentInitializer.getComment_id())))));
+        } else {
+            LOGGER.info("Comment Fetcher URL is generated");
+            return new URL(url);
+        }
     }
 
 }
