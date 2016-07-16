@@ -36,9 +36,11 @@ public enum TagSortBy {
     }
 
     public static boolean contains(TagSortBy tagSortBy) {
-        for (TagSortBy sort : TagSortBy.class.getEnumConstants()) {
+        if (tagSortBy != null) {
+            for (TagSortBy sort : TagSortBy.class.getEnumConstants()) {
             if (sort.equals(tagSortBy)) {
                 return true;
+            }
             }
         }
         return false;

@@ -28,9 +28,11 @@ public enum TagPeriod {
     }
 
     public static boolean contains(TagPeriod tagPeriod) {
-        for (TagPeriod period : TagPeriod.class.getEnumConstants()) {
-            if (period.equals(tagPeriod)) {
-                return true;
+        if (tagPeriod != null) {
+            for (TagPeriod period : TagPeriod.class.getEnumConstants()) {
+                if (period.equals(tagPeriod)) {
+                    return true;
+                }
             }
         }
         return false;
