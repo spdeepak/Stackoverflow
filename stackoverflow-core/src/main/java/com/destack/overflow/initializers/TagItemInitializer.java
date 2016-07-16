@@ -19,8 +19,6 @@ public class TagItemInitializer extends BaseInitializer {
 
     private TagSortBySynonyms sortSynonyms;
 
-    private Long badge_id;
-
     private TagRetriever tagRetriever;
 
     private Set<String> tags;
@@ -28,6 +26,8 @@ public class TagItemInitializer extends BaseInitializer {
     private String inName;
 
     private TagPeriod tagPeriod;
+
+    private String tag;
 
     private static TagItemInitializer tagItemInitializer;
 
@@ -82,6 +82,13 @@ public class TagItemInitializer extends BaseInitializer {
         return tagItemInitializer;
     }
 
+    public static TagItemInitializer createRequiredNameTagInitializer(Integer page, Integer pageSize, Long fromDate,
+            Long toDate, Order order, TagSortBy sort, Object min, Object max, String inName) throws ParseException {
+        createAllTagsInitializer(page, pageSize, fromDate, toDate, order, sort, min, max, inName);
+        tagItemInitializer.setTagRetriever(TagRetriever.REQUIRED);
+        return tagItemInitializer;
+    }
+
     public static TagItemInitializer createSynonymsTagsInitializer(Integer page, Integer pageSize, Long fromDate,
             Long toDate, Order order, TagSortBySynonyms sort, Object min, Object max) throws ParseException {
         setup();
@@ -120,11 +127,27 @@ public class TagItemInitializer extends BaseInitializer {
         return tagItemInitializer;
     }
 
+    /**
+     * @param page
+     *            Page number
+     * @param pageSize
+     *            number of items in a page
+     * @param tag
+     *            Tag name is mandatory
+     * @param tagPeriod
+     *            Default is {@link TagPeriod#ALL_TIME}
+     * @return {@link TagItemInitializer} suitable for {@link TagRetriever#TOP_ANSWERS}
+     */
     public static TagItemInitializer createTopAnswerTagInitializer(Integer page, Integer pageSize, String tag,
             TagPeriod tagPeriod) {
         setup();
         tagItemInitializer.setPage(page);
         tagItemInitializer.setPageSize(pageSize);
+        if (tag != null && !tag.trim().isEmpty()) {
+            tagItemInitializer.setTag(tag);
+        } else {
+            throw new IllegalArgumentException("Tag name is mandatory");
+        }
         tagItemInitializer.setTagPeriod(TagPeriod.validate(tagPeriod) ? tagPeriod : TagPeriod.ALL_TIME);
         tagItemInitializer.setTagRetriever(TagRetriever.TOP_ANSWERS);
         return tagItemInitializer;
@@ -146,6 +169,7 @@ public class TagItemInitializer extends BaseInitializer {
         } else {
             throw new IllegalArgumentException("Tag names are mandatory");
         }
+        tagItemInitializer.setTagRetriever(TagRetriever.WIKIS);
         return tagItemInitializer;
     }
 
@@ -193,27 +217,26 @@ public class TagItemInitializer extends BaseInitializer {
             if (min != null && min instanceof Number) {
                 setMin(((Number) min).longValue());
             } else if (min != null && !(min instanceof Number)) {
-                throw new IllegalArgumentException("When TagSortBySynonyms is APPLIED min and max should be count");
+                throw new IllegalArgumentException(
+                        "When TagSortBySynonyms is APPLIED min and max should be count (i.e., a number)");
             }
             if (max != null && max instanceof Number) {
-                setMaxDate(((Number) max).longValue() > 20081509
-                        ? DATE_FORMAT.parse(String.valueOf(max)).getTime() / 1000 : 0);
+                setMaxDate(((Number) max).longValue());
             } else if (max != null && !(max instanceof Number)) {
-                throw new IllegalArgumentException("When TagSortBySynonyms is APPLIED min and max should be count");
+                throw new IllegalArgumentException(
+                        "When TagSortBySynonyms is APPLIED min and max should be count (i.e., a number)");
             }
 
         } else if (getSortSynonyms().equals(TagSortBySynonyms.ACTIVITY)
                 || getSortSynonyms().equals(TagSortBySynonyms.CREATION)) {
             if (min != null && min instanceof Number) {
-                setMinDate(((Number) min).longValue() > 20081509
-                        ? DATE_FORMAT.parse(String.valueOf(min)).getTime() / 1000 : 0);
+                setMinDate(dateConverter(((Number) min).longValue()));
             } else if (min != null && !(min instanceof Number)) {
                 throw new IllegalArgumentException(
                         "When TagSortBySynonyms is ACTIVITY/CREATION min and max should be Date(yyyyddMM)");
             }
             if (max != null && max instanceof Number) {
-                setMaxDate(((Number) max).longValue() > 20081509
-                        ? DATE_FORMAT.parse(String.valueOf(max)).getTime() / 1000 : 0);
+                setMaxDate(dateConverter(((Number) max).longValue()));
             } else if (max != null && !(max instanceof Number)) {
                 throw new IllegalArgumentException(
                         "When TagSortBySynonyms is ACTIVITY/CREATION min and max should be Date(yyyyddMM)");
@@ -223,10 +246,6 @@ public class TagItemInitializer extends BaseInitializer {
 
     public TagSortBy getSort() {
         return sort;
-    }
-
-    public Long getBadge_id() {
-        return badge_id;
     }
 
     public TagRetriever getTagRetriever() {
@@ -273,8 +292,12 @@ public class TagItemInitializer extends BaseInitializer {
         this.sort = sort;
     }
 
-    public void setBadge_id(Long badge_id) {
-        this.badge_id = badge_id;
+    public String getTag() {
+        return tag;
+    }
+
+    public void setTag(String tag) {
+        this.tag = tag;
     }
 
 }
