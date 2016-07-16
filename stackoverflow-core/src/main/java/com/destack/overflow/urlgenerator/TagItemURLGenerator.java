@@ -62,12 +62,7 @@ public class TagItemURLGenerator extends BaseURLComponentGenerator implements UR
     private URL tagRetrieverURLWikis(TagItemInitializer tagItemInitializer, String url, String postFix)
             throws MalformedURLException {
         String tagurl = getSetURLComponent(tagItemInitializer.getTags());
-        if (!tagurl.trim().isEmpty()) {
-            url = url.replace("2.2/tags?", "2.2/tags/".concat(tagurl).concat("/wikis?"));
-            tagurl = null;
-        } else {
-            url = url.replace("2.2/tags?", "2.2/tags".concat("/wikis?"));
-        }
+        url = url.replace("2.2/tags?", "2.2/tags/".concat(tagurl).concat("/wikis?"));
         url = pagePagesizeURL(tagItemInitializer, url, postFix);
         return new URL(url);
     }
@@ -93,12 +88,7 @@ public class TagItemURLGenerator extends BaseURLComponentGenerator implements UR
     private URL tagRetrieverTagsSynonymsURL(TagItemInitializer tagItemInitializer, String url, String postFix)
             throws MalformedURLException {
         String tagurl = getSetURLComponent(tagItemInitializer.getTags());
-        if (!tagurl.trim().isEmpty()) {
-            url = url.replace("2.2/tags?", "2.2/tags/".concat(tagurl).concat("/synonyms?"));
-            tagurl = null;
-        } else {
-            url = url.replace("2.2/tags?", "2.2/tags".concat("/synonyms?"));
-        }
+        url = url.replace("2.2/tags?", "2.2/tags/".concat(tagurl).concat("/synonyms?"));
         url += getBaseURLComponents(tagItemInitializer);
         url += getSortURLComponent(tagItemInitializer.getSort().toString());
         url += getInNameURLComponent(tagItemInitializer.getInName());
