@@ -41,10 +41,29 @@ public class BadgeItemURLGeneratorTest {
         assertEquals(
                 "https://api.stackexchange.com/2.2/badges?page=1&pagesize=100&fromdate=1451606400&todate=1454284800&order=asc&sort=rank&min=gold&max=bronze&site=stackoverflow&filter=!-*f(6qLMLow-",
                 badgeItemURLGenerator.urlGenerator(bi).toString());
+
         bi = BadgeItemInitializer.createAllBadgeInitializer(1, 100, 20160101L, 20160102L, null, MaxMin.BRONZE,
                 MaxMin.GOLD, BadgeSortBy.RANK, "java");
         assertEquals(
                 "https://api.stackexchange.com/2.2/badges?page=1&pagesize=100&fromdate=1451606400&todate=1454284800&order=desc&sort=rank&min=gold&max=bronze&inname=java&site=stackoverflow&filter=!-*f(6qLMLow-",
+                badgeItemURLGenerator.urlGenerator(bi).toString());
+
+        bi = BadgeItemInitializer.createAllBadgeInitializer(1, 100, 20160101L, 20160102L, null, null, null,
+                BadgeSortBy.RANK, "java");
+        assertEquals(
+                "https://api.stackexchange.com/2.2/badges?page=1&pagesize=100&fromdate=1451606400&todate=1454284800&order=desc&sort=rank&inname=java&site=stackoverflow&filter=!-*f(6qLMLow-",
+                badgeItemURLGenerator.urlGenerator(bi).toString());
+
+        bi = BadgeItemInitializer.createAllBadgeInitializer(1, 100, 20160101L, 20160102L, null, null, null,
+                BadgeSortBy.RANK, null);
+        assertEquals(
+                "https://api.stackexchange.com/2.2/badges?page=1&pagesize=100&fromdate=1451606400&todate=1454284800&order=desc&sort=rank&site=stackoverflow&filter=!-*f(6qLMLow-",
+                badgeItemURLGenerator.urlGenerator(bi).toString());
+
+        bi = BadgeItemInitializer.createAllBadgeInitializer(1, 100, 20160101L, 20160102L, null, null, null,
+                BadgeSortBy.RANK, " ");
+        assertEquals(
+                "https://api.stackexchange.com/2.2/badges?page=1&pagesize=100&fromdate=1451606400&todate=1454284800&order=desc&sort=rank&site=stackoverflow&filter=!-*f(6qLMLow-",
                 badgeItemURLGenerator.urlGenerator(bi).toString());
     }
 

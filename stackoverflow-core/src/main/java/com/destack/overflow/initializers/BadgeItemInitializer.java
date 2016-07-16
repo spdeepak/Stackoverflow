@@ -41,10 +41,8 @@ public class BadgeItemInitializer extends BaseInitializer {
         setup();
         badgeItemInitializer.setPage(page);
         badgeItemInitializer.setPageSize(pageSize);
-        badgeItemInitializer.setFromDate(badgeItemInitializer.dateVerifier(fromDate)
-                ? DATE_FORMAT.parse(String.valueOf(fromDate)).getTime() / 1000 : 0);
-        badgeItemInitializer.setToDate(badgeItemInitializer.dateVerifier(toDate)
-                ? DATE_FORMAT.parse(String.valueOf(toDate)).getTime() / 1000 : 0);
+        badgeItemInitializer.setFromDate(badgeItemInitializer.dateConverter(fromDate));
+        badgeItemInitializer.setToDate(badgeItemInitializer.dateConverter(toDate));
         badgeItemInitializer.setOrder(order != null ? order : Order.DESC);
         badgeItemInitializer.setbMax(MaxMin.validate(max) ? max : null);
         badgeItemInitializer.setbMin(MaxMin.validate(min) ? min : null);
@@ -86,10 +84,8 @@ public class BadgeItemInitializer extends BaseInitializer {
         setup();
         badgeItemInitializer.setPage(page);
         badgeItemInitializer.setPageSize(pageSize);
-        badgeItemInitializer.setFromDate(badgeItemInitializer.dateVerifier(fromDate)
-                ? DATE_FORMAT.parse(String.valueOf(fromDate)).getTime() / 1000 : 0);
-        badgeItemInitializer.setToDate(badgeItemInitializer.dateVerifier(toDate)
-                ? DATE_FORMAT.parse(String.valueOf(toDate)).getTime() / 1000 : 0);
+        badgeItemInitializer.setFromDate(badgeItemInitializer.dateConverter(fromDate));
+        badgeItemInitializer.setToDate(badgeItemInitializer.dateConverter(toDate));
         badgeItemInitializer.setBr(BadgeRetriever.RECIPIENT);
         return badgeItemInitializer;
     }
@@ -99,10 +95,8 @@ public class BadgeItemInitializer extends BaseInitializer {
         setup();
         badgeItemInitializer.setPage(page);
         badgeItemInitializer.setPageSize(pageSize);
-        badgeItemInitializer.setFromDate(badgeItemInitializer.dateVerifier(fromDate)
-                ? DATE_FORMAT.parse(String.valueOf(fromDate)).getTime() / 1000 : 0);
-        badgeItemInitializer.setToDate(badgeItemInitializer.dateVerifier(toDate)
-                ? DATE_FORMAT.parse(String.valueOf(toDate)).getTime() / 1000 : 0);
+        badgeItemInitializer.setFromDate(badgeItemInitializer.dateConverter(fromDate));
+        badgeItemInitializer.setToDate(badgeItemInitializer.dateConverter(toDate));
         badgeItemInitializer.setBadge_id(badge_id);
         badgeItemInitializer.setBr(BadgeRetriever.ID_RECIPIENT);
         return badgeItemInitializer;
