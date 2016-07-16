@@ -36,15 +36,19 @@ public enum TagSortBySynonyms {
     }
 
     public static boolean contains(TagSortBySynonyms tagSortBySynonyms) {
-        if (tagSortBySynonyms != null) {
-            for (TagSortBySynonyms sort : TagSortBySynonyms.class.getEnumConstants()) {
-                if (sort.equals(tagSortBySynonyms)) {
-                    return true;
-                } else {
-                    return false;
-                }
+        for (TagSortBySynonyms sort : TagSortBySynonyms.class.getEnumConstants()) {
+            if (sort.equals(tagSortBySynonyms)) {
+                return true;
             }
         }
         return false;
+    }
+
+    public static boolean validate(TagSortBySynonyms tagSortBySynonyms) {
+        if (tagSortBySynonyms != null) {
+            return contains(tagSortBySynonyms);
+        } else {
+            return false;
+        }
     }
 }

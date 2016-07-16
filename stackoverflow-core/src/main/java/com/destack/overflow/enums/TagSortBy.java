@@ -36,13 +36,19 @@ public enum TagSortBy {
     }
 
     public static boolean contains(TagSortBy tagSortBy) {
-        if (tagSortBy != null) {
-            for (TagSortBy sort : TagSortBy.class.getEnumConstants()) {
-                if (sort.equals(tagSortBy)) {
-                    return true;
-                }
+        for (TagSortBy sort : TagSortBy.class.getEnumConstants()) {
+            if (sort.equals(tagSortBy)) {
+                return true;
             }
         }
         return false;
+    }
+
+    public static boolean validate(TagSortBy tagSortBy) {
+        if (tagSortBy != null) {
+            return contains(tagSortBy);
+        } else {
+            return false;
+        }
     }
 }

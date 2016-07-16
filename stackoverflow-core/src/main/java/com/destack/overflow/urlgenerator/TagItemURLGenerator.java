@@ -187,10 +187,9 @@ public class TagItemURLGenerator extends BaseURLComponentGenerator implements UR
 
     private URL tagRetrieversTagsURL(TagItemInitializer tagItemInitializer, String url, String postFix)
             throws MalformedURLException {
-        String tagurl = "tags?".concat(getSetURLComponent(tagItemInitializer.getTags()));
+        String tagurl = getSetURLComponent(tagItemInitializer.getTags());
         if (!tagurl.trim().isEmpty()) {
             url = url.replace("2.2/tags?", "2.2/tags/".concat(tagurl).concat("/info?"));
-            tagurl = null;
         } else {
             url = url.replace("2.2/tags?", "2.2/tags/".concat(tagurl).concat("/info?"));
         }
