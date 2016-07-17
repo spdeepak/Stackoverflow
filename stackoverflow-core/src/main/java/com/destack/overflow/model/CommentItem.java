@@ -1,5 +1,7 @@
 package com.destack.overflow.model;
 
+import com.destack.overflow.enums.PostType;
+
 /**
  * Fields of all the available Unauthorized complete Answer details in Stackoverflow
  * 
@@ -8,9 +10,17 @@ package com.destack.overflow.model;
  */
 public class CommentItem {
 
+    private Owner commentOwner;
+
+    private Owner replyToUser;
+
+    private boolean canFlag;
+
     private boolean edited;
 
     private Integer score;
+
+    private PostType postType;
 
     private Integer creation_date;
 
@@ -18,143 +28,106 @@ public class CommentItem {
 
     private Integer comment_id;
 
-    private Owner commentOwner;
+    private String bodyMarkdown;
 
-    private ReplyToUser replyToUser;
+    private String link;
 
-    public boolean isEdited() {
-        return edited;
-    }
-
-    public Integer getScore() {
-        return score;
-    }
-
-    public Integer getCreation_date() {
-        return creation_date;
-    }
-
-    public Integer getPost_id() {
-        return post_id;
-    }
-
-    public Integer getComment_id() {
-        return comment_id;
-    }
+    private String body;
 
     public Owner getCommentOwner() {
         return commentOwner;
-    }
-
-    public ReplyToUser getReplyToUser() {
-        return replyToUser;
     }
 
     public void setCommentOwner(Owner commentOwner) {
         this.commentOwner = commentOwner;
     }
 
-    public void setReplyToUser(ReplyToUser replyToUser) {
+    public Owner getReplyToUser() {
+        return replyToUser;
+    }
+
+    public void setReplyToUser(Owner replyToUser) {
         this.replyToUser = replyToUser;
+    }
+
+    public boolean isCanFlag() {
+        return canFlag;
+    }
+
+    public void setCanFlag(boolean canFlag) {
+        this.canFlag = canFlag;
+    }
+
+    public boolean isEdited() {
+        return edited;
     }
 
     public void setEdited(boolean edited) {
         this.edited = edited;
     }
 
+    public Integer getScore() {
+        return score;
+    }
+
     public void setScore(Integer score) {
         this.score = score;
+    }
+
+    public PostType getPostType() {
+        return postType;
+    }
+
+    public void setPostType(PostType postType) {
+        this.postType = postType;
+    }
+
+    public Integer getCreation_date() {
+        return creation_date;
     }
 
     public void setCreation_date(Integer creation_date) {
         this.creation_date = creation_date;
     }
 
+    public Integer getPost_id() {
+        return post_id;
+    }
+
     public void setPost_id(Integer post_id) {
         this.post_id = post_id;
+    }
+
+    public Integer getComment_id() {
+        return comment_id;
     }
 
     public void setComment_id(Integer comment_id) {
         this.comment_id = comment_id;
     }
 
-    /**
-     * This class holds information about the User to whom the comment is commented to
-     * 
-     * @author Deepak
-     *
-     */
-    public class ReplyToUser {
+    public String getBodyMarkdown() {
+        return bodyMarkdown;
+    }
 
-        private Integer reputation;
+    public void setBodyMarkdown(String bodyMarkdown) {
+        this.bodyMarkdown = bodyMarkdown;
+    }
 
-        private Integer user_id;
+    public String getLink() {
+        return link;
+    }
 
-        private String user_type;
+    public void setLink(String link) {
+        this.link = link;
+    }
 
-        private String display_name;
+    public String getBody() {
+        return body;
+    }
 
-        private String link;
-
-        private String profile_image;
-
-        private Integer accept_rate;
-
-        public Integer getReputation() {
-            return reputation;
-        }
-
-        public Integer getUser_id() {
-            return user_id;
-        }
-
-        public String getUser_type() {
-            return user_type;
-        }
-
-        public String getDisplay_name() {
-            return display_name;
-        }
-
-        public String getLink() {
-            return link;
-        }
-
-        public String getProfile_image() {
-            return profile_image;
-        }
-
-        public Integer getAccept_rate() {
-            return accept_rate;
-        }
-
-        public void setAccept_rate(Integer accept_rate) {
-            this.accept_rate = accept_rate;
-        }
-
-        public void setReputation(Integer reputation) {
-            this.reputation = reputation;
-        }
-
-        public void setUser_id(Integer user_id) {
-            this.user_id = user_id;
-        }
-
-        public void setUser_type(String user_type) {
-            this.user_type = user_type;
-        }
-
-        public void setDisplay_name(String display_name) {
-            this.display_name = display_name;
-        }
-
-        public void setLink(String link) {
-            this.link = link;
-        }
-
-        public void setProfile_image(String profile_image) {
-            this.profile_image = profile_image;
-        }
+    public void setBody(String body) {
+        this.body = body;
     }
 
 }
