@@ -1,7 +1,5 @@
 package com.destack.overflow.model;
 
-import com.destack.overflow.enums.PostType;
-
 /**
  * Fields of all the available Unauthorized complete Answer details in Stackoverflow
  * 
@@ -20,7 +18,7 @@ public class CommentItem {
 
     private Integer score;
 
-    private PostType postType;
+    private String postType;
 
     private Integer creation_date;
 
@@ -74,11 +72,11 @@ public class CommentItem {
         this.score = score;
     }
 
-    public PostType getPostType() {
+    public String getPostType() {
         return postType;
     }
 
-    public void setPostType(PostType postType) {
+    public void setPostType(String postType) {
         this.postType = postType;
     }
 
