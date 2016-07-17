@@ -7,32 +7,16 @@ after_success: mvn clean test jacoco:report coveralls:report
 
 env:
   global:
-    # COVERITY_SCAN_TOKEN
-    # ** specific to project **
-    - secure: "wpdEI_KgSbUaT3JCMrOdTA"
+   # The next declaration is the encrypted COVERITY_SCAN_TOKEN, created
+   #   via the "travis encrypt" command using the project repo's public key
+   - secure: "cg0rWi6QLvPXQU7TxfG9KDCsF7KKq7VTRNSzuiAjvXqxLG5pgt15NQ+rZ9TS3DXF1NrS7Qy4UKWJb8k2RBQU6+ijeK5Y01IHuMAxbjaXrKch21M9sg1yi3cauJ/T1kOAKW3ByIeMDjoE4zVYzMeMcXdSWVosLSBw3j7OB7Jet0M5HvhNP5rYijIB8/o3HeP0+WDO/vimatbSQh7Pgx5GytrzqNakgG1Jh1Dp1WUmlGpKYp6/Hsi8GDFHcLYjE808iuosuY0G4k6DidvSI5HMUvhyTVcQAvGG+y9HE2157Y14+OaDvjgwxXX/7ivZERxDqo245TwNPB2r6oV+VIrzX7XexrsCs89kt4b8be6ik01fCbP6jfoeU5GbCdjJ2fze3F28v/U1j1N6jkY9V6vQV7s/xfFV1X1kGXV7NBrcXoMKwbnC3ydljbAyECM+gjyfc9MdWRhPtbetcmJZ10vh6SRpDuC6I+Zp6re41k2G2KyMXiOmZMLCS8H4unKGknjyaOW3LcQP66OFy8tIJGh9VzZa46HdDr8N1mMrmHamudzd1ujPmBEC7NgZcd+4/sdDbli8tQtqpVBJt69wcc7AY/+s0U1B7J1y0p9YEmYtVKU2VWF2yNvo34Dlmno9vXNgsesz35bwnQ1nqRtdpnjQopJRqqpbTI3u0SPEJX6zpzk="
 
 addons:
   coverity_scan:
-
-    # GitHub project metadata
-    # ** specific to project **
     project:
-      name: spdeepak/Stackoverflow
-      version: 1.0.0-SNAPSHOT
-      description: Stackoverflow Java API
-
-    # Where email notification of build analysis results will be sent
+      name: "spdeepak/Stackoverflow"
+      description: "Build submitted via Travis CI"
     notification_email: speedpak1991@gmail.com
-
-    # Commands to prepare for build_command
-    # ** likely specific to build **
-    build_command_prepend: ./configure
-
-    # The command that will be added as an argument to "cov-build" to compile your project for analysis,
-    # ** likely specific to your build **
-    build_command: make
-
-    # Pattern to match selecting branches that will run analysis. We recommend leaving this set to 'coverity_scan'.
-    # Take care in resource usage, and consider the build frequency allowances per
-    #   https://scan.coverity.com/faq#frequency
+    build_command_prepend: "mvn clean"
+    build_command:   "mvn -DskipTests=true compile"
     branch_pattern: coverity_scan
