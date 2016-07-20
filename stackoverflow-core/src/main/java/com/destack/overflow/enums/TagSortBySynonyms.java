@@ -35,7 +35,7 @@ public enum TagSortBySynonyms {
         return name;
     }
 
-    public static boolean contains(TagSortBySynonyms tagSortBySynonyms) {
+    public static boolean isContains(TagSortBySynonyms tagSortBySynonyms) {
         if (tagSortBySynonyms != null) {
             for (TagSortBySynonyms sort : TagSortBySynonyms.class.getEnumConstants()) {
                 if (sort.equals(tagSortBySynonyms)) {
@@ -46,9 +46,9 @@ public enum TagSortBySynonyms {
         return false;
     }
 
-    public static boolean validate(TagSortBySynonyms tagSortBySynonyms) {
+    public static boolean isValid(TagSortBySynonyms tagSortBySynonyms) {
         if (tagSortBySynonyms != null) {
-            return contains(tagSortBySynonyms);
+            return isContains(tagSortBySynonyms);
         } else {
             return false;
         }

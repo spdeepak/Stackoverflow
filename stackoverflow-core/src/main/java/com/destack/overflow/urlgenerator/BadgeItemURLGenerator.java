@@ -23,22 +23,10 @@ public class BadgeItemURLGenerator extends BaseURLComponentGenerator implements 
             throws MalformedURLException, IllegalAccessException {
         if (badgeItemInitializer != null) {
             String url = "https://api.stackexchange.com/2.2/badges?";
-            if (badgeItemInitializer.getPage() != 0) {
-                LOGGER.info("Page URL Component");
-                url += getPageURL(badgeItemInitializer.getPage());
-            }
-            if (badgeItemInitializer.getPageSize() != 0) {
-                LOGGER.info("Page Size URL Component");
-                url += getPageSizeURL((badgeItemInitializer.getPageSize()));
-            }
-            if (badgeItemInitializer.getFromDate() != 0) {
-                LOGGER.info("From Date URL Component");
-                url += getFromDate((badgeItemInitializer.getFromDate()));
-            }
-            if (badgeItemInitializer.getToDate() != 0) {
-                LOGGER.info("To Date URL Component");
-                url += getToDate((badgeItemInitializer.getToDate()));
-            }
+            url += getPageURL(badgeItemInitializer.getPage());
+            url += getPageSizeURL((badgeItemInitializer.getPageSize()));
+            url += getFromDate((badgeItemInitializer.getFromDate()));
+            url += getToDate((badgeItemInitializer.getToDate()));
             if (badgeItemInitializer.getBr().equals(BadgeRetriever.NORMAL)
                     || badgeItemInitializer.getBr().equals(BadgeRetriever.NAME)
                     || badgeItemInitializer.getBr().equals(BadgeRetriever.ID)
@@ -57,7 +45,8 @@ public class BadgeItemURLGenerator extends BaseURLComponentGenerator implements 
                 }
                 if (badgeItemInitializer.getBr().equals(BadgeRetriever.NORMAL)
                         || badgeItemInitializer.getBr().equals(BadgeRetriever.NAME)) {
-                    if (badgeItemInitializer.getInName() != null && !badgeItemInitializer.getInName().trim().isEmpty()) {
+                    if (badgeItemInitializer.getInName() != null
+                            && !badgeItemInitializer.getInName().trim().isEmpty()) {
                         LOGGER.info("In Name URL Component");
                         url += getInNameURLComponent(badgeItemInitializer.getInName());
                     }
@@ -72,7 +61,8 @@ public class BadgeItemURLGenerator extends BaseURLComponentGenerator implements 
                     url = url.replace("badges", "badges/name");
                     return new URL(url);
                 } else if (badgeItemInitializer.getBr().equals(BadgeRetriever.ID)
-                        && badgeItemInitializer.getBadge_id() != null && !badgeItemInitializer.getBadge_id().isEmpty()) {
+                        && badgeItemInitializer.getBadge_id() != null
+                        && !badgeItemInitializer.getBadge_id().isEmpty()) {
                     LOGGER.info("ID Based BadgeRetriever URL generated");
                     url = url.replace("badges",
                             "badges/".concat(String.valueOf(getIdSetURLComponent(badgeItemInitializer.getBadge_id()))));
@@ -94,8 +84,10 @@ public class BadgeItemURLGenerator extends BaseURLComponentGenerator implements 
                 if (badgeItemInitializer.getBadge_id() != null && !badgeItemInitializer.getBadge_id().isEmpty()) {
                     LOGGER.info("ID Recipient Based BadgeRetriever URL generated");
                     if (!getIdSetURLComponent(badgeItemInitializer.getBadge_id()).isEmpty()) {
-                        url = url.replace("badges", "badges/".concat(String
-                                .valueOf(getIdSetURLComponent(badgeItemInitializer.getBadge_id())).concat("/recipients")));
+                        url = url.replace("badges",
+                                "badges/"
+                                .concat(String.valueOf(getIdSetURLComponent(badgeItemInitializer.getBadge_id()))
+                                        .concat("/recipients")));
                     } else {
                         throw new IllegalArgumentException("IDs are mandatory");
                     }

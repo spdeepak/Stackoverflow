@@ -12,8 +12,8 @@ public class OrderTest {
     public void test() {
         assertFalse(Order.contains(null));
         assertTrue(Order.contains(Order.ASC));
-        assertFalse(Order.validate(null));
-        assertTrue(Order.validate(Order.ASC));
+        assertFalse(Order.isValid(null));
+        assertTrue(Order.isValid(Order.ASC));
     }
 
 }

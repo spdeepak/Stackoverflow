@@ -10,10 +10,10 @@ public class MaxMinTest {
 
     @Test
     public void test() {
-        assertFalse(MaxMin.contains(null));
-        assertTrue(MaxMin.contains(MaxMin.BRONZE));
-        assertFalse(MaxMin.validate(null));
-        assertTrue(MaxMin.validate(MaxMin.BRONZE));
+        assertFalse(MaxMin.isContains(null));
+        assertTrue(MaxMin.isContains(MaxMin.BRONZE));
+        assertFalse(MaxMin.isValid(null));
+        assertTrue(MaxMin.isValid(MaxMin.BRONZE));
     }
 
 }

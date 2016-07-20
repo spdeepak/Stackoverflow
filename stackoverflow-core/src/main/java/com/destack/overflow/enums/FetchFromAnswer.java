@@ -41,7 +41,7 @@ public enum FetchFromAnswer {
      * @param fetchFromAnswer
      * @return
      */
-    public static boolean contains(FetchFromAnswer fetchFromAnswer) {
+    public static boolean isContains(FetchFromAnswer fetchFromAnswer) {
         if (fetchFromAnswer != null) {
             for (FetchFromAnswer sort : FetchFromAnswer.class.getEnumConstants()) {
                 if (sort.equals(fetchFromAnswer)) {
@@ -59,9 +59,9 @@ public enum FetchFromAnswer {
      * @param fetchFromAnswer
      * @return
      */
-    public static boolean validate(FetchFromAnswer fetchFromAnswer) {
+    public static boolean isValid(FetchFromAnswer fetchFromAnswer) {
         if (fetchFromAnswer != null) {
-            return contains(fetchFromAnswer);
+            return isContains(fetchFromAnswer);
         } else {
             LOGGER.error("Fetch From Answer is Mandatory. Your value --> {}", fetchFromAnswer);
             return false;

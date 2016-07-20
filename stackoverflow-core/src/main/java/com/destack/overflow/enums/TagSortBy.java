@@ -35,7 +35,7 @@ public enum TagSortBy {
         return name;
     }
 
-    public static boolean contains(TagSortBy tagSortBy) {
+    public static boolean isContains(TagSortBy tagSortBy) {
         if (tagSortBy != null) {
             for (TagSortBy sort : TagSortBy.class.getEnumConstants()) {
             if (sort.equals(tagSortBy)) {
@@ -46,9 +46,9 @@ public enum TagSortBy {
         return false;
     }
 
-    public static boolean validate(TagSortBy tagSortBy) {
+    public static boolean isValid(TagSortBy tagSortBy) {
         if (tagSortBy != null) {
-            return contains(tagSortBy);
+            return isContains(tagSortBy);
         } else {
             return false;
         }

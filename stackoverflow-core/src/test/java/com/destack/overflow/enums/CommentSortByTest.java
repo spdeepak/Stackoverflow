@@ -10,10 +10,10 @@ public class CommentSortByTest {
 
     @Test
     public void test() {
-        assertFalse(CommentSortBy.contains(null));
-        assertTrue(CommentSortBy.contains(CommentSortBy.CREATION));
-        assertFalse(CommentSortBy.validate(null));
-        assertTrue(CommentSortBy.validate(CommentSortBy.CREATION));
+        assertFalse(CommentSortBy.isContains(null));
+        assertTrue(CommentSortBy.isContains(CommentSortBy.CREATION));
+        assertFalse(CommentSortBy.isValid(null));
+        assertTrue(CommentSortBy.isValid(CommentSortBy.CREATION));
     }
 
 }

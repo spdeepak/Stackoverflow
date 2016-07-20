@@ -10,10 +10,10 @@ public class TagSortByTest {
 
     @Test
     public void test() {
-        assertFalse(TagSortBy.contains(null));
-        assertTrue(TagSortBy.contains(TagSortBy.ACTIVITY));
-        assertFalse(TagSortBy.validate(null));
-        assertTrue(TagSortBy.validate(TagSortBy.ACTIVITY));
+        assertFalse(TagSortBy.isContains(null));
+        assertTrue(TagSortBy.isContains(TagSortBy.ACTIVITY));
+        assertFalse(TagSortBy.isValid(null));
+        assertTrue(TagSortBy.isValid(TagSortBy.ACTIVITY));
     }
 
 }

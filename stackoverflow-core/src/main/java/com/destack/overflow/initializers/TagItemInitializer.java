@@ -43,7 +43,7 @@ public class TagItemInitializer extends BaseInitializer {
             Long toDate, Order order, TagSortBy sort, Object min, Object max, String inName) throws ParseException {
         setup();
         pageSizeFromToDateOrderInitializers(page, pageSize, fromDate, toDate, order);
-        tagItemInitializer.setSort(TagSortBy.validate(sort) ? sort : TagSortBy.POPULAR);
+        tagItemInitializer.setSort(TagSortBy.isValid(sort) ? sort : TagSortBy.POPULAR);
         tagItemInitializer.setMinAndMax(tagItemInitializer.getSort(), min, max);
         tagItemInitializer.setInName(inName);
         tagItemInitializer.setTagRetriever(TagRetriever.DEFAULT);
@@ -64,7 +64,7 @@ public class TagItemInitializer extends BaseInitializer {
                     throws ParseException {
         setup();
         pageSizeFromToDateOrderInitializers(page, pageSize, fromDate, toDate, order);
-        tagItemInitializer.setSort(TagSortBy.validate(sort) ? sort : TagSortBy.POPULAR);
+        tagItemInitializer.setSort(TagSortBy.isValid(sort) ? sort : TagSortBy.POPULAR);
         tagItemInitializer.setMinAndMax(tagItemInitializer.getSort(), min, max);
         if (tagNames != null && !tagNames.isEmpty()) {
             tagItemInitializer.setTags(tagNames);
@@ -93,7 +93,7 @@ public class TagItemInitializer extends BaseInitializer {
             Long toDate, Order order, TagSortBySynonyms sort, Object min, Object max) throws ParseException {
         setup();
         pageSizeFromToDateOrderInitializers(page, pageSize, fromDate, toDate, order);
-        tagItemInitializer.setSortSynonyms(TagSortBySynonyms.validate(sort) ? sort : TagSortBySynonyms.APPLIED);
+        tagItemInitializer.setSortSynonyms(TagSortBySynonyms.isValid(sort) ? sort : TagSortBySynonyms.APPLIED);
         tagItemInitializer.setMinAndMax(tagItemInitializer.getSortSynonyms(), min, max);
         tagItemInitializer.setTagRetriever(TagRetriever.SYNONYMS);
         return tagItemInitializer;
@@ -148,7 +148,7 @@ public class TagItemInitializer extends BaseInitializer {
         } else {
             throw new IllegalArgumentException("Tag name is mandatory");
         }
-        tagItemInitializer.setTagPeriod(TagPeriod.validate(tagPeriod) ? tagPeriod : TagPeriod.ALL_TIME);
+        tagItemInitializer.setTagPeriod(TagPeriod.isValid(tagPeriod) ? tagPeriod : TagPeriod.ALL_TIME);
         tagItemInitializer.setTagRetriever(TagRetriever.TOP_ANSWERS);
         return tagItemInitializer;
     }

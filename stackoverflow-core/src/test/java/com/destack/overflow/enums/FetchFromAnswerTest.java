@@ -10,10 +10,10 @@ public class FetchFromAnswerTest {
 
     @Test
     public void test() {
-        assertFalse(FetchFromAnswer.contains(null));
-        assertTrue(FetchFromAnswer.contains(FetchFromAnswer.ID_ANSWER));
-        assertFalse(FetchFromAnswer.validate(null));
-        assertTrue(FetchFromAnswer.validate(FetchFromAnswer.ID_ANSWER));
+        assertFalse(FetchFromAnswer.isContains(null));
+        assertTrue(FetchFromAnswer.isContains(FetchFromAnswer.ID_ANSWER));
+        assertFalse(FetchFromAnswer.isValid(null));
+        assertTrue(FetchFromAnswer.isValid(FetchFromAnswer.ID_ANSWER));
     }
 
 }

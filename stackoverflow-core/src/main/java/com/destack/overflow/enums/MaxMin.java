@@ -37,7 +37,7 @@ public enum MaxMin {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MaxMin.class);
 
-    public static boolean contains(MaxMin maxmin) {
+    public static boolean isContains(MaxMin maxmin) {
         if (maxmin != null) {
             for (MaxMin sort : MaxMin.class.getEnumConstants()) {
                 if (sort.equals(maxmin)) {
@@ -50,9 +50,9 @@ public enum MaxMin {
         return false;
     }
 
-    public static boolean validate(MaxMin maxmin) {
+    public static boolean isValid(MaxMin maxmin) {
         if (maxmin != null) {
-            return contains(maxmin);
+            return isContains(maxmin);
         } else {
             LOGGER.warn("AnswerSortBy is null. So, using default i.e, Activity");
             return false;

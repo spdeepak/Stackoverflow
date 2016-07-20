@@ -57,8 +57,8 @@ public class AnswerItemInitializer extends BaseInitializer {
         answerItemInitializer.setPageSize(pageSize);
         answerItemInitializer.setFromDate(answerItemInitializer.dateConverter(fromDate));
         answerItemInitializer.setToDate(answerItemInitializer.dateConverter(toDate));
-        answerItemInitializer.setSort(AnswerSortBy.validate(sort) ? sort : AnswerSortBy.ACTIVITY);
-        answerItemInitializer.setOrder(Order.validate(order) ? order : Order.DESC);
+        answerItemInitializer.setSort(AnswerSortBy.isValid(sort) ? sort : AnswerSortBy.ACTIVITY);
+        answerItemInitializer.setOrder(Order.isValid(order) ? order : Order.DESC);
         if (answerItemInitializer.getSort().equals(AnswerSortBy.VOTES)) {
             LOGGER.info("Answer Sort By VOTES");
             answerItemInitializer.setMin(min);
@@ -94,7 +94,7 @@ public class AnswerItemInitializer extends BaseInitializer {
                 max);
         if (ids != null && !ids.isEmpty()) {
             answerItemInitializer.setIds(ids);
-            if (FetchFromAnswer.validate(fetchFromAnswer)) {
+            if (FetchFromAnswer.isValid(fetchFromAnswer)) {
                 answerItemInitializer.setFetchFromAnswer(fetchFromAnswer);
             } else {
                 LOGGER.error("FetchFromAnswer is not valid");

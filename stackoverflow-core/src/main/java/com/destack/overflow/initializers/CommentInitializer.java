@@ -36,8 +36,8 @@ public class CommentInitializer extends BaseInitializer {
         commentInitializer.setPageSize(pageSize);
         commentInitializer.setFromDate(commentInitializer.dateConverter(fromDate));
         commentInitializer.setToDate(commentInitializer.dateConverter(toDate));
-        commentInitializer.setOrder(Order.validate(order) ? order : Order.DESC);
-        commentInitializer.setSort(CommentSortBy.validate(sort) ? sort : CommentSortBy.CREATION);
+        commentInitializer.setOrder(Order.isValid(order) ? order : Order.DESC);
+        commentInitializer.setSort(CommentSortBy.isValid(sort) ? sort : CommentSortBy.CREATION);
         if (CommentSortBy.VOTES.equals(commentInitializer.getSort())) {
             commentInitializer.setMin(min);
             commentInitializer.setMax(max);

@@ -27,21 +27,24 @@ public class AnswerItemURLGenerator extends BaseURLComponentGenerator implements
         url += getBaseURLComponents(ai);
         url += getSortURLComponent(ai.getSort().toString());
         url = urlFixer(url);
-        if (FetchFromAnswer.ID_ANSWER.equals(ai.getFetchFromAnswer())) {
-            String replace = "answers/".concat(getIdSetURLComponent(ai.getIds()).concat("?"));
-            url = url.replace("answers?", replace);
-            replace = null;
-            return new URL(url);
-        } else if (FetchFromAnswer.COMMENTS_IDANSWER.equals(ai.getFetchFromAnswer())) {
-            String replace = "answers/".concat(getIdSetURLComponent(ai.getIds())).concat("/comments?");
-            url = url.replace("answers?", replace);
-            replace = null;
-            return new URL(url);
-        } else if (FetchFromAnswer.QUESTIONS_IDANSWER.equals(ai.getFetchFromAnswer())) {
-            String replace = "answers/".concat(getIdSetURLComponent(ai.getIds())).concat("/questions?");
-            url = url.replace("answers?", replace);
-            replace = null;
-            return new URL(url);
+        String replace = "";
+        if (FetchFromAnswer.isValid(ai.getFetchFromAnswer())) {
+            switch (ai.getFetchFromAnswer()) {
+                case ID_ANSWER:
+                    replace = "answers/".concat(getIdSetURLComponent(ai.getIds()).concat("?"));
+                    url = url.replace("answers?", replace);
+                    break;
+                case COMMENTS_IDANSWER:
+                    replace = "answers/".concat(getIdSetURLComponent(ai.getIds())).concat("/comments?");
+                    url = url.replace("answers?", replace);
+                    break;
+                case QUESTIONS_IDANSWER:
+                    replace = "answers/".concat(getIdSetURLComponent(ai.getIds())).concat("/questions?");
+                    url = url.replace("answers?", replace);
+                    break;
+                default:
+                    break;
+            }
         }
         LOGGER.info("Default URL generated");
         return new URL(url);

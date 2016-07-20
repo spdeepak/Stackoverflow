@@ -20,7 +20,7 @@ public enum CommentSortBy {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CommentSortBy.class);
 
-    public static boolean contains(CommentSortBy answerSortBy) {
+    public static boolean isContains(CommentSortBy answerSortBy) {
         if (answerSortBy != null) {
             for (CommentSortBy sort : CommentSortBy.class.getEnumConstants()) {
                 if (sort.equals(answerSortBy)) {
@@ -33,9 +33,9 @@ public enum CommentSortBy {
         return false;
     }
 
-    public static boolean validate(CommentSortBy answerSortBy) {
+    public static boolean isValid(CommentSortBy answerSortBy) {
         if (answerSortBy != null) {
-            return contains(answerSortBy);
+            return isContains(answerSortBy);
         } else {
             LOGGER.warn("AnswerSortBy is null. So, using default i.e, Activity");
             return false;

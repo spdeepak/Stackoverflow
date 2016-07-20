@@ -21,7 +21,7 @@ public enum BadgeSortBy {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(BadgeSortBy.class);
 
-    public static boolean contains(BadgeSortBy badegSortBy) {
+    public static boolean isContains(BadgeSortBy badegSortBy) {
         if (badegSortBy != null) {
             for (BadgeSortBy sort : BadgeSortBy.class.getEnumConstants()) {
                 if (sort.equals(badegSortBy)) {
@@ -34,9 +34,9 @@ public enum BadgeSortBy {
         return false;
     }
 
-    public static boolean validate(BadgeSortBy badgeSortBy) {
+    public static boolean isValid(BadgeSortBy badgeSortBy) {
         if (badgeSortBy != null) {
-            return contains(badgeSortBy);
+            return isContains(badgeSortBy);
         } else {
             LOGGER.warn("AnswerSortBy is null. So, using default i.e, Activity");
             return false;

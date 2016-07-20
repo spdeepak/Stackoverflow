@@ -27,7 +27,7 @@ public enum TagPeriod {
         return name;
     }
 
-    public static boolean contains(TagPeriod tagPeriod) {
+    public static boolean isContains(TagPeriod tagPeriod) {
         if (tagPeriod != null) {
             for (TagPeriod period : TagPeriod.class.getEnumConstants()) {
                 if (period.equals(tagPeriod)) {
@@ -38,9 +38,9 @@ public enum TagPeriod {
         return false;
     }
 
-    public static boolean validate(TagPeriod tagPeriod) {
+    public static boolean isValid(TagPeriod tagPeriod) {
         if (tagPeriod != null) {
-            return contains(tagPeriod);
+            return isContains(tagPeriod);
         } else {
             return false;
         }

@@ -10,10 +10,10 @@ public class TagSortBySynonymsTest {
 
     @Test
     public void test() {
-        assertFalse(TagSortBySynonyms.contains(null));
-        assertTrue(TagSortBySynonyms.contains(TagSortBySynonyms.ACTIVITY));
-        assertFalse(TagSortBySynonyms.validate(null));
-        assertTrue(TagSortBySynonyms.validate(TagSortBySynonyms.ACTIVITY));
+        assertFalse(TagSortBySynonyms.isContains(null));
+        assertTrue(TagSortBySynonyms.isContains(TagSortBySynonyms.ACTIVITY));
+        assertFalse(TagSortBySynonyms.isValid(null));
+        assertTrue(TagSortBySynonyms.isValid(TagSortBySynonyms.ACTIVITY));
     }
 
 }

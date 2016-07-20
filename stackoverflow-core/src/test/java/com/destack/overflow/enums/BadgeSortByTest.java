@@ -10,10 +10,10 @@ public class BadgeSortByTest {
 
     @Test
     public void test() {
-        assertFalse(BadgeSortBy.contains(null));
-        assertTrue(BadgeSortBy.contains(BadgeSortBy.NAME));
-        assertFalse(BadgeSortBy.validate(null));
-        assertTrue(BadgeSortBy.validate(BadgeSortBy.NAME));
+        assertFalse(BadgeSortBy.isContains(null));
+        assertTrue(BadgeSortBy.isContains(BadgeSortBy.NAME));
+        assertFalse(BadgeSortBy.isValid(null));
+        assertTrue(BadgeSortBy.isValid(BadgeSortBy.NAME));
     }
 
 }

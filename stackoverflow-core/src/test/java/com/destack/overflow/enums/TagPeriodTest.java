@@ -10,10 +10,10 @@ public class TagPeriodTest {
 
     @Test
     public void test() {
-        assertFalse(TagPeriod.contains(null));
-        assertTrue(TagPeriod.contains(TagPeriod.ALL_TIME));
-        assertFalse(TagPeriod.validate(null));
-        assertTrue(TagPeriod.validate(TagPeriod.ALL_TIME));
+        assertFalse(TagPeriod.isContains(null));
+        assertTrue(TagPeriod.isContains(TagPeriod.ALL_TIME));
+        assertFalse(TagPeriod.isValid(null));
+        assertTrue(TagPeriod.isValid(TagPeriod.ALL_TIME));
     }
 
 }

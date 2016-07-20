@@ -38,7 +38,7 @@ public enum AnswerSortBy {
     }
 
 
-    public static boolean contains(AnswerSortBy answerSortBy) {
+    public static boolean isContains(AnswerSortBy answerSortBy) {
         if (answerSortBy != null) {
             for (AnswerSortBy sort : AnswerSortBy.class.getEnumConstants()) {
                 if (sort.equals(answerSortBy)) {
@@ -51,9 +51,9 @@ public enum AnswerSortBy {
         return false;
     }
 
-    public static boolean validate(AnswerSortBy answerSortBy) {
+    public static boolean isValid(AnswerSortBy answerSortBy) {
         if (answerSortBy != null) {
-            return contains(answerSortBy);
+            return isContains(answerSortBy);
         } else {
             LOGGER.warn("AnswerSortBy is null. So, using default i.e, Activity");
             return false;

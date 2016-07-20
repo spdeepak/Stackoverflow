@@ -4,6 +4,7 @@ import java.net.MalformedURLException;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.codehaus.plexus.util.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -77,7 +78,7 @@ public class BaseURLComponentGenerator {
     }
 
     protected String getOrder(Order order) {
-        if (Order.validate(order)) {
+        if (Order.isValid(order)) {
             LOGGER.info("Order component value : {}", order.toString());
             return "&order=".concat(order.toString());
         } else {
@@ -87,7 +88,7 @@ public class BaseURLComponentGenerator {
     }
 
     protected String getSortURLComponent(String sort) {
-        if (sort != null && !sort.trim().isEmpty()) {
+        if (!StringUtils.isEmpty(sort)) {
             return "&sort=".concat(sort);
         } else {
             return "";
@@ -95,7 +96,7 @@ public class BaseURLComponentGenerator {
     }
 
     protected String getMin(String min) {
-        if (min != null && !min.trim().isEmpty()) {
+        if (!StringUtils.isEmpty(min)) {
             return "&min=".concat(min);
         } else {
             return "";
@@ -111,7 +112,7 @@ public class BaseURLComponentGenerator {
     }
 
     protected String getMax(String max) {
-        if (max != null && !max.trim().isEmpty()) {
+        if (!StringUtils.isEmpty(max)) {
             return "&max=".concat(max);
         } else {
             return "";
@@ -127,7 +128,7 @@ public class BaseURLComponentGenerator {
     }
 
     protected String getInNameURLComponent(String inName) {
-        if (inName != null && !inName.trim().isEmpty()) {
+        if (!StringUtils.isEmpty(inName)) {
             return "&inname=".concat(inName);
         } else {
             return "";

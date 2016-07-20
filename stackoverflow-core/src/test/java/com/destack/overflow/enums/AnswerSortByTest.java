@@ -10,10 +10,10 @@ public class AnswerSortByTest {
 
     @Test
     public void test() {
-        assertFalse(AnswerSortBy.contains(null));
-        assertTrue(AnswerSortBy.contains(AnswerSortBy.ACTIVITY));
-        assertFalse(AnswerSortBy.validate(null));
-        assertTrue(AnswerSortBy.validate(AnswerSortBy.ACTIVITY));
+        assertFalse(AnswerSortBy.isContains(null));
+        assertTrue(AnswerSortBy.isContains(AnswerSortBy.ACTIVITY));
+        assertFalse(AnswerSortBy.isValid(null));
+        assertTrue(AnswerSortBy.isValid(AnswerSortBy.ACTIVITY));
     }
 
 }

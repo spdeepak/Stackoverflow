@@ -38,7 +38,7 @@ public enum Order {
         return false;
     }
 
-    public static boolean validate(Order order) {
+    public static boolean isValid(Order order) {
         if (order != null) {
             return contains(order);
         } else {

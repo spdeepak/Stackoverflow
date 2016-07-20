@@ -3,6 +3,8 @@ package com.destack.overflow.initializers;
 import java.text.ParseException;
 import java.util.Set;
 
+import org.codehaus.plexus.util.StringUtils;
+
 import com.destack.overflow.enums.BadgeRetriever;
 import com.destack.overflow.enums.BadgeSortBy;
 import com.destack.overflow.enums.MaxMin;
@@ -43,11 +45,11 @@ public class BadgeItemInitializer extends BaseInitializer {
         badgeItemInitializer.setPageSize(pageSize);
         badgeItemInitializer.setFromDate(badgeItemInitializer.dateConverter(fromDate));
         badgeItemInitializer.setToDate(badgeItemInitializer.dateConverter(toDate));
-        badgeItemInitializer.setOrder(order != null ? order : Order.DESC);
-        badgeItemInitializer.setbMax(MaxMin.validate(max) ? max : null);
-        badgeItemInitializer.setbMin(MaxMin.validate(min) ? min : null);
-        badgeItemInitializer.setSort(BadgeSortBy.validate(sort) ? sort : BadgeSortBy.RANK);
-        badgeItemInitializer.setInName((inName != null && !inName.trim().isEmpty()) ? inName : "");
+        badgeItemInitializer.setOrder(Order.isValid(order) ? order : Order.DESC);
+        badgeItemInitializer.setbMax(MaxMin.isValid(max) ? max : null);
+        badgeItemInitializer.setbMin(MaxMin.isValid(min) ? min : null);
+        badgeItemInitializer.setSort(BadgeSortBy.isValid(sort) ? sort : BadgeSortBy.RANK);
+        badgeItemInitializer.setInName(!StringUtils.isEmpty(inName) ? inName : "");
         badgeItemInitializer.setBr(BadgeRetriever.NORMAL);
         return badgeItemInitializer;
     }
