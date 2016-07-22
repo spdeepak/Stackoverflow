@@ -232,6 +232,12 @@ public class TagItemURLGeneratorTest {
                 "https://api.stackexchange.com/2.2/tags/java/info?page=1&pagesize=100&fromdate=1272931200&todate=1468195200&order=desc&sort=popular&site=stackoverflow&filter=!-*f(6qOIRgw-",
                 tagItemURLGenerator.urlGenerator(tii).toString());
 
+        tii = TagItemInitializer.createNameBasedTagInitializer(1, 100, 20100405L, 20161107L, null, null, null, null,
+                new HashSet<>(Arrays.asList("java")));
+        assertEquals(
+                "https://api.stackexchange.com/2.2/tags/java/info?page=1&pagesize=100&fromdate=1272931200&todate=1468195200&order=desc&sort=popular&site=stackoverflow&filter=!-*f(6qOIRgw-",
+                tagItemURLGenerator.urlGenerator(tii).toString());
+
         tii = TagItemInitializer.createNameBasedTagInitializer(null, null, 20100405L, 20161107L, null, TagSortBy.NAME,
                 null, null, new HashSet<>(Arrays.asList("java", "php")));
         assertEquals(
@@ -247,6 +253,13 @@ public class TagItemURLGeneratorTest {
         try {
             tii = TagItemInitializer.createNameBasedTagInitializer(null, null, 20100405L, 20161107L, null,
                     TagSortBy.NAME, null, null, null);
+        } catch (IllegalArgumentException e) {
+            assertEquals("Tag names are mandatory", e.getMessage());
+        }
+
+        try {
+            tii = TagItemInitializer.createNameBasedTagInitializer(null, null, 20100405L, 20161107L, null,
+                    TagSortBy.NAME, null, null, new HashSet<>());
         } catch (IllegalArgumentException e) {
             assertEquals("Tag names are mandatory", e.getMessage());
         }
@@ -293,6 +306,12 @@ public class TagItemURLGeneratorTest {
         } catch (IllegalArgumentException e) {
             assertEquals("Tag names are mandatory", e.getMessage());
         }
+
+        try {
+            tii = TagItemInitializer.createFAQTagInitializer(1, 100, new HashSet<>());
+        } catch (IllegalArgumentException e) {
+            assertEquals("Tag names are mandatory", e.getMessage());
+        }
     }
 
     @Test
@@ -323,6 +342,11 @@ public class TagItemURLGeneratorTest {
 
         try {
             tii = TagItemInitializer.createTopAnswerTagInitializer(1, 100, null, TagPeriod.ALL_TIME);
+        } catch (IllegalArgumentException e) {
+            assertEquals("Tag name is mandatory", e.getMessage());
+        }
+        try {
+            tii = TagItemInitializer.createTopAnswerTagInitializer(1, 100, " ", TagPeriod.ALL_TIME);
         } catch (IllegalArgumentException e) {
             assertEquals("Tag name is mandatory", e.getMessage());
         }
@@ -366,6 +390,12 @@ public class TagItemURLGeneratorTest {
 
         try {
             tii = TagItemInitializer.createWikiTagInitializer(null, null, null);
+        } catch (IllegalArgumentException e) {
+            assertEquals("Tag names are mandatory", e.getMessage());
+        }
+
+        try {
+            tii = TagItemInitializer.createWikiTagInitializer(null, null, new HashSet<>());
         } catch (IllegalArgumentException e) {
             assertEquals("Tag names are mandatory", e.getMessage());
         }

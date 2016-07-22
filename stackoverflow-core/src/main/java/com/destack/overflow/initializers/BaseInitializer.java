@@ -177,7 +177,7 @@ public class BaseInitializer {
      */
     public Long dateConverter(Long date) throws ParseException {
         if (dateVerifier(date) && date != 0) {
-            return (DATE_FORMAT.parse(String.valueOf(date)).getTime() / 1000);
+            return DATE_FORMAT.parse(String.valueOf(date)).getTime() / 1000;
         } else {
             return 0L;
         }

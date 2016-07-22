@@ -37,7 +37,6 @@ public enum AnswerSortBy {
         return sortBy;
     }
 
-
     public static boolean isContains(AnswerSortBy answerSortBy) {
         if (answerSortBy != null) {
             for (AnswerSortBy sort : AnswerSortBy.class.getEnumConstants()) {

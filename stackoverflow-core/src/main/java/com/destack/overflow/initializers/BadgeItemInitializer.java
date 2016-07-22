@@ -31,6 +31,7 @@ public class BadgeItemInitializer extends BaseInitializer {
     private static BadgeItemInitializer badgeItemInitializer;
 
     private BadgeItemInitializer() {
+        super();
     }
 
     private static void setup() {

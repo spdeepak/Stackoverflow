@@ -30,6 +30,7 @@ public class AnswerItemInitializer extends BaseInitializer {
     private static AnswerItemInitializer answerItemInitializer;
 
     private AnswerItemInitializer() {
+        super();
     }
 
     private static AnswerItemInitializer setup() {
