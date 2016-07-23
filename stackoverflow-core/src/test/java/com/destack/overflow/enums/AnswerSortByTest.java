@@ -11,8 +11,12 @@ public class AnswerSortByTest {
     public void test() {
         assertFalse(AnswerSortBy.isContains(null));
         assertTrue(AnswerSortBy.isContains(AnswerSortBy.ACTIVITY));
+        assertTrue(AnswerSortBy.isContains(AnswerSortBy.CREATION));
+        assertTrue(AnswerSortBy.isContains(AnswerSortBy.VOTES));
         assertFalse(AnswerSortBy.isValid(null));
         assertTrue(AnswerSortBy.isValid(AnswerSortBy.ACTIVITY));
+        assertTrue(AnswerSortBy.isValid(AnswerSortBy.CREATION));
+        assertTrue(AnswerSortBy.isValid(AnswerSortBy.VOTES));
     }
 
 }

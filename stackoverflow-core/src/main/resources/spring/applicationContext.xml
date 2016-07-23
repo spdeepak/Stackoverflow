@@ -28,5 +28,7 @@
 	<bean id="badgeItemFetcher" class="com.destack.overflow.fetcher.BadgeItemFetcher" />
 
 	<bean id="privilegeItemFetcher" class="com.destack.overflow.fetcher.PrivilegeItemFetcher" />
+	
+	<bean id="tagItemFetcher" class="com.destack.overflow.fetcher.TagItemFetcher" />
 
 </beans>

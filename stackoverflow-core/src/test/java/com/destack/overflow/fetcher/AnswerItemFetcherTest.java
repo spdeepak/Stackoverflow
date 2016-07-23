@@ -21,12 +21,12 @@ import com.destack.overflow.model.AnswerItem;
 public class AnswerItemFetcherTest {
 
     @Resource
-    AnswerItemFetcher aAnswerItemFetcher;
+    AnswerItemFetcher answerItemFetcher;
 
     @Test
     public void test() throws FileNotFoundException, IOException {
         File file = new File(System.getProperty("user.dir") + "/src/main/resources/JSONs/answerexample.json");
-        List<AnswerItem> answerItems = aAnswerItemFetcher.objectFetcher(file.toURI().toURL());
+        List<AnswerItem> answerItems = answerItemFetcher.objectFetcher(file.toURI().toURL());
         assertEquals(10, answerItems.size());
         assertEquals(1102, answerItems.get(0).getAnswerOwner().getReputation().intValue());
         assertEquals(2041077, answerItems.get(0).getAnswerOwner().getUser_id().intValue());

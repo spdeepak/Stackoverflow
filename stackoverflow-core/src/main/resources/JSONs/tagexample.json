@@ -1,0 +1,459 @@
+{
+  "items": [
+    {
+      "synonyms": [
+        "js",
+        "ecmascript",
+        ".js",
+        "javascript-execution",
+        "classic-javascript",
+        "javascript-alert",
+        "javascript-dom",
+        "javascript-disabled",
+        "javascript-library",
+        "javascript-runtime",
+        "vanilla-javascript",
+        "javascript-module"
+      ],
+      "last_activity_date": 1469270369,
+      "has_synonyms": true,
+      "is_moderator_only": false,
+      "is_required": false,
+      "count": 1175718,
+      "name": "javascript"
+    },
+    {
+      "synonyms": [
+        "java-se",
+        ".java",
+        "j2se",
+        "core-java",
+        "jdk",
+        "jre",
+        "java-libraries"
+      ],
+      "has_synonyms": true,
+      "is_moderator_only": false,
+      "is_required": false,
+      "count": 1108820,
+      "name": "java"
+    },
+    {
+      "synonyms": [
+        "c-sharp",
+        "c#.net",
+        "c#-language",
+        "visual-c#",
+        "csharp",
+        ".cs-file"
+      ],
+      "last_activity_date": 1469270239,
+      "is_moderator_only": false,
+      "is_required": false,
+      "count": 980629,
+      "name": "c#"
+    },
+    {
+      "synonyms": [
+        "php-oop",
+        "php-date",
+        "php5",
+        "php-frameworks",
+        "hypertext-preprocessor",
+        "php.ini",
+        "php-cli",
+        "php-errors",
+        "php-mail",
+        "php-cgi",
+        "php-functions",
+        "php-readfile",
+        "php-session",
+        "php-fpm",
+        "phtml"
+      ],
+      "last_activity_date": 1469270153,
+      "has_synonyms": true,
+      "is_required": false,
+      "count": 952850,
+      "name": "php"
+    },
+    {
+      "synonyms": [
+        "android-mobile",
+        "android-sdk",
+        "android-api",
+        "android-device",
+        "android-application",
+        "android-ui",
+        "android-framework"
+      ],
+      "last_activity_date": 1469270225,
+      "has_synonyms": true,
+      "is_moderator_only": false,
+      "is_required": false,
+      "count": 868843,
+      "name": "android"
+    },
+    {
+      "synonyms": [
+        "jquery-core",
+        "jquery-live"
+      ],
+      "last_activity_date": 1469270369,
+      "has_synonyms": true,
+      "is_moderator_only": false,
+      "count": 757753,
+      "name": "jquery"
+    },
+    {
+      "synonyms": [
+        "pythonic",
+        "python-interpreter",
+        "python-shell"
+      ],
+      "last_activity_date": 1469270331,
+      "has_synonyms": true,
+      "is_moderator_only": false,
+      "is_required": false,
+      "count": 606460,
+      "name": "python"
+    },
+    {
+      "synonyms": [
+        "html-tag",
+        "html-attributes",
+        "div",
+        "divs",
+        "nested-divs",
+        "div-layouts",
+        "html-comments",
+        "span"
+      ],
+      "last_activity_date": 1469270369,
+      "has_synonyms": true,
+      "is_moderator_only": false,
+      "is_required": false,
+      "name": "html"
+    },
+    {
+      "synonyms": [
+        "cpp"
+      ],
+      "last_activity_date": 1469270363,
+      "has_synonyms": true,
+      "is_moderator_only": false,
+      "is_required": false,
+      "count": 460722,
+      "name": "c++"
+    },
+    {
+      "synonyms": [
+        "iphone-os",
+        "apple-ios",
+        "ios-sdk"
+      ],
+      "last_activity_date": 1469268607,
+      "has_synonyms": true,
+      "is_moderator_only": false,
+      "is_required": false,
+      "count": 448259,
+    },
+    {
+      "synonyms": [
+        "my-sql",
+        "mysql-query",
+        "mysql-server",
+        "mysql-table",
+        "mysqld",
+        "mysqlclient"
+      ],
+      "last_activity_date": 1469270153,
+      "has_synonyms": true,
+      "is_moderator_only": false,
+      "is_required": false,
+      "count": 409608,
+      "name": "mysql"
+    },
+    {
+      "synonyms": [
+        "cascading-style-sheet",
+        "css-layout",
+        "css-background-image",
+        "css-attributes",
+        "css-classes",
+        "css-height",
+        "css2",
+        "css-columns",
+        "css-inheritance",
+        "css-centering",
+        "min-height",
+        "min-width",
+        "max-height",
+        "max-width",
+        "box-model",
+        "style.css-template-file",
+        "css-validation",
+        "css-display",
+        "css-line-height",
+        "css-overflow",
+        "alternate-stylesheets",
+        "inline-block",
+        "css-box-model",
+        "font-weight",
+        "css-menu",
+        "css-reset"
+      ],
+      "last_activity_date": 1469270369,
+      "has_synonyms": true,
+      "is_moderator_only": false,
+      "is_required": false,
+      "count": 404841,
+      "name": "css"
+    },
+    {
+      "synonyms": [
+        "sql-query",
+        "sql-statement",
+        "sql-syntax",
+        "sql-select",
+        "sqlselect",
+        "select-statement"
+      ],
+      "last_activity_date": 1469269319,
+      "has_synonyms": true,
+      "is_moderator_only": false,
+      "is_required": false,
+      "count": 341546,
+      "name": "sql"
+    },
+    {
+      "synonyms": [
+        "asp-net",
+        "aspx",
+        "asp.net-website",
+        "aspdotnet"
+      ],
+      "last_activity_date": 1469269516,
+      "has_synonyms": true,
+      "is_moderator_only": false,
+      "is_required": false,
+      "count": 295049,
+      "name": "asp.net"
+    },
+    {
+      "synonyms": [
+        "objc"
+      ],
+      "last_activity_date": 1469268333,
+      "has_synonyms": true,
+      "is_moderator_only": false,
+      "is_required": false,
+      "count": 262993,
+      "name": "objective-c"
+    },
+    {
+      "synonyms": [
+        "rails",
+        "ror"
+      ],
+      "last_activity_date": 1469267946,
+      "has_synonyms": true,
+      "is_moderator_only": false,
+      "is_required": false,
+      "count": 249993,
+      "name": "ruby-on-rails"
+    },
+    {
+      "synonyms": [
+        "dotnet",
+        "dot-net",
+        ".net-framework"
+      ],
+      "last_activity_date": 1469269282,
+      "has_synonyms": true,
+      "is_moderator_only": false,
+      "is_required": false,
+      "count": 236397,
+      "name": ".net"
+    },
+    {
+      "last_activity_date": 1469269321,
+      "has_synonyms": false,
+      "is_moderator_only": false,
+      "is_required": false,
+      "count": 223179,
+      "name": "c"
+    },
+    {
+      "synonyms": [
+        "iphone-sdk",
+        "iphone-development",
+        "iphone-app",
+        "iphone-programming",
+        "iphone-ios",
+        "iphone-web"
+      ],
+      "last_activity_date": 1469260090,
+      "has_synonyms": true,
+      "is_moderator_only": false,
+      "is_required": false,
+      "count": 213750,
+      "name": "iphone"
+    },
+    {
+      "synonyms": [
+        "array",
+        "array-of-objects",
+        "javascript-array",
+        "string-array",
+        "char-array",
+        "jsonarray",
+        "mongodb-arrays",
+        "sub-arrays",
+        "character-arrays",
+        "swift-array"
+      ],
+      "last_activity_date": 1469270309,
+      "has_synonyms": true,
+      "is_moderator_only": false,
+      "is_required": false,
+      "count": 188175,
+      "name": "arrays"
+    },
+    {
+      "synonyms": [
+        "angular",
+        "angular.js"
+      ],
+      "last_activity_date": 1469270347,
+      "has_synonyms": true,
+      "is_moderator_only": false,
+      "is_required": false,
+      "count": 186950,
+      "name": "angularjs"
+    },
+    {
+      "synonyms": [
+        "mssql",
+        "ms-sql-server",
+        "sql-srever"
+      ],
+      "last_activity_date": 1469269765,
+      "has_synonyms": true,
+      "is_moderator_only": false,
+      "is_required": false,
+      "count": 171355,
+      "name": "sql-server"
+    },
+    {
+      "last_activity_date": 1469266001,
+      "has_synonyms": false,
+      "is_moderator_only": false,
+      "is_required": false,
+      "count": 164479,
+      "name": "ruby"
+    },
+    {
+      "synonyms": [
+        "json-parsing",
+        "json-encode",
+        "json-decode"
+      ],
+      "last_activity_date": 1469269289,
+      "has_synonyms": true,
+      "is_moderator_only": false,
+      "is_required": false,
+      "count": 163747,
+      "name": "json"
+    },
+    {
+      "synonyms": [
+        ".ajax"
+      ],
+      "last_activity_date": 1469270028,
+      "has_synonyms": true,
+      "is_moderator_only": false,
+      "is_required": false,
+      "count": 149985,
+      "name": "ajax"
+    },
+    {
+      "synonyms": [
+        "regexp",
+        "regular-expression",
+        "regular-expressions",
+        "regexes",
+        "regex-php",
+        "perl-regex",
+        "perlre",
+        "regularexpression",
+        "apache-regexp"
+      ],
+      "last_activity_date": 1469269873,
+      "has_synonyms": true,
+      "is_moderator_only": false,
+      "is_required": false,
+      "count": 149274,
+      "name": "regex"
+    },
+    {
+      "synonyms": [
+        "rstats",
+        "r-language"
+      ],
+      "last_activity_date": 1469269831,
+      "has_synonyms": true,
+      "is_moderator_only": false,
+      "is_required": false,
+      "count": 145925,
+      "name": "r"
+    },
+    {
+      "synonyms": [
+        "xml-file"
+      ],
+      "last_activity_date": 1469268919,
+      "has_synonyms": true,
+      "is_moderator_only": false,
+      "is_required": false,
+      "count": 141609,
+      "name": "xml"
+    },
+    {
+      "synonyms": [
+        "asp-net-mvc",
+        "asp.mvc",
+        "mvc.net",
+        "asp-mvc",
+        "asp.net.mvc",
+        "aspnet-mvc",
+        "aspnet.mvc"
+      ],
+      "last_activity_date": 1469269399,
+      "has_synonyms": true,
+      "is_moderator_only": false,
+      "is_required": false,
+      "count": 137891,
+      "name": "asp.net-mvc"
+    },
+    {
+      "synonyms": [
+        "nodejs",
+        "io.js"
+      ],
+      "last_activity_date": 1469269904,
+      "has_synonyms": true,
+      "is_moderator_only": false,
+      "is_required": false,
+      "count": 132307,
+      "name": "node.js"
+    }
+  ],
+  "has_more": true,
+  "quota_max": 10000,
+  "quota_remaining": 9889,
+  "page": 1,
+  "page_size": 30,
+  "total": 45865,
+  "type": "tag"
+}
