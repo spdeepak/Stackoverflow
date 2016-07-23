@@ -8,13 +8,13 @@ public class TagItem {
 
     private String[] synonyms;
 
-    private long last_activity_date;
+    private Long lastActivityDate;
 
-    private boolean has_synonyms;
+    private boolean hasSynonyms;
 
-    private boolean is_moderator_only;
+    private boolean moderatorOnly;
 
-    private boolean is_required;
+    private boolean required;
 
     private Integer count;
 
@@ -22,32 +22,70 @@ public class TagItem {
 
     private Owner tagOwner;
 
-    public long getLast_activity_date() {
-        return last_activity_date;
+    private String creationDate;
+
+    private String lastAppliedDate;
+
+    private Long appliedCount;
+
+    private String toTag;
+
+    private String fromTag;
+
+    public String[] getSynonyms() {
+        return synonyms;
     }
 
-    public boolean isHas_synonyms() {
-        return has_synonyms;
+    public void setSynonyms(String[] synonyms) {
+        this.synonyms = synonyms;
     }
 
-    public boolean isIs_moderator_only() {
-        return is_moderator_only;
+    public Long getLastActivityDate() {
+        return lastActivityDate;
     }
 
-    public boolean isIs_required() {
-        return is_required;
+    public void setLastActivityDate(Long lastActivityDate) {
+        this.lastActivityDate = lastActivityDate;
+    }
+
+    public boolean isHasSynonyms() {
+        return hasSynonyms;
+    }
+
+    public void setHasSynonyms(boolean hasSynonyms) {
+        this.hasSynonyms = hasSynonyms;
+    }
+
+    public boolean isModeratorOnly() {
+        return moderatorOnly;
+    }
+
+    public void setModeratorOnly(boolean moderatorOnly) {
+        this.moderatorOnly = moderatorOnly;
+    }
+
+    public boolean isRequired() {
+        return required;
+    }
+
+    public void setRequired(boolean required) {
+        this.required = required;
     }
 
     public Integer getCount() {
         return count;
     }
 
+    public void setCount(Integer count) {
+        this.count = count;
+    }
+
     public String getName() {
         return name;
     }
 
-    public String[] getSynonyms() {
-        return synonyms;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Owner getTagOwner() {
@@ -58,32 +96,45 @@ public class TagItem {
         this.tagOwner = tagOwner;
     }
 
-    public void setSynonyms(String[] synonyms) {
-        this.synonyms = synonyms;
+    public String getCreationDate() {
+        return creationDate;
     }
 
-    public void setLast_activity_date(long last_activity_date) {
-        this.last_activity_date = last_activity_date;
+    public void setCreationDate(String creationDate) {
+        this.creationDate = creationDate;
     }
 
-    public void setHas_synonyms(boolean has_synonyms) {
-        this.has_synonyms = has_synonyms;
+    public String getLastAppliedDate() {
+        return lastAppliedDate;
     }
 
-    public void setIs_moderator_only(boolean is_moderator_only) {
-        this.is_moderator_only = is_moderator_only;
+    public void setLastAppliedDate(String lastAppliedDate) {
+        this.lastAppliedDate = lastAppliedDate;
     }
 
-    public void setIs_required(boolean is_required) {
-        this.is_required = is_required;
+    public Long getAppliedCount() {
+        return appliedCount;
     }
 
-    public void setCount(Integer count) {
-        this.count = count;
+    public void setAppliedCount(Long appliedCount) {
+        this.appliedCount = appliedCount;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getToTag() {
+        return toTag;
     }
+
+    public void setToTag(String toTag) {
+        this.toTag = toTag;
+    }
+
+    public String getFromTag() {
+        return fromTag;
+    }
+
+    public void setFromTag(String fromTag) {
+        this.fromTag = fromTag;
+    }
+
 
 }

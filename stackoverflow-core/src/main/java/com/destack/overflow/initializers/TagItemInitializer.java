@@ -8,6 +8,7 @@ import com.destack.overflow.enums.TagPeriod;
 import com.destack.overflow.enums.TagRetriever;
 import com.destack.overflow.enums.TagSortBy;
 import com.destack.overflow.enums.TagSortBySynonyms;
+import com.destack.overflow.util.DateUtils;
 
 /**
  * @author Deepak
@@ -54,8 +55,8 @@ public class TagItemInitializer extends BaseInitializer {
             Order order) throws ParseException {
         tagItemInitializer.setPage(page);
         tagItemInitializer.setPageSize(pageSize);
-        tagItemInitializer.setFromDate(tagItemInitializer.dateConverter(fromDate));
-        tagItemInitializer.setToDate(tagItemInitializer.dateConverter(toDate));
+        tagItemInitializer.setFromDate(DateUtils.dateToMilliSecondsConverter(fromDate));
+        tagItemInitializer.setToDate(DateUtils.dateToMilliSecondsConverter(toDate));
         tagItemInitializer.setOrder(order != null ? order : Order.DESC);
     }
 
@@ -187,14 +188,12 @@ public class TagItemInitializer extends BaseInitializer {
             }
         } else if (getSort().equals(TagSortBy.ACTIVITY)) {
             if (min != null && min instanceof Number) {
-                setMinDate(((Number) min).longValue() > 20081509
-                        ? DATE_FORMAT.parse(String.valueOf(min)).getTime() / 1000 : 0);
+                setMinDate(DateUtils.dateToMilliSecondsConverter((long) min));
             } else if (min != null && !(min instanceof Number)) {
                 throw new IllegalArgumentException("When TagSortBy is ACTIVITY min and max should be Date(yyyyddMM)");
             }
             if (max != null && max instanceof Number) {
-                setMaxDate(((Number) max).longValue() > 20081509
-                        ? DATE_FORMAT.parse(String.valueOf(max)).getTime() / 1000 : 0);
+                setMaxDate(DateUtils.dateToMilliSecondsConverter((long) max));
             } else if (max != null && !(max instanceof Number)) {
                 throw new IllegalArgumentException("When TagSortBy is ACTIVITY min and max should be Date(yyyyddMM)");
             }
@@ -230,13 +229,13 @@ public class TagItemInitializer extends BaseInitializer {
         } else if (getSortSynonyms().equals(TagSortBySynonyms.ACTIVITY)
                 || getSortSynonyms().equals(TagSortBySynonyms.CREATION)) {
             if (min != null && min instanceof Number) {
-                setMinDate(dateConverter(((Number) min).longValue()));
+                setMinDate(DateUtils.dateToMilliSecondsConverter(((Number) min).longValue()));
             } else if (min != null && !(min instanceof Number)) {
                 throw new IllegalArgumentException(
                         "When TagSortBySynonyms is ACTIVITY/CREATION min and max should be Date(yyyyddMM)");
             }
             if (max != null && max instanceof Number) {
-                setMaxDate(dateConverter(((Number) max).longValue()));
+                setMaxDate(DateUtils.dateToMilliSecondsConverter(((Number) max).longValue()));
             } else if (max != null && !(max instanceof Number)) {
                 throw new IllegalArgumentException(
                         "When TagSortBySynonyms is ACTIVITY/CREATION min and max should be Date(yyyyddMM)");

@@ -5,8 +5,8 @@
 
 # Stackoverflow Java API (Under Construction)
 
-Stackoverflow Rest API - https://api.stackexchange.com/docs
+Stackoverflow JAVA Library based on it's RESP API
 
 # Usage
-1. To get a particular number of Answers with in a specified date, order, and Sort order.
-	Create a AnswerInitializer object and pass it to AnswerItemURLGenerator to get a JsonURL and pass the same to AnswerItem's Fetcher class and get the list of AnswerItem's
+Go through the tests on how to use it.
+(Pass the Initializer to the URLGenerator and pass the generated URL to It's Fetcher and it's Item object.)

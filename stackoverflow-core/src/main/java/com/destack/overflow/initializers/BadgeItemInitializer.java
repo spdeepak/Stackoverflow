@@ -9,6 +9,7 @@ import com.destack.overflow.enums.BadgeRetriever;
 import com.destack.overflow.enums.BadgeSortBy;
 import com.destack.overflow.enums.MaxMin;
 import com.destack.overflow.enums.Order;
+import com.destack.overflow.util.DateUtils;
 
 /**
  * @author Deepak
@@ -44,8 +45,8 @@ public class BadgeItemInitializer extends BaseInitializer {
         setup();
         badgeItemInitializer.setPage(page);
         badgeItemInitializer.setPageSize(pageSize);
-        badgeItemInitializer.setFromDate(badgeItemInitializer.dateConverter(fromDate));
-        badgeItemInitializer.setToDate(badgeItemInitializer.dateConverter(toDate));
+        badgeItemInitializer.setFromDate(DateUtils.dateToMilliSecondsConverter(fromDate));
+        badgeItemInitializer.setToDate(DateUtils.dateToMilliSecondsConverter(toDate));
         badgeItemInitializer.setOrder(Order.isValid(order) ? order : Order.DESC);
         badgeItemInitializer.setbMax(MaxMin.isValid(max) ? max : null);
         badgeItemInitializer.setbMin(MaxMin.isValid(min) ? min : null);
@@ -87,8 +88,8 @@ public class BadgeItemInitializer extends BaseInitializer {
         setup();
         badgeItemInitializer.setPage(page);
         badgeItemInitializer.setPageSize(pageSize);
-        badgeItemInitializer.setFromDate(badgeItemInitializer.dateConverter(fromDate));
-        badgeItemInitializer.setToDate(badgeItemInitializer.dateConverter(toDate));
+        badgeItemInitializer.setFromDate(DateUtils.dateToMilliSecondsConverter(fromDate));
+        badgeItemInitializer.setToDate(DateUtils.dateToMilliSecondsConverter(toDate));
         badgeItemInitializer.setBr(BadgeRetriever.RECIPIENT);
         return badgeItemInitializer;
     }
@@ -98,8 +99,8 @@ public class BadgeItemInitializer extends BaseInitializer {
         setup();
         badgeItemInitializer.setPage(page);
         badgeItemInitializer.setPageSize(pageSize);
-        badgeItemInitializer.setFromDate(badgeItemInitializer.dateConverter(fromDate));
-        badgeItemInitializer.setToDate(badgeItemInitializer.dateConverter(toDate));
+        badgeItemInitializer.setFromDate(DateUtils.dateToMilliSecondsConverter(fromDate));
+        badgeItemInitializer.setToDate(DateUtils.dateToMilliSecondsConverter(toDate));
         badgeItemInitializer.setBadge_id(badge_id);
         badgeItemInitializer.setBr(BadgeRetriever.ID_RECIPIENT);
         return badgeItemInitializer;

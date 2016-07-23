@@ -221,7 +221,7 @@ public class TagItemURLGeneratorTest {
     public void testCreateNameBasedTagInitializer()
             throws ParseException, MalformedURLException, IllegalAccessException {
         TagItemInitializer tii = TagItemInitializer.createNameBasedTagInitializer(1, 100, 20100405L, 20161107L, null,
-                TagSortBy.ACTIVITY, 0, 0, new HashSet<>(Arrays.asList("java")));
+                TagSortBy.ACTIVITY, null, null, new HashSet<>(Arrays.asList("java")));
         assertEquals(
                 "https://api.stackexchange.com/2.2/tags/java/info?page=1&pagesize=100&fromdate=1272931200&todate=1468195200&order=desc&sort=activity&site=stackoverflow&filter=!-*f(6qOIRgw-",
                 tagItemURLGenerator.urlGenerator(tii).toString());
@@ -283,7 +283,7 @@ public class TagItemURLGeneratorTest {
 
         try {
             tii = TagItemInitializer.createNameBasedSynonymsTagInitializer(1, 100, 20100405L, 20161107L, Order.DESC,
-                    TagSortBy.ACTIVITY, 0, 0, null);
+                    TagSortBy.ACTIVITY, null, null, null);
         } catch (IllegalArgumentException e) {
             assertEquals("Tag names are mandatory", e.getMessage());
         }

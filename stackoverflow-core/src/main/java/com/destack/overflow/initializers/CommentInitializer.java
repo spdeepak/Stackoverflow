@@ -6,6 +6,7 @@ import java.util.Set;
 import com.destack.overflow.enums.CommentSortBy;
 import com.destack.overflow.enums.Order;
 import com.destack.overflow.model.CommentItem;
+import com.destack.overflow.util.DateUtils;
 
 /**
  * {@link CommentItem} initializer class.<br/>
@@ -34,16 +35,16 @@ public class CommentInitializer extends BaseInitializer {
         setup();
         commentInitializer.setPage(page);
         commentInitializer.setPageSize(pageSize);
-        commentInitializer.setFromDate(commentInitializer.dateConverter(fromDate));
-        commentInitializer.setToDate(commentInitializer.dateConverter(toDate));
+        commentInitializer.setFromDate(DateUtils.dateToMilliSecondsConverter(fromDate));
+        commentInitializer.setToDate(DateUtils.dateToMilliSecondsConverter(toDate));
         commentInitializer.setOrder(Order.isValid(order) ? order : Order.DESC);
         commentInitializer.setSort(CommentSortBy.isValid(sort) ? sort : CommentSortBy.CREATION);
         if (CommentSortBy.VOTES.equals(commentInitializer.getSort())) {
             commentInitializer.setMin(min);
             commentInitializer.setMax(max);
         } else {
-            commentInitializer.setMinDate(commentInitializer.dateConverter(min));
-            commentInitializer.setMaxDate(commentInitializer.dateConverter(max));
+            commentInitializer.setMinDate(DateUtils.dateToMilliSecondsConverter(min));
+            commentInitializer.setMaxDate(DateUtils.dateToMilliSecondsConverter(max));
         }
         return commentInitializer;
     }

@@ -35,19 +35,19 @@ public class AnswerItemURLGeneratorTest {
                 "https://api.stackexchange.com/2.2/answers?page=1&pagesize=10&fromdate=1388534400&todate=1391126400&order=desc&min=1388534400&max=1391126400&sort=activity&site=stackoverflow",
                 answerItemURLGenerator.urlGenerator(ai).toString());
 
-        ai = AnswerItemInitializer.createAllAnswersInitializerInstance(1, 10, 0, 0, null, null, 0, 0);
+        ai = AnswerItemInitializer.createAllAnswersInitializerInstance(1, 10, null, null, null, null, null, null);
         assertEquals(
                 "https://api.stackexchange.com/2.2/answers?page=1&pagesize=10&order=desc&sort=activity&site=stackoverflow",
                 answerItemURLGenerator.urlGenerator(ai).toString());
 
         ai = AnswerItemInitializer.createAllAnswersInitializerInstance(1, 10, 20140101L, 20143101L, Order.ASC,
-                AnswerSortBy.VOTES, 0, 0);
+                AnswerSortBy.VOTES, null, null);
         assertEquals(
                 "https://api.stackexchange.com/2.2/answers?page=1&pagesize=10&fromdate=1388534400&todate=1391126400&order=asc&sort=votes&site=stackoverflow",
                 answerItemURLGenerator.urlGenerator(ai).toString());
 
         ai = AnswerItemInitializer.createAllAnswersInitializerInstance(1, 10, 20140101L, 20143101L, Order.ASC,
-                AnswerSortBy.CREATION, 0, 0);
+                AnswerSortBy.CREATION, null, null);
         assertEquals(
                 "https://api.stackexchange.com/2.2/answers?page=1&pagesize=10&fromdate=1388534400&todate=1391126400&order=asc&sort=creation&site=stackoverflow",
                 answerItemURLGenerator.urlGenerator(ai).toString());
@@ -56,21 +56,21 @@ public class AnswerItemURLGeneratorTest {
     @Test
     public void testCreateAnswerIdInitializerInstance() throws ParseException, MalformedURLException {
         AnswerItemInitializer ai = AnswerItemInitializer.createAnswerIdInitializerInstance(0, 0, 20110101L, 20161407L,
-                Order.ASC, AnswerSortBy.CREATION, 0, 0, new HashSet<>(Arrays.asList(11775670L, 14396416L)),
+                Order.ASC, AnswerSortBy.CREATION, null, null, new HashSet<>(Arrays.asList(11775670L, 14396416L)),
                 FetchFromAnswer.ID_ANSWER);
         assertEquals(
                 "https://api.stackexchange.com/2.2/answers/14396416;11775670?fromdate=1293840000&todate=1468454400&order=asc&sort=creation&site=stackoverflow",
                 answerItemURLGenerator.urlGenerator(ai).toString());
 
         ai = AnswerItemInitializer.createAnswerIdInitializerInstance(0, 0, 20110101L, 20161407L, Order.ASC,
-                AnswerSortBy.CREATION, 0, 0, new HashSet<>(Arrays.asList(11775670L, 14396416L)),
+                AnswerSortBy.CREATION, null, null, new HashSet<>(Arrays.asList(11775670L, 14396416L)),
                 FetchFromAnswer.QUESTIONS_IDANSWER);
         assertEquals(
                 "https://api.stackexchange.com/2.2/answers/14396416;11775670/questions?fromdate=1293840000&todate=1468454400&order=asc&sort=creation&site=stackoverflow",
                 answerItemURLGenerator.urlGenerator(ai).toString());
 
         ai = AnswerItemInitializer.createAnswerIdInitializerInstance(0, 0, 20110101L, 20161407L, Order.ASC,
-                AnswerSortBy.CREATION, 0, 0, new HashSet<>(Arrays.asList(11775670L, 14396416L)),
+                AnswerSortBy.CREATION, null, null, new HashSet<>(Arrays.asList(11775670L, 14396416L)),
                 FetchFromAnswer.COMMENTS_IDANSWER);
         assertEquals(
                 "https://api.stackexchange.com/2.2/answers/14396416;11775670/comments?fromdate=1293840000&todate=1468454400&order=asc&sort=creation&site=stackoverflow",
@@ -82,20 +82,20 @@ public class AnswerItemURLGeneratorTest {
         AnswerItemInitializer ai;
         try {
             ai = AnswerItemInitializer.createAnswerIdInitializerInstance(0, 0, 20110101L, 20161407L, Order.ASC,
-                    AnswerSortBy.CREATION, 0, 0, null, FetchFromAnswer.ID_ANSWER);
+                    AnswerSortBy.CREATION, null, null, null, FetchFromAnswer.ID_ANSWER);
         } catch (IllegalArgumentException e) {
             assertTrue(e.getMessage().equals("IDs cannot be null or empty"));
         }
 
         try {
             ai = AnswerItemInitializer.createAnswerIdInitializerInstance(0, 0, 20110101L, 20161407L, Order.ASC,
-                    AnswerSortBy.CREATION, 0, 0, new HashSet<>(Arrays.asList(11775670L, 14396416L)), null);
+                    AnswerSortBy.CREATION, null, null, new HashSet<>(Arrays.asList(11775670L, 14396416L)), null);
         } catch (IllegalArgumentException e) {
             assertTrue(e.getMessage().equals("FetchFromAnswer is not valid"));
         }
 
         try {
-            ai = AnswerItemInitializer.createAllAnswersInitializerInstance(1, 10, 0, 0, null, null, 10, 100);
+            ai = AnswerItemInitializer.createAllAnswersInitializerInstance(1, 10, null, null, null, null, 10L, 100L);
         } catch (IllegalArgumentException e) {
             assertEquals("As AnswerSortBy is not by Votes Min & Max should be dates and in 'yyyyddMM' format",
                     e.getMessage());
@@ -104,8 +104,8 @@ public class AnswerItemURLGeneratorTest {
 
     @Test
     public void testDateVerifier() throws ParseException {
-        AnswerItemInitializer ai = AnswerItemInitializer.createAllAnswersInitializerInstance(0, 0, 32653265, 32653232,
-                Order.ASC, AnswerSortBy.ACTIVITY, 0, 0);
+        AnswerItemInitializer ai = AnswerItemInitializer.createAllAnswersInitializerInstance(0, 0, 32653265L, 32653232L,
+                Order.ASC, AnswerSortBy.ACTIVITY, null, null);
         assertEquals(Long.valueOf(0L), ai.getFromDate());
         assertEquals(Long.valueOf(0L), ai.getToDate());
     }

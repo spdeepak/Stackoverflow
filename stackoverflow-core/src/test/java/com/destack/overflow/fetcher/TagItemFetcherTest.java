@@ -28,27 +28,20 @@ public class TagItemFetcherTest {
 
     @Resource
     private TagItemFetcher tagItemFetcher;
+
     @Test
     public void test() throws FileNotFoundException, MalformedURLException, IOException {
         File file = new File(System.getProperty("user.dir") + "/src/main/resources/JSONs/tagexample.json");
         List<TagItem> answerItems = tagItemFetcher.objectFetcher(file.toURI().toURL());
         assertEquals(30, answerItems.size());
-        assertThat(Arrays.asList(answerItems.get(0).getSynonyms()), containsInAnyOrder("js",
-                "ecmascript",
-                ".js",
-                "javascript-execution",
-                "classic-javascript",
-                "javascript-alert",
-                "javascript-dom",
-                "javascript-disabled",
-                "javascript-library",
-                "javascript-runtime",
-                "vanilla-javascript",
-                "javascript-module"));
-        assertEquals(1469270369, answerItems.get(0).getLast_activity_date());
-        assertTrue(answerItems.get(0).isHas_synonyms());
-        assertFalse(answerItems.get(0).isIs_moderator_only());
-        assertFalse(answerItems.get(0).isIs_required());
+        assertThat(Arrays.asList(answerItems.get(0).getSynonyms()),
+                containsInAnyOrder("js", "ecmascript", ".js", "javascript-execution", "classic-javascript",
+                        "javascript-alert", "javascript-dom", "javascript-disabled", "javascript-library",
+                        "javascript-runtime", "vanilla-javascript", "javascript-module"));
+        assertEquals(Long.valueOf(1469270369), answerItems.get(0).getLastActivityDate());
+        assertTrue(answerItems.get(0).isHasSynonyms());
+        assertFalse(answerItems.get(0).isModeratorOnly());
+        assertFalse(answerItems.get(0).isRequired());
         assertEquals(Integer.valueOf(1175718), answerItems.get(0).getCount());
         assertEquals("javascript", answerItems.get(0).getName());
     }

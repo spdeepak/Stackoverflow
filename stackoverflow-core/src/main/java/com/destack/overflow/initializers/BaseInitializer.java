@@ -1,9 +1,5 @@
 package com.destack.overflow.initializers;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.TimeZone;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,14 +11,14 @@ import com.destack.overflow.enums.Order;
  */
 public class BaseInitializer {
 
-    protected static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyyddMM");
+    //    protected static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyyddMM");
 
     private static final Logger LOGGER = LoggerFactory.getLogger(BaseInitializer.class);
-
-    static {
-        DATE_FORMAT.setLenient(false);
-        DATE_FORMAT.setTimeZone(TimeZone.getTimeZone("Etc/UTC"));
-    }
+    //
+    //    static {
+    //        DATE_FORMAT.setLenient(false);
+    //        DATE_FORMAT.setTimeZone(TimeZone.getTimeZone("Etc/UTC"));
+    //    }
 
     private Long fromDate;
 
@@ -133,54 +129,4 @@ public class BaseInitializer {
     public void setToDate(Long toDate) {
         this.toDate = toDate;
     }
-
-    /**
-     * Verify Date with the required format
-     * 
-     * @param date
-     * @return
-     */
-    public boolean dateVerifier(Long date) {
-        try {
-            if (date != null && date != 0) {
-                DATE_FORMAT.parse(String.valueOf(date));
-            } else if (date != null && date == 0) {
-                return true;
-            } else {
-                return false;
-            }
-        } catch (ParseException e) {
-            LOGGER.error(e.toString());
-            return false;
-        }
-        return true;
-    }
-
-    /**
-     * Verify Dates with the required format
-     * 
-     * @param date1
-     * @param date2
-     * @return
-     */
-    public boolean datesVerifier(Long date1, Long date2) {
-        return dateVerifier(date1) && dateVerifier(date2);
-    }
-
-    /**
-     * Validates date and converts to 10 digit Integer format
-     * 
-     * @param date
-     *            Date in the format of <b>"yyyyddMM"</b>
-     * @return valid date or "0"
-     * @throws ParseException
-     */
-    public Long dateConverter(Long date) throws ParseException {
-        if (dateVerifier(date) && date != 0) {
-            return DATE_FORMAT.parse(String.valueOf(date)).getTime() / 1000;
-        } else {
-            return 0L;
-        }
-    }
-
 }

@@ -1,0 +1,989 @@
+{
+    "items": [
+        {
+            "tags": [
+                "php",
+                "tags",
+                "php-shorttags"
+            ],
+            "owner": {
+                "badge_counts": {
+                    "bronze": 52,
+                    "silver": 28,
+                    "gold": 6
+                },
+                "reputation": 9075,
+                "user_id": 213689,
+                "user_type": "registered",
+                "accept_rate": 87,
+                "profile_image": "https://www.gravatar.com/avatar/65f0120102850ccf148ab0de3287ebb1?s=128&d=identicon&r=PG",
+                "display_name": "seedg",
+                "link": "http://stackoverflow.com/users/213689/seedg"
+            },
+            "is_answered": true,
+            "view_count": 287943,
+            "protected_date": 1408897359,
+            "accepted_answer_id": 2185331,
+            "answer_count": 15,
+            "score": 199,
+            "last_activity_date": 1445415761,
+            "creation_date": 1265125450,
+            "last_edit_date": 1368373305,
+            "question_id": 2185320,
+            "link": "http://stackoverflow.com/questions/2185320/how-to-enable-php-short-tags",
+            "title": "How to enable PHP short tags?"
+        },
+        {
+            "tags": [
+                "sql",
+                "database-design",
+                "tags",
+                "data-modeling",
+                "tagging"
+            ],
+            "owner": {
+                "badge_counts": {
+                    "bronze": 88,
+                    "silver": 55,
+                    "gold": 15
+                },
+                "reputation": 20175,
+                "user_id": 459,
+                "user_type": "registered",
+                "accept_rate": 91,
+                "profile_image": "https://www.gravatar.com/avatar/0db193fbf6f0929c49dd9704698204ff?s=128&d=identicon&r=PG",
+                "display_name": "dlamblin",
+                "link": "http://stackoverflow.com/users/459/dlamblin"
+            },
+            "is_answered": true,
+            "view_count": 41823,
+            "closed_date": 1451825056,
+            "accepted_answer_id": 20871,
+            "answer_count": 6,
+            "score": 203,
+            "last_activity_date": 1448704275,
+            "creation_date": 1219346285,
+            "last_edit_date": 1423696191,
+            "question_id": 20856,
+            "link": "http://stackoverflow.com/questions/20856/recommended-sql-database-design-for-tags-or-tagging",
+            "closed_reason": "primarily opinion-based",
+            "title": "Recommended SQL database design for tags or tagging"
+        },
+        {
+            "tags": [
+                "asp.net",
+                "syntax",
+                "tags"
+            ],
+            "owner": {
+                "badge_counts": {
+                    "bronze": 185,
+                    "silver": 141,
+                    "gold": 39
+                },
+                "reputation": 46927,
+                "user_id": 60096,
+                "user_type": "registered",
+                "accept_rate": 89,
+                "profile_image": "https://www.gravatar.com/avatar/5bf1f11c3493fb7dc5b4045c90a80403?s=128&d=identicon&r=PG",
+                "display_name": "Andy White",
+                "link": "http://stackoverflow.com/users/60096/andy-white"
+            },
+            "is_answered": true,
+            "view_count": 40128,
+            "accepted_answer_id": 649458,
+            "answer_count": 5,
+            "score": 170,
+            "last_activity_date": 1408364009,
+            "creation_date": 1237184866,
+            "last_edit_date": 1299012684,
+            "question_id": 649428,
+            "link": "http://stackoverflow.com/questions/649428/asp-net-special-tags",
+            "title": "ASP.NET &quot;special&quot; tags"
+        },
+        {
+            "tags": [
+                "jquery",
+                "text",
+                "tags"
+            ],
+            "owner": {
+                "badge_counts": {
+                    "bronze": 108,
+                    "silver": 76,
+                    "gold": 26
+                },
+                "reputation": 6820,
+                "user_id": 209113,
+                "user_type": "registered",
+                "accept_rate": 61,
+                "profile_image": "https://i.stack.imgur.com/PLrz0.png?s=128&g=1",
+                "display_name": "Matt Powell",
+                "link": "http://stackoverflow.com/users/209113/matt-powell"
+            },
+            "is_answered": true,
+            "view_count": 66149,
+            "accepted_answer_id": 8851526,
+            "answer_count": 19,
+            "score": 166,
+            "last_activity_date": 1458221656,
+            "creation_date": 1281373643,
+            "last_edit_date": 1371038115,
+            "question_id": 3442394,
+            "link": "http://stackoverflow.com/questions/3442394/jquery-using-text-to-retrieve-only-text-not-nested-in-child-tags",
+            "title": "jQuery: using .text() to retrieve only text not nested in child tags"
+        },
+        {
+            "tags": [
+                "html",
+                "tags",
+                "center",
+                "deprecated"
+            ],
+            "owner": {
+                "badge_counts": {
+                    "bronze": 321,
+                    "silver": 245,
+                    "gold": 80
+                },
+                "reputation": 50670,
+                "user_id": 44084,
+                "user_type": "registered",
+                "accept_rate": 94,
+                "profile_image": "https://www.gravatar.com/avatar/c398dd0c2ca7d5281d0a83242a924e76?s=128&d=identicon&r=PG",
+                "display_name": "Andreas Grech",
+                "link": "http://stackoverflow.com/users/44084/andreas-grech"
+            },
+            "is_answered": true,
+            "view_count": 66940,
+            "accepted_answer_id": 1798853,
+            "answer_count": 13,
+            "score": 144,
+            "last_activity_date": 1455401621,
+            "creation_date": 1259172048,
+            "question_id": 1798817,
+            "link": "http://stackoverflow.com/questions/1798817/why-is-the-center-tag-deprecated-in-html",
+            "title": "Why is the &lt;center&gt; tag deprecated in HTML?"
+        },
+        {
+            "tags": [
+                "svn",
+                "tags",
+                "branch",
+                "glossary",
+                "trunk"
+            ],
+            "owner": {
+                "badge_counts": {
+                    "bronze": 64,
+                    "silver": 37,
+                    "gold": 4
+                },
+                "reputation": 18412,
+                "user_id": 914,
+                "user_type": "registered",
+                "accept_rate": 84,
+                "profile_image": "https://www.gravatar.com/avatar/4e14b6e9662cae8766c4d55037047e61?s=128&d=identicon&r=PG",
+                "display_name": "grapefrukt",
+                "link": "http://stackoverflow.com/users/914/grapefrukt"
+            },
+            "is_answered": true,
+            "view_count": 325980,
+            "protected_date": 1347554097,
+            "accepted_answer_id": 16163,
+            "answer_count": 14,
+            "score": 978,
+            "last_activity_date": 1451851733,
+            "creation_date": 1219152123,
+            "last_edit_date": 1347215315,
+            "question_id": 16142,
+            "link": "http://stackoverflow.com/questions/16142/what-do-branch-tag-and-trunk-mean-in-subversion-repositories",
+            "title": "What do &quot;branch&quot;, &quot;tag&quot; and &quot;trunk&quot; mean in Subversion repositories?"
+        },
+        {
+            "tags": [
+                "java",
+                "jsp",
+                "inheritance",
+                "templates",
+                "tags"
+            ],
+            "owner": {
+                "badge_counts": {
+                    "bronze": 13,
+                    "silver": 12,
+                    "gold": 3
+                },
+                "reputation": 1672,
+                "user_id": 81557,
+                "user_type": "registered",
+                "accept_rate": 67,
+                "profile_image": "https://www.gravatar.com/avatar/c89ce60c117454b3476c382d0439c4c1?s=128&d=identicon&r=PG",
+                "display_name": "Scott",
+                "link": "http://stackoverflow.com/users/81557/scott"
+            },
+            "is_answered": true,
+            "view_count": 75518,
+            "accepted_answer_id": 3257426,
+            "answer_count": 5,
+            "score": 229,
+            "last_activity_date": 1416669757,
+            "creation_date": 1250626587,
+            "last_edit_date": 1416669757,
+            "question_id": 1296235,
+            "link": "http://stackoverflow.com/questions/1296235/jsp-tricks-to-make-templating-easier",
+            "title": "JSP tricks to make templating easier?"
+        },
+        {
+            "tags": [
+                "html",
+                "html5",
+                "tags"
+            ],
+            "owner": {
+                "badge_counts": {
+                    "bronze": 73,
+                    "silver": 37,
+                    "gold": 8
+                },
+                "reputation": 4327,
+                "user_id": 547242,
+                "user_type": "registered",
+                "accept_rate": 94,
+                "profile_image": "https://i.stack.imgur.com/kJift.jpg?s=128&g=1",
+                "display_name": "Larry Cinnabar",
+                "link": "http://stackoverflow.com/users/547242/larry-cinnabar"
+            },
+            "is_answered": true,
+            "view_count": 49826,
+            "protected_date": 1393453321,
+            "accepted_answer_id": 5642982,
+            "answer_count": 6,
+            "score": 114,
+            "last_activity_date": 1443169667,
+            "creation_date": 1302644763,
+            "question_id": 5641997,
+            "link": "http://stackoverflow.com/questions/5641997/is-it-necessary-to-write-head-body-and-html-tags",
+            "title": "Is it necessary to write HEAD, BODY and HTML tags?"
+        },
+        {
+            "tags": [
+                "jquery",
+                "autocomplete",
+                "tags"
+            ],
+            "owner": {
+                "badge_counts": {
+                    "bronze": 113,
+                    "silver": 66,
+                    "gold": 18
+                },
+                "reputation": 20776,
+                "user_id": 20471,
+                "user_type": "registered",
+                "accept_rate": 78,
+                "profile_image": "https://www.gravatar.com/avatar/35b5e9e9ccf3bfe5ff8d22b64a5234d3?s=128&d=identicon&r=PG",
+                "display_name": "Joe Philllips",
+                "link": "http://stackoverflow.com/users/20471/joe-philllips"
+            },
+            "is_answered": true,
+            "view_count": 137524,
+            "protected_date": 1411973678,
+            "accepted_answer_id": 2674466,
+            "answer_count": 7,
+            "score": 436,
+            "last_activity_date": 1465557854,
+            "creation_date": 1233894477,
+            "last_edit_date": 1432217177,
+            "question_id": 519107,
+            "link": "http://stackoverflow.com/questions/519107/jquery-autocomplete-tagging-plug-in-like-stackoverflows-input-tags",
+            "title": "jQuery autocomplete tagging plug-in like StackOverflow&#39;s input tags?"
+        },
+        {
+            "tags": [
+                "html",
+                "tags"
+            ],
+            "owner": {
+                "badge_counts": {
+                    "bronze": 122,
+                    "silver": 70,
+                    "gold": 20
+                },
+                "reputation": 4335,
+                "user_id": 91769,
+                "user_type": "registered",
+                "accept_rate": 100,
+                "profile_image": "https://www.gravatar.com/avatar/45ca3ee447a9794bb6f331eef8cea62a?s=128&d=identicon&r=PG&f=1",
+                "display_name": "Steven",
+                "link": "http://stackoverflow.com/users/91769/steven"
+            },
+            "is_answered": true,
+            "view_count": 155215,
+            "protected_date": 1401884428,
+            "accepted_answer_id": 2820460,
+            "answer_count": 18,
+            "score": 63,
+            "last_activity_date": 1468934611,
+            "creation_date": 1273679299,
+            "last_edit_date": 1382451566,
+            "question_id": 2820453,
+            "link": "http://stackoverflow.com/questions/2820453/display-html-code-in-html",
+            "title": "Display HTML code in HTML"
+        },
+        {
+            "tags": [
+                "html5",
+                "tags",
+                "element"
+            ],
+            "owner": {
+                "badge_counts": {
+                    "bronze": 29,
+                    "silver": 15,
+                    "gold": 5
+                },
+                "reputation": 2086,
+                "user_id": 1282216,
+                "user_type": "registered",
+                "accept_rate": 100,
+                "profile_image": "https://www.gravatar.com/avatar/a210a4eec46aed212d5c907c26adfcd3?s=128&d=identicon&r=PG",
+                "display_name": "d13",
+                "link": "http://stackoverflow.com/users/1282216/d13"
+            },
+            "is_answered": true,
+            "view_count": 33430,
+            "accepted_answer_id": 9845124,
+            "answer_count": 9,
+            "score": 102,
+            "last_activity_date": 1455103310,
+            "creation_date": 1332529173,
+            "last_edit_date": 1382411910,
+            "question_id": 9845011,
+            "link": "http://stackoverflow.com/questions/9845011/are-custom-elements-valid-html5",
+            "title": "Are custom elements valid HTML5?"
+        },
+        {
+            "tags": [
+                "html",
+                "tags"
+            ],
+            "owner": {
+                "badge_counts": {
+                    "bronze": 10,
+                    "silver": 12,
+                    "gold": 3
+                },
+                "reputation": 1848,
+                "user_id": 3676,
+                "user_type": "registered",
+                "profile_image": "https://www.gravatar.com/avatar/73c188d34fb0388bec0be2cdfcd2045e?s=128&d=identicon&r=PG",
+                "display_name": "JSchaefer",
+                "link": "http://stackoverflow.com/users/3676/jschaefer"
+            },
+            "is_answered": true,
+            "view_count": 199447,
+            "protected_date": 1383578788,
+            "accepted_answer_id": 183536,
+            "answer_count": 10,
+            "score": 327,
+            "last_activity_date": 1467812968,
+            "creation_date": 1223481704,
+            "last_edit_date": 1442137547,
+            "question_id": 183532,
+            "link": "http://stackoverflow.com/questions/183532/what-is-the-difference-between-html-tags-div-and-span",
+            "title": "What is the difference between HTML tags &lt;div&gt; and &lt;span&gt;?"
+        },
+        {
+            "tags": [
+                "html",
+                "forms",
+                "tags",
+                "anchor",
+                "option"
+            ],
+            "owner": {
+                "badge_counts": {
+                    "bronze": 9,
+                    "silver": 8,
+                    "gold": 1
+                },
+                "reputation": 495,
+                "user_id": 243315,
+                "user_type": "registered",
+                "accept_rate": 43,
+                "profile_image": "https://i.stack.imgur.com/PmPHY.png?s=128&g=1",
+                "display_name": "makmour",
+                "link": "http://stackoverflow.com/users/243315/makmour"
+            },
+            "is_answered": true,
+            "view_count": 189878,
+            "accepted_answer_id": 2000689,
+            "answer_count": 7,
+            "score": 72,
+            "last_activity_date": 1468601943,
+            "creation_date": 1262623490,
+            "last_edit_date": 1468601943,
+            "question_id": 2000656,
+            "link": "http://stackoverflow.com/questions/2000656/using-href-links-inside-option-tag",
+            "title": "using href links inside &lt;option&gt; tag"
+        },
+        {
+            "tags": [
+                "php",
+                "html",
+                "performance",
+                "templates",
+                "tags"
+            ],
+            "owner": {
+                "badge_counts": {
+                    "bronze": 106,
+                    "silver": 66,
+                    "gold": 19
+                },
+                "reputation": 13414,
+                "user_id": 244932,
+                "user_type": "registered",
+                "accept_rate": 99,
+                "profile_image": "https://www.gravatar.com/avatar/01647fd568f49ef5f1b17203a51aa92c?s=128&d=identicon&r=PG",
+                "display_name": "Tom",
+                "link": "http://stackoverflow.com/users/244932/tom"
+            },
+            "is_answered": true,
+            "view_count": 8862,
+            "accepted_answer_id": 2437413,
+            "answer_count": 5,
+            "score": 79,
+            "last_activity_date": 1451452230,
+            "creation_date": 1268450487,
+            "last_edit_date": 1317558020,
+            "question_id": 2437144,
+            "link": "http://stackoverflow.com/questions/2437144/opening-closing-tags-performance",
+            "title": "Opening/closing tags &amp; performance?"
+        },
+        {
+            "tags": [
+                "git",
+                "tags",
+                "repository",
+                "push",
+                "git-push"
+            ],
+            "owner": {
+                "badge_counts": {
+                    "bronze": 297,
+                    "silver": 205,
+                    "gold": 69
+                },
+                "reputation": 32931,
+                "user_id": 213269,
+                "user_type": "registered",
+                "accept_rate": 98,
+                "profile_image": "https://www.gravatar.com/avatar/894e4c1f3bc33e5f9a5008d355287830?s=128&d=identicon&r=PG",
+                "display_name": "Jonas",
+                "link": "http://stackoverflow.com/users/213269/jonas"
+            },
+            "is_answered": true,
+            "view_count": 312284,
+            "accepted_answer_id": 26438076,
+            "answer_count": 7,
+            "score": 790,
+            "last_activity_date": 1452405439,
+            "creation_date": 1299253044,
+            "last_edit_date": 1405567344,
+            "question_id": 5195859,
+            "link": "http://stackoverflow.com/questions/5195859/push-a-tag-to-a-remote-repository-using-git",
+            "title": "Push a tag to a remote repository using Git?"
+        },
+        {
+            "tags": [
+                "sql",
+                "database-design",
+                "tags",
+                "tagging"
+            ],
+            "owner": {
+                "badge_counts": {
+                    "bronze": 42,
+                    "silver": 29,
+                    "gold": 8
+                },
+                "reputation": 9099,
+                "user_id": 5035,
+                "user_type": "registered",
+                "accept_rate": 67,
+                "profile_image": "https://www.gravatar.com/avatar/dd16b4d63abcba0ad7b3add5faf05994?s=128&d=identicon&r=PG",
+                "display_name": "Christian Berg",
+                "link": "http://stackoverflow.com/users/5035/christian-berg"
+            },
+            "is_answered": true,
+            "view_count": 42197,
+            "accepted_answer_id": 48652,
+            "answer_count": 12,
+            "score": 123,
+            "last_activity_date": 1462384063,
+            "creation_date": 1220797891,
+            "last_edit_date": 1321674386,
+            "question_id": 48475,
+            "link": "http://stackoverflow.com/questions/48475/database-design-for-tagging",
+            "title": "Database Design for Tagging"
+        },
+        {
+            "tags": [
+                "javascript",
+                "html",
+                "tags",
+                "full-text-search",
+                "highlighting"
+            ],
+            "owner": {
+                "badge_counts": {
+                    "bronze": 14,
+                    "silver": 3,
+                    "gold": 1
+                },
+                "reputation": 194,
+                "user_id": 615458,
+                "user_type": "registered",
+                "accept_rate": 100,
+                "profile_image": "https://www.gravatar.com/avatar/cc449a2fab2fd2391ed562a8adf82178?s=128&d=identicon&r=PG",
+                "display_name": "Bruno",
+                "link": "http://stackoverflow.com/users/615458/bruno"
+            },
+            "is_answered": true,
+            "view_count": 13166,
+            "accepted_answer_id": 5887719,
+            "answer_count": 3,
+            "score": 11,
+            "last_activity_date": 1434019109,
+            "creation_date": 1304527411,
+            "question_id": 5886858,
+            "link": "http://stackoverflow.com/questions/5886858/full-text-search-in-html-ignoring-tags",
+            "title": "Full text search in HTML ignoring tags / &amp;"
+        },
+        {
+            "tags": [
+                "php",
+                "xml",
+                "tags",
+                "cdata"
+            ],
+            "owner": {
+                "badge_counts": {
+                    "bronze": 7,
+                    "silver": 4,
+                    "gold": 2
+                },
+                "reputation": 344,
+                "user_id": 357967,
+                "user_type": "unregistered",
+                "accept_rate": 75,
+                "profile_image": "https://www.gravatar.com/avatar/7b097ae439b835bc1d94fe3287cee63d?s=128&d=identicon&r=PG",
+                "display_name": "Angelo",
+                "link": "http://stackoverflow.com/users/357967/angelo"
+            },
+            "is_answered": true,
+            "view_count": 66746,
+            "accepted_answer_id": 2970701,
+            "answer_count": 4,
+            "score": 61,
+            "last_activity_date": 1453716486,
+            "creation_date": 1275608919,
+            "question_id": 2970602,
+            "link": "http://stackoverflow.com/questions/2970602/php-how-to-handle-cdata-with-simplexmlelement",
+            "title": "PHP: How to handle &lt;![CDATA[ with SimpleXMLElement?"
+        },
+        {
+            "tags": [
+                "html",
+                "css",
+                "tags",
+                "anchor"
+            ],
+            "owner": {
+                "badge_counts": {
+                    "bronze": 68,
+                    "silver": 32,
+                    "gold": 7
+                },
+                "reputation": 1501,
+                "user_id": 1204003,
+                "user_type": "registered",
+                "accept_rate": 66,
+                "profile_image": "https://www.gravatar.com/avatar/1536020ffdc812093bbdb207bf76f031?s=128&d=identicon&r=PG",
+                "display_name": "Sizzling Code",
+                "link": "http://stackoverflow.com/users/1204003/sizzling-code"
+            },
+            "is_answered": true,
+            "view_count": 57571,
+            "accepted_answer_id": 12667751,
+            "answer_count": 4,
+            "score": 33,
+            "last_activity_date": 1463724168,
+            "creation_date": 1349006716,
+            "last_edit_date": 1375494824,
+            "question_id": 12661124,
+            "link": "http://stackoverflow.com/questions/12661124/how-to-apply-hovering-on-html-area-tag",
+            "title": "How to apply Hovering on html area tag?"
+        },
+        {
+            "tags": [
+                "tags",
+                "option",
+                "html"
+            ],
+            "owner": {
+                "badge_counts": {
+                    "bronze": 115,
+                    "silver": 69,
+                    "gold": 17
+                },
+                "reputation": 12611,
+                "user_id": 439427,
+                "user_type": "registered",
+                "accept_rate": 86,
+                "profile_image": "https://www.gravatar.com/avatar/c1201849caa3693e9b41824351c9dc3d?s=128&d=identicon&r=PG",
+                "display_name": "Rubens Mariuzzo",
+                "link": "http://stackoverflow.com/users/439427/rubens-mariuzzo"
+            },
+            "is_answered": true,
+            "view_count": 33313,
+            "accepted_answer_id": 5678794,
+            "answer_count": 6,
+            "score": 31,
+            "last_activity_date": 1382685333,
+            "creation_date": 1302880229,
+            "last_edit_date": 1302881339,
+            "question_id": 5678760,
+            "link": "http://stackoverflow.com/questions/5678760/it-is-bad-to-put-span-tags-inside-option-tags-only-for-string-manipulat",
+            "title": "It is bad to put &lt;span /&gt; tags inside &lt;option /&gt; tags, only for string manipulation not styling?"
+        },
+        {
+            "tags": [
+                "c#",
+                "tags",
+                "html-parsing",
+                "html-agility-pack",
+                "sanitize"
+            ],
+            "owner": {
+                "badge_counts": {
+                    "bronze": 40,
+                    "silver": 25,
+                    "gold": 5
+                },
+                "reputation": 3962,
+                "user_id": 249895,
+                "user_type": "registered",
+                "accept_rate": 50,
+                "profile_image": "https://i.stack.imgur.com/XRxBE.jpg?s=128&g=1",
+                "display_name": "Dragos Durlut",
+                "link": "http://stackoverflow.com/users/249895/dragos-durlut"
+            },
+            "is_answered": true,
+            "view_count": 12798,
+            "accepted_answer_id": 3107567,
+            "answer_count": 2,
+            "score": 24,
+            "last_activity_date": 1333567115,
+            "creation_date": 1277358720,
+            "last_edit_date": 1333567115,
+            "question_id": 3107514,
+            "link": "http://stackoverflow.com/questions/3107514/html-agility-pack-strip-tags-not-in-whitelist",
+            "title": "HTML Agility Pack strip tags NOT IN whitelist"
+        },
+        {
+            "tags": [
+                "ruby",
+                "tags",
+                "tagging",
+                "liquid",
+                "jekyll"
+            ],
+            "owner": {
+                "badge_counts": {
+                    "bronze": 24,
+                    "silver": 10,
+                    "gold": 1
+                },
+                "reputation": 696,
+                "user_id": 152489,
+                "user_type": "registered",
+                "accept_rate": 67,
+                "profile_image": "https://www.gravatar.com/avatar/169ea07178b4a2e30ecd391161e31d85?s=128&d=identicon&r=PG",
+                "display_name": "raheel",
+                "link": "http://stackoverflow.com/users/152489/raheel"
+            },
+            "is_answered": true,
+            "view_count": 11034,
+            "accepted_answer_id": 4443522,
+            "answer_count": 6,
+            "score": 38,
+            "last_activity_date": 1439200125,
+            "creation_date": 1252639521,
+            "last_edit_date": 1342262003,
+            "question_id": 1408824,
+            "link": "http://stackoverflow.com/questions/1408824/an-easy-way-to-support-tags-in-a-jekyll-blog",
+            "title": "An easy way to support tags in a jekyll blog"
+        },
+        {
+            "tags": [
+                "javascript",
+                "html",
+                "input",
+                "tags",
+                "hidden"
+            ],
+            "owner": {
+                "badge_counts": {
+                    "bronze": 9,
+                    "silver": 5,
+                    "gold": 2
+                },
+                "reputation": 440,
+                "user_id": 1651575,
+                "user_type": "registered",
+                "profile_image": "https://www.gravatar.com/avatar/0c9c37dbab65edaa856b7ae6cb4233cf?s=128&d=identicon&r=PG",
+                "display_name": "VolosBlur",
+                "link": "http://stackoverflow.com/users/1651575/volosblur"
+            },
+            "is_answered": true,
+            "view_count": 333545,
+            "closed_date": 1400060295,
+            "accepted_answer_id": 12409344,
+            "answer_count": 7,
+            "score": 82,
+            "last_activity_date": 1461825138,
+            "creation_date": 1347548679,
+            "last_edit_date": 1457358279,
+            "question_id": 12409299,
+            "link": "http://stackoverflow.com/questions/12409299/how-to-get-current-formatted-date-dd-mm-yyyy-in-javascript-and-append-it-to-an-i",
+            "closed_reason": "duplicate",
+            "title": "How to get current formatted date dd/mm/yyyy in Javascript and append it to an input"
+        },
+        {
+            "tags": [
+                "php",
+                "html",
+                "regex",
+                "tags"
+            ],
+            "owner": {
+                "badge_counts": {
+                    "bronze": 91,
+                    "silver": 46,
+                    "gold": 8
+                },
+                "reputation": 2845,
+                "user_id": 154502,
+                "user_type": "registered",
+                "accept_rate": 86,
+                "profile_image": "https://www.gravatar.com/avatar/16b57247ea14d0e752b17eab2d482002?s=128&d=identicon&r=PG",
+                "display_name": "Lazlo",
+                "link": "http://stackoverflow.com/users/154502/lazlo"
+            },
+            "is_answered": true,
+            "view_count": 28852,
+            "accepted_answer_id": 6247049,
+            "answer_count": 3,
+            "score": 18,
+            "last_activity_date": 1413469306,
+            "creation_date": 1307322955,
+            "question_id": 6247035,
+            "link": "http://stackoverflow.com/questions/6247035/strip-all-html-tags-except-allowed",
+            "title": "Strip all HTML tags, except allowed"
+        },
+        {
+            "tags": [
+                "html",
+                "tags",
+                "styles"
+            ],
+            "owner": {
+                "badge_counts": {
+                    "bronze": 237,
+                    "silver": 134,
+                    "gold": 33
+                },
+                "reputation": 13371,
+                "user_id": 136141,
+                "user_type": "registered",
+                "accept_rate": 66,
+                "profile_image": "https://www.gravatar.com/avatar/9112efedbb61459c9a737beb2dc2277e?s=128&d=identicon&r=PG",
+                "display_name": "pencilCake",
+                "link": "http://stackoverflow.com/users/136141/pencilcake"
+            },
+            "is_answered": true,
+            "view_count": 31476,
+            "accepted_answer_id": 1726103,
+            "answer_count": 15,
+            "score": 79,
+            "last_activity_date": 1405116825,
+            "creation_date": 1258067718,
+            "last_edit_date": 1339875791,
+            "question_id": 1726073,
+            "link": "http://stackoverflow.com/questions/1726073/is-it-sometimes-bad-to-use-br",
+            "title": "Is it sometimes bad to use &lt;BR /&gt;?"
+        },
+        {
+            "tags": [
+                "tags",
+                "ckeditor",
+                "fckeditor"
+            ],
+            "owner": {
+                "badge_counts": {
+                    "bronze": 21,
+                    "silver": 11,
+                    "gold": 1
+                },
+                "reputation": 1529,
+                "user_id": 1316372,
+                "user_type": "registered",
+                "accept_rate": 76,
+                "profile_image": "https://i.stack.imgur.com/avtJ5.jpg?s=128&g=1",
+                "display_name": "HenryW",
+                "link": "http://stackoverflow.com/users/1316372/henryw"
+            },
+            "is_answered": true,
+            "view_count": 21326,
+            "protected_date": 1424387741,
+            "accepted_answer_id": 18254082,
+            "answer_count": 5,
+            "score": 23,
+            "last_activity_date": 1426081061,
+            "creation_date": 1376560937,
+            "last_edit_date": 1426081061,
+            "question_id": 18250404,
+            "link": "http://stackoverflow.com/questions/18250404/ckeditor-strips-i-tag",
+            "title": "CKEditor strips &lt;i&gt; Tag"
+        },
+        {
+            "tags": [
+                "javascript",
+                "html",
+                "tags",
+                "onclick",
+                "href"
+            ],
+            "owner": {
+                "user_type": "does_not_exist",
+                "display_name": "user1589113"
+            },
+            "is_answered": true,
+            "view_count": 179554,
+            "accepted_answer_id": 14867603,
+            "answer_count": 2,
+            "score": 43,
+            "last_activity_date": 1465969355,
+            "creation_date": 1360814201,
+            "question_id": 14867558,
+            "link": "http://stackoverflow.com/questions/14867558/html-tag-a-want-to-add-both-href-and-onclick-working",
+            "title": "HTML tag &lt;a&gt; want to add both href and onclick working"
+        },
+        {
+            "tags": [
+                "html",
+                "image",
+                "tags"
+            ],
+            "owner": {
+                "badge_counts": {
+                    "bronze": 5,
+                    "silver": 3,
+                    "gold": 1
+                },
+                "reputation": 324,
+                "user_id": 2069519,
+                "user_type": "registered",
+                "profile_image": "https://www.gravatar.com/avatar/dda70bd2a59ad41fa59c859960c79d82?s=128&d=identicon&r=PG",
+                "display_name": "insertusernamehere",
+                "link": "http://stackoverflow.com/users/2069519/insertusernamehere"
+            },
+            "is_answered": true,
+            "view_count": 37794,
+            "accepted_answer_id": 14860541,
+            "answer_count": 3,
+            "score": 63,
+            "last_activity_date": 1449738096,
+            "creation_date": 1360780241,
+            "last_edit_date": 1385594592,
+            "question_id": 14860492,
+            "link": "http://stackoverflow.com/questions/14860492/how-to-close-img-tag-properly",
+            "title": "How to close &lt;img&gt; tag properly?"
+        },
+        {
+            "tags": [
+                "html",
+                "tags",
+                "deprecated"
+            ],
+            "owner": {
+                "badge_counts": {
+                    "bronze": 137,
+                    "silver": 82,
+                    "gold": 16
+                },
+                "reputation": 19718,
+                "user_id": 89989,
+                "user_type": "registered",
+                "accept_rate": 74,
+                "profile_image": "https://www.gravatar.com/avatar/8379dc25724c470e36b2f7f659b060ad?s=128&d=identicon&r=PG",
+                "display_name": "Gordon Gustafson",
+                "link": "http://stackoverflow.com/users/89989/gordon-gustafson"
+            },
+            "is_answered": true,
+            "view_count": 12225,
+            "accepted_answer_id": 1348704,
+            "answer_count": 15,
+            "score": 42,
+            "last_activity_date": 1396102969,
+            "creation_date": 1251484819,
+            "last_edit_date": 1251485158,
+            "question_id": 1348683,
+            "link": "http://stackoverflow.com/questions/1348683/will-the-b-and-i-tags-ever-become-deprecated",
+            "title": "Will the &lt;b&gt; and &lt;i&gt; tags ever become deprecated?"
+        },
+        {
+            "tags": [
+                "database",
+                "database-design",
+                "tags",
+                "tagging"
+            ],
+            "owner": {
+                "badge_counts": {
+                    "bronze": 121,
+                    "silver": 69,
+                    "gold": 17
+                },
+                "reputation": 15887,
+                "user_id": 29595,
+                "user_type": "registered",
+                "accept_rate": 79,
+                "profile_image": "https://www.gravatar.com/avatar/0ef52a258caf51abc97e22f08a955d45?s=128&d=identicon&r=PG",
+                "display_name": "Logan Serman",
+                "link": "http://stackoverflow.com/users/29595/logan-serman"
+            },
+            "is_answered": true,
+            "view_count": 43613,
+            "accepted_answer_id": 334246,
+            "answer_count": 8,
+            "score": 87,
+            "last_activity_date": 1439855495,
+            "creation_date": 1228229519,
+            "question_id": 334183,
+            "link": "http://stackoverflow.com/questions/334183/what-is-the-most-efficient-way-to-store-tags-in-a-database",
+            "title": "What is the most efficient way to store tags in a database?"
+        }
+    ],
+    "has_more": true,
+    "quota_max": 300,
+    "quota_remaining": 299,
+    "page": 1,
+    "page_size": 30,
+    "total": 732,
+    "type": "question"
+
+}

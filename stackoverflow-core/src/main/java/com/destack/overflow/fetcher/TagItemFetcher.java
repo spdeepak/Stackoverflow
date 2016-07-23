@@ -12,6 +12,7 @@ import org.json.JSONObject;
 import com.destack.overflow.json.JsonFetcher;
 import com.destack.overflow.model.Owner;
 import com.destack.overflow.model.TagItem;
+import com.destack.overflow.util.DateUtils;
 
 public class TagItemFetcher implements Fetcher<TagItem> {
 
@@ -40,16 +41,16 @@ public class TagItemFetcher implements Fetcher<TagItem> {
                 synons = null;
             }
             if (item.has("last_activity_date")) {
-                tagItem.setLast_activity_date(item.getLong("last_activity_date"));
+                tagItem.setLastActivityDate(item.getLong("last_activity_date"));
             }
             if (item.has("has_synonyms")) {
-                tagItem.setHas_synonyms(item.getBoolean("has_synonyms"));
+                tagItem.setHasSynonyms(item.getBoolean("has_synonyms"));
             }
             if (item.has("is_moderator_only")) {
-                tagItem.setIs_moderator_only(item.getBoolean("is_moderator_only"));
+                tagItem.setModeratorOnly(item.getBoolean("is_moderator_only"));
             }
             if (item.has("is_required")) {
-                tagItem.setIs_required(item.getBoolean("is_required"));
+                tagItem.setRequired(item.getBoolean("is_required"));
             }
             if (item.has("count")) {
                 tagItem.setCount(item.getInt("count"));
@@ -57,12 +58,31 @@ public class TagItemFetcher implements Fetcher<TagItem> {
             if (item.has("name")) {
                 tagItem.setName(item.getString("name"));
             }
+            synonymsTagFetcher(tagItem, item);
             tagItemList.add(tagItem);
             tagItem = null;
             item = null;
             synonyms = null;
         }
         return tagItemList;
+    }
+
+    private void synonymsTagFetcher(TagItem tagItem, JSONObject item) {
+        if (item.has("creation_date")) {
+            tagItem.setCreationDate(DateUtils.milliSecondsDateToProperDate(item.getLong("creation_date")));
+        }
+        if (item.has("last_applied_date")) {
+            tagItem.setLastAppliedDate(DateUtils.milliSecondsDateToProperDate(item.getLong("last_applied_date")));
+        }
+        if (item.has("applied_count")) {
+            tagItem.setAppliedCount(item.getLong("applied_count"));
+        }
+        if (item.has("to_tag")) {
+            tagItem.setToTag(item.getString("to_tag"));
+        }
+        if (item.has("from_tag")) {
+            tagItem.setFromTag(item.getString("from_tag"));
+        }
     }
 
 }
