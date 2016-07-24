@@ -81,8 +81,8 @@ public class DateUtils {
             if (date != null) {
                 calendar = Calendar.getInstance(TimeZone.getTimeZone("Etc/UTC"));
                 calendar.setTimeInMillis(date * 1000);
-                return String.valueOf(calendar.get(Calendar.DATE))
-                        .concat(String.valueOf(calendar.get(Calendar.MONTH)) + 1)
+                return String.valueOf(calendar.get(Calendar.DATE)).concat("-")
+                        .concat(String.valueOf(calendar.get(Calendar.MONTH) + 1)).concat("-")
                         .concat(String.valueOf(calendar.get(Calendar.YEAR)));
             } else {
                 throw new IllegalArgumentException("given date should be in Milli seconds format");

@@ -1,0 +1,211 @@
+{
+  "items": [
+    {
+      "creation_date": 1469281967,
+      "applied_count": 0,
+      "to_tag": "eclipse-jdt",
+      "from_tag": "jdt"
+    },
+    {
+      "creation_date": 1469058291,
+      "applied_count": 0,
+      "to_tag": "naturallyspeaking",
+      "from_tag": "dragon-naturallyspeaking"
+    },
+    {
+      "creation_date": 1467845768,
+      "applied_count": 0,
+      "to_tag": "prolog-findall",
+      "from_tag": "findall-prolog"
+    },
+    {
+      "creation_date": 1467736072,
+      "last_applied_date": 1467808321,
+      "applied_count": 1,
+      "to_tag": "sql-execution-plan",
+      "from_tag": "execution-plan"
+    },
+    {
+      "creation_date": 1467736008,
+      "applied_count": 0,
+      "to_tag": "sql-execution-plan",
+      "from_tag": "query-plan"
+    },
+    {
+      "creation_date": 1467735984,
+      "last_applied_date": 1469121571,
+      "applied_count": 7,
+      "to_tag": "sql-execution-plan",
+      "from_tag": "query-execution-plans"
+    },
+    {
+      "creation_date": 1467735720,
+      "last_applied_date": 1469022126,
+      "applied_count": 3,
+      "to_tag": "sql-execution-plan",
+      "from_tag": "explain-plan"
+    },
+    {
+      "creation_date": 1467735376,
+      "applied_count": 0,
+      "to_tag": "sql-execution-plan",
+      "from_tag": "query-plans"
+    },
+    {
+      "creation_date": 1467703149,
+      "applied_count": 0,
+      "to_tag": "jquery-ui-accordion",
+      "from_tag": "jquery-accordion"
+    },
+    {
+      "creation_date": 1467703080,
+      "applied_count": 0,
+      "to_tag": "jquery-ui-menu",
+      "from_tag": "jquery-ui-menubar"
+    },
+    {
+      "creation_date": 1467488620,
+      "last_applied_date": 1469098803,
+      "applied_count": 4,
+      "to_tag": "jquery-ui-dialog",
+      "from_tag": "jquery-dialog"
+    },
+    {
+      "creation_date": 1467503922,
+      "applied_count": 0,
+      "to_tag": "jquery-ui-resizable",
+      "from_tag": "jquery-resizable"
+    },
+    {
+      "creation_date": 1467702921,
+      "last_applied_date": 1467746043,
+      "applied_count": 1,
+      "to_tag": "jquery-ui-selectable",
+      "from_tag": "selectable"
+    },
+    {
+      "creation_date": 1467702871,
+      "applied_count": 0,
+      "to_tag": "jquery-ui-widget-factory",
+      "from_tag": "jquery-widget-factory"
+    },
+    {
+      "creation_date": 1467472331,
+      "last_applied_date": 1469074462,
+      "applied_count": 5,
+      "to_tag": "utf-8",
+      "from_tag": "utf8-decode"
+    },
+    {
+      "creation_date": 1467471603,
+      "last_applied_date": 1468407403,
+      "applied_count": 1,
+      "to_tag": "iso-8859-1",
+      "from_tag": "latin1"
+    },
+    {
+      "creation_date": 1467467018,
+      "last_applied_date": 1468667214,
+      "applied_count": 3,
+      "to_tag": "jquery-ui-tooltip",
+      "from_tag": "jquery-tooltip"
+    },
+    {
+      "creation_date": 1467467000,
+      "applied_count": 0,
+      "to_tag": "jquery-ui-spinner",
+      "from_tag": "jquery-spinner"
+    },
+    {
+      "creation_date": 1467466974,
+      "last_applied_date": 1468995215,
+      "applied_count": 2,
+      "to_tag": "jquery-ui-slider",
+      "from_tag": "jquery-slider"
+    },
+    {
+      "creation_date": 1467448159,
+      "last_applied_date": 1468870479,
+      "applied_count": 4,
+      "to_tag": "jquery-ui-draggable",
+      "from_tag": "jquery-draggable"
+    },
+    {
+      "creation_date": 1467448226,
+      "last_applied_date": 1469169204,
+      "applied_count": 5,
+      "to_tag": "jquery-ui-droppable",
+      "from_tag": "jquery-droppable"
+    },
+    {
+      "creation_date": 1467448327,
+      "last_applied_date": 1469221707,
+      "applied_count": 21,
+      "to_tag": "jquery-ui-autocomplete",
+      "from_tag": "jquery-autocomplete"
+    },
+    {
+      "creation_date": 1467449290,
+      "last_applied_date": 1467660482,
+      "applied_count": 1,
+      "to_tag": "jquery-ui-tabs",
+      "from_tag": "jquery-tabs"
+    },
+    {
+      "creation_date": 1467459481,
+      "last_applied_date": 1469293715,
+      "applied_count": 2,
+      "to_tag": "jquery-ui-selectmenu",
+      "from_tag": "select-menu"
+    },
+    {
+      "creation_date": 1383783586,
+      "last_applied_date": 1469169973,
+      "applied_count": 5,
+      "to_tag": "jquery-ui-sortable",
+      "from_tag": "jquery-sortable"
+    },
+    {
+      "creation_date": 1383783426,
+      "last_applied_date": 1469285754,
+      "applied_count": 15,
+      "to_tag": "jquery-ui-sortable",
+      "from_tag": "sortable"
+    },
+    {
+      "creation_date": 1460129022,
+      "last_applied_date": 1468912915,
+      "applied_count": 10,
+      "to_tag": "realm",
+      "from_tag": "realm-cocoa"
+    },
+    {
+      "creation_date": 1429032438,
+      "last_applied_date": 1469215784,
+      "applied_count": 24,
+      "to_tag": "c++1z",
+      "from_tag": "c++17"
+    },
+    {
+      "creation_date": 1464421019,
+      "last_applied_date": 1468370202,
+      "applied_count": 8,
+      "to_tag": "random",
+      "from_tag": "random-sample"
+    },
+    {
+      "creation_date": 1452344130,
+      "last_applied_date": 1468591196,
+      "applied_count": 4,
+      "to_tag": "wordpress",
+      "from_tag": "wpdb"
+    }
+  ],
+  "has_more": true,
+  "quota_max": 10000,
+  "quota_remaining": 9655,
+  "page": 1,
+  "page_size": 30,
+  "total": 2629,
+  "type": "tag_synonym"
+}

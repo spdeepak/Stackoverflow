@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.text.ParseException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -21,6 +22,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.destack.overflow.model.TagItem;
+import com.destack.overflow.util.DateUtils;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:/spring/applicationContext.xml" })
@@ -30,7 +32,7 @@ public class TagItemFetcherTest {
     private TagItemFetcher tagItemFetcher;
 
     @Test
-    public void test() throws FileNotFoundException, MalformedURLException, IOException {
+    public void testTagExample() throws FileNotFoundException, MalformedURLException, IOException {
         File file = new File(System.getProperty("user.dir") + "/src/main/resources/JSONs/tagexample.json");
         List<TagItem> answerItems = tagItemFetcher.objectFetcher(file.toURI().toURL());
         assertEquals(30, answerItems.size());
@@ -44,6 +46,19 @@ public class TagItemFetcherTest {
         assertFalse(answerItems.get(0).isRequired());
         assertEquals(Integer.valueOf(1175718), answerItems.get(0).getCount());
         assertEquals("javascript", answerItems.get(0).getName());
+    }
+
+    @Test
+    public void testTagSynonymsExample()
+            throws FileNotFoundException, MalformedURLException, IOException, NumberFormatException, ParseException {
+        File file = new File(System.getProperty("user.dir") + "/src/main/resources/JSONs/tagsynonyms.json");
+        List<TagItem> answerItems = tagItemFetcher.objectFetcher(file.toURI().toURL());
+        assertEquals(30, answerItems.size());
+        assertEquals("5-7-2016", answerItems.get(3).getCreationDate());
+        assertEquals("6-7-2016", answerItems.get(3).getLastAppliedDate());
+        assertEquals(Long.valueOf(1467808321),
+                DateUtils.dateToMilliSecondsConverter(Long.valueOf(20160607)));
+        assertEquals(Long.valueOf(1), answerItems.get(3).getAppliedCount());
     }
 
 }
