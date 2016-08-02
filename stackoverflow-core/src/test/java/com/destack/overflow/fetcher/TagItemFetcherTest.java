@@ -22,7 +22,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.destack.overflow.model.TagItem;
-import com.destack.overflow.util.DateUtils;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:/spring/applicationContext.xml" })
@@ -34,31 +33,31 @@ public class TagItemFetcherTest {
     @Test
     public void testTagExample() throws FileNotFoundException, MalformedURLException, IOException {
         File file = new File(System.getProperty("user.dir") + "/src/main/resources/JSONs/tagexample.json");
-        List<TagItem> answerItems = tagItemFetcher.objectFetcher(file.toURI().toURL());
-        assertEquals(30, answerItems.size());
-        assertThat(Arrays.asList(answerItems.get(0).getSynonyms()),
+        List<TagItem> tagItems = tagItemFetcher.objectFetcher(file.toURI().toURL());
+        assertEquals(30, tagItems.size());
+        assertThat(Arrays.asList(tagItems.get(0).getSynonyms()),
                 containsInAnyOrder("js", "ecmascript", ".js", "javascript-execution", "classic-javascript",
                         "javascript-alert", "javascript-dom", "javascript-disabled", "javascript-library",
                         "javascript-runtime", "vanilla-javascript", "javascript-module"));
-        assertEquals(Long.valueOf(1469270369), answerItems.get(0).getLastActivityDate());
-        assertTrue(answerItems.get(0).isHasSynonyms());
-        assertFalse(answerItems.get(0).isModeratorOnly());
-        assertFalse(answerItems.get(0).isRequired());
-        assertEquals(Integer.valueOf(1175718), answerItems.get(0).getCount());
-        assertEquals("javascript", answerItems.get(0).getName());
+        assertEquals(Long.valueOf(1469270369), tagItems.get(0).getLastActivityDate());
+        assertTrue(tagItems.get(0).isHasSynonyms());
+        assertFalse(tagItems.get(0).isModeratorOnly());
+        assertFalse(tagItems.get(0).isRequired());
+        assertEquals(Integer.valueOf(1175718), tagItems.get(0).getCount());
+        assertEquals("javascript", tagItems.get(0).getName());
     }
 
     @Test
     public void testTagSynonymsExample()
             throws FileNotFoundException, MalformedURLException, IOException, NumberFormatException, ParseException {
         File file = new File(System.getProperty("user.dir") + "/src/main/resources/JSONs/tagsynonyms.json");
-        List<TagItem> answerItems = tagItemFetcher.objectFetcher(file.toURI().toURL());
-        assertEquals(30, answerItems.size());
-        assertEquals("5-7-2016", answerItems.get(3).getCreationDate());
-        assertEquals("6-7-2016", answerItems.get(3).getLastAppliedDate());
-        assertEquals(Long.valueOf(1467808321),
-                DateUtils.dateToMilliSecondsConverter(Long.valueOf(20160607)));
-        assertEquals(Long.valueOf(1), answerItems.get(3).getAppliedCount());
+        List<TagItem> tagItems = tagItemFetcher.objectFetcher(file.toURI().toURL());
+        assertEquals(30, tagItems.size());
+        assertEquals("20160507", tagItems.get(3).getCreationDate());
+        assertEquals("20160607", tagItems.get(3).getLastAppliedDate());
+        assertEquals(Long.valueOf(1), tagItems.get(3).getAppliedCount());
+        assertEquals("sql-execution-plan", tagItems.get(3).getToTag());
+        assertEquals("execution-plan", tagItems.get(3).getFromTag());
     }
 
 }

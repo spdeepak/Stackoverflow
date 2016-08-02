@@ -2,7 +2,6 @@ package com.destack.overflow.util;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.TimeZone;
 
 import org.slf4j.Logger;
@@ -76,21 +75,15 @@ public class DateUtils {
     }
 
     public static String milliSecondsDateToProperDate(Long date) {
-        Calendar calendar;
         try {
             if (date != null) {
-                calendar = Calendar.getInstance(TimeZone.getTimeZone("Etc/UTC"));
-                calendar.setTimeInMillis(date * 1000);
-                return String.valueOf(calendar.get(Calendar.DATE)).concat("-")
-                        .concat(String.valueOf(calendar.get(Calendar.MONTH) + 1)).concat("-")
-                        .concat(String.valueOf(calendar.get(Calendar.YEAR)));
+                date = date * 1000;
+                return DATE_FORMAT.format(date);
             } else {
                 throw new IllegalArgumentException("given date should be in Milli seconds format");
             }
         } catch (Exception e) {
             LOGGER.error("Error while parsing date {}", e);
-        } finally {
-            calendar = null;
         }
         return "";
     }
