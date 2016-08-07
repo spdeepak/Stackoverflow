@@ -10,14 +10,21 @@
 
 	<context:component-scan base-package="com.destack.overflow" />
 
+	<bean id="baseURLComponentGenerator"
+		class="com.destack.overflow.urlgenerator.BaseURLComponentGenerator" />
+
 	<bean id="answerItemURLGenerator"
-		class="com.destack.overflow.urlgenerator.AnswerItemURLGenerator" />
+		class="com.destack.overflow.urlgenerator.AnswerItemURLGenerator"
+		parent="baseURLComponentGenerator" />
 
-	<bean id="commentURLGenerator" class="com.destack.overflow.urlgenerator.CommentURLGenerator" />
+	<bean id="commentURLGenerator" class="com.destack.overflow.urlgenerator.CommentURLGenerator"
+		parent="baseURLComponentGenerator" />
 
-	<bean id="badgeItemURLGenerator" class="com.destack.overflow.urlgenerator.BadgeItemURLGenerator" />
+	<bean id="badgeItemURLGenerator" class="com.destack.overflow.urlgenerator.BadgeItemURLGenerator"
+		parent="baseURLComponentGenerator" />
 
-	<bean id="tagItemURLGenerator" class="com.destack.overflow.urlgenerator.TagItemURLGenerator" />
+	<bean id="tagItemURLGenerator" class="com.destack.overflow.urlgenerator.TagItemURLGenerator"
+		parent="baseURLComponentGenerator" />
 
 	<bean id="answerItemFetcher" class="com.destack.overflow.fetcher.AnswerItemFetcher" />
 

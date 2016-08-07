@@ -82,7 +82,7 @@ public class BaseURLComponentGenerator {
             LOGGER.info("Order component value : {}", order.toString());
             return "&order=".concat(order.toString());
         } else {
-            LOGGER.info("given Order component value is null so using default i.e., : {}", order.toString());
+            LOGGER.info("given Order component value is null so using default i.e., : {}", Order.DESC.toString());
             return "&order=".concat(Order.DESC.toString());
         }
     }

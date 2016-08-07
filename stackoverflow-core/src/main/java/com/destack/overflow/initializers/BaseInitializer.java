@@ -11,14 +11,7 @@ import com.destack.overflow.enums.Order;
  */
 public class BaseInitializer {
 
-    //    protected static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyyddMM");
-
     private static final Logger LOGGER = LoggerFactory.getLogger(BaseInitializer.class);
-    //
-    //    static {
-    //        DATE_FORMAT.setLenient(false);
-    //        DATE_FORMAT.setTimeZone(TimeZone.getTimeZone("Etc/UTC"));
-    //    }
 
     private Long fromDate;
 

@@ -57,7 +57,7 @@ public class TagItemInitializer extends BaseInitializer {
         tagItemInitializer.setPageSize(pageSize);
         tagItemInitializer.setFromDate(DateUtils.dateToMilliSecondsConverter(fromDate));
         tagItemInitializer.setToDate(DateUtils.dateToMilliSecondsConverter(toDate));
-        tagItemInitializer.setOrder(order != null ? order : Order.DESC);
+        tagItemInitializer.setOrder(Order.isValid(order) ? order : Order.DESC);
     }
 
     public static TagItemInitializer createNameBasedTagInitializer(Integer page, Integer pageSize, Long fromDate,
