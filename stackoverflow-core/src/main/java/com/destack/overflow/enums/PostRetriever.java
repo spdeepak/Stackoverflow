@@ -1,5 +1,8 @@
 package com.destack.overflow.enums;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * Retrieve posts based on<br/>
  * <br/>
@@ -28,7 +31,8 @@ public enum PostRetriever {
      */
     ID_COMMENT,
     /**
-     * Render a comment given its body and the post it's on.
+     * Render a comment given its body and the post it's on.<br/>
+     * Requires only Id and Body
      */
     ID_COMMENT_RENDER,
     /**
@@ -39,4 +43,28 @@ public enum PostRetriever {
      * Returns suggsted edits on the posts identified in ids.
      */
     SUGGESTED_EDITS;
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(PostRetriever.class);
+
+    public static boolean isContains(PostRetriever postRetriever) {
+        if (postRetriever != null) {
+            for (PostRetriever sort : PostRetriever.class.getEnumConstants()) {
+                if (sort.equals(postRetriever)) {
+                    LOGGER.info("AnswerSortBy value is {}", sort);
+                    return true;
+                }
+            }
+        }
+        LOGGER.warn("AnswerSortBy is null. So, using default i.e, Activity");
+        return false;
+    }
+
+    public static boolean isValid(PostRetriever postRetriever) {
+        if (postRetriever != null) {
+            return isContains(postRetriever);
+        } else {
+            LOGGER.warn("AnswerSortBy is null. So, using default i.e, Activity");
+            return false;
+        }
+    }
 }

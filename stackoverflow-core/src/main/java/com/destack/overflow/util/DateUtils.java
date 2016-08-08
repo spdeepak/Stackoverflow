@@ -2,6 +2,7 @@ package com.destack.overflow.util;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.TimeZone;
 
 import org.slf4j.Logger;
@@ -86,5 +87,40 @@ public class DateUtils {
             LOGGER.error("Error while parsing date {}", e);
         }
         return "";
+    }
+
+    /**
+     * Validates date and converts to 10 digit Integer format
+     * 
+     * @param date
+     *            Date in the format of <b>"yyyyddMM"</b>
+     * @return valid date or "0"
+     * @throws ParseException
+     */
+    public static boolean dateVerifier(Date date) {
+        try {
+            if (date != null) {
+                DATE_FORMAT.parse(String.valueOf(date));
+                return true;
+            } else {
+                return true;
+            }
+        } catch (ParseException e) {
+            LOGGER.error(e.toString());
+            return false;
+        }
+    }
+
+    /**
+     * Verify Dates with the required format
+     * 
+     * @param minDate
+     *            minDate in the format of <b>"yyyyddMM"</b>
+     * @param maxDate
+     *            maxDate in the format of <b>"yyyyddMM"</b>
+     * @return
+     */
+    public static boolean datesVerifier(Date minDate, Date maxDate) {
+        return dateVerifier(minDate) && dateVerifier(maxDate);
     }
 }
